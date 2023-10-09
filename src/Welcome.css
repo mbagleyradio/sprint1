@@ -1,0 +1,9 @@
+#welcomeIMG {
+    max-width: 100%;
+    height: auto;
+}
+
+#welcomeText {
+    font-weight: bolder;
+    text-wrap: balance;
+}
