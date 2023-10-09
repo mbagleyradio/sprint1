@@ -1,0 +1,28 @@
+#bodyText {
+    text-wrap: balance;
+}
+
+#twoButtons {
+    display: flex;
+}
+
+.button {
+    border: none;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+.learnMore {
+    color: #000;
+    background-color: #FFDAB9;
+}
+
+.getStarted {
+    color: #FFF;
+    background-color: #556B2F;
+}

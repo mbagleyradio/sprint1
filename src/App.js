@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import Welcome from './Welcome.js';
-
+import Body from './Body.js';
 function App() {
   return (
     <div className="mobileResize">
@@ -9,7 +9,7 @@ function App() {
         <Welcome />
       </div>
       <div className="Body">
-
+        <Body />
       </div>
       <div className="Footer">
 
