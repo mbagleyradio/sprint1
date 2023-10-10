@@ -2,6 +2,7 @@
     .mobileResize {
         font-size: .3em;
         max-width: 250px;
+        align-items: center;
     }
 }
 
@@ -9,6 +10,7 @@
     .mobileResize {
         font-size: .6em;
         max-width: 400px;
+        align-items: center;
     }
 }
 
@@ -16,12 +18,14 @@
     .mobileResize {
         font-size: .9em;
         max-width: 799px;
+        align-items: center;
     }
 }
 
 @media only screen and (min-width: 800px) {
     .mobileResize {
         font-size: 1.75em;
+        align-items: center;
     }
 }
 

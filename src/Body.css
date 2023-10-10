@@ -1,20 +1,27 @@
 #bodyText {
     text-wrap: balance;
+    text-align: center;
 }
 
 #twoButtons {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .button {
     border: none;
     padding: 20px;
     text-align: center;
+    text-wrap: balance;
     text-decoration: none;
+    font-weight: bold;
     display: inline-block;
     border-radius: 12px;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 1em;
+    margin: 1% 1%;
+    max-width: 25%;
 }
 
 .learnMore {
@@ -25,4 +32,14 @@
 .getStarted {
     color: #FFF;
     background-color: #556B2F;
+}
+
+.learnMore:hover {
+    color: #FFDAB9;
+    background-color: #000;
+}
+
+.getStarted:hover {
+    color: #556B2F;
+    background-color: #FFF;
 }
