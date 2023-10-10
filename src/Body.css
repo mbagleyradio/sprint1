@@ -1,15 +1,3 @@
-#bodyText {
-    text-wrap: balance;
-    text-align: center;
-}
-
-#twoButtons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
 .button {
     border: none;
     padding: 20px;
@@ -20,8 +8,29 @@
     display: inline-block;
     border-radius: 12px;
     font-size: 1em;
-    margin: 1% 1%;
-    max-width: 25%;
+    margin: 20px 10px;
+    max-width: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+    .button {
+        padding: 5px;
+        font-size: .75em;
+        margin: 20px 10px;
+        max-width: 100%;
+    }
+}
+
+#bodyText {
+    text-wrap: balance;
+    text-align: center;
+}
+
+#twoButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .learnMore {
