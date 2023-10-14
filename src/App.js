@@ -1,19 +1,23 @@
 import './App.css';
 import React from 'react';
-import Welcome from './Welcome.js';
-import Body from './Body.js';
-function App() {
-  return (
-    <div className="mobileResize">
-      <div className="Welcome">
-        <Welcome />
-      </div>
-      <div className="Body">
-        <Body />
-      </div>
-      <div className="Footer">
+import HomePage from './HomePage.js';
+import GetStarted from './GetStarted.js';
+import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom';
 
-      </div>
+function App() {
+  const router = createBrowserRouter(createRoutesFromElements(
+    <>
+      <Route path="/" element={ <HomePage/> }>
+      </Route>
+      <Route path="get-started" element={ <GetStarted/> }>
+      </Route>
+    </>
+    )
+  );
+  
+  return (
+    <div className="App">
+      <RouterProvider router={router} />
     </div>
   );
 }
