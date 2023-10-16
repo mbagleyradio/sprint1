@@ -1,0 +1,41 @@
+PSEUDOCODE - SPRINT 1
+
+***IF USER CLICKS NO INSURANCE BUTTON***
+
+When noInsuranceBTN is clicked:
+	- change the background color of yourBTN to yellow
+	- change the text inside yourBTN to "No Insurance"
+	- Add a header text "What payment options apply to you? (select one or more)" above the bordered area
+		- In the bordered area, add the following check box items:
+			- No cost for eligible uninsured
+			- Uninsured sliding fee
+			- Uninsured discount
+			- Payment plans
+			- F.A.P discount (financial assistance program)
+			- Catastrophic care discount
+			- Care credit card
+			- Self-pay
+			
+Display a "continue" button at the bottom, if one or more options is clicked (for no insurance only)
+
+Render a new page with a form:
+	Your Name:
+	Your Phone Number:
+	Your Email:
+	As soon as we can, someone will get back to you and see if we can't sort this all out. Your health and providing access to care is important to us.
+			
+When any other insuance button is clicked:
+	- change the background color of yourBTN to green
+	- change the text inside yourBTN to match the text inside the button that was selected
+	- Add a header text "What is the name of your insurance? (pick one)" above the bordered area
+		- In the bordered area, add the following check box items:
+			- Multiplan
+			- Neighborhood Health Plan
+			- Optum Healthcare
+			- Preferred Medical Plan (PMP)
+			- Private Healthcare Systems (PHS)
+			- UnitedHealthCare
+			- Wellcare
+			- My insurance is not listed
+
+When an option is clicked, 
