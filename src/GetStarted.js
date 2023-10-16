@@ -1,5 +1,11 @@
 import placeholder from './placeholder_for_monroe-county-logo.png';
 import './GetStarted.css';
+import Options from './Options.js';
+
+let isInsured = true;
+function noInsurance() {
+    isInsured = false;
+}
 
 function GetStarted() {
     return(
@@ -10,7 +16,7 @@ function GetStarted() {
             </div>
             <div id="gs-buttons">
                 <button id="comInsuranceBtn">Commercial Insurance</button>
-                <button id="noInsuranceBtn">NO Insurance</button>
+                <button id="noInsuranceBtn" onClick={noInsurance}>NO Insurance</button>
                 <button id="medicareBtn">Medicare</button>
                 <br/>
                 <button id="medAdvantageBtn">Medicare Advantage, HMO, PPO</button>
@@ -27,7 +33,7 @@ function GetStarted() {
                 <button id="yourBtn">Your Selection</button>
             </div>
             <div id="gs-options-box">
-                <h3>Test</h3>
+                <Options isInsured={isInsured}/>
             </div>
             
         </div>
