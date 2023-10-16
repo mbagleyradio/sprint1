@@ -41,7 +41,7 @@ button {
     text-wrap: balance;
     text-decoration: none;
     font-weight: bold;
-    display: inline-block;
+    /*display: inline-block;*/
     font-size: 1em;
     margin: 20px 10px;
     max-width: 100%;
@@ -159,11 +159,11 @@ button {
 }
 
 #yourBtn {
-    float: left;
+    /*float: left;*/
     border: 1px solid #000;
     background-color: #B0E0E6;
 }
 
 #gs-options-box {
-    
+    border: 2px solid #000;
 }

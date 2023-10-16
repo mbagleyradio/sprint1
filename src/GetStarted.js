@@ -27,8 +27,9 @@ function GetStarted() {
                 <button id="yourBtn">Your Selection</button>
             </div>
             <div id="gs-options-box">
-                
+                <h3>Test</h3>
             </div>
+            
         </div>
     );
 }
