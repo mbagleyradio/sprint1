@@ -53,3 +53,102 @@
     }
 }
 
+#comInsuranceBtn {
+    background-color: #a9d18e;
+    color: #000;
+}
+
+#comInsuranceBtn:hover {
+    color: #a9d18e;
+    background-color: #000;
+}
+
+#noInsuranceBtn {
+    color: #000;
+    background-color: #ffffe5;
+}
+
+#noInsuranceBtn:hover {
+    background-color: #000;
+    color: #ffffe5;
+}
+
+#medicareBtn {
+    background-color: #ffb69f;
+    color: #000;
+}
+
+#medicareBtn:hover {
+    color: #ffb69f;
+    background-color: #000;
+}
+
+#medAdvantageBtn {
+    background-color: #ff9c7d;
+    color: #000;
+}
+
+#medAdvantageBtn:hover {
+    color: #ff9c7d;
+    background-color: #000;
+}
+
+#medicaidBtn {
+    color: #000;
+    background-color: #abffff;
+}
+
+#medicaidBtn:hover {
+    color: #abffff;
+    background-color: #000;
+}
+
+#milInsuranceBtn {
+    color: #000;
+    background-color: #ffd28f;
+}
+
+#milInsuranceBtn:hover {
+    color: #ffd28f;
+    background-color: #000;
+}
+
+#medManagedBtn {
+    color: #000;
+    background-color: #00ffff;
+}
+
+#medManagedBtn:hover {
+    color: #00ffff;
+    background-color: #000;
+}
+
+#intInsuranceBtn {
+    color: #000;
+    background-color: #ffb7ff;
+}
+
+#intInsuranceBtn:hover {
+    color: #ffb7ff;
+    background-color: #000;
+}
+
+#workCompBtn {
+    color: #000;
+    background-color: #ffd966;
+}
+
+#workCompBtn:hover {
+    color: #ffd966;
+    background-color: #000;
+}
+
+#behavioralBtn {
+    color: #000;
+    background-color: #d9d9d9;
+}
+
+#behavioralBtn:hover {
+    color: #d9d9d9;
+    background-color: #000;
+}
