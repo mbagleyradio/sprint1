@@ -2,10 +2,11 @@ import placeholder from './placeholder_for_monroe-county-logo.png';
 import './GetStarted.css';
 import Options from './Options.js';
 
+// this smells
 let isInsured = true;
 function noInsurance() {
     isInsured = false;
-}
+} // end of the smelly part
 
 function GetStarted() {
     return(
