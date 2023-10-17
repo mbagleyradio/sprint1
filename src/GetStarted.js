@@ -6,57 +6,68 @@ import { useState } from 'react';
 function GetStarted() {
     const [insurance, setInsurance] = useState(undefined);
     const [buttonName, setButtonName] = useState("Your Selection");
-
+    const [color, setColor] = useState("#B0E0E6");
+    
     const handleClick = (buttonNum) => {
         switch(buttonNum) {
             case 1: // Commercial Insurance
                 setInsurance(true);
                 setButtonName("Commercial Insurance");
+                setColor("#00de00");
             break;
 
             case 2: // No Insurance
                 setInsurance(false);
                 setButtonName("No Insurance");
+                setColor("#ffff00");
             break;
 
             case 3: // Medicare
                 setInsurance(true);
                 setButtonName("Medicare");
+                setColor("#00de00");
             break;
 
             case 4: // Medicare Advantage
                 setInsurance(true);
                 setButtonName("Medicare Advantage, HMO, PPO");
+                setColor("#00de00");
             break;
 
             case 5: // Medicaid
                 setInsurance(true);
                 setButtonName("Medicaid");
+                setColor("#00de00");
             break;
 
             case 6: // Military Insurance
                 setInsurance(true);
                 setButtonName("Military Insurance");
+                setColor("#00de00");
             break;
 
             case 7: // Medicaid Managed Care
                 setInsurance(true);
                 setButtonName("Medicaid Managed Care (MCO)");
+                setColor("#00de00");
             break;
 
             case 8: // International Insurance
                 setInsurance(true);
                 setButtonName("International Insurance");
+                setColor("#00de00");
             break;
 
             case 9: // Workers Comp
                 setInsurance(true);
                 setButtonName("Workers Comp");
+                setColor("#00de00");
             break;
 
             case 10: // Behavioral Health Ins.
                 setInsurance(true);
                 setButtonName("Behavioral Health Ins.");
+                setColor("#00de00");
             break;
 
             default:
@@ -84,7 +95,7 @@ function GetStarted() {
             </div>
             <div id="gs-line-break">
                 <hr></hr>
-                <button id="yourBtn">{buttonName}</button>
+                <button id="yourBtn" style={{backgroundColor: `${color}`}}>{buttonName}</button>
             </div>
             <div id="gs-options-box">
                 <Options isInsured={insurance}/>
