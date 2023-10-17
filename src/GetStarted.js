@@ -20,8 +20,8 @@ function GetStarted() {
                 <h1 id="welcomeText">What type of primary insurance do you have? (pick one)</h1>
             </div>
             <div id="gs-buttons">
-                <button id="comInsuranceBtn">Commercial Insurance</button>
-                <button id="noInsuranceBtn" onClick={()=> setInsurance(false)}>NO Insurance</button>
+                <button id="comInsuranceBtn" >Commercial Insurance</button>
+                <button id="noInsuranceBtn" onClick={() => setInsurance(false)}>NO Insurance</button>
                 <button id="medicareBtn">Medicare</button>
                 <br/>
                 <button id="medAdvantageBtn">Medicare Advantage, HMO, PPO</button>
