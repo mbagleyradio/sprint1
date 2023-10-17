@@ -6,8 +6,10 @@ function Options( props ) {
     const hasInsurance = props.isInsured;
     if (hasInsurance === true) {
         return (<HasInsurance/>);
-    } else {
-        return (<NoInsurance/>)
+    } else if (hasInsurance === false) {
+        return (<NoInsurance/>);
+    } else if (hasInsurance === null || hasInsurance === undefined) {
+        return (<></>);
     }
 }
 
