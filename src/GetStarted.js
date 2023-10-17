@@ -1,14 +1,18 @@
 import placeholder from './placeholder_for_monroe-county-logo.png';
 import './GetStarted.css';
 import Options from './Options.js';
+import { useState } from 'react';
 
+/*
 // this smells
 let isInsured = true;
 function noInsurance() {
     isInsured = false;
 } // end of the smelly part
-
+*/
 function GetStarted() {
+    const [insurance, setInsurance] = useState(true);
+
     return(
         <div id="gs-centered">
             <div id="gs-header">
@@ -17,7 +21,7 @@ function GetStarted() {
             </div>
             <div id="gs-buttons">
                 <button id="comInsuranceBtn">Commercial Insurance</button>
-                <button id="noInsuranceBtn" onClick={noInsurance}>NO Insurance</button>
+                <button id="noInsuranceBtn" onClick={()=> setInsurance(false)}>NO Insurance</button>
                 <button id="medicareBtn">Medicare</button>
                 <br/>
                 <button id="medAdvantageBtn">Medicare Advantage, HMO, PPO</button>
@@ -34,7 +38,7 @@ function GetStarted() {
                 <button id="yourBtn">Your Selection</button>
             </div>
             <div id="gs-options-box">
-                <Options isInsured={isInsured}/>
+                <Options isInsured={insurance}/>
             </div>
             
         </div>

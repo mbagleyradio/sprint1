@@ -3,11 +3,11 @@ import NoInsurance from './NoInsurance.js';
 import HasInsurance from './HasInsurance.js';
 
 function Options( props ) {
-    const isInsured = props.isInsured;
-    if (isInsured === true) {
+    const hasInsurance = props.isInsured;
+    if (hasInsurance === true) {
         return (<HasInsurance/>);
-    } else if (isInsured === false) {
-        return (<NoInsurance/>);
+    } else {
+        return (<NoInsurance/>)
     }
 }
 
