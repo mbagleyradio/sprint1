@@ -100,7 +100,6 @@ function GetStarted() {
             <div id="gs-options-box">
                 <Options isInsured={insurance}/>
             </div>
-            
         </div>
     );
 }
