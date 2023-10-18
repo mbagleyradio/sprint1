@@ -4,8 +4,50 @@ import { useState } from 'react';
 function NoInsurance() {
 	/* got some stinky code. use separate useState hooks for each checkbox to track their values.
 	const [isChecked, setIsChecked] = useState(false);
-	const handleCheck = () => {
+	const [isNoCost, setIsNoCost] = useState(false);
+	const [isSliding, setIsSlidng] = useState(false);
+	const [isDiscount, setIsDiscount] = useState(false);
+	const [isPayment, setIsPayment] = useState(false);
+	const [isFAP, setIsFAP] = useState(false);
+	const [isCatastrophic, setIsCatastrophic] = useState(false);
+	const [isCareCredit, setIsCareCredit] = useState(false);
+	const [isSelfPay, setIsSelfPay] = useState(false);
+
+	const handleCheck = (checkboxNum) => {
 		setIsChecked(!isChecked);
+
+		switch (checkBoxNum) {
+			case 1: // no cost
+			break;
+
+			case 2: // sliding
+
+			break;
+
+			case 3: // discount
+
+			break;
+
+			case 4: // payment plan
+
+			break;
+
+			case 5: // financial assistance plan aka FAP
+
+			break;
+
+			case 6: // catastrophic care plan
+			
+			break;
+			
+			case 7: // care credit plan
+
+			break;
+
+			case 8: // self pay
+
+			break;
+		}
 	} */
 
 	// see the commented part below: "checked" is a property of whether the checkbox is checked or not at start. 
