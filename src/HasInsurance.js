@@ -1,38 +1,90 @@
 import './HasInsurance.css';
+import { useState } from 'react';
 
 function HasInsurance() {
+    const [isChecked, setIsChecked] = useState(false);
+	const [isMultiplan, setIsMultiplan] = useState(false);
+	const [isOptum, setIsOptum] = useState(false);
+	const [isNeighborhood, setIsNeighborhood] = useState(false);
+	const [isPreferred, setIsPreferred] = useState(false);
+	const [isPHS, setIsPHS] = useState(false);
+	const [isUnited, setIsUnited] = useState(false);
+	const [isWellcare, setIsWellcare] = useState(false);
+	const [isNotListed, setIsNotListed] = useState(false);
+    
+	const handleCheck = (checkboxNum) => {
+		setIsChecked(!isChecked);
+
+		switch (checkboxNum) {
+			case 1: // Multiplan
+				setIsMultiplan(!isMultiplan);
+			break;
+
+			case 2: // Neighborhood Health Plan
+				setIsNeighborhood(!isNeighborhood);
+			break;
+
+			case 3: // Optum Healthcare
+				setIsOptum(!isOptum);
+			break;
+
+			case 4: // Preferred Medical Plan
+				setIsPreferred(!isPreferred);
+			break;
+
+			case 5: // Private Healthcare Systems (PHS)
+				setIsPHS(!isPHS);
+			break;
+
+			case 6: // UnitedHealthCare
+				setIsUnited(!isUnited);
+			break;
+			
+			case 7: // Wellcare
+				setIsWellcare(!isWellcare);
+			break;
+
+			case 8: // My insurance is not listed
+				setIsNotListed(!isNotListed);
+			break;
+
+			default:
+			break;
+		}
+	} 
+    
     return (
     <div id="hasInsurance">
         <div class="checkbox-container">
-            <input type="checkbox" id="cb1"/>
+            <input type="checkbox" id="cb1" onChange={handleCheck(1)} checked={isChecked}/>
             <label for="cb1">Multiplan</label>
         </div>
         <div class="checkbox-container">
-            <input type="checkbox" id="cb2"/>
+            <input type="checkbox" id="cb2" onChange={handleCheck(2)} checked={isChecked}/>
             <label for="cb2">Neighborhood Health Plan</label>
         </div>
         <div class="checkbox-container">
-            <input type="checkbox" id="cb3"/>
+            <input type="checkbox" id="cb3" onChange={handleCheck(3)} checked={isChecked}/>
             <label for="cb3">Optum Healthcare</label>
         </div>
         <div class="checkbox-container">
-            <input type="checkbox" id="cb4"/>
+            <input type="checkbox" id="cb4" onChange={handleCheck(4)} checked={isChecked}/>
             <label for="cb4">Preferred Medical Plan (PMP)</label>
         </div>
         <div class="checkbox-container">
-            <input type="checkbox" id="cb5"/>
+            <input type="checkbox" id="cb5" onChange={handleCheck(5)} checked={isChecked}/>
             <label for="cb5">Private Healthcare Systems (PHS)</label>
         </div>
         <div class="checkbox-container">
-            <input type="checkbox" id="cb6"/>
+            <input type="checkbox" id="cb6" onChange={handleCheck(6)} checked={isChecked}/>
             <label for="cb6">UnitedHealthCare</label>
         </div>
         <div class="checkbox-container">
-            <input type="checkbox" id="cb7"/>
+            <input type="checkbox" id="cb7" onChange={handleCheck(7)} checked={isChecked}/>
             <label for="cb7">Wellcare</label>
         </div>
         <div class="checkbox-container">
-            <input type="checkbox" id="cb8"/>
+            <input type="checkbox" id="cb8" onChange={handleCheck(8)} checked={isChecked}/>
             <label for="cb8">My insurance is not listed</label>
         </div>
     </div>
