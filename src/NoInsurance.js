@@ -2,7 +2,6 @@ import './NoInsurance.css';
 import { useState } from 'react';
 
 function NoInsurance() {
-	const [isChecked, setIsChecked] = useState(false);
 	const [isNoCost, setIsNoCost] = useState(false);
 	const [isSliding, setIsSliding] = useState(false);
 	const [isDiscount, setIsDiscount] = useState(false);
@@ -13,7 +12,6 @@ function NoInsurance() {
 	const [isSelfPay, setIsSelfPay] = useState(false);
 
 	const handleCheck = (checkboxNum) => {
-		setIsChecked(!isChecked);
 
 		switch (checkboxNum) {
 			case 1: // no cost
@@ -59,35 +57,35 @@ function NoInsurance() {
     return (
     <div id="noInsurance">
         <div class="checkbox-container">
-			<input type="checkbox" id="cb1" onChange={handleCheck(1)} checked={isChecked}/>
+			<input type="checkbox" id="cb1" onChange={() => handleCheck(1)}/>
 			<label for="cb1">No cost for eligible uninsured</label>
 		</div>
 		<div class="checkbox-container">
-			<input type="checkbox" id="cb2" onChange={handleCheck(2)} checked={isChecked}/>
+			<input type="checkbox" id="cb2" onChange={() => handleCheck(2)}/>
 			<label for="cb2">Uninsured sliding fee</label>
 		</div>
 		<div class="checkbox-container">
-			<input type="checkbox" id="cb3" onChange={handleCheck(3)} checked={isChecked}/>
+			<input type="checkbox" id="cb3" onChange={() => handleCheck(3)}/>
 			<label for="cb3">Uninsured discount</label>
 		</div>
         <div class="checkbox-container">
-			<input type="checkbox" id="cb4" onChange={handleCheck(4)} checked={isChecked}/>
+			<input type="checkbox" id="cb4" onChange={() => handleCheck(4)}/>
 			<label for="cb4">Payment plans</label>
 		</div>
         <div class="checkbox-container">
-			<input type="checkbox" id="cb5" onChange={handleCheck(5)} checked={isChecked}/>
+			<input type="checkbox" id="cb5" onChange={() => handleCheck(5)}/>
 			<label for="cb5">F.A.P discount (financial assistance program)</label>
 		</div>
         <div class="checkbox-container">
-			<input type="checkbox" id="cb6" onChange={handleCheck(6)} checked={isChecked}/>
+			<input type="checkbox" id="cb6" onChange={() => handleCheck(6)}/>
 			<label for="cb6">Catastrophic care discount</label>
 		</div>
         <div class="checkbox-container">
-			<input type="checkbox" id="cb7" onChange={handleCheck(7)} checked={isChecked}/>
+			<input type="checkbox" id="cb7" onChange={() => handleCheck(7)}/>
 			<label for="cb7">Care credit card</label>
 		</div>
         <div class="checkbox-container">
-			<input type="checkbox" id="cb8" onChange={handleCheck(8)} checked={isChecked}/>
+			<input type="checkbox" id="cb8" onChange={() => handleCheck(8)}/>
 			<label for="cb8">Self-pay</label>
 		</div>
     </div>
