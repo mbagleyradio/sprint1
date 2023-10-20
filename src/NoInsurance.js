@@ -56,6 +56,7 @@ function NoInsurance() {
 	// use onChange to change the state of some props (for each checkbox) and that will determine the info sent from the user.
     return (
     <div id="noInsurance">
+		<button>Send</button>
         <div class="checkbox-container">
 			<input type="checkbox" id="cb1" onChange={() => handleCheck(1)}/>
 			<label for="cb1">No cost for eligible uninsured</label>

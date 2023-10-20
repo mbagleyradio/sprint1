@@ -50,9 +50,15 @@ function HasInsurance() {
 			break;
 		}
 	}
+
+	// open pop-up with entry form
+	const handleClick = () => {
+		
+	}
     
     return (
     <div id="hasInsurance">
+		<button onClick={() => handleClick()}>Send</button>
         <div class="checkbox-container">
             <input type="checkbox" id="cb1" onChange={() => handleCheck(1)}/>
             <label for="cb1">Multiplan</label>
