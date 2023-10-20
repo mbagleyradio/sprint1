@@ -1,0 +1,9 @@
+PSEUDOCODE - SPRINT 1
+
+I don't need the checkbox data for the POPUP, I need the data for the email
+The POPUP gathers its own data
+
+What I need is a separate server-side program that is passed the data from the popup AND the data from the checkbox, and THAT program spits out an email, and stores onto database
+-----------------
+
+program receives checkbox data (array of 9 bools - 1 for type of checkbox [ins or no ins] and 8 for checkbox options) and contact form data (a Person struct with string data members)
