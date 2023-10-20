@@ -1,4 +1,4 @@
-function PopupNoI(props) {
+function PopupNoI(/*props*/) {
     return (
         <></>
     );

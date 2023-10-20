@@ -1,5 +1,6 @@
 import './HasInsurance.css';
 import { useState } from 'react';
+import { useNavigate } from 'react';
 
 function HasInsurance() {
 	const [isMultiplan, setIsMultiplan] = useState(false);

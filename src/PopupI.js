@@ -1,4 +1,4 @@
-function PopupI(props) {
+function PopupI(/*props*/) {
     return (
         <></>
     );
