@@ -4,15 +4,15 @@ export default class HandleInfo {
         this.formData = [];
     }
 
-    set checkBoxData(checkBoxData) {
+    static set checkBoxData(checkBoxData) {
         this.checkBoxData = [...checkBoxData];
     }
 
-    set formData(formData) {
+    static set formData(formData) {
         this.formData = [...formData];
     }
 
-    sendEmail() {
+    static sendEmail() {
         console.log("The data is being emailed.");
     }
 }
