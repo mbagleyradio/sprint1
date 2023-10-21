@@ -1,5 +1,7 @@
 import './NoInsurance.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { HandleInfo } from './handleInfo.js';
 
 function NoInsurance() {
 	const [isNoCost, setIsNoCost] = useState(false);
@@ -10,6 +12,7 @@ function NoInsurance() {
 	const [isCatastrophic, setIsCatastrophic] = useState(false);
 	const [isCareCredit, setIsCareCredit] = useState(false);
 	const [isSelfPay, setIsSelfPay] = useState(false);
+	const navigate = useNavigate();
 
 	const handleCheck = (checkboxNum) => {
 
@@ -51,12 +54,16 @@ function NoInsurance() {
 		}
 	} 
 
-	// see the commented part below: "checked" is a property of whether the checkbox is checked or not at start. 
-	// onChange is a property that will handle what the checkbox does when the checkbox is checked. 
-	// use onChange to change the state of some props (for each checkbox) and that will determine the info sent from the user.
+	// send checkbox info to external function for server-request, then route to contact form
+	const handleClick = () => {
+		// Prepare data - an array of booleans
+		HandleInfo.checkBoxData = [false, isSliding, isDiscount, isPayment, isFAP, isCatastrophic, isCareCredit, isSelfPay];
+		navigate("../contact-no-ins");
+	}
+    
     return (
     <div id="noInsurance">
-		<button>Send</button>
+		<button onClick={() => handleClick()}>Send</button>
         <div class="checkbox-container">
 			<input type="checkbox" id="cb1" onChange={() => handleCheck(1)}/>
 			<label for="cb1">No cost for eligible uninsured</label>

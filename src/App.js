@@ -12,9 +12,10 @@ function App() {
       <Route path="/" element={ <HomePage/> }>
       </Route>
       <Route path="get-started" element={ <GetStarted/> }>
-        <Route path="contact-ins" element={ <PopupI/>} ></Route>
-        <Route path="contact-no-ins" element={ <PopupNoI/> }></Route>
       </Route>
+      <Route path="contact-ins" element={ <PopupI/>} ></Route>
+      <Route path="contact-no-ins" element={ <PopupNoI/> }></Route>
+      
     </>
     )
   );
