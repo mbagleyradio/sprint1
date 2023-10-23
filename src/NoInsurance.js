@@ -1,7 +1,7 @@
 import './NoInsurance.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { HandleInfo } from './handleInfo.js';
+import HandleInfo from './handleInfo.js';
 
 function NoInsurance() {
 	const [isNoCost, setIsNoCost] = useState(false);
@@ -57,7 +57,7 @@ function NoInsurance() {
 	// send checkbox info to external function for server-request, then route to contact form
 	const handleClick = () => {
 		// Prepare data - an array of booleans
-		HandleInfo.checkBoxData = [false, isSliding, isDiscount, isPayment, isFAP, isCatastrophic, isCareCredit, isSelfPay];
+		HandleInfo.storeCB = [false, isSliding, isDiscount, isPayment, isFAP, isCatastrophic, isCareCredit, isSelfPay];
 		navigate("../contact-no-ins");
 	}
     

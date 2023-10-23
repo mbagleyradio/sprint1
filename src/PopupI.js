@@ -1,4 +1,4 @@
-import { HandleInfo } from './handleInfo.js';
+import HandleInfo from './handleInfo.js';
 import { useState } from 'react';
 function PopupI(/*props*/) {
     const [ insurance, setInsurance ] = useState("");

@@ -1,18 +1,20 @@
-export default class HandleInfo {
+class HandleInfo {
     constructor() {
         this.checkBoxData = [];
         this.formData = [];
     }
 
-    static set checkBoxData(checkBoxData) {
-        this.checkBoxData = [...checkBoxData];
+    static set storeCB(cbParam) {
+        this.checkBoxData = [...cbParam];
     }
 
-    static set formData(formData) {
-        this.formData = [...formData];
+    static set storeForm(formParam) {
+        this.formData = [...formParam];
     }
 
     static sendEmail() {
         console.log("The data is being emailed.");
     }
 }
+
+export default HandleInfo;

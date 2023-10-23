@@ -1,4 +1,4 @@
-import { HandleInfo } from './handleInfo.js';
+import HandleInfo from './handleInfo.js';
 import { useState } from 'react';
 
 function PopupNoI(/*props*/) {
@@ -8,10 +8,10 @@ function PopupNoI(/*props*/) {
 
     const handleSubmit = () => {
         
-        HandleInfo.formData([name, phoneNumber, email]);
+        HandleInfo.storeForm([name, phoneNumber, email]);
     }
     return (
-        <form onSubmit={() => handleSubmit()}>
+        <form /*onSubmit={() => handleSubmit()}*/>
             <label>
                 Your Name: 
                 <input type="text" name="name" onChange={(e) => setName(e.target.value)}/>
@@ -25,7 +25,7 @@ function PopupNoI(/*props*/) {
                 <input type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
             </label>
             <p>As soon as we can, someone will get back to you and see if we can't sort this all out. Your health and providing access to care is important to us.</p>
-            <input type="submit" value="Submit"/>
+            <input type="button" value="Submit" onClick={()=> HandleInfo.storeForm([name, phoneNumber, email])}/>
         </form>
     );
 }

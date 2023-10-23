@@ -1,7 +1,7 @@
 import './HasInsurance.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { HandleInfo } from './handleInfo.js';
+import HandleInfo from './handleInfo.js';
 
 function HasInsurance() {
 	const [isMultiplan, setIsMultiplan] = useState(false);
@@ -56,7 +56,7 @@ function HasInsurance() {
 
 	// prepare data for processing, and route to entry form for contact info
 	const handleClick = () => {
-		HandleInfo.checkBoxData = [true, isMultiplan, isOptum, isNeighborhood, isPreferred, isPHS, isUnited, isWellcare, isNotListed];
+		HandleInfo.storeCB = [true, isMultiplan, isOptum, isNeighborhood, isPreferred, isPHS, isUnited, isWellcare, isNotListed];
 		navigate("../contact-ins");
 	}
     
