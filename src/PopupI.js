@@ -7,7 +7,7 @@ function PopupI(/*props*/) {
     const [ email, setEmail ] = useState("");
 
     const handleSubmit = () => {
-        HandleInfo.formData([insurance, name, phoneNumber, email]);
+        //HandleInfo.formData([insurance, name, phoneNumber, email]);
     }
     
     return (
