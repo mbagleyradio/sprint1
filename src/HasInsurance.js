@@ -56,7 +56,7 @@ function HasInsurance() {
 
 	// prepare data for processing, and route to entry form for contact info
 	const handleClick = () => {
-		HandleInfo.storeCB = [true, isMultiplan, isOptum, isNeighborhood, isPreferred, isPHS, isUnited, isWellcare, isNotListed];
+		/* const storeCB = [true, isMultiplan, isOptum, isNeighborhood, isPreferred, isPHS, isUnited, isWellcare, isNotListed];*/
 		navigate("../contact-ins");
 	}
     

@@ -57,7 +57,7 @@ function NoInsurance() {
 	// send checkbox info to external function for server-request, then route to contact form
 	const handleClick = () => {
 		// Prepare data - an array of booleans
-		HandleInfo.storeCB = [false, isSliding, isDiscount, isPayment, isFAP, isCatastrophic, isCareCredit, isSelfPay];
+		/*const storeCB = [false, isSliding, isDiscount, isPayment, isFAP, isCatastrophic, isCareCredit, isSelfPay];*/
 		navigate("../contact-no-ins");
 	}
     

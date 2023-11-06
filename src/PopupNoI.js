@@ -8,7 +8,10 @@ function PopupNoI(/*props*/) {
 
     const handleSubmit = () => {
         
-        //HandleInfo.storeForm([name, phoneNumber, email]);
+        /*
+        const insurance = "NONE";
+        const userData = [insurance, name, phoneNumber, email];
+        */
     }
     return (
         <form /*onSubmit={() => handleSubmit()}*/>
