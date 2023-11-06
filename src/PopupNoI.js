@@ -11,6 +11,12 @@ function PopupNoI(/*props*/) {
         /*
         const insurance = "NONE";
         const userData = [insurance, name, phoneNumber, email];
+        const response = await fetch("http://http://localhost:3000/storeContact", {
+            method: "PUT",
+            body: userData
+        });
+        const result = await response.json();
+        
         */
     }
     return (

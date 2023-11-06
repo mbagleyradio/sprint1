@@ -9,7 +9,12 @@ function PopupI(/*props*/) {
     const handleSubmit = () => {
         /*
         const userData = [insurance, name, phoneNumber, email];
-        
+        const response = await fetch("http://localhost:3000/storeContact", {
+            method: "PUT",
+            body: userData
+        });
+        const result = await response.json();
+
         */
     }
     

@@ -56,7 +56,14 @@ function HasInsurance() {
 
 	// prepare data for processing, and route to entry form for contact info
 	const handleClick = () => {
-		/* const storeCB = [true, isMultiplan, isOptum, isNeighborhood, isPreferred, isPHS, isUnited, isWellcare, isNotListed];*/
+		/* const cbData = [true, isMultiplan, isOptum, isNeighborhood, isPreferred, isPHS, isUnited, isWellcare, isNotListed];*/
+		/*const response = await fetch("http://localhost:3000/storeCheckbox", {
+            method: "PUT",
+            body: cbData
+        });
+        const result = await response.json();
+        
+        */
 		navigate("../contact-ins");
 	}
     

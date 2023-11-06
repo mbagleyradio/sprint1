@@ -57,7 +57,14 @@ function NoInsurance() {
 	// send checkbox info to external function for server-request, then route to contact form
 	const handleClick = () => {
 		// Prepare data - an array of booleans
-		/*const storeCB = [false, isSliding, isDiscount, isPayment, isFAP, isCatastrophic, isCareCredit, isSelfPay];*/
+		/*const cbData = [false, isSliding, isDiscount, isPayment, isFAP, isCatastrophic, isCareCredit, isSelfPay];*/
+		/*const response = await fetch("http://localhost:3000/storeCheckbox", {
+            method: "PUT",
+            body: cbData
+        });
+        const result = await response.json();
+        
+        */
 		navigate("../contact-no-ins");
 	}
     
