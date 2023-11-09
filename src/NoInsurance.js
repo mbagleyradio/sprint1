@@ -1,7 +1,6 @@
 import './NoInsurance.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import HandleInfo from './handleInfo.js';
 
 function NoInsurance() {
 	const [isNoCost, setIsNoCost] = useState(false);

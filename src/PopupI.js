@@ -1,4 +1,3 @@
-import HandleInfo from './handleInfo.js';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 function PopupI(/*props*/) {

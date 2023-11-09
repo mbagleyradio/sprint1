@@ -1,7 +1,6 @@
 import './HasInsurance.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import HandleInfo from './handleInfo.js';
 
 function HasInsurance() {
 	const [isMultiplan, setIsMultiplan] = useState(false);
