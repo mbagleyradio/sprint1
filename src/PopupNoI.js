@@ -5,8 +5,8 @@ function PopupNoI(/*props*/) {
     const [ name, setName ] = useState("");
     const [ phoneNumber, setPhoneNumber ] = useState("");
     const [ email, setEmail ] = useState("");
-    const { state } = useLocation();
-    const cbData = state && state.cbData;
+    const location = useLocation();
+    const cbData = location.state;
 
     const user = {
         insurance: {
@@ -38,7 +38,9 @@ function PopupNoI(/*props*/) {
     }
 
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        console.log("Submission begun");
+        e.preventDefault();
         if (cbData[0] === false) {
             const arrayLength = cbData.length;
             let count = 1;
@@ -46,28 +48,28 @@ function PopupNoI(/*props*/) {
                 if (cbData[count] === true) {
                     switch(count) {
                         case 1: // NoCost
-                            user.insurance.isNoCost = true;
+                            user.noInsurance.isNoCost = true;
                         break;
                         case 2: // Sliding
-                            user.insurance.isSliding = true;
+                            user.noInsurancensurance.isSliding = true;
                         break;
                         case 3: // Discount
-                            user.insurance.isDiscount = true;
+                            user.noInsurance.isDiscount = true;
                         break;
                         case 4: // Payment
-                            user.insurance.isPayment = true;
+                            user.noInsurance.isPayment = true;
                         break;
                         case 5: // FAP
-                            user.insurance.isFAP = true;
+                            user.noInsurance.isFAP = true;
                         break;
                         case 6: // Catastrophic
-                            user.insurance.isCatastrophic = true;
+                            user.noInsurance.isCatastrophic = true;
                         break;
                         case 7: // Care Credit
-                            user.insurance.isCareCredit = true;
+                            user.noInsurance.isCareCredit = true;
                         break;
                         case 8: // Self Pay
-                            user.insurance.isSelfPay = true;
+                            user.noInsurance.isSelfPay = true;
                         break;
                         default:
                         break;
@@ -78,24 +80,26 @@ function PopupNoI(/*props*/) {
             user.contactInfo.name = name;
             user.contactInfo.phoneNumber = phoneNumber;
             user.contactInfo.email = email;
+
+            console.log(user);
         }
     }
     return (
-        <form onSubmit={() => handleSubmit()}>
+        <form onSubmit={handleSubmit}>
             <label>
                 Your Name: 
                 <input type="text" name="name" onChange={(e) => setName(e.target.value)}/>
             </label>
             <label>
                 Your Phone Number: 
-                <input type="text" name="phoneNumber" onChange={(e) => setPhoneNumber(e.target.value)}/>
+                <input type="text" name="phoneNumber" onChange={(e) => setPhoneNumber(e.target.value)} />
             </label>
             <label>
                 Your Email: 
                 <input type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
             </label>
             <p>As soon as we can, someone will get back to you and see if we can't sort this all out. Your health and providing access to care is important to us.</p>
-            <input type="button" value="Submit"/>
+            <input type="submit" value="Submit"/>
         </form>
     );
 }
