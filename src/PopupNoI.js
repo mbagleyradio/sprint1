@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 
 function PopupNoI(/*props*/) {
     const [ name, setName ] = useState("");
@@ -44,32 +45,41 @@ function PopupNoI(/*props*/) {
         if (cbData[0] === false) {
             const arrayLength = cbData.length;
             let count = 1;
+            let insuranceContext = "This user has: ";
             for (count = 1; count < arrayLength; count++) {
                 if (cbData[count] === true) {
                     switch(count) {
                         case 1: // NoCost
                             user.noInsurance.isNoCost = true;
+                            insuranceContext += "No cost for eligible uninsured, ";
                         break;
                         case 2: // Sliding
                             user.noInsurancensurance.isSliding = true;
+                            insuranceContext += "Uninsured sliding fee, ";
                         break;
                         case 3: // Discount
                             user.noInsurance.isDiscount = true;
+                            insuranceContext += "Uninsured discount, ";
                         break;
                         case 4: // Payment
                             user.noInsurance.isPayment = true;
+                            insuranceContext += "Payment plans, ";
                         break;
                         case 5: // FAP
                             user.noInsurance.isFAP = true;
+                            insuranceContext += "F.A.P. discount (financial assistance program), ";
                         break;
                         case 6: // Catastrophic
                             user.noInsurance.isCatastrophic = true;
+                            insuranceContext += "Catastrophic care discount, ";
                         break;
                         case 7: // Care Credit
                             user.noInsurance.isCareCredit = true;
+                            insuranceContext += "Care credit card, ";
                         break;
                         case 8: // Self Pay
                             user.noInsurance.isSelfPay = true;
+                            insuranceContext += "Self-pay, ";
                         break;
                         default:
                         break;
@@ -81,7 +91,14 @@ function PopupNoI(/*props*/) {
             user.contactInfo.phoneNumber = phoneNumber;
             user.contactInfo.email = email;
 
-            console.log(user);
+            // need to pull from the inner objects (contact info and insurance)
+            emailjs.send("service_m1jpu3c","template_frqcrni",{
+                userName: user.contactInfo.name,
+                userInsuranceContext: insuranceContext,
+                userInsurance: user.contactInfo.insurance,
+                userEmail: user.contactInfo.email,
+                userPhone: user.contactInfo.phoneNumber
+                },  'En_CwK8mACVmRtAka');
         }
     }
     return (
