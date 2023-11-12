@@ -35,7 +35,6 @@
 }
 
 button {
-    border: 1px solid #000;
     padding: 20px;
     text-align: center;
     text-wrap: balance;
@@ -52,115 +51,128 @@ button {
     border-radius: 50%;
 }
 
-
-
 #comInsuranceBtn {
-    background-color: #a9d18e;
+    background-color: #ABD037;
     color: #000;
+    border: 1px solid #475715;
 }
 
 #comInsuranceBtn:hover {
-    color: #a9d18e;
+    color: #ABD037;
     background-color: #000;
+    border: 1px solid #475715;
 }
 
 #noInsuranceBtn {
     color: #000;
-    background-color: #ffffe5;
+    background-color: #EAEAEA;
+    border: 1px solid #000;
 }
 
 #noInsuranceBtn:hover {
     background-color: #000;
-    color: #ffffe5;
+    color: #EAEAEA;
+    border: 1px solid #000;
 }
 
 #medicareBtn {
-    background-color: #ffb69f;
+    background-color: #F36D21;
     color: #000;
+    border: 1px solid #6E2B06;
 }
 
 #medicareBtn:hover {
-    color: #ffb69f;
+    color: #F36D21;
     background-color: #000;
+    border: 1px solid #6E2B06;
 }
 
 #medAdvantageBtn {
-    background-color: #ff9c7d;
+    background-color: #FBC8AB;
     color: #000;
+    border: 1px solid #6E2B06;
 }
 
 #medAdvantageBtn:hover {
-    color: #ff9c7d;
+    color: #FBC8AB;
     background-color: #000;
+    border: 1px solid #6E2B06;
 }
 
 #medicaidBtn {
     color: #000;
-    background-color: #abffff;
+    background-color: #00AEEF;
+    border: 1px solid #004D68;
 }
 
 #medicaidBtn:hover {
-    color: #abffff;
+    color: #00AEEF;
     background-color: #000;
+    border: 1px solid #004D68;
 }
 
 #milInsuranceBtn {
     color: #000;
-    background-color: #ffd28f;
+    background-color: #D4E79D;
+    border: 1px solid #475715;
 }
 
 #milInsuranceBtn:hover {
-    color: #ffd28f;
+    color: #D4E79D;
     background-color: #000;
+    border: 1px solid #475715;
 }
 
 #medManagedBtn {
     color: #000;
-    background-color: #00ffff;
+    background-color: #85DFFF;
+    border: 1px solid #004D68;
 }
 
 #medManagedBtn:hover {
-    color: #00ffff;
+    color: #85DFFF;
     background-color: #000;
+    border: 1px solid #004D68;
 }
 
 #intInsuranceBtn {
     color: #000;
-    background-color: #ffb7ff;
+    background-color: #D2A2D2;
+    border: 1px solid #562C56;
 }
 
 #intInsuranceBtn:hover {
-    color: #ffb7ff;
+    color: #D2A2D2;
     background-color: #000;
+    border: 1px solid #562C56;
 }
 
 #workCompBtn {
     color: #000;
-    background-color: #ffd966;
+    background-color: #E8F2CA;
+    border: 1px solid #475715;
 }
 
 #workCompBtn:hover {
-    color: #ffd966;
+    color: #E8F2CA;
     background-color: #000;
+    border: 1px solid #475715;
 }
 
 #behavioralBtn {
     color: #000;
-    background-color: #d9d9d9;
+    background-color: #F0E0F0;
+    border: 1px solid #562C56;
 }
 
 #behavioralBtn:hover {
-    color: #d9d9d9;
+    color: #F0E0F0;
     background-color: #000;
+    border: 1px solid #562C56;
 }
 
 #gs-line-break hr {
     border: 2px solid #000;
-}
-
-#yourBtn {
-    /*float: left;*/
-    border: 1px solid #000;
 }
 
 #gs-options-box {

@@ -35,20 +35,20 @@
 
 .learnMore {
     color: #000;
-    background-color: #FFDAB9;
+    background-color: #FFE699;
 }
 
 .getStarted {
     color: #FFF;
-    background-color: #556B2F;
+    background-color: #336600;
 }
 
 .learnMore:hover {
-    color: #FFDAB9;
+    color: #FFE699;
     background-color: #000;
 }
 
 .getStarted:hover {
-    color: #556B2F;
+    color: #336600;
     background-color: #FFF;
 }
