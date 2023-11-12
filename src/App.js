@@ -15,7 +15,6 @@ function App() {
       </Route>
       <Route path="contact-ins" element={ <PopupI/>} ></Route>
       <Route path="contact-no-ins" element={ <PopupNoI/> }></Route>
-      
     </>
     )
   );
