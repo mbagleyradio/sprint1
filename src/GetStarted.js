@@ -97,17 +97,17 @@ function GetStarted() {
                 <h1 id="welcomeText">What type of primary insurance do you have? (pick one)</h1>
             </div>
             <div id="gs-buttons">
-                <button id="comInsuranceBtn" onClick={() => handleClick(1)}>Commercial Insurance</button>
                 <button id="noInsuranceBtn" onClick={() => handleClick(2)}>NO Insurance</button>
+                <button id="comInsuranceBtn" onClick={() => handleClick(1)}>Commercial Insurance</button>
                 <button id="medicareBtn" onClick={() => handleClick(3)}>Medicare</button>
                 <br/>
                 <button id="medAdvantageBtn" onClick={() => handleClick(4)}>Medicare Advantage, HMO, PPO</button>
                 <button id="medicaidBtn" onClick={() => handleClick(5)}>Medicaid</button>
-                <button id="milInsuranceBtn" onClick={() => handleClick(6)}>Military Insurance</button>
                 <button id="medManagedBtn" onClick={() => handleClick(7)}>Medicaid Managed Care (MCO)</button>
-                <br/>
-                <button id="intInsuranceBtn" onClick={() => handleClick(8)}>International Insurance</button>
                 <button id="workCompBtn" onClick={() => handleClick(9)}>Workers Comp</button>
+                <br/>
+                <button id="milInsuranceBtn" onClick={() => handleClick(6)}>Military Insurance</button>
+                <button id="intInsuranceBtn" onClick={() => handleClick(8)}>International Insurance</button>
                 <button id="behavioralBtn" onClick={() => handleClick(10)}>Behavioral Health Ins.</button>
             </div>
             <div id="gs-line-break">

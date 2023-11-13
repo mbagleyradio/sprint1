@@ -68,7 +68,7 @@ function HasInsurance() {
     
     return (
     <div id="hasInsurance">
-		<button onClick={() => handleClick()}>Send</button>
+		<button onClick={() => handleClick()}>Select</button>
         <div class="checkbox-container">
             <input type="checkbox" id="cb1" onChange={() => handleCheck(1)}/>
             <label for="cb1">Multiplan</label>

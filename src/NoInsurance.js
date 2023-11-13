@@ -69,7 +69,7 @@ function NoInsurance() {
     
     return (
     <div id="noInsurance">
-		<button onClick={() => handleClick()}>Send</button>
+		<button onClick={() => handleClick()}>Select</button>
         <div class="checkbox-container">
 			<input type="checkbox" id="cb1" onChange={() => handleCheck(1)}/>
 			<label for="cb1">No cost for eligible uninsured</label>
