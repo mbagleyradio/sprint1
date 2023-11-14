@@ -11,7 +11,7 @@ function ComInsurance() {
             default:
             break;
         }
-        navigate("../contact-ins", {state: cbData});
+        //navigate("../contact-ins", {state: cbData});
 	}
 
     return (
