@@ -27,35 +27,36 @@ function ComInsurance() {
 
     return (
         <div id="hasInsurance">
-            <form id="scrollBarForm">
-                <input type="radio" id="aarp" name="aarp" value="aarp"/>
-                <label for="aarp">AARP</label><br/>
-                <input type="radio" id="aetna" name="aetna" value="aetna"/>
-                <label for="aetna">Aetna</label><br/>
-                <input type="radio" id="ambetter" name="ambetter" value="ambetter"/>
-                <label for="ambetter">Ambetter</label><br/>
-                <input type="radio" id="assurant" name="assurant" value="assurant"/>
-                <label for="assurant">Assurant</label><br/>
-                <input type="radio" id="avmedhealth" name="avmedhealth" value="avmedhealth"/>
-                <label for="avmedhealth">AvMed Health Plans</label><br/>
-                <input type="radio" id="beech" name="beech" value="beech"/>
-                <label for="aarp">Beech Street</label><br/>
-                <input type="radio" id="bluecross" name="bluecross" value="bluecross"/>
-                <label for="aarp">AARP</label><br/>
-                <input type="radio" id="aarp" name="aarp" value="aarp"/>
-                <label for="aarp">AARP</label><br/>
-                <input type="radio" id="aarp" name="aarp" value="aarp"/>
-                <label for="aarp">AARP</label><br/>
-                <input type="radio" id="aarp" name="aarp" value="aarp"/>
-                <label for="aarp">AARP</label><br/>
-                <input type="radio" id="aarp" name="aarp" value="aarp"/>
-                <label for="aarp">AARP</label><br/>
-                <input type="radio" id="aarp" name="aarp" value="aarp"/>
-                <label for="aarp">AARP</label><br/>
-                <input type="radio" id="aarp" name="aarp" value="aarp"/>
-                <label for="aarp">AARP</label><br/>
-
-            </form>
+            <select name="comInsuranceSelections" id="comInsuranceSelections" size="8">
+                <option>AARP</option>
+                <option>Aetna</option>
+                <option>AmBetter</option>
+                <option>Assurant</option>
+                <option>AvMed Health Plans</option>
+                <option>Beech Street</option>
+                <option>Blue Cross Blue Shield Federal Employee Program</option>
+                <option>Cigna HealthCare</option>
+                <option>Community Care Network</option>
+                <option>Corvel Group Health</option>
+                <option>Dimension Health</option>
+                <option>Evolutions Healthcare</option>
+                <option>First Health Coventry Healthcare</option>
+                <option>Florida Blue</option>
+                <option>GEHA Health Plans</option>
+                <option>Great West (a Cigna HealthCare Company)</option>
+                <option>Health First Health Plans</option>
+                <option>Humana</option>
+                <option>Mail Handlers Benefit Plan (MBHP)</option>
+                <option>Mega Life and Health Insurance</option>
+                <option>MetLife</option>
+                <option>Multiplan</option>
+                <option>Neighborhood Health Plan</option>
+                <option>Optum Healthcare</option>
+                <option>Preferred Medical Plan (PMP)</option>
+                <option>Private Healthcare Systems (PHS)</option>
+                <option>UnitedHealthCare</option>
+                <option>Wellcare</option>
+            </select>
         </div>
     );
 }
