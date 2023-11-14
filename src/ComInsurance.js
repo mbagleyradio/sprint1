@@ -1,62 +1,54 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import './ComInsurance.css';
 function ComInsurance() {
-    
+    const [selection, setSelection] = useState(0);
     const navigate = useNavigate();
 
-	const handleCheck = (checkboxNum) => {
-
-		switch (checkboxNum) {
-			
-		}
-	}
-
-    // prepare data for processing, and route to entry form for contact info
-	const handleClick = () => {
-		const cbData = [true, true, true, true, true];
-		/*const response = await fetch("http://localhost:3000/storeCheckbox", {
-            method: "PUT",
-            body: JSON.stringify(cbData);
-        });
-        
-        
-        */
-		navigate("../contact-ins", {state: cbData});
+	const handleSubmit = () => {
+        const cbData = [];
+        switch(selection) {
+            default:
+            break;
+        }
+        navigate("../contact-ins", {state: cbData});
 	}
 
     return (
         <div id="hasInsurance">
-            <select name="comInsuranceSelections" id="comInsuranceSelections" size="8">
-                <option>AARP</option>
-                <option>Aetna</option>
-                <option>AmBetter</option>
-                <option>Assurant</option>
-                <option>AvMed Health Plans</option>
-                <option>Beech Street</option>
-                <option>Blue Cross Blue Shield Federal Employee Program</option>
-                <option>Cigna HealthCare</option>
-                <option>Community Care Network</option>
-                <option>Corvel Group Health</option>
-                <option>Dimension Health</option>
-                <option>Evolutions Healthcare</option>
-                <option>First Health Coventry Healthcare</option>
-                <option>Florida Blue</option>
-                <option>GEHA Health Plans</option>
-                <option>Great West (a Cigna HealthCare Company)</option>
-                <option>Health First Health Plans</option>
-                <option>Humana</option>
-                <option>Mail Handlers Benefit Plan (MBHP)</option>
-                <option>Mega Life and Health Insurance</option>
-                <option>MetLife</option>
-                <option>Multiplan</option>
-                <option>Neighborhood Health Plan</option>
-                <option>Optum Healthcare</option>
-                <option>Preferred Medical Plan (PMP)</option>
-                <option>Private Healthcare Systems (PHS)</option>
-                <option>UnitedHealthCare</option>
-                <option>Wellcare</option>
-            </select>
+            <form onSubmit={handleSubmit}>
+            <button type="submit">Submit</button>
+                <select value={selection} name="comInsuranceSelections" id="comInsuranceSelections" size="8" onChange={e => {setSelection(Number(e.target.value))}}>
+                    <option value="1">AARP</option>
+                    <option value="2">Aetna</option>
+                    <option value="3">AmBetter</option>
+                    <option value="4">Assurant</option>
+                    <option value="5">AvMed Health Plans</option>
+                    <option value="6">Beech Street</option>
+                    <option value="7">Blue Cross Blue Shield Federal Employee Program</option>
+                    <option value="8">Cigna HealthCare</option>
+                    <option value="9">Community Care Network</option>
+                    <option value="10">Corvel Group Health</option>
+                    <option value="11">Dimension Health</option>
+                    <option value="12">Evolutions Healthcare</option>
+                    <option value="13">First Health Coventry Healthcare</option>
+                    <option value="14">Florida Blue</option>
+                    <option value="15">GEHA Health Plans</option>
+                    <option value="16">Great West (a Cigna HealthCare Company)</option>
+                    <option value="17">Health First Health Plans</option>
+                    <option value="18">Humana</option>
+                    <option value="19">Mail Handlers Benefit Plan (MBHP)</option>
+                    <option value="20">Mega Life and Health Insurance</option>
+                    <option value="21">MetLife</option>
+                    <option value="22">Multiplan</option>
+                    <option value="23">Neighborhood Health Plan</option>
+                    <option value="24">Optum Healthcare</option>
+                    <option value="25">Preferred Medical Plan (PMP)</option>
+                    <option value="26">Private Healthcare Systems (PHS)</option>
+                    <option value="27">UnitedHealthCare</option>
+                    <option value="28">Wellcare</option>
+                </select>
+            </form>
         </div>
     );
 }
