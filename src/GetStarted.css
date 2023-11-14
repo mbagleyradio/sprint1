@@ -173,6 +173,18 @@ button {
     border: 1px solid #562C56;
 }
 
+#healthcareBtn {
+    color: #000;
+    background-color: #FFF;
+    border: 1px solid #000;
+}
+
+#healthcareBtn:hover {
+    color: #FFF;
+    background-color: #000;
+    border: 1px solid #FFF;
+}
+
 #gs-line-break hr {
     border: 2px solid #000;
 }

@@ -87,7 +87,14 @@ function GetStarted() {
                 setButtonBorderColor("#562C56");
             break;
 
+            case 11: // Healthcare Exchange Plans - B/W
+                setInsurance(true);
+                setButtonName("Healthcare Exchange Plans");
+                setButtonColor("#FFFFFF");
+                setButtonBorderColor("#000000");
+            break;
             default:
+            break;
         }
     }
     return(
@@ -109,6 +116,7 @@ function GetStarted() {
                 <button id="milInsuranceBtn" onClick={() => handleClick(6)}>Military Insurance</button>
                 <button id="intInsuranceBtn" onClick={() => handleClick(8)}>International Insurance</button>
                 <button id="behavioralBtn" onClick={() => handleClick(10)}>Behavioral Health Ins.</button>
+                <button id="healthcareBtn" onClick={() => handleClick(11)}>Healthcare Exchange Plans</button>
             </div>
             <div id="gs-line-break">
                 <hr></hr>
