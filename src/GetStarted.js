@@ -8,6 +8,7 @@ function GetStarted() {
     const [buttonName, setButtonName] = useState("Your Selection");
     const [buttonColor, setButtonColor] = useState("#B0E0E6");
     const [buttonBorderColor, setButtonBorderColor] = useState("#000");
+    const [userSelection, setUserSelection] = useState(0);
     
     const style = {
         backgroundColor: buttonColor,
@@ -21,6 +22,7 @@ function GetStarted() {
                 setButtonName("Commercial Insurance");
                 setButtonColor("#ABD037");
                 setButtonBorderColor("#475715");
+                setUserSelection(2);
             break;
 
             case 2: // No Insurance - Slate Lite
@@ -28,6 +30,7 @@ function GetStarted() {
                 setButtonName("No Insurance");
                 setButtonColor("#EAEAEA");
                 setButtonBorderColor("#000000");
+                setUserSelection(1);
                 
             break;
 
@@ -36,6 +39,7 @@ function GetStarted() {
                 setButtonName("Medicare");
                 setButtonColor("#F36D21");
                 setButtonBorderColor("#6E2B06");
+                setUserSelection(3);
             break;
 
             case 4: // Medicare Advantage - Orange Mid
@@ -43,6 +47,7 @@ function GetStarted() {
                 setButtonName("Medicare Advantage, HMO, PPO");
                 setButtonColor("#FBC8AB");
                 setButtonBorderColor("#6E2B06");
+                setUserSelection(4);
             break;
 
             case 5: // Medicaid - Teal Standard
@@ -50,6 +55,7 @@ function GetStarted() {
                 setButtonName("Medicaid");
                 setButtonColor("#00AEEF");
                 setButtonBorderColor("#004D68");
+                setUserSelection(5);
             break;
 
             case 6: // Military Insurance - Lime Mid
@@ -57,6 +63,7 @@ function GetStarted() {
                 setButtonName("Military Insurance");
                 setButtonColor("#D4E79D");
                 setButtonBorderColor("#475715");
+                setUserSelection(7);
             break;
 
             case 7: // Medicaid Managed Care - Teal Mid
@@ -64,6 +71,7 @@ function GetStarted() {
                 setButtonName("Medicaid Managed Care (MCO)");
                 setButtonColor("#85DFFF");
                 setButtonBorderColor("#004D68");
+                setUserSelection(6);
             break;
 
             case 8: // International Insurance - Plum Mid
@@ -71,6 +79,7 @@ function GetStarted() {
                 setButtonName("International Insurance");
                 setButtonColor("#D2A2D2");
                 setButtonBorderColor("#562C56");
+                setUserSelection(9);
             break;
 
             case 9: // Workers Comp - Lime Lite
@@ -78,6 +87,7 @@ function GetStarted() {
                 setButtonName("Workers Comp");
                 setButtonColor("#E8F2CA");
                 setButtonBorderColor("#475715");
+                setUserSelection(10);
             break;
 
             case 10: // Behavioral Health Ins. - Plum Lite
@@ -85,6 +95,7 @@ function GetStarted() {
                 setButtonName("Behavioral Health Ins.");
                 setButtonColor("#F0E0F0");
                 setButtonBorderColor("#562C56");
+                setUserSelection(11);
             break;
 
             case 11: // Healthcare Exchange Plans - B/W
@@ -92,6 +103,7 @@ function GetStarted() {
                 setButtonName("Healthcare Exchange Plans");
                 setButtonColor("#FFFFFF");
                 setButtonBorderColor("#000000");
+                setUserSelection(8);
             break;
             default:
             break;
@@ -123,7 +135,7 @@ function GetStarted() {
                 <button id="yourBtn" style={style}>{buttonName}</button>
             </div>
             <div id="gs-options-box">
-                <Options isInsured={insurance}/>
+                <Options isInsured={insurance} insuranceType={userSelection}/>
             </div>
         </div>
     );
