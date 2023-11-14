@@ -1,5 +1,14 @@
 import './HasInsurance.css';
 import ComInsurance from './ComInsurance.js';
+import Medicare from './Medicare.js';
+import MedicareManaged from './MedicareManaged.js';
+import Medicaid from './Medicaid.js';
+import MedicaidManaged from './MedicaidManaged.js';
+import Military from './Military.js';
+import HealthcareExchange from './HealthcareExchange.js';
+import International from './International.js';
+import WorkersComp from './WorkersComp.js';
+import Behavioral from './Behavioral.js';
 
 function HasInsurance(props) {
 	const insuranceEnums = {
@@ -23,30 +32,39 @@ function HasInsurance(props) {
 		break;
 
 		case insuranceEnums.MEDICARE:
+			return(<Medicare/>);
 		break;
 
 		case insuranceEnums.MEDICARE_MANAGED:
+			return(<MedicareManaged/>);
 		break;
 
 		case insuranceEnums.MEDICAID:
+			return(<Medicaid/>);
 		break;
 
 		case insuranceEnums.MEDICAID_MANAGED:
+			return(<MedicaidManaged/>);
 		break;
 
 		case insuranceEnums.MILITARY:
+			return(<Military/>);
 		break;
 	
 		case insuranceEnums.HEALTHCARE_EXCHANGE:
+			return(<HealthcareExchange/>);
 		break;
 
 		case insuranceEnums.INTERNATIONAL:
+			return(<International/>);
 		break;
 
 		case insuranceEnums.WORKERS_COMP:
+			return(<WorkersComp/>);
 		break;
 
 		case insuranceEnums.BEHAVIORAL_HEALTH:
+			return(<Behavioral/>);
 		break;
 
 		default:

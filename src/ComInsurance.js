@@ -65,7 +65,6 @@ function ComInsurance() {
 	}
 
     return (
-        
         <div id="hasInsurance">
             <button onClick={() => handleClick()}>Select</button>
             <div class="checkbox-container">
