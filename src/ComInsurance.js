@@ -4,10 +4,44 @@ import './ComInsurance.css';
 function ComInsurance() {
     const [selection, setSelection] = useState(0);
     const navigate = useNavigate();
-
+    const selectionNames = {
+        AARP: 1,
+		AETNA: 2,
+		AMBETTER: 3,
+        ASSURANT: 4,
+        AVMED_HEALTH_PLANS: 5,
+        BEECH_STREET: 6,
+        BLUE_CROSS_BLUE_SHIELD: 7,
+        CIGNA_HEALTHCARE: 8,
+        COMMUNITY_CARE_NETWORK: 9,
+        CORVEL_GROUP_HEALTH: 10,
+        DIMENSION_HEALTH: 11,
+        EVOLUTIONS_HEALTHCARE: 12,
+        FIRST_HEALTH_COVENTRY_HEALTHCARE: 13,
+        FLORIDA_BLUE: 14,
+        GEHA_HEALTH_PLANS: 15,
+        GREAT_WEST: 16,
+        HEALTH_FIRST_HEALTH_PLANS: 17,
+        HUMANA: 18,
+        MAIL_HANDLERS_BENEFIT_PLAN: 19,
+        MEGA_LIFE: 20,
+        METLIFE: 21,
+        MULTIPLAN: 22,
+        NEIGHBORHOOD_HEALTH_PLAN: 23,
+        OPTUM_HEALTHCARE: 24,
+        PREFERRED_MEDICAL_PLAN: 25,
+        PRIVATE_HEALTHCARE_SYSTEMS: 26,
+        UNITEDHEALTHCARE: 27,
+        WELLCARE: 28
+    }
 	const handleSubmit = () => {
         const cbData = [];
-        switch(selection) {
+        switch(Number(selection)) {
+            case selectionNames.AARP:
+                //.push();
+            break;
+
+
             default:
             break;
         }
