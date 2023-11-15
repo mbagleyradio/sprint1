@@ -54,7 +54,7 @@ export default function WorkersComp() {
         <div id="hasInsurance">
             <form onSubmit={handleSubmit}>
             <button type="submit">Submit</button>
-                <select value={selection} name="internationalInsuranceSelections" id="internationalInsuranceSelections" size="8" onChange={e => {setSelection(Number(e.target.value))}}>
+                <select value={selection} name="workersCompInsuranceSelections" id="workersCompInsuranceSelections" size="8" onChange={e => {setSelection(Number(e.target.value))}}>
                     <option value="1">Advanet Worker's Comp</option>
                     <option value="2">Beech Street</option>
                     <option value="3">Careworks</option>
