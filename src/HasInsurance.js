@@ -9,8 +9,10 @@ import HealthcareExchange from './HealthcareExchange.js';
 import International from './International.js';
 import WorkersComp from './WorkersComp.js';
 import Behavioral from './Behavioral.js';
+import { useNavigate } from 'react-router-dom';
 
 function HasInsurance(props) {
+	const navigate = useNavigate();
 	const insuranceEnums = {
 		NONE: 1,
 		COMMERCIAL: 2,
@@ -32,7 +34,7 @@ function HasInsurance(props) {
 		break;
 
 		case insuranceEnums.MEDICARE:
-			return(<Medicare/>);
+			navigate("../contact-ins", {state: "Medicare"});
 		break;
 
 		case insuranceEnums.MEDICARE_MANAGED:
