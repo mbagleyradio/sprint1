@@ -8,6 +8,7 @@
 }
 
 #gs-centered {
+    /*display: flex;*/
     align-items: center;
     justify-content: center;
 }
@@ -32,8 +33,11 @@
 }
 
 #gs-buttons {
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 10% 1fr;
+    /*flex-direction: column;*/
+    place-items: center;
+    justify-items: center;
 }
 
 button {
@@ -165,24 +169,39 @@ button {
     color: #000;
     background-color: #F0E0F0;
     border: 1px solid #562C56;
+    justify-self: center;
+    align-self: center;
 }
 
 #behavioralBtn:hover {
     color: #F0E0F0;
     background-color: #000;
     border: 1px solid #562C56;
+    justify-self: center;
+    align-self: center;
 }
 
 #healthcareBtn {
     color: #000;
     background-color: #FFF;
     border: 1px solid #000;
+    justify-self: center;
+    align-self: center;
 }
 
 #healthcareBtn:hover {
     color: #FFF;
     background-color: #000;
     border: 1px solid #FFF;
+    justify-self: center;
+    align-self: center;
+}
+
+#lastRow {
+    display: grid;
+    grid-template-columns: 1fr 10% 1fr;
+    place-items: center;
+    justify-items: center;
 }
 
 #gs-line-break hr {
