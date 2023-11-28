@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
+import './Popup.css';
 
 function PopupNoI(/*props*/) {
+    const messageStr = "As soon as we can, someone will get back to you and see if we can't sort this all out. Your health and providing access to care is important to us.";
+    const finishedStr = "Your info has been sent. Someone will get back to you shortly.";
+    const [ message, setMessage ] = useState(messageStr);
     const [ name, setName ] = useState("");
     const [ phoneNumber, setPhoneNumber ] = useState("");
     const [ email, setEmail ] = useState("");
@@ -42,6 +46,13 @@ function PopupNoI(/*props*/) {
     const handleSubmit = (e) => {
         console.log("Submission begun");
         e.preventDefault();
+        
+        if (message === messageStr) {
+            setMessage(finishedStr);
+        } else if (message === finishedStr) {
+            setMessage(messageStr);
+        }
+
         if (cbData[0] === false) {
             const arrayLength = cbData.length;
             let count = 1;
@@ -102,7 +113,7 @@ function PopupNoI(/*props*/) {
         }
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form id="formDisplay" onSubmit={handleSubmit}>
             <label>
                 Your Name: 
                 <input type="text" name="name" onChange={(e) => setName(e.target.value)}/>
@@ -115,7 +126,7 @@ function PopupNoI(/*props*/) {
                 Your Email: 
                 <input type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
             </label>
-            <p>As soon as we can, someone will get back to you and see if we can't sort this all out. Your health and providing access to care is important to us.</p>
+            <p>{message}</p>
             <input type="submit" value="Submit"/>
         </form>
     );

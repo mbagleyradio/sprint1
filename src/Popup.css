@@ -1,0 +1,6 @@
+#formDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+}
