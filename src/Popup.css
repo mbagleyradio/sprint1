@@ -3,4 +3,9 @@
     flex-direction: column;
     align-items: left;
     justify-content: left;
+    width: 50%;
+}
+
+#submitButtonDisplay {
+    width: 25%;
 }
