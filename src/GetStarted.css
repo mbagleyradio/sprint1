@@ -28,6 +28,7 @@
     /*flex-direction: column;*/
     place-items: center;
     justify-items: center;
+    align-items: center;
 }
 
 /*
@@ -118,20 +119,20 @@
 
 @media (max-width: 450px) and (min-width: 200px) {
     button {
-        padding: .6em;
+        padding: .8em;
         text-align: center;
         word-wrap: normal;
         white-space: normal;
         overflow: clip;
         text-decoration: none;
         font-weight: bold;
-        font-size: 1.25em;
+        font-size: .7em;
         margin: .9em;
         /*min-width: 0;*/
-        max-width: 7em;
+        max-width: 8em;
         align-items: center;
         justify-content: center;
-        border-radius: 100%;
+        border-radius: 125%;
         box-sizing: border-box;
     }
 
@@ -143,10 +144,10 @@
         overflow: clip;
         text-decoration: none;
         font-weight: bold;
-        font-size: 1.25em;
-        margin: .8em;
+        font-size: 1.4em;
+        margin: .9em;
         /*min-width: 0;*/
-        max-width: 9em;
+        max-width: 13em;
         align-items: center;
         justify-content: center;
         border-radius: 125%;

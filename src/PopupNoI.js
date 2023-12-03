@@ -62,7 +62,7 @@ function PopupNoI(/*props*/) {
                             insuranceContext += "No cost for eligible uninsured, ";
                         break;
                         case 2: // Sliding
-                            user.noInsurancensurance.isSliding = true;
+                            user.noInsurance.isSliding = true;
                             insuranceContext += "Uninsured sliding fee, ";
                         break;
                         case 3: // Discount
