@@ -100,7 +100,7 @@ function PopupNoI(/*props*/) {
             user.contactInfo.email = email;
 
             // need to pull from the inner objects (contact info and insurance)
-            emailjs.send("service_m1jpu3c","template_frqcrni",{
+            emailjs.send("service_unhpfsm","template_frqcrni",{
                 userName: user.contactInfo.name,
                 userInsuranceContext: insuranceContext,
                 userInsurance: user.contactInfo.insurance,
