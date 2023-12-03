@@ -144,10 +144,10 @@
         overflow: clip;
         text-decoration: none;
         font-weight: bold;
-        font-size: 1.4em;
+        font-size: 1em;
         margin: .9em;
         /*min-width: 0;*/
-        max-width: 13em;
+        max-width: 10em;
         align-items: center;
         justify-content: center;
         border-radius: 125%;
