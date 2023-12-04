@@ -41,7 +41,7 @@
     }
 }*/
 
-@media (min-width: 601px) {
+@media (min-width: 1001px) {
     button {
         padding: 1em;
         text-align: center;
@@ -53,7 +53,7 @@
         font-size: 1.5em;
         margin: 1em;
         /*min-width: 0;*/
-        max-width: 12em;
+        max-width: 8.5em;
         align-items: center;
         justify-content: center;
         border-radius: 100%;
@@ -71,17 +71,18 @@
         font-size: 2.5em;
         margin: 1em;
         /*min-width: 0;*/
-        max-width: 25em;
+        max-width: 8.5em;
         align-items: center;
         justify-content: center;
-        border-radius: 400%;
+        border-radius: 200%;
         box-sizing: border-box;
     }
 }
 
-@media (max-width: 600px) and (min-width: 451px) {
+
+@media (max-width: 1000px) and (min-width: 601px) {
     button {
-        padding: .8em;
+        padding: .75em;
         text-align: center;
         word-wrap: normal;
         white-space: normal;
@@ -89,7 +90,7 @@
         text-decoration: none;
         font-weight: bold;
         font-size: 1em;
-        margin: .8em;
+        margin: .75em;
         /*min-width: 0;*/
         max-width: 10em;
         align-items: center;
@@ -98,8 +99,47 @@
         box-sizing: border-box;
     }
 
-    #noInsurancebutton {
-        padding: .8em;
+    #noInsuranceBtn {
+        padding: .75em;
+        text-align: center;
+        word-wrap: normal;
+        white-space: normal;
+        overflow: clip;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 2em;
+        margin: .75em;
+        /*min-width: 0;*/
+        max-width: 6em;
+        align-items: center;
+        justify-content: center;
+        border-radius: 150%;
+        box-sizing: border-box;
+    }
+}
+
+
+@media (max-width: 600px) and (min-width: 451px) {
+    button {
+        padding: .4em;
+        text-align: center;
+        word-wrap: normal;
+        white-space: normal;
+        overflow: clip;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: .7em;
+        margin: .4em;
+        /*min-width: 0;*/
+        max-width: 8em;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        box-sizing: border-box;
+    }
+
+    #noInsuranceBtn {
+        padding: .4em;
         text-align: center;
         word-wrap: normal;
         white-space: normal;
@@ -107,17 +147,17 @@
         text-decoration: none;
         font-weight: bold;
         font-size: 1.5em;
-        margin: .8em;
+        margin: .4em;
         /*min-width: 0;*/
-        max-width: 20em;
+        max-width: 5.7em;
         align-items: center;
         justify-content: center;
-        border-radius: 200%;
+        border-radius: 150%;
         box-sizing: border-box;
     }
 }
 
-@media (max-width: 450px) and (min-width: 200px) {
+@media (max-width: 450px) and (min-width: 322px) {
     button {
         padding: .6em;
         text-align: center;
@@ -146,6 +186,82 @@
         font-weight: bold;
         font-size: 1.1em;
         margin: .6em;
+        /*min-width: 0;*/
+        max-width: 5.5em;
+        align-items: center;
+        justify-content: center;
+        border-radius: 125%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 321px) and (min-width: 281px) {
+    button {
+        padding: .5em;
+        text-align: center;
+        word-wrap: normal;
+        white-space: normal;
+        overflow: clip;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: .5em;
+        margin: .5em;
+        /*min-width: 0;*/
+        max-width: 7em;
+        align-items: center;
+        justify-content: center;
+        border-radius: 125%;
+        box-sizing: border-box;
+    }
+
+    #noInsuranceBtn {
+        padding: .5em;
+        text-align: center;
+        word-wrap: normal;
+        white-space: normal;
+        overflow: clip;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: .99em;
+        margin: .5em;
+        /*min-width: 0;*/
+        max-width: 5.5em;
+        align-items: center;
+        justify-content: center;
+        border-radius: 125%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 280px) {
+    button {
+        padding: .35em;
+        text-align: center;
+        word-wrap: normal;
+        white-space: normal;
+        overflow: clip;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: .5em;
+        margin: .35em;
+        /*min-width: 0;*/
+        max-width: 9em;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        box-sizing: border-box;
+    }
+
+    #noInsuranceBtn {
+        padding: .35em;
+        text-align: center;
+        word-wrap: normal;
+        white-space: normal;
+        overflow: clip;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1em;
+        margin: .35em;
         /*min-width: 0;*/
         max-width: 5.5em;
         align-items: center;
