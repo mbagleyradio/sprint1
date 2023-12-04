@@ -145,12 +145,12 @@
         text-decoration: none;
         font-weight: bold;
         font-size: 1.3em;
-        margin: .9em;
+        margin: 1em;
         /*min-width: 0;*/
         max-width: 9em;
         align-items: center;
         justify-content: center;
-        border-radius: 125%;
+        border-radius: 100%;
         box-sizing: border-box;
     } 
     
