@@ -137,7 +137,7 @@
     }
 
     #noInsuranceBtn {
-        padding: 1em;
+        padding: .9em;
         text-align: center;
         word-wrap: normal;
         white-space: normal;
@@ -145,7 +145,7 @@
         text-decoration: none;
         font-weight: bold;
         font-size: 1.3em;
-        margin: 1em;
+        margin: .9em;
         /*min-width: 0;*/
         max-width: 9em;
         align-items: center;
