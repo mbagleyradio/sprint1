@@ -13,7 +13,8 @@ export default function WorkersComp() {
         CORVEL_WORKERS_COMP: 5,
         DIMENSION_HEALTH: 6,
         FIRST_HEALTH_NETWORK: 7,
-        HUMANA_WORKERS_COMP: 8
+        HUMANA_WORKERS_COMP: 8,
+        NOT_LISTED: 9
     };
     
     const handleSubmit = (e) => {
@@ -44,6 +45,9 @@ export default function WorkersComp() {
             case selectionNames.HUMANA_WORKERS_COMP:
                 cbData = "Worker's Compensation Plans: Humana Worker's Comp";
             break;
+            case selectionNames.NOT_LISTED:
+                cbData = "Worker's Compensation Plans: My insurance is not listed";
+            break;
             default:
                 cbData = "ERROR: default case triggered in WorkersComp.js";
             break;
@@ -63,6 +67,7 @@ export default function WorkersComp() {
                     <option value="6">Dimension Health</option>
                     <option value="7">First Health Network</option>
                     <option value="8">Humana Worker's Comp</option>
+                    <option value="9">My insurance is not listed</option>
                 </select>
             </form>
         </div>

@@ -32,7 +32,8 @@ function ComInsurance() {
         PREFERRED_MEDICAL_PLAN: 25,
         PRIVATE_HEALTHCARE_SYSTEMS: 26,
         UNITEDHEALTHCARE: 27,
-        WELLCARE: 28
+        WELLCARE: 28,
+        NOT_LISTED: 29
     }
 	const handleSubmit = (e) => {
         e.preventDefault();
@@ -116,6 +117,9 @@ function ComInsurance() {
             case selectionNames.WELLCARE:
                 cbData = "Commercial Insurance: Wellcare";
             break;
+            case selectionNames.NOT_LISTED:
+                cbData = "Commercial Insurance: Not Listed!";
+            break;
             default:
                 cbData = "ERROR: default case triggered in ComInsurance.js";
             break;
@@ -156,6 +160,7 @@ function ComInsurance() {
                     <option value="26">Private Healthcare Systems (PHS)</option>
                     <option value="27">UnitedHealthCare</option>
                     <option value="28">Wellcare</option>
+                    <option value="29">My insurance is not listed</option>
                 </select>
             </form>
         </div>

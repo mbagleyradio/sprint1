@@ -14,7 +14,8 @@ export default function HealthcareExchange() {
         FLORIDA_BLUE_OPTIONS: 6,
         FLORIDA_BLUE_SELECT: 7,
         MOLINA: 8,
-        MY_BLUE: 9
+        MY_BLUE: 9,
+        NOT_LISTED: 10
     }
 
     const handleSubmit = (e) => {
@@ -48,6 +49,9 @@ export default function HealthcareExchange() {
             case selectionNames.MY_BLUE:
                 cbData = "Healthcare Exchange: My Blue";
             break;
+            case selectionNames.NOT_LISTED:
+                cbData = "Healthcare Exchange: My insurance is not listed!";
+            break;
             default:
                 cbData = "ERROR: default case triggered in HealthcareExchange.js";
             break;
@@ -70,6 +74,7 @@ export default function HealthcareExchange() {
                     <option value="7">Florida Blue Select</option>
                     <option value="8">Molina</option>
                     <option value="9">My Blue</option>
+                    <option value="10">My insurance is not listed</option>
                 </select>
             </form>
         </div>

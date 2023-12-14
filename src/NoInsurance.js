@@ -11,6 +11,7 @@ function NoInsurance() {
 	const [isCatastrophic, setIsCatastrophic] = useState(false);
 	const [isCareCredit, setIsCareCredit] = useState(false);
 	const [isSelfPay, setIsSelfPay] = useState(false);
+	const [isNotListed, setIsNotListed] = useState(false);
 	const navigate = useNavigate();
 
 	const handleCheck = (checkboxNum) => {
@@ -48,6 +49,10 @@ function NoInsurance() {
 				setIsSelfPay(!isSelfPay);
 			break;
 
+			case 9: // not listed
+				setIsNotListed(!isNotListed);
+			break;
+
 			default:
 			break;
 		}
@@ -56,7 +61,7 @@ function NoInsurance() {
 	// send checkbox info to external function for server-request, then route to contact form
 	const handleClick = () => {
 		// Prepare data - an array of booleans
-		const cbData = [false, isNoCost, isSliding, isDiscount, isPayment, isFAP, isCatastrophic, isCareCredit, isSelfPay];
+		const cbData = [false, isNoCost, isSliding, isDiscount, isPayment, isFAP, isCatastrophic, isCareCredit, isSelfPay, isNotListed];
 		/*const response = await fetch("http://localhost:3000/storeCheckbox", {
             method: "PUT",
             body: JSON.stringify(cbData);
@@ -101,6 +106,10 @@ function NoInsurance() {
         <div class="checkbox-container">
 			<input type="checkbox" id="cb8" onChange={() => handleCheck(8)}/>
 			<label for="cb8">Self-pay</label>
+		</div>
+		<div class="checkbox-container">
+			<input type="checkbox" id="cb9" onChange={() => handleCheck(9)}/>
+			<label for="cb9">My insurance is not listed</label>
 		</div>
     </div>
     );

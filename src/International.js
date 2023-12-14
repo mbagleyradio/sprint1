@@ -24,7 +24,8 @@ export default function International() {
         SEGUROS_SURA_SA: 16,
         SOCIAL_SECURITY_BOARD_BRITISH_VIRGIN_ISLANDS: 17,
         VUMI_VIP_UNIVERSAL_MEDICAL_INSURANCE: 18,
-        WW_CONCIERGE_HEALTHCARE_SERVICES: 19        
+        WW_CONCIERGE_HEALTHCARE_SERVICES: 19,
+        NOT_LISTED: 20        
     };
 
     const handleSubmit = (e) => {
@@ -88,6 +89,9 @@ export default function International() {
             case selectionNames.WW_CONCIERGE_HEALTHCARE_SERVICES:
                 cbData = "International: WW Concierge Healthcare Services";
             break;
+            case selectionNames.NOT_LISTED:
+                cbData = "International: My insurance is not listed!";
+            break;
             default:
                 cbData = "ERROR: default case triggered in International.js";
             break;
@@ -120,6 +124,7 @@ export default function International() {
                     <option value="17">Social Security Board, British Virgin Islands</option>
                     <option value="18">VUMI (VIP Universal Medical Insurance)</option>
                     <option value="19">WW Concierge Healthcare Services</option>
+                    <option value="20">My insurance is not listed</option>
                 </select>
             </form>
         </div>

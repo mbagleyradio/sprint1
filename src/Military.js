@@ -10,6 +10,7 @@ export default function Military() {
 		TRICARE: 2,
 		TRICARE_FOR_LIFE: 3,
         TRICARE_PRIME: 4,
+        NOT_LISTED: 5
     }
 	const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,6 +28,9 @@ export default function Military() {
             case selectionNames.TRICARE_PRIME:
                 cbData = "Military: Tricare Prime";
             break;
+            case selectionNames.NOT_LISTED:
+                cbData = "Military: My insurance is not listed";
+            break;
             default:
                 cbData = "ERROR: default case triggered in Military.js";
             break;
@@ -43,6 +47,7 @@ export default function Military() {
                     <option value="2">Tricare</option>
                     <option value="3">Tricare for Life</option>
                     <option value="4">Tricare Prime</option>
+                    <option value="5">My insurance is not listed</option>
                 </select>
             </form>
         </div>

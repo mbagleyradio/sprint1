@@ -16,7 +16,8 @@ export default function Behavioral() {
         OPTUM: 8,
         SUNSHINE: 9,
         VALUE_OPTIONS: 10,
-        WELLCARE_BH: 11
+        WELLCARE_BH: 11,
+        NOT_LISTED: 12
     };
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -55,6 +56,9 @@ export default function Behavioral() {
             case selectionNames.WELLCARE_BH:
                 cbData = "Behavioral Insurance: Wellcare BH";
             break;
+            case selectionNames.NOT_LISTED:
+                cbData = "Behavioral Insurance: Not Listed";
+            break;
             default:
                 cbData = "ERROR: default case triggered in Behavioral.js";
             break;
@@ -77,6 +81,7 @@ export default function Behavioral() {
                 <option value="9">Sunshine</option>
                 <option value="10">Value Options</option>
                 <option value="11">Wellcare BH</option>
+                <option value="12">My insurance is not listed</option>
             </select>
         </form>
     </div>

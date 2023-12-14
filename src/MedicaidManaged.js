@@ -30,7 +30,8 @@ export default function MedicaidManaged() {
         STAYWELL: 22,
         SUNSHINE_HEALTH_CHILD_WELFARE: 23,
         UNITED_HEALTHCARE_OF_FLORIDA_MEDICAID: 24,
-        WELLCARE_OF_FLORIDA: 25
+        WELLCARE_OF_FLORIDA: 25,
+        NOT_LISTED: 26
     };
 
     const handleSubmit = (e) => {
@@ -112,6 +113,9 @@ export default function MedicaidManaged() {
             case selectionNames.WELLCARE_OF_FLORIDA:
                 cbData = "Medicaid Managed Care: Wellcare of Florida";
             break;
+            case selectionNames.NOT_LISTED:
+                cbData = "Medicaid Managed Care: My insurance is not listed";
+            break;
             default:
                 cbData = "ERROR: default case triggered in MedicaidManaged.js";
             break;
@@ -150,6 +154,7 @@ export default function MedicaidManaged() {
                     <option value="23">Sunshine Health (Child Welfare)</option>
                     <option value="24">United Healthcare of Florida Medicaid</option>
                     <option value="25">Wellcare of Florida</option>
+                    <option value="26">My insurance is not listed</option>
                 </select>
             </form>
         </div>

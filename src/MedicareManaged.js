@@ -44,7 +44,8 @@ export default function MedicareManaged() {
         SUNSHINE_MEDICARE: 36,
         UNITEDHEALTHCARE: 37,
         WELLCARE: 38,
-        WELLMED_MEDICAL_MANAGEMENT: 39
+        WELLMED_MEDICAL_MANAGEMENT: 39,
+        NOT_LISTED: 40
     }
     
     const handleSubmit = (e) => {
@@ -168,6 +169,9 @@ export default function MedicareManaged() {
             case selectionNames.WELLMED_MEDICAL_MANAGEMENT:
                 cbData = "Medicare Managed Care: WellMed Medical Management";
             break;
+            case selectionNames.NOT_LISTED:
+                cbData = "Medicare Managed Care: My insurance is not listed!";
+            break;
             default:
                 cbData = "ERROR: Default case triggered in MedicareManaged.js";
             break;
@@ -220,6 +224,7 @@ export default function MedicareManaged() {
                     <option value="37">UnitedHealthCare</option>
                     <option value="38">WellCare</option>
                     <option value="39">WellMed Medical Management</option>
+                    <option value="40">My insurance is not listed</option>
                 </select>
             </form>
         </div>
