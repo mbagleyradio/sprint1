@@ -13,6 +13,7 @@ function PopupI(/*props*/) {
     const [ name, setName ] = useState("");
     const [ phoneNumber, setPhoneNumber ] = useState("");
     const [ email, setEmail ] = useState("");
+    const [ insurance, setInsurance] = useState("");
     const location = useLocation();
     const cbData = location.state;
 
@@ -26,7 +27,7 @@ function PopupI(/*props*/) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        user.insurance = cbData;
+        user.insurance = insurance;
         user.name = name;
         user.phoneNumber = phoneNumber;
         user.email = email; 
@@ -48,6 +49,10 @@ function PopupI(/*props*/) {
                 <label>
                     Your Name: 
                     <input type="text" name="name" onChange={(e) => setName(e.target.value)}/>
+                </label>
+                <label>
+                    Your Insurance: 
+                    <input type="text" name="insurance" onChange={(e) => setInsurance(e.target.value)}/>
                 </label>
                 <label>
                     Your Phone Number: 

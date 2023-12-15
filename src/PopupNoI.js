@@ -13,6 +13,7 @@ function PopupNoI(/*props*/) {
     const [ name, setName ] = useState("");
     const [ phoneNumber, setPhoneNumber ] = useState("");
     const [ email, setEmail ] = useState("");
+    const [ insurance, setInsurance ] = useState("");
     const location = useLocation();
     const cbData = location.state;
 
@@ -39,7 +40,7 @@ function PopupNoI(/*props*/) {
         },
         contactInfo: {
             name: "",
-            insurance: "NONE",
+            insurance: "",
             phoneNumber: "",
             email: ""
         }
@@ -98,6 +99,7 @@ function PopupNoI(/*props*/) {
             user.contactInfo.name = name;
             user.contactInfo.phoneNumber = phoneNumber;
             user.contactInfo.email = email;
+            user.contactInfo.insurance = insurance;
 
             // need to pull from the inner objects (contact info and insurance)
             emailjs.send("service_unhpfsm","template_frqcrni",{
@@ -116,6 +118,10 @@ function PopupNoI(/*props*/) {
                 <label>
                     Your Name: 
                     <input type="text" name="name" onChange={(e) => setName(e.target.value)}/>
+                </label>
+                <label>
+                    Your Insurance: 
+                    <input type="text" name="insurance" onChange={(e) => setInsurance(e.target.value)}/>
                 </label>
                 <label>
                     Your Phone Number: 

@@ -39,16 +39,19 @@ export default function Military() {
 	}
     
     return (
-        <div id="hasInsurance">
+        <div id="militaryInsuranceSelections">
             <form onSubmit={handleSubmit}>
-            <button type="submit">Submit</button>
-                <select value={selection} name="militaryInsuranceSelections" id="militaryInsuranceSelections" size="8" onChange={e => {setSelection(Number(e.target.value))}}>
-                    <option value="1">CHAMPUS</option>
-                    <option value="2">Tricare</option>
-                    <option value="3">Tricare for Life</option>
-                    <option value="4">Tricare Prime</option>
-                    <option value="5">My insurance is not listed</option>
-                </select>
+                <button type="submit">Submit</button><br/>
+                <input value="1" type="radio" id="champus" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="champus">CHAMPUS</label><br/>
+                <input value="2" type="radio" id="tricare" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="tricare">Tricare</label><br/>
+                <input value="3" type="radio" id="tricare_for_life" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="tricare_for_life">Tricare for Life</label><br/>
+                <input value="4" type="radio" id="tricare_prime" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="tricare_prime">Tricare Prime</label><br/>
+                <input value="5" type="radio" id="not_listed" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="not_listed">My insurance is not listed</label><br/>
             </form>
         </div>
     );
