@@ -106,31 +106,50 @@ export default function International() {
     }
     
     return (
-        <div id="hasInsurance">
+        <div id="internationalInsuranceSelections">
             <form onSubmit={handleSubmit}>
-            <button type="submit">Submit</button>
-                <select value={selection} name="internationalInsuranceSelections" id="internationalInsuranceSelections" size="8" onChange={e => {setSelection(Number(e.target.value))}}>
-                    <option value="1">Algemene Ziektekosten Verzekering: A.Z.V. (Aruba)</option>
-                    <option value="2">Apollo Ship Chandlers</option>
-                    <option value="3">AXA Assistance USA</option>
-                    <option value="4">Banco Centroamericano De Integracion Economica</option>
-                    <option value="5">BMI Financial Group</option>
-                    <option value="6">Cardea Health Solutions</option>
-                    <option value="7">Family Guardian Insurance</option>
-                    <option value="8">Generali Global Health Service (GGHS)</option>
-                    <option value="9">Global Benefits Group</option>
-                    <option value="10">Interamericana de Seguros, S.A. (Fichos Seguros)</option>
-                    <option value="11">Intrepid (Ingle International)</option>
-                    <option value="12">New Frontier Group</option>
-                    <option value="13">Pan American Life Insurance</option>
-                    <option value="14">Seguros Azul Vida, S.A. (Seguros de Personas)</option>
-                    <option value="15">Seguros Reserva, S.A.</option>
-                    <option value="16">Seguros Sura, S.A. (Sura Dominicana)</option>
-                    <option value="17">Social Security Board, British Virgin Islands</option>
-                    <option value="18">VUMI (VIP Universal Medical Insurance)</option>
-                    <option value="19">WW Concierge Healthcare Services</option>
-                    <option value="20">My insurance is not listed</option>
-                </select>
+                <button type="submit">Submit</button><br/>
+                <input value="1" type="radio" id="algemene" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="algemene">Algemene Ziektekosten Verzekering:A.Z.V. (Aruba)</label><br/>
+                <input value="2" type="radio" id="apollo" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="apollo">Apollo Ship Chandlers</label><br/>
+                <input value="3" type="radio" id="axa" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="axa">AXA Assistance USA</label><br/>
+                <input value="4" type="radio" id="banco" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="banco">Banco Centroamericano De Integracion Economica</label><br/>
+                <input value="5" type="radio" id="bmi" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="bmi">BMI Financial Group</label><br/>
+                <input value="6" type="radio" id="cardea" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="cardea">Cardea Health Solutions</label><br/>
+                <input value="7" type="radio" id="family" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="family">Family Guardian Insurance</label><br/>
+                <input value="8" type="radio" id="generali" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="generali">Generali Global Health Service (GGHS)</label><br/>
+                <input value="9" type="radio" id="global" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="global">Global Benefits Group</label><br/>
+                <input value="10" type="radio" id="interamericana" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="interamericana">Interamericana de Seguros, S.A. (Fichos Seguros)</label><br/>
+                <input value="11" type="radio" id="intrepid" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="intrepid">Intrepid (Ingle International)</label><br/>
+                <input value="12" type="radio" id="new_frontier" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="new_frontier">New Frontier Group</label><br/>
+                <input value="13" type="radio" id="pan_american" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="pan_american">Pan American Life Insurance</label><br/>
+                <input value="14" type="radio" id="seguros_azul_vida" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="seguros_azul_vida">Seguros Azul Vida, S.A. (Seguros de Personas)</label><br/>
+                <input value="15" type="radio" id="segurso_reserva" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="segurso_reserva">Segurso Reserva, S.A.</label><br/>
+                <input value="16" type="radio" id="seguros_sura" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="seguros_sura">Seguros Sura, S.A. (Sura Dominicana)</label><br/>
+                <input value="17" type="radio" id="social_security_board" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="social_security_board">Social Security Board, British Virgin Islands</label><br/>
+                <input value="18" type="radio" id="vumi" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="vumi">VUMI (VIP Universal Medical Insurance)</label><br/>
+                <input value="19" type="radio" id="ww_concierge" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="ww_concierge">WW Concierge Healthcare Services</label><br/>
+                <input value="20" type="radio" id="not_listed" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="not_listed">My insurance is not listed</label><br/>
+
             </form>
         </div>
     );
