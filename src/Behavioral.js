@@ -22,48 +22,54 @@ export default function Behavioral() {
     const handleSubmit = (e) => {
         e.preventDefault();
         let cbData = "";
-        switch (Number(selection)) {
-            case selectionNames.AMERIGROUP:
-                cbData = "Behavioral Insurance: Amerigroup";
-            break;
-            case selectionNames.BEACON:
-                cbData = "Behavioral Insurance: Beacon";
-            break;
-            case selectionNames.BEHAVIORAL_HEALTH_SERVICES:
-                cbData = "Behavioral Insurance: Behavioral Health Services";
-            break;
-            case selectionNames.CONCORDIA:
-                cbData = "Behavioral Insurance: Concordia";
-            break;
-            case selectionNames.EVERNORTH:
-                cbData = "Behavioral Insurance: Evernorth";
-            break;
-            case selectionNames.MAGELLAN_BEHAVIORAL_HEALTH:
-                cbData = "Behavioral Insurance: Magellan Behavioral Health";
-            break;
-            case selectionNames.MENTAL_HEALTH_ASSOCIATES:
-                cbData = "Behavioral Insurance: Mental Health Associates";
-            break;
-            case selectionNames.OPTUM:
-                cbData = "Behavioral Insurance: Optum";
-            break;
-            case selectionNames.SUNSHINE:
-                cbData = "Behavioral Insurance: Sunshine";
-            break;
-            case selectionNames.VALUE_OPTIONS:
-                cbData = "Behavioral Insurance: Value Options";
-            break;
-            case selectionNames.WELLCARE_BH:
-                cbData = "Behavioral Insurance: Wellcare BH";
-            break;
-            case selectionNames.NOT_LISTED:
-                cbData = "Behavioral Insurance: Not Listed";
-            break;
-            default:
-                cbData = "ERROR: default case triggered in Behavioral.js";
-            break;
+        if (Number(selection) === selectionNames.NOT_LISTED) {
+            cbData = "Behavioral Insurance: Insurance was not listed"
+            navigate("../contact-ins", {state: cbData});
+        } else {
+            switch (Number(selection)) {
+                case selectionNames.AMERIGROUP:
+                    cbData = "Behavioral Insurance: Amerigroup";
+                break;
+                case selectionNames.BEACON:
+                    cbData = "Behavioral Insurance: Beacon";
+                break;
+                case selectionNames.BEHAVIORAL_HEALTH_SERVICES:
+                    cbData = "Behavioral Insurance: Behavioral Health Services";
+                break;
+                case selectionNames.CONCORDIA:
+                    cbData = "Behavioral Insurance: Concordia";
+                break;
+                case selectionNames.EVERNORTH:
+                    cbData = "Behavioral Insurance: Evernorth";
+                break;
+                case selectionNames.MAGELLAN_BEHAVIORAL_HEALTH:
+                    cbData = "Behavioral Insurance: Magellan Behavioral Health";
+                break;
+                case selectionNames.MENTAL_HEALTH_ASSOCIATES:
+                    cbData = "Behavioral Insurance: Mental Health Associates";
+                break;
+                case selectionNames.OPTUM:
+                    cbData = "Behavioral Insurance: Optum";
+                break;
+                case selectionNames.SUNSHINE:
+                    cbData = "Behavioral Insurance: Sunshine";
+                break;
+                case selectionNames.VALUE_OPTIONS:
+                    cbData = "Behavioral Insurance: Value Options";
+                break;
+                case selectionNames.WELLCARE_BH:
+                    cbData = "Behavioral Insurance: Wellcare BH";
+                break;
+                case selectionNames.NOT_LISTED:
+                    cbData = "Behavioral Insurance: Not Listed";
+                break;
+                default:
+                    cbData = "ERROR: default case triggered in Behavioral.js";
+                break;
+            }
+            navigate("../sprint2", {state: cbData});
         }
-        navigate("../contact-ins", {state: cbData});
+        
     }
     return (
     <div id="hasInsurance">

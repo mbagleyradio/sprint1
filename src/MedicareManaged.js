@@ -51,133 +51,138 @@ export default function MedicareManaged() {
     const handleSubmit = (e) => {
         e.preventDefault();
         let cbData = "";
-        switch(Number(selection)) {
-            case selectionNames.AARP:
-                cbData = "Medicare Managed Care: AARP";
-            break;
-            case selectionNames.AETNA:
-                cbData = "Medicare Managed Care: Aetna";
-            break;
-            case selectionNames.ALIGN_SENIOR_CARE:
-                cbData = "Medicare Managed Care: Align Senior Care";
-            break;
-            case selectionNames.ALLWELL_FROM_SUNSHINE_HEALTH:
-                cbData = "Medicare Managed Care: Allwell from Sunshine Health";
-            break;
-            case selectionNames.AVMED_HEALTH_PLANS:
-                cbData = "Medicare Managed Care: AvMed Health Plans";
-            break;
-            case selectionNames.BETTER_HEALTH:
-                cbData = "Medicare Managed Care: Better Health";
-            break;
-            case selectionNames.BLUE_CROSS_BLUE_SHIELD:
-                cbData = "Medicare Managed Care: Blue Cross Blue Shield";
-            break;
-            case selectionNames.CARE_PLUS:
-                cbData = "Medicare Managed Care: Care Plus";
-            break;
-            case selectionNames.CIGNA_HEALTHCARE:
-                cbData = "Medicare Managed Care: Cigna Healthcare";
-            break;
-            case selectionNames.DEVOTED_HEALTH:
-                cbData = "Medicare Managed Care: Devoted Health";
-            break;
-            case selectionNames.DOCTORS_HEALTHCARE_PLANS:
-                cbData = "Medicare Managed Care: Doctors Healthcare Plans";
-            break;
-            case selectionNames.FLORIDA_BLUE:
-                cbData = "Medicare Managed Care: Florida Blue";
-            break;
-            case selectionNames.FREEDOM_HEALTH:
-                cbData = "Medicare Managed Care: Freedom Health";
-            break;
-            case selectionNames.FREEDOM_MEDICARE:
-                cbData = "Medicare Managed Care: Freedom Medicare";
-            break;
-            case selectionNames.HEALTH_FIRST_HEALTH_PLANS:
-                cbData = "Medicare Managed Care: Health First Health Plans";
-            break;
-            case selectionNames.HEALTHSUN_HEALTH_PLANS:
-                cbData = "Medicare Managed Care: HealthSun Health Plans";
-            break;
-            case selectionNames.HUMANA:
-                cbData = "Medicare Managed Care: Humana";
-            break;
-            case selectionNames.KAISER_PERMANENTE:
-                cbData = "Medicare Managed Care: Kaiser Permanente";
-            break;
-            case selectionNames.LEON_HEALTH_PLANS:
-                cbData = "Medicare Managed Care: Leon Health Plans";
-            break;
-            case selectionNames.LONGEVITY:
-                cbData = "Medicare Managed Care: Longevity";
-            break;
-            case selectionNames.MAGELLAN_COMPLETE_CARE:
-                cbData = "Medicare Managed Care: Magellan Complete Care";
-            break;
-            case selectionNames.MEDICA_HEALTHCARE_PLANS:
-                cbData = "Medicare Managed Care: Medica HealthCare Plans";
-            break;
-            case selectionNames.MOLINA_HEALTHCARE:
-                cbData = "Medicare Managed Care: Molina Healthcare";
-            break;
-            case selectionNames.OPTIMUM_CHOICE_MEDICARE_ADVANTAGE:
-                cbData = "Medicare Managed Care: Optimum Choice Medicare Advantage";
-            break;
-            case selectionNames.OPTIMUM_HEALTHCARE:
-                cbData = "Medicare Managed Care: Optimum HealthCare";
-            break;
-            case selectionNames.OPTIMUM_MEDICARE_ADVANTAGE:
-                cbData = "Medicare Managed Care: Optimum Medicare Advantage";
-            break;
-            case selectionNames.PACE:
-                cbData = "Medicare Managed Care: Pace";
-            break;
-            case selectionNames.PHYSICIANS_UNITED_PLAN:
-                cbData = "Medicare Managed Care: Physicians United Plan";
-            break;
-            case selectionNames.POSITIVE_HEALTHCARE:
-                cbData = "Medicare Managed Care: Positive Healthcare";
-            break;
-            case selectionNames.PREFERRED_CARE_PARTNERS:
-                cbData = "Medicare Managed Care: Preferred Care Partners";
-            break;
-            case selectionNames.PRESTIGE_MEDICARE_ADVANTAGE:
-                cbData = "Medicare Managed Care: Prestige Medicare Advantage";
-            break;
-            case selectionNames.RAILROAD_MEDICARE:
-                cbData = "Medicare Managed Care: Railroad Medicare";
-            break;
-            case selectionNames.SIMPLY_HEALTHCARE_PLANS:
-                cbData = "Medicare Managed Care: Simply Healthcare Plans";
-            break;
-            case selectionNames.SOLIS_HEALTH_PLANS:
-                cbData = "Medicare Managed Care: Solis Health Plans";
-            break;
-            case selectionNames.SUNSHINE_HEALTH:
-                cbData = "Medicare Managed Care: Sunshine Health";
-            break;
-            case selectionNames.SUNSHINE_MEDICARE:
-                cbData = "Medicare Managed Care: Sunshine Medicare";
-            break;
-            case selectionNames.UNITEDHEALTHCARE:
-                cbData = "Medicare Managed Care: UnitedHealthCare";
-            break;
-            case selectionNames.WELLCARE:
-                cbData = "Medicare Managed Care: WellCare";
-            break;
-            case selectionNames.WELLMED_MEDICAL_MANAGEMENT:
-                cbData = "Medicare Managed Care: WellMed Medical Management";
-            break;
-            case selectionNames.NOT_LISTED:
-                cbData = "Medicare Managed Care: My insurance is not listed!";
-            break;
-            default:
-                cbData = "ERROR: Default case triggered in MedicareManaged.js";
-            break;
+        if (Number(selection) === selectionNames.NOT_LISTED) {
+            cbData = "Medicare Managed Care: Insurance was not listed!";
+            navigate("../contact-ins", {state: cbData});
+        } else {
+            switch(Number(selection)) {
+                case selectionNames.AARP:
+                    cbData = "Medicare Managed Care: AARP";
+                break;
+                case selectionNames.AETNA:
+                    cbData = "Medicare Managed Care: Aetna";
+                break;
+                case selectionNames.ALIGN_SENIOR_CARE:
+                    cbData = "Medicare Managed Care: Align Senior Care";
+                break;
+                case selectionNames.ALLWELL_FROM_SUNSHINE_HEALTH:
+                    cbData = "Medicare Managed Care: Allwell from Sunshine Health";
+                break;
+                case selectionNames.AVMED_HEALTH_PLANS:
+                    cbData = "Medicare Managed Care: AvMed Health Plans";
+                break;
+                case selectionNames.BETTER_HEALTH:
+                    cbData = "Medicare Managed Care: Better Health";
+                break;
+                case selectionNames.BLUE_CROSS_BLUE_SHIELD:
+                    cbData = "Medicare Managed Care: Blue Cross Blue Shield";
+                break;
+                case selectionNames.CARE_PLUS:
+                    cbData = "Medicare Managed Care: Care Plus";
+                break;
+                case selectionNames.CIGNA_HEALTHCARE:
+                    cbData = "Medicare Managed Care: Cigna Healthcare";
+                break;
+                case selectionNames.DEVOTED_HEALTH:
+                    cbData = "Medicare Managed Care: Devoted Health";
+                break;
+                case selectionNames.DOCTORS_HEALTHCARE_PLANS:
+                    cbData = "Medicare Managed Care: Doctors Healthcare Plans";
+                break;
+                case selectionNames.FLORIDA_BLUE:
+                    cbData = "Medicare Managed Care: Florida Blue";
+                break;
+                case selectionNames.FREEDOM_HEALTH:
+                    cbData = "Medicare Managed Care: Freedom Health";
+                break;
+                case selectionNames.FREEDOM_MEDICARE:
+                    cbData = "Medicare Managed Care: Freedom Medicare";
+                break;
+                case selectionNames.HEALTH_FIRST_HEALTH_PLANS:
+                    cbData = "Medicare Managed Care: Health First Health Plans";
+                break;
+                case selectionNames.HEALTHSUN_HEALTH_PLANS:
+                    cbData = "Medicare Managed Care: HealthSun Health Plans";
+                break;
+                case selectionNames.HUMANA:
+                    cbData = "Medicare Managed Care: Humana";
+                break;
+                case selectionNames.KAISER_PERMANENTE:
+                    cbData = "Medicare Managed Care: Kaiser Permanente";
+                break;
+                case selectionNames.LEON_HEALTH_PLANS:
+                    cbData = "Medicare Managed Care: Leon Health Plans";
+                break;
+                case selectionNames.LONGEVITY:
+                    cbData = "Medicare Managed Care: Longevity";
+                break;
+                case selectionNames.MAGELLAN_COMPLETE_CARE:
+                    cbData = "Medicare Managed Care: Magellan Complete Care";
+                break;
+                case selectionNames.MEDICA_HEALTHCARE_PLANS:
+                    cbData = "Medicare Managed Care: Medica HealthCare Plans";
+                break;
+                case selectionNames.MOLINA_HEALTHCARE:
+                    cbData = "Medicare Managed Care: Molina Healthcare";
+                break;
+                case selectionNames.OPTIMUM_CHOICE_MEDICARE_ADVANTAGE:
+                    cbData = "Medicare Managed Care: Optimum Choice Medicare Advantage";
+                break;
+                case selectionNames.OPTIMUM_HEALTHCARE:
+                    cbData = "Medicare Managed Care: Optimum HealthCare";
+                break;
+                case selectionNames.OPTIMUM_MEDICARE_ADVANTAGE:
+                    cbData = "Medicare Managed Care: Optimum Medicare Advantage";
+                break;
+                case selectionNames.PACE:
+                    cbData = "Medicare Managed Care: Pace";
+                break;
+                case selectionNames.PHYSICIANS_UNITED_PLAN:
+                    cbData = "Medicare Managed Care: Physicians United Plan";
+                break;
+                case selectionNames.POSITIVE_HEALTHCARE:
+                    cbData = "Medicare Managed Care: Positive Healthcare";
+                break;
+                case selectionNames.PREFERRED_CARE_PARTNERS:
+                    cbData = "Medicare Managed Care: Preferred Care Partners";
+                break;
+                case selectionNames.PRESTIGE_MEDICARE_ADVANTAGE:
+                    cbData = "Medicare Managed Care: Prestige Medicare Advantage";
+                break;
+                case selectionNames.RAILROAD_MEDICARE:
+                    cbData = "Medicare Managed Care: Railroad Medicare";
+                break;
+                case selectionNames.SIMPLY_HEALTHCARE_PLANS:
+                    cbData = "Medicare Managed Care: Simply Healthcare Plans";
+                break;
+                case selectionNames.SOLIS_HEALTH_PLANS:
+                    cbData = "Medicare Managed Care: Solis Health Plans";
+                break;
+                case selectionNames.SUNSHINE_HEALTH:
+                    cbData = "Medicare Managed Care: Sunshine Health";
+                break;
+                case selectionNames.SUNSHINE_MEDICARE:
+                    cbData = "Medicare Managed Care: Sunshine Medicare";
+                break;
+                case selectionNames.UNITEDHEALTHCARE:
+                    cbData = "Medicare Managed Care: UnitedHealthCare";
+                break;
+                case selectionNames.WELLCARE:
+                    cbData = "Medicare Managed Care: WellCare";
+                break;
+                case selectionNames.WELLMED_MEDICAL_MANAGEMENT:
+                    cbData = "Medicare Managed Care: WellMed Medical Management";
+                break;
+                case selectionNames.NOT_LISTED:
+                    cbData = "Medicare Managed Care: My insurance is not listed!";
+                break;
+                default:
+                    cbData = "ERROR: Default case triggered in MedicareManaged.js";
+                break;
+            }
+    
+            navigate("../sprint2", {state: cbData});
         }
-
-        navigate("../contact-ins", {state: cbData});
     }
 
     return (

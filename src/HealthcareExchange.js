@@ -21,43 +21,49 @@ export default function HealthcareExchange() {
     const handleSubmit = (e) => {
         e.preventDefault();
         let cbData = "";
-        switch(Number(selection)) {
-            case selectionNames.AETNA_QHP:
-                cbData = "Healthcare Exchange: Aetna QHP";
-            break;
-            case selectionNames.AMBETTER:
-                cbData = "Healthcare Exchange: AmBetter";
-            break;
-            case selectionNames.AMERIHEALTH_CARITAS_NEXT:
-                cbData = "Healthcare Exchange: Amerihealth Caritas Next";
-            break;
-            case selectionNames.AVMED_ENTRUST:
-                cbData = "Healthcare Exchange: AvMed Entrust";
-            break;
-            case selectionNames.CIGNA_CONNECT:
-                cbData = "Healthcare Exchange: Cigna Connect";
-            break;
-            case selectionNames.FLORIDA_BLUE_OPTIONS:
-                cbData = "Healthcare Exchange: Florida Blue Options";
-            break;
-            case selectionNames.FLORIDA_BLUE_SELECT:
-                cbData = "Healthcare Exchange: Florida Blue Select";
-            break;
-            case selectionNames.MOLINA:
-                cbData = "Healthcare Exchange: Molina";
-            break;
-            case selectionNames.MY_BLUE:
-                cbData = "Healthcare Exchange: My Blue";
-            break;
-            case selectionNames.NOT_LISTED:
-                cbData = "Healthcare Exchange: My insurance is not listed!";
-            break;
-            default:
-                cbData = "ERROR: default case triggered in HealthcareExchange.js";
-            break;
+        if (Number(selection) === selectionNames.NOT_LISTED) {
+            cbData = "Healthcare Exchange: Insurance was not listed!";
+            navigate("../contact-ins", {state: cbData});
+        } else {
+            switch(Number(selection)) {
+                case selectionNames.AETNA_QHP:
+                    cbData = "Healthcare Exchange: Aetna QHP";
+                break;
+                case selectionNames.AMBETTER:
+                    cbData = "Healthcare Exchange: AmBetter";
+                break;
+                case selectionNames.AMERIHEALTH_CARITAS_NEXT:
+                    cbData = "Healthcare Exchange: Amerihealth Caritas Next";
+                break;
+                case selectionNames.AVMED_ENTRUST:
+                    cbData = "Healthcare Exchange: AvMed Entrust";
+                break;
+                case selectionNames.CIGNA_CONNECT:
+                    cbData = "Healthcare Exchange: Cigna Connect";
+                break;
+                case selectionNames.FLORIDA_BLUE_OPTIONS:
+                    cbData = "Healthcare Exchange: Florida Blue Options";
+                break;
+                case selectionNames.FLORIDA_BLUE_SELECT:
+                    cbData = "Healthcare Exchange: Florida Blue Select";
+                break;
+                case selectionNames.MOLINA:
+                    cbData = "Healthcare Exchange: Molina";
+                break;
+                case selectionNames.MY_BLUE:
+                    cbData = "Healthcare Exchange: My Blue";
+                break;
+                case selectionNames.NOT_LISTED:
+                    cbData = "Healthcare Exchange: My insurance is not listed!";
+                break;
+                default:
+                    cbData = "ERROR: default case triggered in HealthcareExchange.js";
+                break;
+            }
+            
+            navigate("../sprint2", {state: cbData});
         }
         
-        navigate("../contact-ins", {state: cbData});
     }
 
     return ( 

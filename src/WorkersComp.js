@@ -20,40 +20,46 @@ export default function WorkersComp() {
     const handleSubmit = (e) => {
         e.preventDefault();
         let cbData = "";
-        switch(Number(selection)) {
-            case selectionNames.ADVANET_WORKERS_COMP:
-                cbData = "Worker's Compensation Plans: Advanet Worker's Comp";
-            break;
-            case selectionNames.BEECH_STREET:
-                cbData = "Worker's Compensation Plans: Beech Street";
-            break;
-            case selectionNames.CAREWORKS:
-                cbData = "Worker's Compensation Plans: Careworks";
-            break;
-            case selectionNames.CHOICE_MANAGED_NETWORKS:
-                cbData = "Worker's Compensation Plans: Choice Managed Networks";
-            break;
-            case selectionNames.CORVEL_WORKERS_COMP:
-                cbData = "Worker's Compensation Plans: Corvel - Worker's Comp";
-            break;
-            case selectionNames.DIMENSION_HEALTH:
-                cbData = "Worker's Compensation Plans: Dimension Health";
-            break;
-            case selectionNames.FIRST_HEALTH_NETWORK:
-                cbData = "Worker's Compensation Plans: First Health Network";
-            break;
-            case selectionNames.HUMANA_WORKERS_COMP:
-                cbData = "Worker's Compensation Plans: Humana Worker's Comp";
-            break;
-            case selectionNames.NOT_LISTED:
-                cbData = "Worker's Compensation Plans: My insurance is not listed";
-            break;
-            default:
-                cbData = "ERROR: default case triggered in WorkersComp.js";
-            break;
+        if (Number(selection) === selectionNames.NOT_LISTED) {
+            cbData = "Worker's Compensation Plans: Insurance was not listed!";
+            navigate("../contact-ins", {state: cbData});
+        } else {
+            switch(Number(selection)) {
+                case selectionNames.ADVANET_WORKERS_COMP:
+                    cbData = "Worker's Compensation Plans: Advanet Worker's Comp";
+                break;
+                case selectionNames.BEECH_STREET:
+                    cbData = "Worker's Compensation Plans: Beech Street";
+                break;
+                case selectionNames.CAREWORKS:
+                    cbData = "Worker's Compensation Plans: Careworks";
+                break;
+                case selectionNames.CHOICE_MANAGED_NETWORKS:
+                    cbData = "Worker's Compensation Plans: Choice Managed Networks";
+                break;
+                case selectionNames.CORVEL_WORKERS_COMP:
+                    cbData = "Worker's Compensation Plans: Corvel - Worker's Comp";
+                break;
+                case selectionNames.DIMENSION_HEALTH:
+                    cbData = "Worker's Compensation Plans: Dimension Health";
+                break;
+                case selectionNames.FIRST_HEALTH_NETWORK:
+                    cbData = "Worker's Compensation Plans: First Health Network";
+                break;
+                case selectionNames.HUMANA_WORKERS_COMP:
+                    cbData = "Worker's Compensation Plans: Humana Worker's Comp";
+                break;
+                case selectionNames.NOT_LISTED:
+                    cbData = "Worker's Compensation Plans: My insurance is not listed";
+                break;
+                default:
+                    cbData = "ERROR: default case triggered in WorkersComp.js";
+                break;
+            }
+            navigate("../sprint2", {state: cbData});
         }
-        navigate("../contact-ins", {state: cbData});
     }
+    
     return (
         <div id="hasInsurance">
             <form onSubmit={handleSubmit}>

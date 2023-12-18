@@ -15,27 +15,32 @@ export default function Military() {
 	const handleSubmit = (e) => {
         e.preventDefault();
         let cbData = "";
-        switch(Number(selection)) {
-            case selectionNames.CHAMPUS:
-                cbData = "Military: CHAMPUS";
-            break;
-            case selectionNames.TRICARE:
-                cbData = "Military: Tricare";
-            break;
-            case selectionNames.TRICARE_FOR_LIFE:
-                cbData = "Military: Tricare for Life";
-            break;
-            case selectionNames.TRICARE_PRIME:
-                cbData = "Military: Tricare Prime";
-            break;
-            case selectionNames.NOT_LISTED:
-                cbData = "Military: My insurance is not listed";
-            break;
-            default:
-                cbData = "ERROR: default case triggered in Military.js";
-            break;
+        if (Number(selection) === selectionNames.NOT_LISTED) {
+            cbData = "Military: Insurance was not listed!";
+            navigate("../contact-ins", {state: cbData});
+        } else {
+            switch(Number(selection)) {
+                case selectionNames.CHAMPUS:
+                    cbData = "Military: CHAMPUS";
+                break;
+                case selectionNames.TRICARE:
+                    cbData = "Military: Tricare";
+                break;
+                case selectionNames.TRICARE_FOR_LIFE:
+                    cbData = "Military: Tricare for Life";
+                break;
+                case selectionNames.TRICARE_PRIME:
+                    cbData = "Military: Tricare Prime";
+                break;
+                case selectionNames.NOT_LISTED:
+                    cbData = "Military: My insurance is not listed";
+                break;
+                default:
+                    cbData = "ERROR: default case triggered in Military.js";
+                break;
+            }
+            navigate("../sprint2", {state: cbData});
         }
-        navigate("../contact-ins", {state: cbData});
 	}
     
     return (

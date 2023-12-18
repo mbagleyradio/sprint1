@@ -38,93 +38,100 @@ function ComInsurance() {
 	const handleSubmit = (e) => {
         e.preventDefault();
         let cbData = "";
-        switch(Number(selection)) {
-            case selectionNames.AARP:
-                cbData = "Commercial Insurance: AARP";
-            break;
-            case selectionNames.AETNA:
-                cbData = "Commercial Insurance: AETNA";
-            break;
-            case selectionNames.AMBETTER:
-                cbData = "Commercial Insurance: AmBetter";
-            break;
-            case selectionNames.ASSURANT:
-                cbData = "Commercial Insurance: Assurant";
-            break;
-            case selectionNames.AVMED_HEALTH_PLANS:
-                cbData = "Commercial Insurance: AvMed Health Plans";
-            break;
-            case selectionNames.BEECH_STREET:
-                cbData = "Commercial Insurance: Beech Street";
-            break;
-            case selectionNames.BLUE_CROSS_BLUE_SHIELD:
-                cbData = "Commercial Insurance: Blue Cross Blue Shield Federal Employee Program";
-            break;
-            case selectionNames.CIGNA_HEALTHCARE:
-                cbData = "Commercial Insurance: Cigna Healthcare";
-            break;
-            case selectionNames.COMMUNITY_CARE_NETWORK:
-                cbData = "Commercial Insurance: Community Care Network";
-            break;
-            case selectionNames.CORVEL_GROUP_HEALTH:
-                cbData = "Commercial Insurance: CorVel Group Health";
-            break;
-            case selectionNames.DIMENSION_HEALTH:
-                cbData = "Commercial Insurance: Dimension Health";
-            break;
-            case selectionNames.EVOLUTIONS_HEALTHCARE:
-                cbData = "Commercial Insurance: Evolutions Healthcare";
-            break;
-            case selectionNames.FIRST_HEALTH_COVENTRY_HEALTHCARE:
-                cbData = "Commercial Insurance: First Health Coventry Healthcare";
-            break;
-            case selectionNames.FLORIDA_BLUE:
-                cbData = "Commercial Insurance: Florida Blue";
-            break;
-            case selectionNames.GEHA_HEALTH_PLANS:
-                cbData = "Commercial Insurance: GEHA Health Plans";
-            break;
-            case selectionNames.HEALTH_FIRST_HEALTH_PLANS:
-                cbData = "Commercial Insurance: Health First Health Plans";
-            break;
-            case selectionNames.HUMANA:
-                cbData = "Commercial Insurance: Humana";
-            break;
-            case selectionNames.MAIL_HANDLERS_BENEFIT_PLAN:
-                cbData = "Commercial Insurance: Mail Handler's Benefit Plan (MBHP)";
-            break;
-            case selectionNames.MEGA_LIFE:
-                cbData = "Commercial Insurance: Mega Life and Health Insurance";
-            break;
-            case selectionNames.MULTIPLAN:
-                cbData = "Commercial Insurance: Multiplan";
-            break;
-            case selectionNames.NEIGHBORHOOD_HEALTH_PLAN:
-                cbData = "Commercial Insurance: Neighborhood Health Plan";
-            break;
-            case selectionNames.OPTUM_HEALTHCARE:
-                cbData = "Commercial Insurance: Optum Healthcare";
-            break;
-            case selectionNames.PREFERRED_MEDICAL_PLAN:
-                cbData = "Commercial Insurance: Preferred Medical Plan (PMP)";
-            break;
-            case selectionNames.PRIVATE_HEALTHCARE_SYSTEMS:
-                cbData = "Commercial Insurance: Private Healthcare Systems (PHS)";
-            break;
-            case selectionNames.UNITEDHEALTHCARE:
-                cbData = "Commercial Insurance: UnitedHealthCare";
-            break;
-            case selectionNames.WELLCARE:
-                cbData = "Commercial Insurance: Wellcare";
-            break;
-            case selectionNames.NOT_LISTED:
-                cbData = "Commercial Insurance: Not Listed!";
-            break;
-            default:
-                cbData = "ERROR: default case triggered in ComInsurance.js";
-            break;
+        
+        if (Number(selection) !== selectionNames.NOT_LISTED) {
+            switch(Number(selection)) {
+                case selectionNames.AARP:
+                    cbData = "Commercial Insurance: AARP";
+                break;
+                case selectionNames.AETNA:
+                    cbData = "Commercial Insurance: AETNA";
+                break;
+                case selectionNames.AMBETTER:
+                    cbData = "Commercial Insurance: AmBetter";
+                break;
+                case selectionNames.ASSURANT:
+                    cbData = "Commercial Insurance: Assurant";
+                break;
+                case selectionNames.AVMED_HEALTH_PLANS:
+                    cbData = "Commercial Insurance: AvMed Health Plans";
+                break;
+                case selectionNames.BEECH_STREET:
+                    cbData = "Commercial Insurance: Beech Street";
+                break;
+                case selectionNames.BLUE_CROSS_BLUE_SHIELD:
+                    cbData = "Commercial Insurance: Blue Cross Blue Shield Federal Employee Program";
+                break;
+                case selectionNames.CIGNA_HEALTHCARE:
+                    cbData = "Commercial Insurance: Cigna Healthcare";
+                break;
+                case selectionNames.COMMUNITY_CARE_NETWORK:
+                    cbData = "Commercial Insurance: Community Care Network";
+                break;
+                case selectionNames.CORVEL_GROUP_HEALTH:
+                    cbData = "Commercial Insurance: CorVel Group Health";
+                break;
+                case selectionNames.DIMENSION_HEALTH:
+                    cbData = "Commercial Insurance: Dimension Health";
+                break;
+                case selectionNames.EVOLUTIONS_HEALTHCARE:
+                    cbData = "Commercial Insurance: Evolutions Healthcare";
+                break;
+                case selectionNames.FIRST_HEALTH_COVENTRY_HEALTHCARE:
+                    cbData = "Commercial Insurance: First Health Coventry Healthcare";
+                break;
+                case selectionNames.FLORIDA_BLUE:
+                    cbData = "Commercial Insurance: Florida Blue";
+                break;
+                case selectionNames.GEHA_HEALTH_PLANS:
+                    cbData = "Commercial Insurance: GEHA Health Plans";
+                break;
+                case selectionNames.HEALTH_FIRST_HEALTH_PLANS:
+                    cbData = "Commercial Insurance: Health First Health Plans";
+                break;
+                case selectionNames.HUMANA:
+                    cbData = "Commercial Insurance: Humana";
+                break;
+                case selectionNames.MAIL_HANDLERS_BENEFIT_PLAN:
+                    cbData = "Commercial Insurance: Mail Handler's Benefit Plan (MBHP)";
+                break;
+                case selectionNames.MEGA_LIFE:
+                    cbData = "Commercial Insurance: Mega Life and Health Insurance";
+                break;
+                case selectionNames.MULTIPLAN:
+                    cbData = "Commercial Insurance: Multiplan";
+                break;
+                case selectionNames.NEIGHBORHOOD_HEALTH_PLAN:
+                    cbData = "Commercial Insurance: Neighborhood Health Plan";
+                break;
+                case selectionNames.OPTUM_HEALTHCARE:
+                    cbData = "Commercial Insurance: Optum Healthcare";
+                break;
+                case selectionNames.PREFERRED_MEDICAL_PLAN:
+                    cbData = "Commercial Insurance: Preferred Medical Plan (PMP)";
+                break;
+                case selectionNames.PRIVATE_HEALTHCARE_SYSTEMS:
+                    cbData = "Commercial Insurance: Private Healthcare Systems (PHS)";
+                break;
+                case selectionNames.UNITEDHEALTHCARE:
+                    cbData = "Commercial Insurance: UnitedHealthCare";
+                break;
+                case selectionNames.WELLCARE:
+                    cbData = "Commercial Insurance: Wellcare";
+                break;
+                case selectionNames.NOT_LISTED:
+                    cbData = "Commercial Insurance: Not Listed!";
+                break;
+                default:
+                    cbData = "ERROR: default case triggered in ComInsurance.js";
+                break;
+            }
+            navigate("../sprint2", {state: cbData});
+        } else {
+            cbData = "Commercial Insurance: Insurance was not listed!";
+            navigate("../contact-ins", {state: cbData});
         }
-        navigate("../contact-ins", {state: cbData});
+        
 	}
 
     return (

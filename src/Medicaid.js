@@ -15,28 +15,33 @@ export default function Medicaid() {
 	const handleSubmit = (e) => {
         e.preventDefault();
         let cbData = "";
-        switch(Number(selection)) {
-            case selectionNames.MEDICAID:
-                cbData = "Medicaid";
-            break;
-            case selectionNames.CHILDRENS_HEALTH_INSURANCE:
-                cbData = "MEDICAID: Children's Health Insurance";
-            break;
-            case selectionNames.MEDICAID_FOR_PREGNANT_WOMEN:
-                cbData = "Medicaid: Medicaid for Pregnant Women";
-            break;
-            case selectionNames.PACE:
-                cbData = "Medicaid: PACE (Program for All-Inclusive Care for the Elderly)";
-            break;
-            case selectionNames.NOT_LISTED:
-                cbData = "Medicaid: My insurance is not listed!";
-            break;
-            default:
-                cbData = "ERROR: default case triggered in Medicaid.js";
-            break;
+        if (Number(selection) === selectionNames.NOT_LISTED) {
+            cbData = "Medicaid: Insurance was not listed!";
+            navigate("../contact-ins", {state: cbData});
+        } else {
+            switch(Number(selection)) {
+                case selectionNames.MEDICAID:
+                    cbData = "Medicaid";
+                break;
+                case selectionNames.CHILDRENS_HEALTH_INSURANCE:
+                    cbData = "Medicaid: Children's Health Insurance";
+                break;
+                case selectionNames.MEDICAID_FOR_PREGNANT_WOMEN:
+                    cbData = "Medicaid: Medicaid for Pregnant Women";
+                break;
+                case selectionNames.PACE:
+                    cbData = "Medicaid: PACE (Program for All-Inclusive Care for the Elderly)";
+                break;
+                case selectionNames.NOT_LISTED:
+                    cbData = "Medicaid: My insurance is not listed!";
+                break;
+                default:
+                    cbData = "ERROR: default case triggered in Medicaid.js";
+                break;
+            }
+            console.log(cbData);
+            navigate("../sprint2", {state: cbData});
         }
-        console.log(cbData);
-        navigate("../contact-ins", {state: cbData});
 	}
     
     return (

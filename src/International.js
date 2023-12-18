@@ -31,73 +31,78 @@ export default function International() {
     const handleSubmit = (e) => {
         e.preventDefault();
         let cbData = "";
-        switch(Number(selection)) {
-            case selectionNames.ALGEMENE_ZIEKTEKOSTEN_VERZEKERING_AZV_ARUBA:
-                cbData = "International: Algemene Ziektekosten Verzekering:A.Z.V. (Aruba)";
-            break;
-            case selectionNames.APOLLO_SHIP_CHANDLERS:
-                cbData = "International: Apollo Ship Chandlers";
-            break;
-            case selectionNames.AXA_ASSISTANCE_USA:
-                cbData = "International: AXA Assistance USA";
-            break;
-            case selectionNames.BANCO_CENTROAMERICANO_DE_INTEGRACION_ECONOMICA:
-                cbData = "International: Banco Centroamericano De Integracion Economica";
-            break;
-            case selectionNames.BMI_FINANCIAL_GROUP:
-                cbData = "International: BMI Financial Group";
-            break;
-            case selectionNames.CARDEA_HEALTH_SOLUTIONS:
-                cbData = "International: Cardea Health Solutions";
-            break;
-            case selectionNames.FAMILY_GUARDIAN_INSURANCE:
-                cbData = "International: Family Guardian Insurance";
-            break;
-            case selectionNames.GENERALI_GLOBAL_HEALTH_SERVICE_GGHS:
-                cbData = "International: Generali Global Health Service (GGHS)";
-            break;
-            case selectionNames.GLOBAL_BENEFITS_GROUP:
-                cbData = "International: Global Benefits Group";
-            break;
-            case selectionNames.INTERAMERICANA_DE_SEGUROS_SA_FICHOS_SEGUROS:
-                cbData = "International: Interamericana de Seguros, S.A. (Fichos Seguros)";
-            break;
-            case selectionNames.INTREPID_INGLE_INTERNATIONAL:
-                cbData = "International: Intrepid (Ingle International)";
-            break;
-            case selectionNames.NEW_FRONTIER_GROUP:
-                cbData = "International: New Frontier Group";
-            break;
-            case selectionNames.PAN_AMERICAN_LIFE_INSURANCE:
-                cbData = "International: Pan American Life Insurance";
-            break;
-            case selectionNames.SEGUROS_AZUL_VIDA_SA_SEGUROS_DE_PERSONAS:
-                cbData = "International: Seguros Azul Vida, S.A. (Seguros de Personas)";
-            break;
-            case selectionNames.SEGUROS_RESERVA_SA:
-                cbData = "International: Seguros Reserva, S.A.";
-            break;
-            case selectionNames.SEGUROS_SURA_SA:
-                cbData = "International: Seguros Sura, S.A. (Sura Dominicana)";
-            break;
-            case selectionNames.SOCIAL_SECURITY_BOARD_BRITISH_VIRGIN_ISLANDS:
-                cbData = "International: Social Security Board, British Virgin Islands";
-            break;
-            case selectionNames.VUMI_VIP_UNIVERSAL_MEDICAL_INSURANCE:
-                cbData = "International: VUMI (VIP Universal Medical Insurance)";
-            break;
-            case selectionNames.WW_CONCIERGE_HEALTHCARE_SERVICES:
-                cbData = "International: WW Concierge Healthcare Services";
-            break;
-            case selectionNames.NOT_LISTED:
-                cbData = "International: My insurance is not listed!";
-            break;
-            default:
-                cbData = "ERROR: default case triggered in International.js";
-            break;
+        if (Number(selection) === selectionNames.NOT_LISTED) {
+            cbData = "International: Insurance was not listed!";
+            navigate("../contact-ins", {state: cbData});
+        } else {
+            switch(Number(selection)) {
+                case selectionNames.ALGEMENE_ZIEKTEKOSTEN_VERZEKERING_AZV_ARUBA:
+                    cbData = "International: Algemene Ziektekosten Verzekering:A.Z.V. (Aruba)";
+                break;
+                case selectionNames.APOLLO_SHIP_CHANDLERS:
+                    cbData = "International: Apollo Ship Chandlers";
+                break;
+                case selectionNames.AXA_ASSISTANCE_USA:
+                    cbData = "International: AXA Assistance USA";
+                break;
+                case selectionNames.BANCO_CENTROAMERICANO_DE_INTEGRACION_ECONOMICA:
+                    cbData = "International: Banco Centroamericano De Integracion Economica";
+                break;
+                case selectionNames.BMI_FINANCIAL_GROUP:
+                    cbData = "International: BMI Financial Group";
+                break;
+                case selectionNames.CARDEA_HEALTH_SOLUTIONS:
+                    cbData = "International: Cardea Health Solutions";
+                break;
+                case selectionNames.FAMILY_GUARDIAN_INSURANCE:
+                    cbData = "International: Family Guardian Insurance";
+                break;
+                case selectionNames.GENERALI_GLOBAL_HEALTH_SERVICE_GGHS:
+                    cbData = "International: Generali Global Health Service (GGHS)";
+                break;
+                case selectionNames.GLOBAL_BENEFITS_GROUP:
+                    cbData = "International: Global Benefits Group";
+                break;
+                case selectionNames.INTERAMERICANA_DE_SEGUROS_SA_FICHOS_SEGUROS:
+                    cbData = "International: Interamericana de Seguros, S.A. (Fichos Seguros)";
+                break;
+                case selectionNames.INTREPID_INGLE_INTERNATIONAL:
+                    cbData = "International: Intrepid (Ingle International)";
+                break;
+                case selectionNames.NEW_FRONTIER_GROUP:
+                    cbData = "International: New Frontier Group";
+                break;
+                case selectionNames.PAN_AMERICAN_LIFE_INSURANCE:
+                    cbData = "International: Pan American Life Insurance";
+                break;
+                case selectionNames.SEGUROS_AZUL_VIDA_SA_SEGUROS_DE_PERSONAS:
+                    cbData = "International: Seguros Azul Vida, S.A. (Seguros de Personas)";
+                break;
+                case selectionNames.SEGUROS_RESERVA_SA:
+                    cbData = "International: Seguros Reserva, S.A.";
+                break;
+                case selectionNames.SEGUROS_SURA_SA:
+                    cbData = "International: Seguros Sura, S.A. (Sura Dominicana)";
+                break;
+                case selectionNames.SOCIAL_SECURITY_BOARD_BRITISH_VIRGIN_ISLANDS:
+                    cbData = "International: Social Security Board, British Virgin Islands";
+                break;
+                case selectionNames.VUMI_VIP_UNIVERSAL_MEDICAL_INSURANCE:
+                    cbData = "International: VUMI (VIP Universal Medical Insurance)";
+                break;
+                case selectionNames.WW_CONCIERGE_HEALTHCARE_SERVICES:
+                    cbData = "International: WW Concierge Healthcare Services";
+                break;
+                case selectionNames.NOT_LISTED:
+                    cbData = "International: My insurance is not listed!";
+                break;
+                default:
+                    cbData = "ERROR: default case triggered in International.js";
+                break;
+            }
+    
+            navigate("../sprint2", {state: cbData});
         }
-
-        navigate("../contact-ins", {state: cbData});
     }
     
     return (

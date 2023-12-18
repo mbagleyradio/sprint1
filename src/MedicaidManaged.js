@@ -37,91 +37,96 @@ export default function MedicaidManaged() {
     const handleSubmit = (e) => {
         e.preventDefault();
         let cbData = "";
-        switch(Number(selection)) {
-            case selectionNames.AETNA_BETTER_HEALTH_MEDICAID:
-                cbData = "Medicaid Managed Care: Aetna Better Health Medicaid";
-            break;
-            case selectionNames.AETNA_HEALTHYKIDS:
-                cbData = "Medicaid Managed Care: Aetna HealthyKids";
-            break;
-            case selectionNames.AMERIGROUP:
-                cbData = "Medicaid Managed Care: Amerigroup"
-            break;
-            case selectionNames.CHILDRENS_MEDICAL_SERVICES_TITLE_XIX_XX:
-                cbData = "Medicaid Managed Care: Children's Medical Services (title XIX, XX)";
-            break;
-            case selectionNames.CLEAR_HEALTH_ALLIANCE:
-                cbData = "Medicaid Managed Care: Clear Health Alliance";
-            break;
-            case selectionNames.COMMUNITY_CARE_PLAN:
-                cbData = "Medicaid Managed Care: Community Care Plan";
-            break;
-            case selectionNames.FLORIDA_COMMUNITY_CARE:
-                cbData = "Medicaid Managed Care: Florida Community Care";
-            break;
-            case selectionNames.FREEDOM_HEALTH:
-                cbData = "Medicaid Managed Care: Freedom Health";
-            break;
-            case selectionNames.HUMANA:
-                cbData = "Medicaid Managed Care: Humana";
-            break;
-            case selectionNames.HUMANA_HEALTHY_HORIZONS:
-                cbData = "Medicaid Managed Care: Humana Healthy Horizons";
-            break;
-            case selectionNames.INTEGRAL_QUALITY_CARE:
-                cbData = "Medicaid Managed Care: Integral Quality Care";
-            break;
-            case selectionNames.MAGELLAN_COMPLETE_CARE:
-                cbData = "Medicaid Managed Care: Magellan Complete Care";
-            break;
-            case selectionNames.MOLINA_HEALTHCARE_OF_FLORIDA:
-                cbData = "Medicaid Managed Care: Molina Healthcare of Florida";
-            break;
-            case selectionNames.NEIGHBORHOOD_HEALTH_PARTNERSHIP:
-                cbData = "Medicaid Managed Care: Neighborhood Health Partnership";
-            break;
-            case selectionNames.OPTIMUM_HEALTHCARE:
-                cbData = "Medicaid Managed Care: Optimum Healthcare";
-            break;
-            case selectionNames.POSITIVE_HEALTH:
-                cbData = "Medicaid Managed Care: Positive Health";
-            break;
-            case selectionNames.POSITIVE_HEALTHCARE:
-                cbData = "Medicaid Managed Care: Positive Healthcare";
-            break;
-            case selectionNames.PRESTIGE_HEALTH_CHOICE:
-                cbData = "Medicaid Managed Care: Prestige Health Choice";
-            break;
-            case selectionNames.PRESTIGE_HEALTH_PLANS:
-                cbData = "Medicaid Managed Care: Prestige Health Plans";
-            break;
-            case selectionNames.SIMPLY_HEALTH_CARE:
-                cbData = "Medicaid Managed Care: Simply Health Care";
-            break;
-            case selectionNames.SIMPLY_MEDICAID_BY_CLEAR_HEALTH_ALLIANCE:
-                cbData = "Medicaid Managed Care: Simply Medicaid by Clear Health Alliance";
-            break;
-            case selectionNames.STAYWELL:
-                cbData = "Medicaid Managed Care: Staywell";
-            break;
-            case selectionNames.SUNSHINE_HEALTH_CHILD_WELFARE:
-                cbData = "Medicaid Managed Care: Sunshine Health (Child Welfare)";
-            break;
-            case selectionNames.UNITED_HEALTHCARE_OF_FLORIDA_MEDICAID:
-                cbData = "Medicaid Managed Care: United Healthcare of Florida Medicaid";
-            break;
-            case selectionNames.WELLCARE_OF_FLORIDA:
-                cbData = "Medicaid Managed Care: Wellcare of Florida";
-            break;
-            case selectionNames.NOT_LISTED:
-                cbData = "Medicaid Managed Care: My insurance is not listed";
-            break;
-            default:
-                cbData = "ERROR: default case triggered in MedicaidManaged.js";
-            break;
+        if (Number(selection) === selectionNames.NOT_LISTED) {
+            cbData = "Medicaid Managed Care: Insurance was not listed!";
+            navigate("../contact-ins", {state: cbData});
+        } else {
+            switch(Number(selection)) {
+                case selectionNames.AETNA_BETTER_HEALTH_MEDICAID:
+                    cbData = "Medicaid Managed Care: Aetna Better Health Medicaid";
+                break;
+                case selectionNames.AETNA_HEALTHYKIDS:
+                    cbData = "Medicaid Managed Care: Aetna HealthyKids";
+                break;
+                case selectionNames.AMERIGROUP:
+                    cbData = "Medicaid Managed Care: Amerigroup"
+                break;
+                case selectionNames.CHILDRENS_MEDICAL_SERVICES_TITLE_XIX_XX:
+                    cbData = "Medicaid Managed Care: Children's Medical Services (title XIX, XX)";
+                break;
+                case selectionNames.CLEAR_HEALTH_ALLIANCE:
+                    cbData = "Medicaid Managed Care: Clear Health Alliance";
+                break;
+                case selectionNames.COMMUNITY_CARE_PLAN:
+                    cbData = "Medicaid Managed Care: Community Care Plan";
+                break;
+                case selectionNames.FLORIDA_COMMUNITY_CARE:
+                    cbData = "Medicaid Managed Care: Florida Community Care";
+                break;
+                case selectionNames.FREEDOM_HEALTH:
+                    cbData = "Medicaid Managed Care: Freedom Health";
+                break;
+                case selectionNames.HUMANA:
+                    cbData = "Medicaid Managed Care: Humana";
+                break;
+                case selectionNames.HUMANA_HEALTHY_HORIZONS:
+                    cbData = "Medicaid Managed Care: Humana Healthy Horizons";
+                break;
+                case selectionNames.INTEGRAL_QUALITY_CARE:
+                    cbData = "Medicaid Managed Care: Integral Quality Care";
+                break;
+                case selectionNames.MAGELLAN_COMPLETE_CARE:
+                    cbData = "Medicaid Managed Care: Magellan Complete Care";
+                break;
+                case selectionNames.MOLINA_HEALTHCARE_OF_FLORIDA:
+                    cbData = "Medicaid Managed Care: Molina Healthcare of Florida";
+                break;
+                case selectionNames.NEIGHBORHOOD_HEALTH_PARTNERSHIP:
+                    cbData = "Medicaid Managed Care: Neighborhood Health Partnership";
+                break;
+                case selectionNames.OPTIMUM_HEALTHCARE:
+                    cbData = "Medicaid Managed Care: Optimum Healthcare";
+                break;
+                case selectionNames.POSITIVE_HEALTH:
+                    cbData = "Medicaid Managed Care: Positive Health";
+                break;
+                case selectionNames.POSITIVE_HEALTHCARE:
+                    cbData = "Medicaid Managed Care: Positive Healthcare";
+                break;
+                case selectionNames.PRESTIGE_HEALTH_CHOICE:
+                    cbData = "Medicaid Managed Care: Prestige Health Choice";
+                break;
+                case selectionNames.PRESTIGE_HEALTH_PLANS:
+                    cbData = "Medicaid Managed Care: Prestige Health Plans";
+                break;
+                case selectionNames.SIMPLY_HEALTH_CARE:
+                    cbData = "Medicaid Managed Care: Simply Health Care";
+                break;
+                case selectionNames.SIMPLY_MEDICAID_BY_CLEAR_HEALTH_ALLIANCE:
+                    cbData = "Medicaid Managed Care: Simply Medicaid by Clear Health Alliance";
+                break;
+                case selectionNames.STAYWELL:
+                    cbData = "Medicaid Managed Care: Staywell";
+                break;
+                case selectionNames.SUNSHINE_HEALTH_CHILD_WELFARE:
+                    cbData = "Medicaid Managed Care: Sunshine Health (Child Welfare)";
+                break;
+                case selectionNames.UNITED_HEALTHCARE_OF_FLORIDA_MEDICAID:
+                    cbData = "Medicaid Managed Care: United Healthcare of Florida Medicaid";
+                break;
+                case selectionNames.WELLCARE_OF_FLORIDA:
+                    cbData = "Medicaid Managed Care: Wellcare of Florida";
+                break;
+                case selectionNames.NOT_LISTED:
+                    cbData = "Medicaid Managed Care: My insurance is not listed";
+                break;
+                default:
+                    cbData = "ERROR: default case triggered in MedicaidManaged.js";
+                break;
+            }
+    
+            navigate("../sprint2", {state: cbData});
         }
-
-        navigate("../contact-ins", {state: cbData});
     }
 
     return (

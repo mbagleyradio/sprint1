@@ -62,14 +62,17 @@ function NoInsurance() {
 	const handleClick = () => {
 		// Prepare data - an array of booleans
 		const cbData = [false, isNoCost, isSliding, isDiscount, isPayment, isFAP, isCatastrophic, isCareCredit, isSelfPay, isNotListed];
+
+		if (isNotListed === false) {
+			navigate("../sprint2", {state: cbData});
+		}
+		else {
 		/*const response = await fetch("http://localhost:3000/storeCheckbox", {
             method: "PUT",
             body: JSON.stringify(cbData);
-        });
-        
-        
-        */
-		navigate("../contact-no-ins", {state: cbData});
+        }); */
+			navigate("../contact-no-ins", {state: cbData});
+		}
 	}
     
     return (
