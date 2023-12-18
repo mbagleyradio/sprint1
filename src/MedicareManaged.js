@@ -188,49 +188,87 @@ export default function MedicareManaged() {
     return (
         <div id="hasInsurance">
             <form onSubmit={handleSubmit}>
-            <button type="submit">Submit</button>
-                <select value={selection} name="medicareManagedInsuranceSelections" id="medicareManagedInsuranceSelections" size="8" onChange={e => {setSelection(Number(e.target.value))}}>
-                    <option value="1">AARP</option>
-                    <option value="2">Aetna</option>
-                    <option value="3">Align Senior Care</option>
-                    <option value="4">Allwell from Sunshine Health</option>
-                    <option value="5">AvMed Health Plans</option>
-                    <option value="6">Better Health</option>
-                    <option value="7">Blue Cross Blue Shield</option>
-                    <option value="8">CarePlus</option>
-                    <option value="9">Cigna HealthCare</option>
-                    <option value="10">Devoted Health</option>
-                    <option value="11">Doctors Healthcare Plans</option>
-                    <option value="12">Florida Blue</option>
-                    <option value="13">Freedom Health</option>
-                    <option value="14">Freedom Medicare</option>
-                    <option value="15">Health First Health Plans</option>
-                    <option value="16">HealthSun Health Plans</option>
-                    <option value="17">Humana</option>
-                    <option value="18">Kaiser Permanente</option>
-                    <option value="19">Leon Health Plans</option>
-                    <option value="20">Longevity</option>
-                    <option value="21">Magellan Complete Care</option>
-                    <option value="22">Medica HealthCare Plans</option>
-                    <option value="23">Molina Healthcare</option>
-                    <option value="24">Optimum Choice Medicare Advantage</option>
-                    <option value="25">Optimum HealthCare</option>
-                    <option value="26">Optimum Medicare Advantage</option>
-                    <option value="27">Pace</option>
-                    <option value="28">Physicians United Plan</option>
-                    <option value="29">Positive Healthcare</option>
-                    <option value="30">Preferred Care Partners</option>
-                    <option value="31">Prestige Medicare Advantage</option>
-                    <option value="32">Railroad Medicare</option>
-                    <option value="33">Simply Healthcare Plans</option>
-                    <option value="34">Solis Health Plans</option>
-                    <option value="35">Sunshine Health</option>
-                    <option value="36">Sunshine Medicare</option>
-                    <option value="37">UnitedHealthCare</option>
-                    <option value="38">WellCare</option>
-                    <option value="39">WellMed Medical Management</option>
-                    <option value="40">My insurance is not listed</option>
-                </select>
+                <button type="submit">Submit</button><br/>
+                <input value="1" type="radio" id="aarp" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="aarp">AARP</label><br/>
+                <input value="2" type="radio" id="aetna" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="aetna">Aetna</label><br/>
+                <input value="3" type="radio" id="align_senior_care" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="align_senior_care">Align Senior Care</label><br/>
+                <input value="4" type="radio" id="allwell" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="allwell">Allwell from Sunshine Health</label><br/>
+                <input value="5" type="radio" id="avmed_health_plans" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="avmed_health_plans">AvMed Health Plans</label><br/>
+                <input value="6" type="radio" id="better_health" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="better_health">Better Health</label><br/>
+                <input value="7" type="radio" id="blue_cross_blue_shield" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="blue_cross_blue_shield">Blue Cross Blue Shield</label><br/>
+                <input value="8" type="radio" id="care_plus" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="care_plus">CarePlus</label><br/>
+                <input value="9" type="radio" id="cigna" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="cigna">Cigna HealthCare</label><br/>
+                <input value="10" type="radio" id="devoted" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="devoted">Devoted Health</label><br/>
+                <input value="11" type="radio" id="doctors_healthcare_plans" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="doctors_healthcare_plans">Doctors Healthcare Plans</label><br/>
+                <input value="12" type="radio" id="florida_blue" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="florida_blue">Florida Blue</label><br/>
+                <input value="13" type="radio" id="freedom_health" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="freedom_health">Freedom Health</label><br/>
+                <input value="14" type="radio" id="freedom_medicare" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="freedom_medicare">Freedom Medicare</label><br/>
+                <input value="15" type="radio" id="health_first" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="health_first">Health First Health Plans</label><br/>
+                <input value="16" type="radio" id="health_sun" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="health_sun">HealthSun Health Plans</label><br/>
+                <input value="17" type="radio" id="humana" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="humana">Humana</label><br/>
+                <input value="18" type="radio" id="kaiser" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="kaiser">Kaiser Permanente</label><br/>
+                <input value="19" type="radio" id="leon" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="leon">Leon Health Plans</label><br/>
+                <input value="20" type="radio" id="longevity" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="longevity">Longevity</label><br/>
+                <input value="21" type="radio" id="magellan" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="magellan">Magellan Complete Care</label><br/>
+                <input value="22" type="radio" id="medica" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="medica">Medica HealthCare Plans</label><br/>
+                <input value="23" type="radio" id="molina" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="molina">Molina Healthcare</label><br/>
+                <input value="24" type="radio" id="optimum_choice" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="optimum_choice">Optimum Choice Medicare Advantage</label><br/>
+                <input value="25" type="radio" id="optimum_healthcare" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="optimum_healthcare">Optimum HealthCare</label><br/>
+                <input value="26" type="radio" id="optimum_medicare" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="optimum_medicare">Optimum Medicare Advantage</label><br/>
+                <input value="27" type="radio" id="pace" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="pace">Pace</label><br/>
+                <input value="28" type="radio" id="physicians_united" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="physicians_united">Physicians United Plan</label><br/>
+                <input value="29" type="radio" id="positive" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="positive">Positive Healthcare</label><br/>
+                <input value="30" type="radio" id="preferred_care" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="preferred_care">Preferred Care Partners</label><br/>
+                <input value="31" type="radio" id="prestige" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="prestige">Prestige Medicare Advantage</label><br/>
+                <input value="32" type="radio" id="railroad" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="railroad">Railroad Medicare</label><br/>
+                <input value="33" type="radio" id="simply" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="simply">Simply Healthcare Plans</label><br/>
+                <input value="34" type="radio" id="solis" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="solis">Solis Health Plans</label><br/>
+                <input value="35" type="radio" id="sunshine_health" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="sunshine_health">Sunshine Health</label><br/>
+                <input value="36" type="radio" id="sunshine_medicare" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="sunshine_medicare">Sunshine Medicare</label><br/>
+                <input value="37" type="radio" id="united" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="united">UnitedHealthCare</label><br/>
+                <input value="38" type="radio" id="wellcare" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="wellcare">WellCare</label><br/>
+                <input value="39" type="radio" id="wellmed" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="wellmed">WellMed Medical Management</label><br/>
+                <input value="40" type="radio" id="not_listed" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="not_listed">My insurance is not listed</label><br/>
             </form>
         </div>
     );

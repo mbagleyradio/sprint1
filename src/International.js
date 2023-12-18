@@ -149,7 +149,6 @@ export default function International() {
                 <label for="ww_concierge">WW Concierge Healthcare Services</label><br/>
                 <input value="20" type="radio" id="not_listed" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
                 <label for="not_listed">My insurance is not listed</label><br/>
-
             </form>
         </div>
     );
