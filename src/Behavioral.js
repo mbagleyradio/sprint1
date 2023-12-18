@@ -72,23 +72,33 @@ export default function Behavioral() {
         
     }
     return (
-    <div id="hasInsurance">
+    <div id="behavioralInsuranceSelections">
         <form onSubmit={handleSubmit}>
-        <button type="submit">Submit</button>
-            <select value={selection} name="behavioralInsuranceSelections" id="behavioralInsuranceSelections" size="8" onChange={e => {setSelection(Number(e.target.value))}}>
-                <option value="1">Amerigroup</option>
-                <option value="2">Beacon</option>
-                <option value="3">Behavioral Health Services</option>
-                <option value="4">Concordia</option>
-                <option value="5">Evernorth</option>
-                <option value="6">Magellan Behavioral Health</option>
-                <option value="7">Mental Health Associates</option>
-                <option value="8">Optum</option>
-                <option value="9">Sunshine</option>
-                <option value="10">Value Options</option>
-                <option value="11">Wellcare BH</option>
-                <option value="12">My insurance is not listed</option>
-            </select>
+                <button type="submit">Submit</button><br/>
+                <input value="1" type="radio" id="amerigroup" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="amerigroup">Amerigroup</label><br/>
+                <input value="2" type="radio" id="beacon" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="beacon"></label>Beacon<br/>
+                <input value="3" type="radio" id="behavioral_health_services" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="behavioral_health_services">Behavioral Health Services</label><br/>
+                <input value="4" type="radio" id="concordia" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="concordia">Concordia</label><br/>
+                <input value="5" type="radio" id="evernorth" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="evernorth">Evernorth</label><br/>
+                <input value="6" type="radio" id="magellan_behavioral_health" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="magellan_behavioral_health">Magellan Behavioral Health</label><br/>
+                <input value="7" type="radio" id="mental_health_associates" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="mental_health_associates">Mental Health Associates</label><br/>
+                <input value="8" type="radio" id="optum" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="optum">Optum</label><br/>
+                <input value="9" type="radio" id="sunshine" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="sunshine">Sunshine</label><br/>
+                <input value="10" type="radio" id="value_options" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="value_options">Value Options</label><br/>
+                <input value="11" type="radio" id="wellcare_bh" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="wellcare_bh">Wellcare BH</label><br/>
+                <input value="12" type="radio" id="not_listed" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="not_listed">My insurance is not listed</label><br/>
         </form>
     </div>
     );
