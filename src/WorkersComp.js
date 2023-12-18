@@ -61,20 +61,27 @@ export default function WorkersComp() {
     }
     
     return (
-        <div id="hasInsurance">
+        <div id="workersCompInsuranceSelections">
             <form onSubmit={handleSubmit}>
-            <button type="submit">Submit</button>
-                <select value={selection} name="workersCompInsuranceSelections" id="workersCompInsuranceSelections" size="8" onChange={e => {setSelection(Number(e.target.value))}}>
-                    <option value="1">Advanet Worker's Comp</option>
-                    <option value="2">Beech Street</option>
-                    <option value="3">Careworks</option>
-                    <option value="4">Choice Managed Networks</option>
-                    <option value="5">Corvel - Worker's Comp</option>
-                    <option value="6">Dimension Health</option>
-                    <option value="7">First Health Network</option>
-                    <option value="8">Humana Worker's Comp</option>
-                    <option value="9">My insurance is not listed</option>
-                </select>
+                <button type="submit">Submit</button><br/>
+                <input value="1" type="radio" id="advanet_workers_comp" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="advanet_workers_comp">Advanet Workers Comp</label><br/>
+                <input value="2" type="radio" id="beech_street" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="beech_street">Beech Street</label><br/>
+                <input value="3" type="radio" id="careworks" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="careworks"></label>Careworks<br/>
+                <input value="4" type="radio" id="choice_managed_networks" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="choice_managed_networks">Choice Managed Networks</label><br/>
+                <input value="5" type="radio" id="corvel_workers_comp" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="corvel_workers_comp">Corvel - Worker's Comp</label><br/>
+                <input value="6" type="radio" id="dimension_health" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="dimension_health">Dimension Health</label><br/>
+                <input value="7" type="radio" id="first_health_network" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="first_health_network">First Health Network</label><br/>
+                <input value="8" type="radio" id="humana_workers_comp" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="humana_workers_comp">Humana Workers Comp</label><br/>
+                <input value="9" type="radio" id="not_listed" name="insGroup" onChange={e => {setSelection(Number(e.target.value))}}/>
+                <label for="not_listed">My insurance is not listed</label><br/>
             </form>
         </div>
     );
