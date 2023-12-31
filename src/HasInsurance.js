@@ -9,8 +9,8 @@ import HealthcareExchange from './HealthcareExchange.js';
 import International from './International.js';
 import WorkersComp from './WorkersComp.js';
 import Behavioral from './Behavioral.js';
+import FetchInsurances from './FetchInsurances.js';
 import { useNavigate } from 'react-router-dom';
-
 function HasInsurance(props) {
 	const navigate = useNavigate();
 	const insuranceEnums = {
@@ -27,10 +27,13 @@ function HasInsurance(props) {
 		BEHAVIORAL_HEALTH: 11
 	};
 
+	
+
 	const insuranceType = props.insuranceType;
     switch(insuranceType) {
 		case insuranceEnums.COMMERCIAL:
-			return(<ComInsurance/>);
+			return(<FetchInsurances src="https://uvcsandbox.com/php/Commercial.php"/>);
+			//return(<ComInsurance/>);
 		break;
 
 		case insuranceEnums.MEDICARE:
