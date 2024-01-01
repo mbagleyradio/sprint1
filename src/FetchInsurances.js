@@ -32,15 +32,13 @@ export default function FetchInsurances({src}) {
 
 	useEffect(() => {
 		const headers = {};
-		fetch("https://uvcsandbox.com/php/Commercial.php", {
+		fetch("http://uvcsandbox.com/php/Commercial.php", {
 			method: "GET",
 			mode: "cors",
 			headers: headers
 		}).then(response => {
 			return response.json()
 		}).then(data => {
-			console.log("This is after the data has been fetched");
-			console.log(data);
 			setInsurances(data);
 		}).catch(error => {
 			console.log(error);

@@ -27,13 +27,10 @@ function HasInsurance(props) {
 		BEHAVIORAL_HEALTH: 11
 	};
 
-	
-
 	const insuranceType = props.insuranceType;
     switch(insuranceType) {
 		case insuranceEnums.COMMERCIAL:
-			return(<FetchInsurances src="https://uvcsandbox.com/php/Commercial.php"/>);
-			//return(<ComInsurance/>);
+			return(<ComInsurance/>);
 		break;
 
 		case insuranceEnums.MEDICARE:
