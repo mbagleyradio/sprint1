@@ -16,7 +16,7 @@ function PopupI(/*props*/) {
     const [ insurance, setInsurance] = useState("");
     const location = useLocation();
     const cbData = location.state;
-
+    console.log(cbData);
     const user = {
         name: "",
         insurance: "",
