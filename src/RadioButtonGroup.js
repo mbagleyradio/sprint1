@@ -9,7 +9,7 @@ export default function RadioButtonGroup({insurances, isLoaded}) {
 		if (selection.includes("not") && selection.includes("listed")) {
 			navigate("../contact-ins", {state: selection});
 		} else {
-			navigate("../sprint2", {state: selection});
+			navigate("../healthcare-categories", {state: selection});
 		}
 	}
 	if (!isLoaded) {

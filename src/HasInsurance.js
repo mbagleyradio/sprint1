@@ -33,7 +33,7 @@ function HasInsurance(props) {
 		break;
 
 		case insuranceEnums.MEDICARE:
-			navigate("../sprint2", {state: "Medicare"});
+			navigate("../healthcare-categories", {state: "Medicare"});
 		break;
 
 		case insuranceEnums.MEDICARE_MANAGED:

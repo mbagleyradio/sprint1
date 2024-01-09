@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import RadioButtonGroup from './RadioButtonGroup.js';
 
-export default function ComInsurance() {
+export default function Behavioral() {
     const [insurances, setInsurances] = useState(null);
 	const [loaded, setLoaded] = useState(false);
 
