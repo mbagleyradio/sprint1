@@ -1,5 +1,6 @@
 import './HealthcareCategories.css';
 import { useLocation } from 'react-router-dom';
+import A2CLogo from './A2CLogo_150x150.png';
 import AddictionMedicine from './sprint2/img/Addiction Medicine.png';
 import AllergyAndImmune from './sprint2/img/Allergy & Immune System Medicine.png';
 import Anesthesiology from './sprint2/img/Anesthesiology.png';
@@ -31,44 +32,121 @@ export default function HealthcareCategories(props) {
     const sprint1Data = location.state;
     console.log(sprint1Data);
     return (
+    <div id="wholePage">
+        <img id="welcomeIMG" src={A2CLogo} alt="Welcome to Monroe County"/><br/>
+        <p>Test</p>
         <div id="landingPage">
-            <div id="buttonTable">
-                <div class="buttonColumn" id="firstCol">
+            <div class="buttonColumn" id="firstCol">
+                <figure>
                     <img src={AddictionMedicine} alt="Addiction Medicine"/>
+                    <figcaption>Addiction Medicine</figcaption>
+                </figure>
+                <figure>
                     <img src={AllergyAndImmune} alt="Allergy and Immune System Medicine"/>
+                    <figcaption>Allergy and Immune System Medicine</figcaption>
+                </figure>
+                <figure>
                     <img src={Anesthesiology} alt="Anesthesiology"/>
+                    <figcaption>Anesthesiology</figcaption>
+                </figure>
+                <figure>
                     <img src={BehavioralHealth} alt="Behavioral Health"/>
+                    <figcaption>Behavioral Health</figcaption>
+                </figure>
+                <figure>
                     <img src={Cardiology} alt="Cardiology"/>
-                </div>
-                <div class="buttonColumn" id="secondCol">
+                    <figcaption>Cardiology</figcaption>
+                </figure>
+            </div>
+            <div class="buttonColumn" id="secondCol">
+                <figure>                
                     <img src={Dermatology} alt="Dermatology"/>
+                    <figcaption>Dermatology</figcaption>
+                </figure>
+                <figure>
                     <img src={EarNoseThroat} alt="Ear, Nose, and Throat"/>
+                    <figcaption>Ear, Nose, and Throat</figcaption>
+                </figure>
+                <figure>
                     <img src={EmergencyMedicine} alt="Emergency Medicine"/>
+                    <figcaption>Emergency Medicine</figcaption>
+                </figure>
+                <figure>
                     <img src={Endocrinology} alt="Endocrinology"/>
+                    <figcaption>Endocrinology</figcaption>
+                </figure>
+                <figure>
                     <img src={FamilyPracticeInternalMedicine} alt="Family Practice and Internal Medicine"/>
-                </div>
-                <div class="buttonColumn" id="thirdCol">
+                    <figcaption>Family Practice and Internal Medicine</figcaption>
+                </figure>
+            </div>
+            <div class="buttonColumn" id="thirdCol">
+                <figure>
                     <img src={Gastroenterology} alt="Gastroenterology"/>
+                    <figcaption>Gastroenterology</figcaption>
+                </figure>
+                <figure>
                     <img src={Hematology} alt="Hematology"/>
+                    <figcaption>Hematology</figcaption>
+                </figure>
+                <figure>
                     <img src={Neurology} alt="Neurology"/>
+                    <figcaption>Neurology</figcaption>
+                </figure>
+                <figure>
                     <img src={Oncology} alt="Oncology"/>
+                    <figcaption>Oncology</figcaption>
+                </figure>
+                <figure>
                     <img src={Opthamology} alt="Opthamology"/>
-                </div>
-                <div class="buttonColumn" id="fourthCol">
+                    <figcaption>Opthamology</figcaption>
+                </figure>
+            </div>
+            <div class="buttonColumn" id="fourthCol">
+                <figure>
                     <img src={Orthopedics} alt="Orthopedics"/>
+                    <figcaption>Orthopedics</figcaption>
+                </figure>
+                <figure>
                     <img src={Pathology} alt="Pathology"/>
+                    <figcaption>Pathology</figcaption>
+                </figure>
+                <figure>
                     <img src={Pediatrics} alt="Pediatrics"/>
+                    <figcaption>Pediatrics</figcaption>
+                </figure>
+                <figure>
                     <img src={Podiatry} alt="Podiatry"/>
+                    <figcaption>Podiatry</figcaption>
+                </figure>
+                <figure>
                     <img src={Pulmonology} alt="Pulmonology"/>
-                </div>
-                <div class="buttonColumn" id="fifthCol">   
+                    <figcaption>Pulmonology</figcaption>
+                </figure>
+            </div>
+            <div class="buttonColumn" id="fifthCol">   
+                <figure>
                     <img src={Radiology} alt="Radiology"/>
+                    <figcaption>Radiology</figcaption>
+                </figure>
+                <figure>
                     <img src={Rheumatology} alt="Rheumatology"/>
+                    <figcaption>Rheumatology</figcaption>
+                </figure>
+                <figure>
                     <img src={Surgery} alt="Surgery"/>
+                    <figcaption>Surgery</figcaption>
+                </figure>
+                <figure>
                     <img src={Urology} alt="Urology"/>
+                    <figcaption>Urology</figcaption>
+                </figure>
+                <figure>
                     <img src={WomensHealth} alt="Women's Health, OB/GN"/>
-                </div>
+                    <figcaption>Women's Health, OB/GN</figcaption>
+                </figure>                
             </div>
         </div>
+    </div>
     );
 }

@@ -1,9 +1,16 @@
-#landingPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#welcomeBanner {
+    margin-left: 0%;
+    max-width: 100%;
+    height: auto;
 }
 
-#buttonTable {
+#landingPage {
     display: flex;
 }
+
+.buttonColumn {
+    flex-direction: row;
+    justify-self: center;
+    align-self: center;
+}
+
