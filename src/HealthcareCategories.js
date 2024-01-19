@@ -43,111 +43,111 @@ export default function HealthcareCategories(props) {
         <h2 id="welcomeMSG">What category of healthcare services are you looking for? (pick one)</h2>
         <div id="landingPage">
             <div class="buttonColumn" id="firstCol">
-                <figure>
+                <figure class="figButton">
                     <img src={AddictionMedicine} alt="Addiction Medicine"/>
                     <figcaption>Addiction Medicine</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={AllergyAndImmune} alt="Allergy and Immune System Medicine"/>
                     <figcaption>Allergy & Immune System Medicine</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Anesthesiology} alt="Anesthesiology"/>
                     <figcaption>Anesthesiology</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={BehavioralHealth} alt="Behavioral Health"/>
                     <figcaption>Behavioral Health</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Cardiology} alt="Cardiology"/>
                     <figcaption>Cardiology</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="secondCol">
-                <figure>                
+                <figure class="figButton">                
                     <img src={Dermatology} alt="Dermatology"/>
                     <figcaption>Dermatology</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={EarNoseThroat} alt="Ear, Nose, and Throat"/>
                     <figcaption>Ear, Nose, & Throat (Otolaryngology)</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={EmergencyMedicine} alt="Emergency Medicine"/>
                     <figcaption>Emergency Medicine</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Endocrinology} alt="Endocrinology"/>
                     <figcaption>Endocrinology</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={FamilyPracticeInternalMedicine} alt="Family Practice and Internal Medicine"/>
                     <figcaption>Family Practice / Internal Medicine</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="thirdCol">
-                <figure>
+                <figure class="figButton">
                     <img src={Gastroenterology} alt="Gastroenterology"/>
                     <figcaption>Gastroenterology</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Hematology} alt="Hematology"/>
                     <figcaption>Hematology</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Neurology} alt="Neurology"/>
                     <figcaption>Neurology</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Oncology} alt="Oncology"/>
                     <figcaption>Oncology</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Opthamology} alt="Opthamology"/>
                     <figcaption>Opthamology / Eye Care Medicine</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="fourthCol">
-                <figure>
+                <figure class="figButton">
                     <img src={Orthopedics} alt="Orthopedics"/>
                     <figcaption>Orthopedics</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Pathology} alt="Pathology"/>
                     <figcaption>Pathology</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Pediatrics} alt="Pediatrics"/>
                     <figcaption>Pediatrics</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Podiatry} alt="Podiatry"/>
                     <figcaption>Podiatry</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Pulmonology} alt="Pulmonology"/>
                     <figcaption>Pulmonology</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="fifthCol">   
-                <figure>
+                <figure class="figButton">
                     <img src={Radiology} alt="Radiology"/>
                     <figcaption>Radiology & Nuclear Medicine</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Rheumatology} alt="Rheumatology"/>
                     <figcaption>Rheumatology</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Surgery} alt="Surgery"/>
                     <figcaption>Surgery</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={Urology} alt="Urology"/>
                     <figcaption>Urology</figcaption>
                 </figure>
-                <figure>
+                <figure class="figButton">
                     <img src={WomensHealth} alt="Women's Health, OB/GN"/>
                     <figcaption>Women's Health / OB/GYN</figcaption>
                 </figure>                
