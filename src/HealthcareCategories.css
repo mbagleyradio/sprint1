@@ -1,16 +1,36 @@
-#welcomeBanner {
+#welcomeIMG {
     margin-left: 0%;
     max-width: 100%;
     height: auto;
 }
 
+#topOfPage {
+    display: flex;
+    flex-direction: row;
+}
+
+#banner {
+    background-color: white;
+    align-self: center;
+    justify-content: center;
+}
+
+#welcomeMSG {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
 #landingPage {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .buttonColumn {
+    display: flex;
     flex-direction: row;
-    justify-self: center;
-    align-self: center;
+    justify-content: center;
+    align-items: center;
 }
-

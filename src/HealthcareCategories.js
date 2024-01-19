@@ -30,11 +30,17 @@ import WomensHealth from './sprint2/img/Womens Health.png';
 export default function HealthcareCategories(props) {
     const location = useLocation();
     const sprint1Data = location.state;
-    console.log(sprint1Data);
+    const insuranceContext = sprint1Data.split(": ");
     return (
     <div id="wholePage">
-        <img id="welcomeIMG" src={A2CLogo} alt="Welcome to Monroe County"/><br/>
-        <p>Test</p>
+        <div id="topOfPage">
+            <img id="welcomeIMG" src={A2CLogo} alt="Welcome to Monroe County"/>
+            <div id="banner">
+                <h1>TYPE: {insuranceContext[0]}</h1>
+                <h1>NAME: {insuranceContext[1]}</h1>
+            </div>
+        </div>
+        <h2 id="welcomeMSG">What category of healthcare services are you looking for? (pick one)</h2>
         <div id="landingPage">
             <div class="buttonColumn" id="firstCol">
                 <figure>
@@ -43,7 +49,7 @@ export default function HealthcareCategories(props) {
                 </figure>
                 <figure>
                     <img src={AllergyAndImmune} alt="Allergy and Immune System Medicine"/>
-                    <figcaption>Allergy and Immune System Medicine</figcaption>
+                    <figcaption>Allergy & Immune System Medicine</figcaption>
                 </figure>
                 <figure>
                     <img src={Anesthesiology} alt="Anesthesiology"/>
@@ -65,7 +71,7 @@ export default function HealthcareCategories(props) {
                 </figure>
                 <figure>
                     <img src={EarNoseThroat} alt="Ear, Nose, and Throat"/>
-                    <figcaption>Ear, Nose, and Throat</figcaption>
+                    <figcaption>Ear, Nose, & Throat (Otolaryngology)</figcaption>
                 </figure>
                 <figure>
                     <img src={EmergencyMedicine} alt="Emergency Medicine"/>
@@ -77,7 +83,7 @@ export default function HealthcareCategories(props) {
                 </figure>
                 <figure>
                     <img src={FamilyPracticeInternalMedicine} alt="Family Practice and Internal Medicine"/>
-                    <figcaption>Family Practice and Internal Medicine</figcaption>
+                    <figcaption>Family Practice / Internal Medicine</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="thirdCol">
@@ -99,7 +105,7 @@ export default function HealthcareCategories(props) {
                 </figure>
                 <figure>
                     <img src={Opthamology} alt="Opthamology"/>
-                    <figcaption>Opthamology</figcaption>
+                    <figcaption>Opthamology / Eye Care Medicine</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="fourthCol">
@@ -127,7 +133,7 @@ export default function HealthcareCategories(props) {
             <div class="buttonColumn" id="fifthCol">   
                 <figure>
                     <img src={Radiology} alt="Radiology"/>
-                    <figcaption>Radiology</figcaption>
+                    <figcaption>Radiology & Nuclear Medicine</figcaption>
                 </figure>
                 <figure>
                     <img src={Rheumatology} alt="Rheumatology"/>
@@ -143,7 +149,7 @@ export default function HealthcareCategories(props) {
                 </figure>
                 <figure>
                     <img src={WomensHealth} alt="Women's Health, OB/GN"/>
-                    <figcaption>Women's Health, OB/GN</figcaption>
+                    <figcaption>Women's Health / OB/GYN</figcaption>
                 </figure>                
             </div>
         </div>
