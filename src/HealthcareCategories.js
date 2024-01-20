@@ -26,6 +26,7 @@ import Rheumatology from './sprint2/img/Rheumatology.png';
 import Surgery from './sprint2/img/Surgery.png';
 import Urology from './sprint2/img/Urology.png';
 import WomensHealth from './sprint2/img/Womens Health.png';
+import NotSure from './sprint2/img/Not Sure.png';
 
 export default function HealthcareCategories(props) {
     const location = useLocation();
@@ -152,6 +153,10 @@ export default function HealthcareCategories(props) {
                     <figcaption>Women's Health / OB/GYN</figcaption>
                 </figure>                
             </div>
+            <figure class="figButton" id="notSure">
+                <img src={NotSure} alt="I'm Not Sure"/>
+                <figcaption>I'm Not Sure</figcaption>
+            </figure>
         </div>
     </div>
     );
