@@ -157,6 +157,7 @@ export default function HealthcareCategories(props) {
                 <img src={NotSure} alt="I'm Not Sure"/>
                 <figcaption>I'm Not Sure</figcaption>
             </figure>
+            <button type="button" id="nextButton">NEXT</button>
         </div>
     </div>
     );

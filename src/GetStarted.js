@@ -117,22 +117,22 @@ function GetStarted() {
             </div>
             <div id="gs-buttons">
                 <button id="noInsuranceBtn" onClick={() => handleClick(2)}>NO Insurance</button>
-                <button id="comInsuranceBtn" onClick={() => handleClick(1)}>Commercial Insurance</button>
-                <button id="medicareBtn" onClick={() => handleClick(3)}>Medicare</button>
-                <button id="medAdvantageBtn" onClick={() => handleClick(4)}>Medicare Advantage, HMO, PPO</button>
-                <button id="medicaidBtn" onClick={() => handleClick(5)}>Medicaid</button>
-                <button id="medManagedBtn" onClick={() => handleClick(7)}>Medicaid Managed Care (MCO)</button>
-                <button id="workCompBtn" onClick={() => handleClick(9)}>Workers Comp</button>
-                <button id="milInsuranceBtn" onClick={() => handleClick(6)}>Military Insurance</button>
-                <button id="intInsuranceBtn" onClick={() => handleClick(8)}>International Insurance</button>
+                <button class="getStartedButtons" id="comInsuranceBtn" onClick={() => handleClick(1)}>Commercial Insurance</button>
+                <button class="getStartedButtons" id="medicareBtn" onClick={() => handleClick(3)}>Medicare</button>
+                <button class="getStartedButtons" id="medAdvantageBtn" onClick={() => handleClick(4)}>Medicare Advantage, HMO, PPO</button>
+                <button class="getStartedButtons" id="medicaidBtn" onClick={() => handleClick(5)}>Medicaid</button>
+                <button class="getStartedButtons" id="medManagedBtn" onClick={() => handleClick(7)}>Medicaid Managed Care (MCO)</button>
+                <button class="getStartedButtons" id="workCompBtn" onClick={() => handleClick(9)}>Workers Comp</button>
+                <button class="getStartedButtons" id="milInsuranceBtn" onClick={() => handleClick(6)}>Military Insurance</button>
+                <button class="getStartedButtons" id="intInsuranceBtn" onClick={() => handleClick(8)}>International Insurance</button>
             </div>
             <div id="lastRow">
-                    <button id="behavioralBtn" onClick={() => handleClick(10)}>Behavioral Health Ins.</button>
-                    <button id="healthcareBtn" onClick={() => handleClick(11)}>Healthcare Exchange Plans</button>
+                    <button class="getStartedButtons" id="behavioralBtn" onClick={() => handleClick(10)}>Behavioral Health Ins.</button>
+                    <button class="getStartedButtons" id="healthcareBtn" onClick={() => handleClick(11)}>Healthcare Exchange Plans</button>
             </div>
             <div id="gs-line-break">
                 <hr></hr>
-                <button id="yourBtn" style={style}>{buttonName}</button>
+                <button class="getStartedButtons" id="yourBtn" style={style}>{buttonName}</button>
             </div>
             <div id="gs-options-box">
                 <Options isInsured={insurance} insuranceType={userSelection}/>
