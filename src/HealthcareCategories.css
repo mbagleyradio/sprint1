@@ -40,10 +40,12 @@
     text-align: center;
 }
 
+/*
 .figButton:hover {
     text-align: center;
     border: 2px solid red;
 }
+*/
 
 #notSure {
     align-self: flex-start;
