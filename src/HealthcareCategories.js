@@ -40,7 +40,6 @@ const DEFAULT_BORDER = {
 };
 
 // global objects for styling - red border color
-
 const RED_BORDER = {
     border: "2px solid red"
 }
@@ -81,7 +80,7 @@ export default function HealthcareCategories() {
         opacity: btnOpacity
     };
 
-    // enum for the handleclick case
+    // enum for the handleFigureClick case
     const selectionNames = {
         ADDICTION_MEDICINE: 1,
         ALLERGY_IMMUNE_MEDICINE: 2,
@@ -115,7 +114,8 @@ export default function HealthcareCategories() {
     const sprint1Data = location.state;
     const insuranceContext = sprint1Data.split(": ");
 
-    const handleClick = (figureClicked) => {
+    // This function will handle click events on figures (the images with captions on the menu)
+    const handleFigureClick = (figureClicked) => {
         setSelection(figureClicked);
         if (selection !== selectionNames.NOT_SURE) {
             setBtnOpacity(1);
@@ -156,43 +156,249 @@ export default function HealthcareCategories() {
                     setPriorSelection(selectionNames.DERMATOLOGY);
                 break;
 
+                case selectionNames.EAR_NOSE_THROAT:
+                    resetPriorFigureStyle();
+                    setEarNoseThroatBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.EAR_NOSE_THROAT);
+
+                break;
+
+                case selectionNames.EMERGENCY_MEDICINE:
+                    resetPriorFigureStyle();
+                    setEmergencyBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.EMERGENCY_MEDICINE);
+                break;
+
+                case selectionNames.ENDOCRINOLOGY:
+                    resetPriorFigureStyle();
+                    setEndocrinologyBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.ENDOCRINOLOGY);
+                break;
+
+                case selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE:
+                    resetPriorFigureStyle();
+                    setFamilyPracticeBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE);
+                break;
+
+                case selectionNames.GASTROENTEROLOGY:
+                    resetPriorFigureStyle();
+                    setGastroenterologyBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.GASTROENTEROLOGY);
+                break;
+
+                case selectionNames.HEMATOLOGY:
+                    resetPriorFigureStyle();
+                    setHematologyBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.HEMATOLOGY);
+                break;
+
+                case selectionNames.NEUROLOGY:
+                    resetPriorFigureStyle();
+                    setNeurologyBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.NEUROLOGY);
+                break;
+
+                case selectionNames.ONCOLOGY:
+                    resetPriorFigureStyle();
+                    setOncologyBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.ONCOLOGY);
+                break;
+
+                case selectionNames.OPTHAMOLOGY_EYE_CARE:
+                    resetPriorFigureStyle();
+                    setOpthamologyBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.OPTHAMOLOGY_EYE_CARE);
+                break;
+
+                case selectionNames.ORTHOPEDICS:
+                    resetPriorFigureStyle();
+                    setOrthopedicsBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.ORTHOPEDICS);
+                break;
+
+                case selectionNames.PATHOLOGY:
+                    resetPriorFigureStyle();
+                    setPathologyBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.PATHOLOGY);
+                break;
+
+                case selectionNames.PEDIATRICS:
+                    resetPriorFigureStyle();
+                    setPediatricsBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.PEDIATRICS);
+                break;
+
+                case selectionNames.PODIATRY:
+                    resetPriorFigureStyle();
+                    setPodiatryBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.PODIATRY);
+                break;
+
+                case selectionNames.PULMONOLOGY:
+                    resetPriorFigureStyle();
+                    setPulmonologyBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.PULMONOLOGY);
+                break;
+
+                case selectionNames.RADIOLOGY_NUC_MED:
+                    resetPriorFigureStyle();
+                    setRadioBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.RADIOLOGY_NUC_MED);
+                break;
+
+                case selectionNames.RHEUMATOLOGY:
+                    resetPriorFigureStyle();
+                    setRheumatologyBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.RHEUMATOLOGY);
+                break;
+
+                case selectionNames.SURGERY:
+                    resetPriorFigureStyle();
+                    setSurgeryBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.SURGERY);
+                break;
+
+                case selectionNames.UROLOGY:
+                    resetPriorFigureStyle();
+                    setUrologyBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.UROLOGY);
+                break;
+
+                case selectionNames.WOMENS_HEALTH_OB_GYN:
+                    resetPriorFigureStyle();
+                    setWomensHealthBorder(RED_BORDER);
+                    setPriorSelection(selectionNames.WOMENS_HEALTH_OB_GYN);
+                break;
+
+                case selectionNames.NOT_SURE:
+                    
+                break;
+
                 default:
                 break;
             }
+        } else { // if the NOT_SURE figure was selected
+            console.log("Not Sure has been clicked");
         }
     }
 
+    // this function resets the border of the previously selected figure
     const resetPriorFigureStyle = () => {
         switch (priorSelection) {
             case selectionNames.ADDICTION_MEDICINE:
                 setAddictionMedicineBorder(DEFAULT_BORDER);
             break;
+
             case selectionNames.ALLERGY_IMMUNE_MEDICINE:
                 setAllergyImmuneBorder(DEFAULT_BORDER);
             break;
+
             case selectionNames.ANESTHESIOLOGY:
                 setAnesthesiologyBorder(DEFAULT_BORDER);
             break;
+
             case selectionNames.BEHAVIORAL_HEALTH:
                 setBehavioralHealthBorder(DEFAULT_BORDER);
             break;
+
             case selectionNames.CARDIOLOGY:
                 setCardiologyBorder(DEFAULT_BORDER);
             break;
+
             case selectionNames.DERMATOLOGY:
                 setDermatologyBorder(DEFAULT_BORDER);
             break;
+
+            case selectionNames.EAR_NOSE_THROAT:
+                setEarNoseThroatBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.EMERGENCY_MEDICINE:
+                setEmergencyBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.ENDOCRINOLOGY:
+                setEndocrinologyBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE:
+                setFamilyPracticeBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.GASTROENTEROLOGY:
+                setGastroenterologyBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.HEMATOLOGY:
+                setHematologyBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.NEUROLOGY:
+                setNeurologyBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.ONCOLOGY:
+                setOncologyBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.OPTHAMOLOGY_EYE_CARE:
+                setOpthamologyBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.ORTHOPEDICS:
+                setOrthopedicsBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.PATHOLOGY:
+                setPathologyBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.PEDIATRICS:
+                setPediatricsBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.PODIATRY:
+                setPodiatryBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.PULMONOLOGY:
+                setPulmonologyBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.RADIOLOGY_NUC_MED:
+                setRadioBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.RHEUMATOLOGY:
+                setRheumatologyBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.SURGERY:
+                setSurgeryBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.UROLOGY:
+                setUrologyBorder(DEFAULT_BORDER);
+            break;
+
+            case selectionNames.WOMENS_HEALTH_OB_GYN:
+                setWomensHealthBorder(DEFAULT_BORDER);
+            break;
+
             default:
             break;
         }
     }
 
-    const handleNextBtn = () => {
+    // this function handles "next" button click events
+    const handleNextBtnClick = () => {
         if (selection !== undefined) {
 
         }
     }
     
+    // this is the function component's HTML code
     return (
     <div id="wholePage">
         <div id="topOfPage">
@@ -205,120 +411,120 @@ export default function HealthcareCategories() {
         <h2 id="welcomeMSG">What category of healthcare services are you looking for? (pick one)</h2>
         <div id="landingPage">
             <div class="buttonColumn" id="firstCol">
-                <figure class="figButton" style={addictionMedicineBorder} onClick={() => handleClick(selectionNames.ADDICTION_MEDICINE)}>
+                <figure class="figButton" style={addictionMedicineBorder} onClick={() => handleFigureClick(selectionNames.ADDICTION_MEDICINE)}>
                     <img src={AddictionMedicine} alt="Addiction Medicine"/>
                     <figcaption>Addiction Medicine</figcaption>
                 </figure>
-                <figure class="figButton" style={allergyImmuneBorder} onClick={() => handleClick(selectionNames.ALLERGY_IMMUNE_MEDICINE)}>
+                <figure class="figButton" style={allergyImmuneBorder} onClick={() => handleFigureClick(selectionNames.ALLERGY_IMMUNE_MEDICINE)}>
                     <img src={AllergyAndImmune} alt="Allergy and Immune System Medicine" />
                     <figcaption>Allergy & Immune System Medicine</figcaption>
                 </figure>
-                <figure class="figButton" style={anesthesiologyBorder} onClick={() => handleClick(selectionNames.ANESTHESIOLOGY)}>
+                <figure class="figButton" style={anesthesiologyBorder} onClick={() => handleFigureClick(selectionNames.ANESTHESIOLOGY)}>
                     <img src={Anesthesiology} alt="Anesthesiology" />
                     <figcaption>Anesthesiology</figcaption>
                 </figure>
-                <figure class="figButton" style={behavioralHealthBorder} onClick={() => handleClick(selectionNames.BEHAVIORAL_HEALTH)}>
+                <figure class="figButton" style={behavioralHealthBorder} onClick={() => handleFigureClick(selectionNames.BEHAVIORAL_HEALTH)}>
                     <img src={BehavioralHealth} alt="Behavioral Health" />
                     <figcaption>Behavioral Health</figcaption>
                 </figure>
-                <figure class="figButton" style={cardiologyBorder} onClick={() => handleClick(selectionNames.CARDIOLOGY)}>
+                <figure class="figButton" style={cardiologyBorder} onClick={() => handleFigureClick(selectionNames.CARDIOLOGY)}>
                     <img src={Cardiology} alt="Cardiology" />
                     <figcaption>Cardiology</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="secondCol">
-                <figure class="figButton" style={dermatologyBorder} onClick={() => handleClick(selectionNames.DERMATOLOGY)}>                
+                <figure class="figButton" style={dermatologyBorder} onClick={() => handleFigureClick(selectionNames.DERMATOLOGY)}>                
                     <img src={Dermatology} alt="Dermatology"/>
                     <figcaption>Dermatology</figcaption>
                 </figure>
-                <figure class="figButton" style={earNoseThroatBorder} onClick={() => handleClick(selectionNames.EAR_NOSE_THROAT)}>
+                <figure class="figButton" style={earNoseThroatBorder} onClick={() => handleFigureClick(selectionNames.EAR_NOSE_THROAT)}>
                     <img src={EarNoseThroat} alt="Ear, Nose, and Throat"/>
                     <figcaption>Ear, Nose, & Throat (Otolaryngology)</figcaption>
                 </figure>
-                <figure class="figButton" style={emergencyBorder} onClick={() => handleClick(selectionNames.EMERGENCY_MEDICINE)}>
+                <figure class="figButton" style={emergencyBorder} onClick={() => handleFigureClick(selectionNames.EMERGENCY_MEDICINE)}>
                     <img src={EmergencyMedicine} alt="Emergency Medicine"/>
                     <figcaption>Emergency Medicine</figcaption>
                 </figure>
-                <figure class="figButton" style={endocrinologyBorder} onClick={() => handleClick(selectionNames.ENDOCRINOLOGY)}>
+                <figure class="figButton" style={endocrinologyBorder} onClick={() => handleFigureClick(selectionNames.ENDOCRINOLOGY)}>
                     <img src={Endocrinology} alt="Endocrinology"/>
                     <figcaption>Endocrinology</figcaption>
                 </figure>
-                <figure class="figButton" style={familyPracticeBorder} onClick={() => handleClick(selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE)}>
+                <figure class="figButton" style={familyPracticeBorder} onClick={() => handleFigureClick(selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE)}>
                     <img src={FamilyPracticeInternalMedicine} alt="Family Practice and Internal Medicine"/>
                     <figcaption>Family Practice / Internal Medicine</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="thirdCol">
-                <figure class="figButton" style={gastroenterologyBorder} onClick={() => handleClick(selectionNames.GASTROENTEROLOGY)}>
+                <figure class="figButton" style={gastroenterologyBorder} onClick={() => handleFigureClick(selectionNames.GASTROENTEROLOGY)}>
                     <img src={Gastroenterology} alt="Gastroenterology"/>
                     <figcaption>Gastroenterology</figcaption>
                 </figure>
-                <figure class="figButton" style={hematologyBorder} onClick={() => handleClick(selectionNames.HEMATOLOGY)}>
+                <figure class="figButton" style={hematologyBorder} onClick={() => handleFigureClick(selectionNames.HEMATOLOGY)}>
                     <img src={Hematology} alt="Hematology"/>
                     <figcaption>Hematology</figcaption>
                 </figure>
-                <figure class="figButton" style={neurologyBorder} onClick={() => handleClick(selectionNames.NEUROLOGY)}>
+                <figure class="figButton" style={neurologyBorder} onClick={() => handleFigureClick(selectionNames.NEUROLOGY)}>
                     <img src={Neurology} alt="Neurology"/>
                     <figcaption>Neurology</figcaption>
                 </figure>
-                <figure class="figButton" style={oncologyBorder} onClick={() => handleClick(selectionNames.ONCOLOGY)}>
+                <figure class="figButton" style={oncologyBorder} onClick={() => handleFigureClick(selectionNames.ONCOLOGY)}>
                     <img src={Oncology} alt="Oncology"/>
                     <figcaption>Oncology</figcaption>
                 </figure>
-                <figure class="figButton" style={opthamologyBorder} onClick={() => handleClick(selectionNames.OPTHAMOLOGY_EYE_CARE)}>
+                <figure class="figButton" style={opthamologyBorder} onClick={() => handleFigureClick(selectionNames.OPTHAMOLOGY_EYE_CARE)}>
                     <img src={Opthamology} alt="Opthamology"/>
                     <figcaption>Opthamology / Eye Care Medicine</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="fourthCol">
-                <figure class="figButton" style={orthopedicsBorder} onClick={() => handleClick(selectionNames.ORTHOPEDICS)}>
+                <figure class="figButton" style={orthopedicsBorder} onClick={() => handleFigureClick(selectionNames.ORTHOPEDICS)}>
                     <img src={Orthopedics} alt="Orthopedics"/>
                     <figcaption>Orthopedics</figcaption>
                 </figure>
-                <figure class="figButton" style={pathologyBorder} onClick={() => handleClick(selectionNames.PATHOLOGY)}>
+                <figure class="figButton" style={pathologyBorder} onClick={() => handleFigureClick(selectionNames.PATHOLOGY)}>
                     <img src={Pathology} alt="Pathology"/>
                     <figcaption>Pathology</figcaption>
                 </figure>
-                <figure class="figButton" style={pediatricsBorder} onClick={() => handleClick(selectionNames.PEDIATRICS)}>
+                <figure class="figButton" style={pediatricsBorder} onClick={() => handleFigureClick(selectionNames.PEDIATRICS)}>
                     <img src={Pediatrics} alt="Pediatrics"/>
                     <figcaption>Pediatrics</figcaption>
                 </figure>
-                <figure class="figButton" style={podiatryBorder} onClick={() => handleClick(selectionNames.PODIATRY)}>
+                <figure class="figButton" style={podiatryBorder} onClick={() => handleFigureClick(selectionNames.PODIATRY)}>
                     <img src={Podiatry} alt="Podiatry"/>
                     <figcaption>Podiatry</figcaption>
                 </figure>
-                <figure class="figButton" style={pulmonologyBorder} onClick={() => handleClick(selectionNames.PULMONOLOGY)}>
+                <figure class="figButton" style={pulmonologyBorder} onClick={() => handleFigureClick(selectionNames.PULMONOLOGY)}>
                     <img src={Pulmonology} alt="Pulmonology"/>
                     <figcaption>Pulmonology</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="fifthCol">   
-                <figure class="figButton" style={radiologyBorder} onClick={() => handleClick(selectionNames.RADIOLOGY_NUC_MED)}>
+                <figure class="figButton" style={radiologyBorder} onClick={() => handleFigureClick(selectionNames.RADIOLOGY_NUC_MED)}>
                     <img src={Radiology} alt="Radiology"/>
                     <figcaption>Radiology & Nuclear Medicine</figcaption>
                 </figure>
-                <figure class="figButton" style={rheumatologyBorder} onClick={() => handleClick(selectionNames.RHEUMATOLOGY)}>
+                <figure class="figButton" style={rheumatologyBorder} onClick={() => handleFigureClick(selectionNames.RHEUMATOLOGY)}>
                     <img src={Rheumatology} alt="Rheumatology"/>
                     <figcaption>Rheumatology</figcaption>
                 </figure>
-                <figure class="figButton" style={surgeryBorder} onClick={() => handleClick(selectionNames.SURGERY)}>
+                <figure class="figButton" style={surgeryBorder} onClick={() => handleFigureClick(selectionNames.SURGERY)}>
                     <img src={Surgery} alt="Surgery"/>
                     <figcaption>Surgery</figcaption>
                 </figure>
-                <figure class="figButton" style={urologyBorder} onClick={() => handleClick(selectionNames.UROLOGY)}>
+                <figure class="figButton" style={urologyBorder} onClick={() => handleFigureClick(selectionNames.UROLOGY)}>
                     <img src={Urology} alt="Urology"/>
                     <figcaption>Urology</figcaption>
                 </figure>
-                <figure class="figButton" style={womensHealthBorder} onClick={() => handleClick(selectionNames.WOMENS_HEALTH_OB_GYN)}>
+                <figure class="figButton" style={womensHealthBorder} onClick={() => handleFigureClick(selectionNames.WOMENS_HEALTH_OB_GYN)}>
                     <img src={WomensHealth} alt="Women's Health, OB/GN"/>
                     <figcaption>Women's Health / OB/GYN</figcaption>
                 </figure>                
             </div>
-            <figure class="figButton" id="notSure" onClick={() => handleClick(selectionNames.NOT_SURE)}>
+            <figure class="figButton" id="notSure" onClick={() => handleFigureClick(selectionNames.NOT_SURE)}>
                 <img src={NotSure} alt="I'm Not Sure"/>
                 <figcaption>I'm Not Sure</figcaption>
             </figure>
-            <button type="button" id="nextButton" style={nextBtnStyle} onClick={handleNextBtn}>NEXT</button>
+            <button type="button" id="nextButton" style={nextBtnStyle} onClick={handleNextBtnClick}>NEXT</button>
         </div>
     </div>
     );
