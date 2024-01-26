@@ -34,6 +34,9 @@ import Urology from './sprint2/img/Urology.png';
 import WomensHealth from './sprint2/img/Womens Health.png';
 import NotSure from './sprint2/img/Not Sure.png';
 
+// Import child components
+import NotSureModal from './NotSureModal.js';
+
 // global objects for styling - default border color (transp. with background color)
 const DEFAULT_BORDER = {
     border: "2px solid #D9F0F1"
@@ -72,10 +75,13 @@ export default function HealthcareCategories() {
     const [urologyBorder, setUrologyBorder] = useState(DEFAULT_BORDER);
     const [womensHealthBorder, setWomensHealthBorder] = useState(DEFAULT_BORDER);
     
+    // usestate hooks for selection, styling, and opening/closing the "not sure" modal
     const [selection, setSelection] = useState(undefined); // this is a state hook for whether a menu option has been selected
     const [btnOpacity, setBtnOpacity] = useState(0); // this is a state hook for the "next" button opacity
-    const [priorSelection, setPriorSelection] = useState(undefined);
-
+    const [priorSelection, setPriorSelection] = useState(undefined); // this is a state hook for tracking the previous selection, for resetting borders
+    const [modalOpen, setModalOpen] = useState(false); // this is a state hook for tracking whether the modal is open or closed
+    
+    // simple object for styling the opacity of the "next" button
     const nextBtnStyle = {
         opacity: btnOpacity
     };
@@ -279,7 +285,7 @@ export default function HealthcareCategories() {
                 break;
             }
         } else { // if the NOT_SURE figure was selected
-            console.log("Not Sure has been clicked");
+            setModalOpen(true);
         }
     }
 
@@ -397,6 +403,12 @@ export default function HealthcareCategories() {
 
         }
     }
+
+    // this function handles a submission from the modal
+    const handleModalSubmit = (submissionFromModal) => {
+        setModalOpen(false);
+        console.log(submissionFromModal);
+    }
     
     // this is the function component's HTML code
     return (
@@ -409,6 +421,10 @@ export default function HealthcareCategories() {
             </div>
         </div>
         <h2 id="welcomeMSG">What category of healthcare services are you looking for? (pick one)</h2>
+        {
+            modalOpen && (
+                <NotSureModal onSubmit={handleModalSubmit} onCancel={null}/>
+        )}
         <div id="landingPage">
             <div class="buttonColumn" id="firstCol">
                 <figure class="figButton" style={addictionMedicineBorder} onClick={() => handleFigureClick(selectionNames.ADDICTION_MEDICINE)}>
