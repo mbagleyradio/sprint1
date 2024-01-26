@@ -13,6 +13,11 @@
     width: 30em;
 }
 
-#modalContent {
-
+#closeBtn {
+    float: right;
 }
+
+#modalContent {
+    
+}
+

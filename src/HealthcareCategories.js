@@ -277,14 +277,12 @@ export default function HealthcareCategories() {
                     setPriorSelection(selectionNames.WOMENS_HEALTH_OB_GYN);
                 break;
 
-                case selectionNames.NOT_SURE:
-                    
-                break;
-
                 default:
                 break;
             }
         } else { // if the NOT_SURE figure was selected
+            resetPriorFigureStyle();
+            setBtnOpacity(0);
             setModalOpen(true);
         }
     }
@@ -399,12 +397,12 @@ export default function HealthcareCategories() {
 
     // this function handles "next" button click events
     const handleNextBtnClick = () => {
-        if (selection !== undefined) {
+        if ((selection !== undefined) && (selection !== selectionNames.NOT_SURE)) {
 
         }
     }
 
-    // this function handles a submission from the modal
+    // this function handles both submission AND closure from the modal
     const handleModalSubmit = (submissionFromModal) => {
         setModalOpen(false);
         console.log(submissionFromModal);
@@ -421,10 +419,6 @@ export default function HealthcareCategories() {
             </div>
         </div>
         <h2 id="welcomeMSG">What category of healthcare services are you looking for? (pick one)</h2>
-        {
-            modalOpen && (
-                <NotSureModal onSubmit={handleModalSubmit} onCancel={null}/>
-        )}
         <div id="landingPage">
             <div class="buttonColumn" id="firstCol">
                 <figure class="figButton" style={addictionMedicineBorder} onClick={() => handleFigureClick(selectionNames.ADDICTION_MEDICINE)}>
@@ -540,6 +534,10 @@ export default function HealthcareCategories() {
                 <img src={NotSure} alt="I'm Not Sure"/>
                 <figcaption>I'm Not Sure</figcaption>
             </figure>
+            {
+                modalOpen && (
+                <NotSureModal onSubmit={handleModalSubmit} onClose={handleModalSubmit}/>
+            )}
             <button type="button" id="nextButton" style={nextBtnStyle} onClick={handleNextBtnClick}>NEXT</button>
         </div>
     </div>
