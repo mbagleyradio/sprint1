@@ -2,7 +2,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    cursor: pointer;
     z-index: 9;
     justify-content: center;
     align-items: center;
@@ -21,9 +20,20 @@
 
 #closeBtn {
     float: right;
+    cursor: pointer;
 }
 
-#modalContent {
-    
+#submitBtn {
+    cursor: pointer;
 }
 
+#chatWindow {
+    border: 2px dotted black;
+    background-color: #fbe5d6;
+    resize: none;
+}
+
+#mic {
+    float: right;
+    margin: 1%;
+}
