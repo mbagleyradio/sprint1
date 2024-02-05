@@ -402,9 +402,24 @@ export default function HealthcareCategories() {
         }
     }
 
-    // this function handles both submission AND closure from the modal
-    const handleModalSubmit = (submissionFromModal) => {
+    // this function handles closure from the modal
+    const handleModalClose = (submissionFromModal) => {
         setModalOpen(false);
+        console.log(submissionFromModal);
+    }
+
+    // this function handles text submissions from the modal
+    const handleModalAsk = (submissionFromModal) => {
+        console.log(submissionFromModal);
+    }
+
+    // this function handles user audio submissions from the modal
+    const handleModalRecord = (submissionFromModal) => {
+        console.log(submissionFromModal);
+    }
+
+    // this function handles clicking the stop button to stop audio recordings in the modal
+    const handleModalStopRecord = (submissionFromModal) => {
         console.log(submissionFromModal);
     }
     
@@ -536,7 +551,7 @@ export default function HealthcareCategories() {
             </figure>
             {
                 modalOpen && (
-                <NotSureModal onSubmit={handleModalSubmit} onClose={handleModalSubmit}/>
+                <NotSureModal onAsk={handleModalAsk} onClose={handleModalClose} onRecord={handleModalRecord} onStopRecord={handleModalStopRecord}/>
             )}
             <button type="button" id="nextButton" style={nextBtnStyle} onClick={handleNextBtnClick}>NEXT</button>
         </div>

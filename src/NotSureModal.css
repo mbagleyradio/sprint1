@@ -27,13 +27,25 @@
     cursor: pointer;
 }
 
-#chatWindow {
-    border: 2px dotted black;
+#micAndTextBox {
     background-color: #fbe5d6;
+    border: 2px dotted black;
+}
+
+#chatWindow {
+    background-color: #fbe5d6;
+    box-sizing: border-box;
+    height: 50%;
+    width: 99%;
+    padding: 1%;
+    border: none;
+    outline: none;
     resize: none;
 }
 
-#mic {
+#startRecording {
     float: right;
     margin: 1%;
+    cursor: pointer;
 }
+
