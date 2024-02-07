@@ -49,3 +49,7 @@
     cursor: pointer;
 }
 
+#stopRecording {
+    float: right;
+    cursor: pointer;
+}
