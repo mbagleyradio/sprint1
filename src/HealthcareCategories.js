@@ -116,7 +116,8 @@ export default function HealthcareCategories() {
         NOT_SURE: 26
     }
 
-    const location = useLocation();
+    // acquiring data from previous page (insurance type & insurance name), and sanitizing that data for display on this page
+    const location = useLocation(); 
     const sprint1Data = location.state;
     const insuranceContext = sprint1Data.split(": ");
 
@@ -127,9 +128,9 @@ export default function HealthcareCategories() {
             setBtnOpacity(1);
             switch(selection) {
                 case selectionNames.ADDICTION_MEDICINE:
-                    resetPriorFigureStyle();
-                    setAddictionMedicineBorder(RED_BORDER);
-                    setPriorSelection(selectionNames.ADDICTION_MEDICINE);
+                    resetPriorFigureStyle(); // this will clear away the red border from the previously selected figure (if any)
+                    setAddictionMedicineBorder(RED_BORDER); // this will style a red border on this currently selected figure
+                    setPriorSelection(selectionNames.ADDICTION_MEDICINE); // this will keep track of which figure's border to clear when another figure is clicked
                 break;
 
                 case selectionNames.ALLERGY_IMMUNE_MEDICINE:
