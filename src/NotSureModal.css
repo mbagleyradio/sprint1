@@ -53,3 +53,7 @@
     float: right;
     cursor: pointer;
 }
+
+#chatGPTAnswer {
+    background: #fbe5d6;
+}

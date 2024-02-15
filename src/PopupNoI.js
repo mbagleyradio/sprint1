@@ -101,6 +101,19 @@ function PopupNoI(/*props*/) {
             user.contactInfo.email = email;
             user.contactInfo.insurance = insurance;
 
+            sendEmail(insuranceContext);
+        }
+        navigate("../submitted", navigateArg);
+    }
+
+    const sendEmail = (insuranceContext) => {
+        fetch("http://uvcsandbox.com/php/EmailJS.php", {
+            method: "GET",
+            mode: "cors",
+            headers: {}
+        }).then(response => { 
+            return response.json()
+        }).then(data => {
             // need to pull from the inner objects (contact info and insurance)
             emailjs.send("service_unhpfsm","template_frqcrni",{
                 userName: user.contactInfo.name,
@@ -108,9 +121,10 @@ function PopupNoI(/*props*/) {
                 userInsurance: user.contactInfo.insurance,
                 userEmail: user.contactInfo.email,
                 userPhone: user.contactInfo.phoneNumber
-                },  'En_CwK8mACVmRtAka');
-        }
-        navigate("../submitted", navigateArg);
+                },  data[0].VALUE);
+        }).catch(error => {
+            console.log(error)
+        });
     }
     return (
         <div>

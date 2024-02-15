@@ -31,18 +31,32 @@ function PopupI(/*props*/) {
         user.name = name;
         user.phoneNumber = phoneNumber;
         user.email = email; 
+        
+        sendEmail();
+        
 
-        // need to pull from the inner objects (contact info and insurance)
+        navigate("../submitted", navigateArg);
+    }
+    
+    const sendEmail = () => {
+        fetch("http://uvcsandbox.com/php/EmailJS.php", {
+		method: "GET",
+		mode: "cors",
+		headers: {}
+	}).then(response => { 
+		return response.json()
+	}).then(data => {
+		// need to pull from the inner objects (contact info and insurance)
         emailjs.send("service_m1jpu3c","template_frqcrni",{
             userName: user.name,
             userInsurance: user.insurance,
             userEmail: user.email,
             userPhone: user.phoneNumber
-        },  'En_CwK8mACVmRtAka');
-
-        navigate("../submitted", navigateArg);
+        },  data[0].VALUE);
+	}).catch(error => {
+		console.log(error)
+	});
     }
-    
     return (
         <div>
             <form id="formDisplay" onSubmit={handleSubmit}>

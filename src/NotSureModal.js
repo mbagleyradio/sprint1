@@ -1,7 +1,7 @@
 import './NotSureModal.css';
 import ATC_Assistant from './sprint2/img/ATC Assistant 2.png';
 import mic from './sprint2/img/mic.png';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
@@ -9,13 +9,13 @@ function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
     const [ isRecording, setIsRecording ] = useState(false);
 
     // state hook for the user's question in the text area, after speech-to-text and keyboard input have been used
-    const [ userSubmission, setUserSubmission ] = useState("Enter text here...");
+    const [ userSubmission, setUserSubmission ] = useState(null);
 
     // state hook for chatGPT answers
     const [ answer, setAnswer ] = useState(null);
     
     // state hook for the number of chatGPT questions + dependency for useEffect
-    const [ remainingQuestions, setRemainingQuestions ] = useState(5);
+    const [ remainingQuestions, setRemainingQuestions ] = useState(4);
 
     // custom hook for recording speech and converting to text in React
     const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
@@ -30,16 +30,9 @@ function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
         opacity: 0
     }
 
-    // effect hook for getting ChatGPT's questions/answers displayed in the modal 
-    useEffect(() => {
-        // 1. validate the user submission 
-        // 2. sanitize the user submission
-        // 3. send the user submission to ChatGPT's API
-        // 4. receive ChatGPT's answer from ChatGPT's API
-        // 5. display ChatGPT's answer in the <chatarea>
-        // 6. 
-    }, [remainingQuestions]);
-
+    // data for ChatGPT
+    const url = "https://api.openai.com/v1/chat/completions";
+    
     // handler that is called when the microphone "recording" button is clicked on
     const handleRecording = () => {
         onRecord("Record button clicked in modal");
@@ -67,10 +60,63 @@ function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
         onClose("Close button clicked in modal");
     }
 
+    const initiateUserSubmission = () => {
+        fetch("http://uvcsandbox.com/php/OpenAI.php", {
+            method: "GET",
+            mode: "cors",
+            headers: {}
+        }).then(response => {
+            return response.json()
+        }).then(data => {
+            sendUserSubmission(data[0].VALUE)
+        }).catch(error => {
+            console.log(error)
+        });
+    }
+
+    const sendUserSubmission = (key) => {
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${key}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "model": "gpt-3.5-turbo",
+                "messages": [
+                {
+                    "role": "user",
+                    "content": userSubmission
+                },
+                {
+                    "role": "system",
+                    "content": "Please offer a recommendation from the following list: Addiction Medicine, Allergy & Immune System Medicine, Anesthesiology, Behavioral Health, Cardiology, Dermatology, Otolaryngology, Emergency Medicine, Endocrinology, Internal Medicine, Gastroenterology, Hematology, Neurology, Oncology, Opthalmology, Orthopedics, Pathology, Pediatrics, Podiatry, Pulmonology, Radiology, Rheumatology, Surgery, Urology, and OB/GYN. If you're not sure, tell them you're not sure. Please limit your answers to 200 characters or less."
+                }
+            ],
+                "temperature": 0.6,
+                "max_tokens": 30
+            })
+        }).then(data => {
+            return data.json()
+        }).then(data => {
+            console.log(data);
+            setAnswer(data.choices[0].message.content);
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
     // handler that is called when the "Ask Assistant" button is clicked on.
     const handleAsk = () => {
-        onAsk("Ask button clicked in modal");
-        setRemainingQuestions(remainingQuestions - 1);
+        if (userSubmission !== null) {
+            setRemainingQuestions(remainingQuestions - 1);
+            if (remainingQuestions > 0) {
+                console.log(userSubmission);
+                initiateUserSubmission();
+            } else {
+                console.log("Maximum number of submissions reached!");
+            }
+        }
     }
 
     // JSX for the modal component
@@ -84,8 +130,9 @@ function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
                     <div id="micAndTextBox">
                         <img id="startRecording" src={mic} onClick={handleRecording} alt="Click this button to speak to the chat assistant with your device's microphone"/>
                         <p id="stopRecording" style={isRecording ? stopButtonVisible : stopButtonHidden} onClick={handleStopRecording}>&#x23f9;</p>
-                        <textarea id="chatWindow" name="chatWindow" rows="4" cols="64" value={userSubmission} onChange={(e) => {setUserSubmission(e.target.value)}} />
+                        <textarea id="chatWindow" name="chatWindow" rows="4" cols="64" preview="Enter text here..." value={userSubmission} onChange={(e) => {setUserSubmission(e.target.value)}} />
                     </div>
+                    <p id="chatGPTAnswer">{answer}</p>
                     <img src={ATC_Assistant} alt="ATC Assistant"/><br/>
                     <button id="submitBtn" onClick={handleAsk}>Ask</button>
                 </div>
