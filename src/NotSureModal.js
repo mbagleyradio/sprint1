@@ -130,9 +130,9 @@ function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
                     <div id="micAndTextBox">
                         <img id="startRecording" src={mic} onClick={handleRecording} alt="Click this button to speak to the chat assistant with your device's microphone"/>
                         <p id="stopRecording" style={isRecording ? stopButtonVisible : stopButtonHidden} onClick={handleStopRecording}>&#x23f9;</p>
-                        <textarea id="chatWindow" name="chatWindow" rows="4" cols="64" preview="Enter text here..." value={userSubmission} onChange={(e) => {setUserSubmission(e.target.value)}} />
+                        <textarea class="chatWindow" name="chatWindowUser" rows="4" cols="64" preview="Enter text here..." value={userSubmission} onChange={(e) => {setUserSubmission(e.target.value)}} />
+                        <textarea class="chatWindow" name="chatWindowAI" rows="4" cols="64" value={answer}/>
                     </div>
-                    <p id="chatGPTAnswer">{answer}</p>
                     <img src={ATC_Assistant} alt="ATC Assistant"/><br/>
                     <button id="submitBtn" onClick={handleAsk}>Ask</button>
                 </div>

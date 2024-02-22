@@ -32,7 +32,7 @@
     border: 2px dotted black;
 }
 
-#chatWindow {
+.chatWindow {
     background-color: #fbe5d6;
     box-sizing: border-box;
     height: 50%;
