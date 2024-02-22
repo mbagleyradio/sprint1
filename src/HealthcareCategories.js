@@ -2,7 +2,7 @@
 import './HealthcareCategories.css';
 
 // Import React & React Router tools
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 // Import images for the menu
@@ -75,12 +75,16 @@ export default function HealthcareCategories() {
     const [urologyBorder, setUrologyBorder] = useState(DEFAULT_BORDER);
     const [womensHealthBorder, setWomensHealthBorder] = useState(DEFAULT_BORDER);
     
-    // usestate hooks for selection, styling, and opening/closing the "not sure" modal
+    // usestate hooks for selection, styling, opening/closing the "not sure" modal, and data sent to the next page when "next" btn is clicked
     const [selection, setSelection] = useState(undefined); // this is a state hook for whether a menu option has been selected
     const [btnOpacity, setBtnOpacity] = useState(0); // this is a state hook for the "next" button opacity
     const [priorSelection, setPriorSelection] = useState(undefined); // this is a state hook for tracking the previous selection, for resetting borders
     const [modalOpen, setModalOpen] = useState(false); // this is a state hook for tracking whether the modal is open or closed
-    
+    const [submission, setSubmission] = useState(""); // this is a state hook for the user's final submission of healthcare category, sent to the next page when the "next" btn is clicked
+
+    // useNavigate hook for navigating to "Review/Narrow List Menu" once healthcare category is selected and 'next BTN' is clicked
+    const navigate = useNavigate();
+
     // simple object for styling the opacity of the "next" button
     const nextBtnStyle = {
         opacity: btnOpacity
@@ -131,42 +135,49 @@ export default function HealthcareCategories() {
                     resetPriorFigureStyle(); // this will clear away the red border from the previously selected figure (if any)
                     setAddictionMedicineBorder(RED_BORDER); // this will style a red border on this currently selected figure
                     setPriorSelection(selectionNames.ADDICTION_MEDICINE); // this will keep track of which figure's border to clear when another figure is clicked
+                    setSubmission("Addiction Medicine");
                 break;
 
                 case selectionNames.ALLERGY_IMMUNE_MEDICINE:
                     resetPriorFigureStyle();
                     setAllergyImmuneBorder(RED_BORDER);
                     setPriorSelection(selectionNames.ALLERGY_IMMUNE_MEDICINE);
+                    setSubmission("Allergy & Immune System Medicine");
                 break;
 
                 case selectionNames.ANESTHESIOLOGY:
                     resetPriorFigureStyle();
                     setAnesthesiologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.ANESTHESIOLOGY);
+                    setSubmission("Anesthesiology");
                 break;
 
                 case selectionNames.BEHAVIORAL_HEALTH:
                     resetPriorFigureStyle();
                     setBehavioralHealthBorder(RED_BORDER);
                     setPriorSelection(selectionNames.BEHAVIORAL_HEALTH);
+                    setSubmission("Behavioral Health");
                 break;
 
                 case selectionNames.CARDIOLOGY:
                     resetPriorFigureStyle();
                     setCardiologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.CARDIOLOGY);
+                    setSubmission("Cardiology");
                 break;
 
                 case selectionNames.DERMATOLOGY:
                     resetPriorFigureStyle();
                     setDermatologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.DERMATOLOGY);
+                    setSubmission("Dermatology");
                 break;
 
                 case selectionNames.EAR_NOSE_THROAT:
                     resetPriorFigureStyle();
                     setEarNoseThroatBorder(RED_BORDER);
                     setPriorSelection(selectionNames.EAR_NOSE_THROAT);
+                    setSubmission("Ear, Nose, & Throat (Otolaryngology");
 
                 break;
 
@@ -174,108 +185,126 @@ export default function HealthcareCategories() {
                     resetPriorFigureStyle();
                     setEmergencyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.EMERGENCY_MEDICINE);
+                    setSubmission("Emergency Medicine");
                 break;
 
                 case selectionNames.ENDOCRINOLOGY:
                     resetPriorFigureStyle();
                     setEndocrinologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.ENDOCRINOLOGY);
+                    setSubmission("Endocrinology");
                 break;
 
                 case selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE:
                     resetPriorFigureStyle();
                     setFamilyPracticeBorder(RED_BORDER);
                     setPriorSelection(selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE);
+                    setSubmission("Family Practice / Internal Medicine");
                 break;
 
                 case selectionNames.GASTROENTEROLOGY:
                     resetPriorFigureStyle();
                     setGastroenterologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.GASTROENTEROLOGY);
+                    setSubmission("Gastroenterology");
                 break;
 
                 case selectionNames.HEMATOLOGY:
                     resetPriorFigureStyle();
                     setHematologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.HEMATOLOGY);
+                    setSubmission("Hematology");
                 break;
 
                 case selectionNames.NEUROLOGY:
                     resetPriorFigureStyle();
                     setNeurologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.NEUROLOGY);
+                    setSubmission("Neurology");
                 break;
 
                 case selectionNames.ONCOLOGY:
                     resetPriorFigureStyle();
                     setOncologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.ONCOLOGY);
+                    setSubmission("Oncology");
                 break;
 
                 case selectionNames.OPTHAMOLOGY_EYE_CARE:
                     resetPriorFigureStyle();
                     setOpthamologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.OPTHAMOLOGY_EYE_CARE);
+                    setSubmission("Opthamology / Eye Care Medicine");
                 break;
 
                 case selectionNames.ORTHOPEDICS:
                     resetPriorFigureStyle();
                     setOrthopedicsBorder(RED_BORDER);
                     setPriorSelection(selectionNames.ORTHOPEDICS);
+                    setSubmission("Orthopedics");
                 break;
 
                 case selectionNames.PATHOLOGY:
                     resetPriorFigureStyle();
                     setPathologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.PATHOLOGY);
+                    setSubmission("Pathology");
                 break;
 
                 case selectionNames.PEDIATRICS:
                     resetPriorFigureStyle();
                     setPediatricsBorder(RED_BORDER);
                     setPriorSelection(selectionNames.PEDIATRICS);
+                    setSubmission("Pediatrics");
                 break;
 
                 case selectionNames.PODIATRY:
                     resetPriorFigureStyle();
                     setPodiatryBorder(RED_BORDER);
                     setPriorSelection(selectionNames.PODIATRY);
+                    setSubmission("Podiatry");
                 break;
 
                 case selectionNames.PULMONOLOGY:
                     resetPriorFigureStyle();
                     setPulmonologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.PULMONOLOGY);
+                    setSubmission("Pulmonology");
                 break;
 
                 case selectionNames.RADIOLOGY_NUC_MED:
                     resetPriorFigureStyle();
                     setRadioBorder(RED_BORDER);
                     setPriorSelection(selectionNames.RADIOLOGY_NUC_MED);
+                    setSubmission("Radiology & Nuclear Medicine");
                 break;
 
                 case selectionNames.RHEUMATOLOGY:
                     resetPriorFigureStyle();
                     setRheumatologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.RHEUMATOLOGY);
+                    setSubmission("Rheumatology");
                 break;
 
                 case selectionNames.SURGERY:
                     resetPriorFigureStyle();
                     setSurgeryBorder(RED_BORDER);
                     setPriorSelection(selectionNames.SURGERY);
+                    setSubmission("Surgery");
                 break;
 
                 case selectionNames.UROLOGY:
                     resetPriorFigureStyle();
                     setUrologyBorder(RED_BORDER);
                     setPriorSelection(selectionNames.UROLOGY);
+                    setSubmission("Urology");
                 break;
 
                 case selectionNames.WOMENS_HEALTH_OB_GYN:
                     resetPriorFigureStyle();
                     setWomensHealthBorder(RED_BORDER);
                     setPriorSelection(selectionNames.WOMENS_HEALTH_OB_GYN);
+                    setSubmission("Women's Health / OB GYN");
                 break;
 
                 default:
@@ -398,8 +427,13 @@ export default function HealthcareCategories() {
 
     // this function handles "next" button click events
     const handleNextBtnClick = () => {
-        if ((selection !== undefined) && (selection !== selectionNames.NOT_SURE)) {
-
+        if ((selection !== undefined) && (selection !== selectionNames.NOT_SURE)) {   
+            navigate("../review-listing", { 
+                state: {
+                    insuranceType: insuranceContext[0],
+                    insuranceName: insuranceContext[1],
+                    healthCareCategory: submission
+            }});
         }
     }
 
