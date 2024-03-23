@@ -36,16 +36,53 @@
     align-items: flex-start;
 }
 
-.figButton {
-    text-align: center;
+@media only screen and (min-width: 1001px) {
+    .figButton {
+        height: 40%;
+        width: 40%;
+        text-align: center;
+    }
 }
 
-/*
-.figButton:hover {
-    text-align: center;
-    border: 2px solid red;
+@media only screen and (max-width: 1000px) and (min-width: 601px) {
+    .figButton {
+        height: 30%;
+        width: 30%;
+        text-align: center;
+    }
 }
-*/
+
+@media only screen and (max-width: 600px) and (min-width: 451px) {
+    .figButton {
+        height: 20%;
+        width: 20%;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 450px) and (min-width: 322px) {
+    .figButton {
+        height: 15%;
+        width: 15%;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 321px) and (min-width: 281px) {
+    .figButton {
+        height: 10%;
+        width: 10%;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .figButton {
+        height: 5%;
+        width: 5%;
+        text-align: center;
+    }
+}
 
 #notSure {
     align-self: flex-start;

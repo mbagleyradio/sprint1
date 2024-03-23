@@ -30,7 +30,7 @@ function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
         opacity: 0
     }
 
-    // data for ChatGPT
+    // url endpoint for ChatGPT
     const url = "https://api.openai.com/v1/chat/completions";
     
     // handler that is called when the microphone "recording" button is clicked on
@@ -133,7 +133,7 @@ function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
                         <textarea class="chatWindow" name="chatWindowUser" rows="4" cols="64" preview="Enter text here..." value={userSubmission} onChange={(e) => {setUserSubmission(e.target.value)}} />
                         <textarea class="chatWindow" name="chatWindowAI" rows="4" cols="64" value={answer}/>
                     </div>
-                    <img src={ATC_Assistant} alt="ATC Assistant"/><br/>
+                    <img id="atcAssistant" src={ATC_Assistant} alt="ATC Assistant"/><br/>
                     <button id="submitBtn" onClick={handleAsk}>Ask</button>
                 </div>
             </div>
