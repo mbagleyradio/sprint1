@@ -1,5 +1,6 @@
 import './NotSureModal.css';
 import ATC_Assistant from './sprint2/img/ATC Assistant 2.png';
+import textBubble from './sprint2/img/textBubble.png';
 import mic from './sprint2/img/mic.png';
 import { useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
@@ -133,7 +134,10 @@ function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
                         <textarea class="chatWindow" name="chatWindowUser" rows="4" cols="64" preview="Enter text here..." value={userSubmission} onChange={(e) => {setUserSubmission(e.target.value)}} />
                         <textarea class="chatWindow" name="chatWindowAI" rows="4" cols="64" value={answer}/>
                     </div>
-                    <img id="atcAssistant" src={ATC_Assistant} alt="ATC Assistant"/><br/>
+                    <div id="assistantAndBubble">
+                        <img id="atcAssistant" src={ATC_Assistant} alt="ATC Assistant"/>
+                        <img id="textBubble" src={textBubble} alt="Type in the box above or click in the microphone to speak. Describe what your health care need is and I'll see if I can help"/>
+                    </div>
                     <button id="submitBtn" onClick={handleAsk}>Ask</button>
                 </div>
             </div>
