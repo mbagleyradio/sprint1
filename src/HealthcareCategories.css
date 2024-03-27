@@ -1,13 +1,13 @@
+/* 
+* TO DO LIST:
+* 
+* Make fonts smaller so they wrap less lines
+*
+*/
+
 #topOfPage {
     display: flex;
     flex-direction: row;
-}
-
-#banner {
-    background-color: white;
-    align-self: center;
-    justify-content: center;
-    text-align: left;
 }
 
 #welcomeMSG {
@@ -21,22 +21,45 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    width: 100%;
 }
 
 .buttonColumn {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    height: auto;
-    width: auto;
+    max-height: auto;
+    max-width: auto;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+.figText {
+    font-size: 1.85vw;
 }
 
 @media only screen and (min-width: 1001px) {
     .figButton {
-        height: 65%;
-        width: 65%;
         text-align: center;
+        align-self: flex-start;
+        margin: 0;
+        padding: 0;
+        height: 80%;
+        width: 80%;
+    }
+
+    
+
+    #banner {
+        background-color: white;
+        align-self: center;
+        justify-content: center;
+        text-align: left;
+        width: auto;
+        height: auto;
+        font-size: 100%;
     }
 
     #welcomeIMG {
@@ -60,6 +83,8 @@
     .figImg {
         height: 65%;
         width: 65%;
+        margin: 0;
+        padding: 0;
     }
 
     #nextButton {
@@ -78,9 +103,22 @@
 
 @media only screen and (max-width: 1000px) and (min-width: 601px) {
     .figButton {
-        height: 60%;
-        width: 60%;
         text-align: center;
+        align-self: flex-start;
+        margin: 0;
+        padding: 0;
+        height: 80%;
+        width: 80%;
+    }
+
+    #banner {
+        background-color: white;
+        align-self: center;
+        justify-content: center;
+        text-align: left;
+        width: auto;
+        height: auto;
+        font-size: 75%;
     }
 
     #welcomeIMG {
@@ -122,9 +160,22 @@
 
 @media only screen and (max-width: 600px) and (min-width: 451px) {
     .figButton {
-        height: 50%;
-        width: 50%;
         text-align: center;
+        align-self: flex-start;
+        margin: 0;
+        padding: 0;
+        height: 80%;
+        width: 80%;
+    }
+
+    #banner {
+        background-color: white;
+        align-self: center;
+        justify-content: center;
+        text-align: left;
+        width: auto;
+        height: auto;
+        font-size: 60%;
     }
 
     #welcomeIMG {
@@ -166,9 +217,22 @@
 
 @media only screen and (max-width: 450px) and (min-width: 322px) {
     .figButton {
-        height: 40%;
-        width: 40%;
         text-align: center;
+        align-self: flex-start;
+        margin: 0;
+        padding: 0;
+        height: 80%;
+        width: 80%;
+    }
+
+    #banner {
+        background-color: white;
+        align-self: center;
+        justify-content: center;
+        text-align: left;
+        width: auto;
+        height: auto;
+        font-size: 45%;
     }
 
     #welcomeIMG {
@@ -210,9 +274,22 @@
 
 @media only screen and (max-width: 321px) and (min-width: 281px) {
     .figButton {
-        height: 30%;
-        width: 30%;
         text-align: center;
+        align-self: flex-start;
+        margin: 0;
+        padding: 0;
+        height: 80%;
+        width: 80%;
+    }
+
+    #banner {
+        background-color: white;
+        align-self: center;
+        justify-content: center;
+        text-align: left;
+        width: auto;
+        height: auto;
+        font-size: 40%;
     }
 
     #welcomeIMG {
@@ -226,6 +303,11 @@
         width: 30%;
         text-align: center;
         align-self: flex-start;
+    }
+
+    #notSureIMG {
+        height: 25%;
+        width: 25%;
     }
 
     .figImg {
@@ -249,9 +331,23 @@
 
 @media only screen and (max-width: 280px) {
     .figButton {
-        height: 20%;
-        width: 20%;
+        
+        margin: 0;
+        padding: 0;
+        height: 35%;
+        width: 35%;
         text-align: center;
+        align-self: flex-start;
+    }
+
+    #banner {
+        background-color: white;
+        align-self: center;
+        justify-content: center;
+        text-align: left;
+        width: auto;
+        height: auto;
+        font-size: 25%;
     }
 
     #welcomeIMG {
@@ -261,8 +357,8 @@
     }
 
     .figImg {
-        height: 20%;
-        width: 20%;
+        height: 35%;
+        width: 35%;
     }
 
     #nextButton {
@@ -283,6 +379,11 @@
         width: 20%;
         text-align: center;
         align-self: flex-start;
+    }
+
+    #notSureIMG {
+        height: 25%;
+        width: 25%;
     }
 }
 

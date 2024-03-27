@@ -468,121 +468,121 @@ export default function HealthcareCategories() {
                 <h1>NAME: {insuranceContext[1]}</h1>
             </div>
         </div>
-        <h2 id="welcomeMSG">What category of healthcare services are you looking for? (pick one)</h2>
+        <h3 id="welcomeMSG">What category of healthcare services are you looking for? (pick one)</h3>
         <div id="landingPage">
             <div class="buttonColumn" id="firstCol">
                 <figure class="figButton" style={addictionMedicineBorder} onClick={() => handleFigureClick(selectionNames.ADDICTION_MEDICINE)}>
                     <img class="figImg" src={AddictionMedicine} alt="Addiction Medicine"/>
-                    <figcaption>Addiction Medicine</figcaption>
+                    <figcaption class="figText">Addiction Medicine</figcaption>
                 </figure>
                 <figure class="figButton" style={allergyImmuneBorder} onClick={() => handleFigureClick(selectionNames.ALLERGY_IMMUNE_MEDICINE)}>
                     <img class="figImg" src={AllergyAndImmune} alt="Allergy and Immune System Medicine" />
-                    <figcaption>Allergy & Immune System Medicine</figcaption>
+                    <figcaption class="figText">Allergy & Immune System Medicine</figcaption>
                 </figure>
                 <figure class="figButton" style={anesthesiologyBorder} onClick={() => handleFigureClick(selectionNames.ANESTHESIOLOGY)}>
                     <img class="figImg" src={Anesthesiology} alt="Anesthesiology" />
-                    <figcaption>Anesthesiology</figcaption>
+                    <figcaption class="figText">Anesthesiology</figcaption>
                 </figure>
                 <figure class="figButton" style={behavioralHealthBorder} onClick={() => handleFigureClick(selectionNames.BEHAVIORAL_HEALTH)}>
                     <img class="figImg" src={BehavioralHealth} alt="Behavioral Health" />
-                    <figcaption>Behavioral Health</figcaption>
+                    <figcaption class="figText">Behavioral Health</figcaption>
                 </figure>
                 <figure class="figButton" style={cardiologyBorder} onClick={() => handleFigureClick(selectionNames.CARDIOLOGY)}>
                     <img class="figImg" src={Cardiology} alt="Cardiology" />
-                    <figcaption>Cardiology</figcaption>
+                    <figcaption class="figText">Cardiology</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="secondCol">
                 <figure class="figButton" style={dermatologyBorder} onClick={() => handleFigureClick(selectionNames.DERMATOLOGY)}>                
                     <img class="figImg" src={Dermatology} alt="Dermatology"/>
-                    <figcaption>Dermatology</figcaption>
+                    <figcaption class="figText">Dermatology</figcaption>
                 </figure>
                 <figure class="figButton" style={earNoseThroatBorder} onClick={() => handleFigureClick(selectionNames.EAR_NOSE_THROAT)}>
                     <img class="figImg" src={EarNoseThroat} alt="Ear, Nose, and Throat"/>
-                    <figcaption>Ear, Nose, & Throat (Otolaryngology)</figcaption>
+                    <figcaption class="figText">Ear, Nose, & Throat (Otolaryngology)</figcaption>
                 </figure>
                 <figure class="figButton" style={emergencyBorder} onClick={() => handleFigureClick(selectionNames.EMERGENCY_MEDICINE)}>
                     <img class="figImg" src={EmergencyMedicine} alt="Emergency Medicine"/>
-                    <figcaption>Emergency Medicine</figcaption>
+                    <figcaption class="figText">Emergency Medicine</figcaption>
                 </figure>
                 <figure class="figButton" style={endocrinologyBorder} onClick={() => handleFigureClick(selectionNames.ENDOCRINOLOGY)}>
                     <img class="figImg" src={Endocrinology} alt="Endocrinology"/>
-                    <figcaption>Endocrinology</figcaption>
+                    <figcaption class="figText">Endocrinology</figcaption>
                 </figure>
                 <figure class="figButton" style={familyPracticeBorder} onClick={() => handleFigureClick(selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE)}>
                     <img class="figImg" src={FamilyPracticeInternalMedicine} alt="Family Practice and Internal Medicine"/>
-                    <figcaption>Family Practice / Internal Medicine</figcaption>
+                    <figcaption class="figText">Family Practice / Internal Medicine</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="thirdCol">
                 <figure class="figButton" style={gastroenterologyBorder} onClick={() => handleFigureClick(selectionNames.GASTROENTEROLOGY)}>
                     <img class="figImg" src={Gastroenterology} alt="Gastroenterology"/>
-                    <figcaption>Gastroenterology</figcaption>
+                    <figcaption class="figText">Gastroenterology</figcaption>
                 </figure>
                 <figure class="figButton" style={hematologyBorder} onClick={() => handleFigureClick(selectionNames.HEMATOLOGY)}>
                     <img class="figImg" src={Hematology} alt="Hematology"/>
-                    <figcaption>Hematology</figcaption>
+                    <figcaption class="figText">Hematology</figcaption>
                 </figure>
                 <figure class="figButton" style={neurologyBorder} onClick={() => handleFigureClick(selectionNames.NEUROLOGY)}>
                     <img class="figImg" src={Neurology} alt="Neurology"/>
-                    <figcaption>Neurology</figcaption>
+                    <figcaption class="figText">Neurology</figcaption>
                 </figure>
                 <figure class="figButton" style={oncologyBorder} onClick={() => handleFigureClick(selectionNames.ONCOLOGY)}>
                     <img class="figImg" src={Oncology} alt="Oncology"/>
-                    <figcaption>Oncology</figcaption>
+                    <figcaption class="figText">Oncology</figcaption>
                 </figure>
                 <figure class="figButton" style={opthamologyBorder} onClick={() => handleFigureClick(selectionNames.OPTHAMOLOGY_EYE_CARE)}>
                     <img class="figImg" src={Opthamology} alt="Opthamology"/>
-                    <figcaption>Opthamology / Eye Care Medicine</figcaption>
+                    <figcaption class="figText">Opthamology / Eye Care Medicine</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="fourthCol">
                 <figure class="figButton" style={orthopedicsBorder} onClick={() => handleFigureClick(selectionNames.ORTHOPEDICS)}>
                     <img class="figImg" src={Orthopedics} alt="Orthopedics"/>
-                    <figcaption>Orthopedics</figcaption>
+                    <figcaption class="figText">Orthopedics</figcaption>
                 </figure>
                 <figure class="figButton" style={pathologyBorder} onClick={() => handleFigureClick(selectionNames.PATHOLOGY)}>
                     <img class="figImg" src={Pathology} alt="Pathology"/>
-                    <figcaption>Pathology</figcaption>
+                    <figcaption class="figText">Pathology</figcaption>
                 </figure>
                 <figure class="figButton" style={pediatricsBorder} onClick={() => handleFigureClick(selectionNames.PEDIATRICS)}>
                     <img class="figImg" src={Pediatrics} alt="Pediatrics"/>
-                    <figcaption>Pediatrics</figcaption>
+                    <figcaption class="figText">Pediatrics</figcaption>
                 </figure>
                 <figure class="figButton" style={podiatryBorder} onClick={() => handleFigureClick(selectionNames.PODIATRY)}>
                     <img class="figImg" src={Podiatry} alt="Podiatry"/>
-                    <figcaption>Podiatry</figcaption>
+                    <figcaption class="figText">Podiatry</figcaption>
                 </figure>
                 <figure class="figButton" style={pulmonologyBorder} onClick={() => handleFigureClick(selectionNames.PULMONOLOGY)}>
                     <img class="figImg" src={Pulmonology} alt="Pulmonology"/>
-                    <figcaption>Pulmonology</figcaption>
+                    <figcaption class="figText">Pulmonology</figcaption>
                 </figure>
             </div>
             <div class="buttonColumn" id="fifthCol">   
                 <figure class="figButton" style={radiologyBorder} onClick={() => handleFigureClick(selectionNames.RADIOLOGY_NUC_MED)}>
                     <img class="figImg" src={Radiology} alt="Radiology"/>
-                    <figcaption>Radiology & Nuclear Medicine</figcaption>
+                    <figcaption class="figText">Radiology & Nuclear Medicine</figcaption>
                 </figure>
                 <figure class="figButton" style={rheumatologyBorder} onClick={() => handleFigureClick(selectionNames.RHEUMATOLOGY)}>
                     <img class="figImg" src={Rheumatology} alt="Rheumatology"/>
-                    <figcaption>Rheumatology</figcaption>
+                    <figcaption class="figText">Rheumatology</figcaption>
                 </figure>
                 <figure class="figButton" style={surgeryBorder} onClick={() => handleFigureClick(selectionNames.SURGERY)}>
                     <img class="figImg" src={Surgery} alt="Surgery"/>
-                    <figcaption>Surgery</figcaption>
+                    <figcaption class="figText">Surgery</figcaption>
                 </figure>
                 <figure class="figButton" style={urologyBorder} onClick={() => handleFigureClick(selectionNames.UROLOGY)}>
                     <img class="figImg" src={Urology} alt="Urology"/>
-                    <figcaption>Urology</figcaption>
+                    <figcaption class="figText">Urology</figcaption>
                 </figure>
                 <figure class="figButton" style={womensHealthBorder} onClick={() => handleFigureClick(selectionNames.WOMENS_HEALTH_OB_GYN)}>
                     <img class="figImg" src={WomensHealth} alt="Women's Health, OB/GN"/>
-                    <figcaption>Women's Health / OB/GYN</figcaption>
+                    <figcaption class="figText">Women's Health / OB/GYN</figcaption>
                 </figure>                
             </div>
             <figure id="notSure" onClick={() => handleFigureClick(selectionNames.NOT_SURE)}>
                 <img id="notSureIMG" src={NotSure} alt="I'm Not Sure"/>
-                <figcaption>I'm Not Sure</figcaption>
+                <figcaption class="figText">I'm Not Sure</figcaption>
             </figure>
             {
                 modalOpen && (
