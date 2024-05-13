@@ -33,8 +33,8 @@
     }
 
     #atcAssistant {
-        width: 50%;
-        height: 50%;
+        width: 40%;
+        height: 40%;
     }
 
     #textBubble {
@@ -49,6 +49,11 @@
     
     #submitBtn {
         cursor: pointer;
+        height: 3vh;
+        width: 8vw;
+        margin-top: 1%;
+        text-align: center;
+        justify-content: center;
     }
     
     #micAndTextBox {
@@ -97,8 +102,8 @@
     }
 
     #atcAssistant {
-        width: 60%;
-        height: 60%;
+        width: 40%;
+        height: 40%;
     }
 
     #textBubble {
@@ -113,6 +118,11 @@
     
     #submitBtn {
         cursor: pointer;
+        height: 3vh;
+        width: 8vw;
+        margin-top: 1%;
+        text-align: center;
+        justify-content: center;
     }
     
     #micAndTextBox {
@@ -177,6 +187,11 @@
     
     #submitBtn {
         cursor: pointer;
+        height: 3vh;
+        width: 8vw;
+        margin-top: 1%;
+        text-align: center;
+        justify-content: center;
     }
     
     #micAndTextBox {
@@ -292,8 +307,8 @@
     }
 
     #atcAssistant {
-        width: 35%;
-        height: 35%;
+        width: 15%;
+        height: 15%;
     }
 
     #textBubble {
