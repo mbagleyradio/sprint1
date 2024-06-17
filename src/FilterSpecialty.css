@@ -1,0 +1,21 @@
+#filterSpecialtyWindow {
+    border: 2px solid #000;
+    background-color: #fff2cc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.filterSpecialtyText {
+    color: #000;
+    font-size: 1em;
+    text-align: left;
+}
+
+.filterSpecialtyBtn {
+    background-color: #fff2cc;
+    border: 2px solid #000;
+    align-self: left;
+}

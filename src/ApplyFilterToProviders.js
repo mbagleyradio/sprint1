@@ -1,3 +1,5 @@
+import './ApplyFilterToProviders.css';
+
 function ApplyFilterToProviders( {isFiltered} ) {
     return (
         <div id="numberOfProviders">
