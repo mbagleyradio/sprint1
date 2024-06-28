@@ -6,8 +6,9 @@ import PopupNoI from './PopupNoI.js';
 import PopupI from './PopupI.js';
 import ModalOnSubmit from './ModalOnSubmit.js';
 import HealthcareCategories from './HealthcareCategories.js';
-import FilterHealthCareSelection from './FilterHealthCareSelection.js';
+import ReviewSelection from './ReviewSelection.js';
 import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom';
+
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
@@ -18,7 +19,7 @@ function App() {
       <Route path="contact-no-ins" element={ <PopupNoI/> }></Route>
       <Route path="submitted" element={ <ModalOnSubmit/> }></Route>
       <Route path="healthcare-categories" element={ <HealthcareCategories/> }></Route>
-      <Route path="review-listing" element={ <FilterHealthCareSelection/> }></Route>
+      <Route path="review-listing" element={ <ReviewSelection/> }></Route>
     </>
     )
   );

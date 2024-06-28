@@ -1,7 +1,4 @@
-import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
-
-import ReviewSelection from './ReviewSelection.js';
 import ApplyFilterToProviders from './ApplyFilterToProviders.js';
 import FilterMenu from './FilterMenu.js';
 
@@ -29,16 +26,11 @@ function FilterHealthCareSelection() {
     const [ isFiltered, setIsFiltered ] = useState(false);
     const [ filterType, setFilterType ] = useState(undefined);
     const [ isFilterClicked, setIsFilterClicked ] = useState(false);
-    const [ childStatus, setChildStatus ] = useState(false);
     const [ specialtyBorder, setSpecialtyBorder ] = useState(DEFAULT_BORDER);
     const [ appointmentBorder, setAppointmentBorder ] = useState(DEFAULT_BORDER);
     const [ timeBorder, setTimeBorder ] = useState(DEFAULT_BORDER);
     const [ areaBorder, setAreaBorder ] = useState(DEFAULT_BORDER);
     const [ keywordBorder, setKeywordBorder ] = useState(DEFAULT_BORDER);
-
-    // acquiring data from previous page (insurance type & insurance name), and sanitizing that data for display on this page
-    const location = useLocation(); 
-    const listingToReview = location.state;
 
     const handleSpecialty = () => {
         setSpecialtyBorder(RED_BORDER);
@@ -90,9 +82,17 @@ function FilterHealthCareSelection() {
         setFilterType("Keyword");
     }
 
+    const handleFilterSubmit = (selection) => {
+        console.log(selection);
+        if (!isFiltered) {
+            setIsFiltered(true);
+        } else {
+            setIsFiltered(false);
+        }
+    }
+
     return(
         <>
-            <ReviewSelection insuranceType={listingToReview.insuranceType} insuranceName={listingToReview.insuranceName} healthCareCategory={listingToReview.healthCareCategory} />
             <div>
                 <ApplyFilterToProviders isFiltered={isFiltered}/>
                 <div id="filterMenuRow">
@@ -118,7 +118,10 @@ function FilterHealthCareSelection() {
                     </figure>
                 </div>
                 <div>
-                    {isFilterClicked ? <FilterMenu filterType={filterType}/> : <></>}
+                    {isFilterClicked ? <FilterMenu filterType={filterType} onFilterSubmit={handleFilterSubmit}/> : <></>}
+                </div>
+                <div>
+                    {isFiltered ? <FilterHealthCareSelection/> : <></>}
                 </div>
             </div>
         </>
