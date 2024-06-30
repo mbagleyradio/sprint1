@@ -10,13 +10,15 @@ function ReviewSelection() {
 
     return (
         <div id="reviewSelectionScreen">
-            <img src={A2CLogo} alt="Access 2 Care"/>
+            <img id="reviewSelectionLogo" src={A2CLogo} alt="Access 2 Care"/>
             <div id="reviewSelectionWhiteBanner">
                 <p className="reviewSelectionText">TYPE: {listingToReview.insuranceType}</p>
                 <p className="reviewSelectionText">NAME: {listingToReview.insuranceName}</p>
                 <p className="reviewSelectionText">CATEGORY: {listingToReview.healthCareCategory}</p>
             </div>
-            <FilterHealthCareSelection/>
+            <div id="filterHealthCareScreen">
+                <FilterHealthCareSelection/>
+            </div>
         </div>
         
     );

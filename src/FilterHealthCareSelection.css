@@ -1,4 +1,14 @@
-#filterMenuRow {
+#filterHealthCareSection{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+}
+
+#menuSelect {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
+    width: 50%;
+    height: 50%;
 }

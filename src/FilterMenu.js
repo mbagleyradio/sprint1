@@ -1,5 +1,9 @@
 import "./FilterSpecialty.css";
+import "./FilterMenu_Area.css";
 import { useState } from 'react';
+import buttonLowerKeys from './sprint3/img/button_lower-keys.png';
+import buttonMiddleKeys from './sprint3/img/button_middle-keys.png';
+import buttonUpperKeys from './sprint3/img/button_upper-keys.png';
 
 function FilterMenu( { filterType, onFilterSubmit } ) {
     const [ userSelection, setUserSelection ] = useState("default - no filters selected");
@@ -32,7 +36,9 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                         <input className="filterSpecialtyBtn" type="radio" id="noneBtn" name="filterSpecialtyInput" value="Specialty: None (exit)"/>
                         <label className="filterSpecialtyText" for="noneBtn">None (exit)</label>
                     </div>
-                    <button className="filterSelectBtn" onClick={sendSelectionToMainMenu}>Select</button>
+                    <div className="filterSelectButtonContainer">
+                        <button className="filterSelectBtn" onClick={sendSelectionToMainMenu}>SELECT</button>
+                    </div>
                 </div>
             );
         break;
@@ -61,17 +67,26 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                         <input className="filterSpecialtyBtn" type="radio" id="noneBtn" name="filterAppointmentInput" value="Appointment: None (exit)" onClick={(e) => setUserSelection(e.target.value)}/>
                         <label className="filterSpecialtyText" for="noneBtn">None (exit)</label>
                     </div>
-                    <button className="filterSelectBtn" onClick={sendSelectionToMainMenu}>Select</button>
+                    <div className="filterSelectButtonContainer">
+                        <button className="filterSelectBtn" onClick={sendSelectionToMainMenu}>SELECT</button>
+                    </div>
                 </div>
             );
         break;
         
         case "Area":
             return (
-                <div id="filterSpecialtyWindow">
-                    <p className="filterSpecialtyText">Select One</p>
-                    <p className="filterSpecialtyText">** TO DO ** INSERT AREA MAP</p>
-                    <button className="filterSelectBtn" onClick={sendSelectionToMainMenu}>Select</button>
+                <div id="filterAreaWindow">
+                    <p id="filterAreaText" className="filterSpecialtyText">Select One</p>
+                    <button className="areaBtn" id="areaBtnNone">None (exit)</button>
+                    <button className="areaBtn" id="areaBtnKeyWest">Key West</button>
+                    <button className="areaBtn" id="areaBtnMarathon">Marathon</button>
+                    <button className="areaBtn" id="areaBtnTavernier">Tavernier</button>
+                    <button className="areaBtn" id="areaBtnKeyLargo">Key Largo</button>
+                    <img id="areaBtnLowerKeys" className="areaBtnImg" src={buttonLowerKeys} alt="lower keys" onClick={()=>console.log("clicked lower keys\n")}/>
+                    <img id="areaBtnMiddleKeys" className="areaBtnImg" src={buttonMiddleKeys} alt="middle keys" onClick={()=>console.log("clicked middle keys\n")}/>
+                    <img id="areaBtnUpperKeys" className="areaBtnImg" src={buttonUpperKeys} alt="upper keys" onClick={()=>console.log("clicked upper keys\n")}/>
+                    <button id="areaSelect" className="filterSelectBtn" onClick={sendSelectionToMainMenu}>SELECT</button>
                 </div>
             );
         break;
@@ -112,7 +127,9 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                         <input className="filterSpecialtyBtn" type="radio" id="noneBtn" name="filterTimeInput" value="Time: None (exit)" onClick={(e) => setUserSelection(e.target.value)}/>
                         <label className="filterSpecialtyText" for="noneBtn">None (exit)</label>
                     </div>
-                    <button className="filterSelectBtn" onClick={sendSelectionToMainMenu}>Select</button>
+                    <div className="filterSelectButtonContainer">
+                        <button className="filterSelectBtn" onClick={sendSelectionToMainMenu}>SELECT</button>
+                    </div>
                 </div>
             );
         break;
@@ -121,8 +138,21 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
             return (
                 <div id="filterSpecialtyWindow">
                     <p className="filterSpecialtyText">Select One</p>
-                    <p className="filterSpecialtyText">** TO DO ** GET LIST OF KEYWORDS</p>
-                    <button className="filterSelectBtn" onClick={sendSelectionToMainMenu}>Select</button>
+                    <div>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordBtn1" name="filterKeywordInput" value="Keyword: #1" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordBtn1">Keyword #1</label>
+                    </div>
+                    <div>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordBtn2" name="filterKeywordInput" value="Keyword: #2" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordBtn2">Keyword #2</label>
+                    </div>
+                    <div>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordBtn3" name="filterKeywordInput" value="Keyword: #3" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordBtn3">Keyword #3</label>
+                    </div>
+                    <div className="filterSelectButtonContainer">
+                        <button className="filterSelectBtn" onClick={sendSelectionToMainMenu}>SELECT</button>
+                    </div>
                 </div>
             );
         break;

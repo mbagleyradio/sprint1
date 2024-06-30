@@ -1,7 +1,12 @@
 #reviewSelectionScreen {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#reviewSelectionLogo {
+    max-width: 150px;
 }
 
 #reviewSelectionWhiteBanner {
@@ -11,8 +16,14 @@
     display: flex;
     flex-direction: column;
     text-align: left;
+    justify-content: center;
 }
 
 .reviewSelectionText {
     font-size: 1.5rem;
+}
+
+#filterHealthCareScreen {
+    justify-content: center;
+    align-items: center;
 }
