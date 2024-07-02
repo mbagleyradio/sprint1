@@ -29,7 +29,6 @@
     top: 15%;
     background-color: #ffff00;
     color: #000;
-    border: 1px solid #000;
     border-radius: 50%;
     word-wrap: normal;
 
@@ -40,7 +39,7 @@
     top: 50%;
     background-color: #ecafa4;
     color: #c10606;
-    border: 1px solid #c10606;
+    
 }
 
 #areaBtnMarathon {
@@ -48,7 +47,6 @@
     top: 37%;
     background-color: #b2cda4;
     color: #137011;
-    border: 1px solid #137011;
 }
 
 #areaBtnTavernier {
@@ -56,7 +54,6 @@
     top: 23%;
     background-color: #bcbfc2;
     color: #283e68;
-    border: 1px solid #283e68;
 }
 
 #areaBtnKeyLargo {
@@ -64,7 +61,6 @@
     top: 10%;
     background-color: #d0d287;
     color: #283e68;
-    border: 1px solid #283e68;
 }
 
 .areaBtnImg {
