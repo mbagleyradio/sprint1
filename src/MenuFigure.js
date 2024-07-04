@@ -16,13 +16,13 @@ const RED_BORDER = {
     border: "2px solid red"
 }
 
-function MenuFigure( { handleOnClick } ) {
+function MenuFigure( { handleOnClick, filterSelection, handleOnUndo } ) {
     const [ specialtyBorder, setSpecialtyBorder ] = useState(DEFAULT_BORDER);
     const [ appointmentBorder, setAppointmentBorder ] = useState(DEFAULT_BORDER);
     const [ timeBorder, setTimeBorder ] = useState(DEFAULT_BORDER);
     const [ areaBorder, setAreaBorder ] = useState(DEFAULT_BORDER);
     const [ keywordBorder, setKeywordBorder ] = useState(DEFAULT_BORDER);
-    
+
     const handleSpecialty = () => {
         setSpecialtyBorder(RED_BORDER);
         setAppointmentBorder(DEFAULT_BORDER);
@@ -68,28 +68,56 @@ function MenuFigure( { handleOnClick } ) {
         handleOnClick("Keyword");
     }
 
+    const handleUndoButtonOnClick = () => {
+        console.log("\nUndo button clicked\n");
+        filterSelection = "";
+        handleOnUndo();
+    }
+
+    // now build the UNDO, right now it undos the overlay but it 
     return (
         <div id="filterMenuRow">
-            <figure className="filterMenuButton" onClick={handleSpecialty} style={specialtyBorder}>
-                <img className="filterMenuButtonImg" src={filter_specialty} alt="Filter providers by their specialty" />
-                <figcaption className="filterMenuButtonCaption">Specialty</figcaption>
-            </figure>
-            <figure className="filterMenuButton" onClick={handleAppointment} style={appointmentBorder}>
-                <img className="filterMenuButtonImg" src={filter_appointment} alt="Filter providers by their appointment type" />
-                <figcaption className="filterMenuButtonCaption">Appointment</figcaption>
-            </figure>
-            <figure className="filterMenuButton" onClick={handleTime} style={timeBorder}>
-                <img className="filterMenuButtonImg" src={filter_time} alt="Filter providers by their appointment time" />
-                <figcaption className="filterMenuButtonCaption">Time</figcaption>
-            </figure>
-            <figure className="filterMenuButton" onClick={handleArea} style={areaBorder}>
-                <img className="filterMenuButtonImg" src={filter_area} alt="Filter providers by their local area" />
-                <figcaption className="filterMenuButtonCaption">Area</figcaption>
-            </figure>
-            <figure className="filterMenuButton" onClick={handleKeyword} style={keywordBorder}>
-                <img className="filterMenuButtonImg" src={filter_keyword} alt="Filter providers by a keyword" />
-                <figcaption className="filterMenuButtonCaption">Keyword</figcaption>
-            </figure>
+            <div className="filterMenuColumn">
+                <figure className="filterMenuButton" onClick={handleSpecialty} style={specialtyBorder}>
+                    <img className="filterMenuButtonImg" src={filter_specialty} alt="Filter providers by their specialty" />
+                    {filterSelection.startsWith("Specialty") ? <div className="filterMenuOverlay" onClick={handleUndoButtonOnClick}><p className="filterMenuOverlayText">Undo</p></div> : <></>}
+                    <figcaption className="filterMenuButtonCaption">Specialty</figcaption>
+                </figure>
+                {filterSelection.startsWith("Specialty") ? <div className="filterMenuInfomatic"><p className="filterMenuInfomaticText">{filterSelection}</p></div> : <></>}
+            </div>
+            <div className="filterMenuColumn">
+                <figure className="filterMenuButton" onClick={handleAppointment} style={appointmentBorder}>
+                    <img className="filterMenuButtonImg" src={filter_appointment} alt="Filter providers by their appointment type" />
+                    {filterSelection.startsWith("Appointment")? <div className="filterMenuOverlay" onClick={handleUndoButtonOnClick}><p className="filterMenuOverlayText">Undo</p></div> : <></>}
+                    <figcaption className="filterMenuButtonCaption">Appointment</figcaption>
+                </figure>
+                {filterSelection.startsWith("Appointment") ? <div className="filterMenuInfomatic"><p className="filterMenuInfomaticText">{filterSelection}</p></div> : <></>}
+            </div>
+            <div className="filterMenuColumn">
+                <figure className="filterMenuButton" onClick={handleTime} style={timeBorder}>
+                    <img className="filterMenuButtonImg" src={filter_time} alt="Filter providers by their appointment time" />
+                    {filterSelection.startsWith("Time") ? <div className="filterMenuOverlay" onClick={handleUndoButtonOnClick}><p className="filterMenuOverlayText">Undo</p></div> : <></>}
+                    <figcaption className="filterMenuButtonCaption">Time</figcaption>
+                </figure>
+                {filterSelection.startsWith("Time") ? <div className="filterMenuInfomatic"><p className="filterMenuInfomaticText">{filterSelection}</p></div> : <></>}
+            </div>
+            <div className="filterMenuColumn">
+                <figure className="filterMenuButton" onClick={handleArea} style={areaBorder}>
+                    <img className="filterMenuButtonImg" src={filter_area} alt="Filter providers by their local area" />
+                    {filterSelection.startsWith("Area") ? <div className="filterMenuOverlay" onClick={handleUndoButtonOnClick}><p className="filterMenuOverlayText">Undo</p></div> : <></>}
+                    <figcaption className="filterMenuButtonCaption">Area</figcaption>
+                </figure>
+                {filterSelection.startsWith("Area") ? <div className="filterMenuInfomatic"><p className="filterMenuInfomaticText">{filterSelection}</p></div> : <></>}
+            </div>
+            <div className="filterMenuColumn">
+                <figure className="filterMenuButton" onClick={handleKeyword} style={keywordBorder}>
+                    <img className="filterMenuButtonImg" src={filter_keyword} alt="Filter providers by a keyword" />
+                    {filterSelection.startsWith("Keyword") ? <div className="filterMenuOverlay" onClick={handleUndoButtonOnClick}><p className="filterMenuOverlayText">Undo</p></div> : <></>}
+                    <figcaption className="filterMenuButtonCaption">Keyword</figcaption>
+                </figure>
+                {filterSelection.startsWith("Keyword") ? <div className="filterMenuInfomatic"><p className="filterMenuInfomaticText">{filterSelection}</p></div> : <></>}
+            </div>
+            
         </div>
     )
 }

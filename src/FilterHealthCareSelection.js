@@ -9,12 +9,14 @@ function FilterHealthCareSelection() {
     const [ filterType, setFilterType ] = useState(undefined);
     const [ isFilterClicked, setIsFilterClicked ] = useState(false);
     const [ showFilterMenu, setShowFilterMenu ] = useState(true);
-    const [ filterSelection, setFilterSelection ] = useState(undefined);
+    const [ filterSelection, setFilterSelection ] = useState("");
+    const [ numActiveFilters, setNumActiveFilters ] = useState(0);
 
     const handleFilterSubmit = (selection) => {
         if (!isFiltered && isFilterClicked) {
             setIsFiltered(true);
             setShowFilterMenu(false);
+            setNumActiveFilters(numActiveFilters + 1);
         }
 
         setFilterSelection(selection);
@@ -54,13 +56,18 @@ function FilterHealthCareSelection() {
         }
     }
 
-    // make the figures into reusable components (a MenuFigure component) with a styleByEvent prop, and a handleOnClick prop
-    // when this is done, reconfigure the <figure> HTML to only render if showFilterMenu is true (showFilterMenu && <Component/>)
+    const handleUndoClicked = () => {
+        setIsFiltered(false);
+        setIsFilterClicked(true);
+        setShowFilterMenu(true);
+        setFilterSelection("");
+    }
+    
     return(
         <>
             <div id="filterHealthCareSection">
                 <ApplyFilterToProviders isFiltered={isFiltered} filterSelection={filterSelection}/>
-                <MenuFigure handleOnClick={handleFigureClicked}/> : <></>
+                <MenuFigure handleOnClick={handleFigureClicked} filterSelection={filterSelection} handleOnUndo={handleUndoClicked}/> : <></>
                 <div id="menuSelect">
                     {isFilterClicked ? showFilterMenu && <FilterMenu filterType={filterType} onFilterSubmit={handleFilterSubmit}/> : <></>}
                 </div>
