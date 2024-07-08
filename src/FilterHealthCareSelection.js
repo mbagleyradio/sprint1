@@ -4,7 +4,7 @@ import FilterMenu from './FilterMenu.js';
 import MenuFigure from './MenuFigure.js';
 import './FilterHealthCareSelection.css';
 
-function FilterHealthCareSelection() {
+function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCategory, addFilters, collectedFilters, removeFilters } ) {
     const [ isFiltered, setIsFiltered ] = useState(false);
     const [ filterType, setFilterType ] = useState(undefined);
     const [ isFilterClicked, setIsFilterClicked ] = useState(false);
@@ -16,10 +16,15 @@ function FilterHealthCareSelection() {
         if (!isFiltered && isFilterClicked) {
             setIsFiltered(true);
             setShowFilterMenu(false);
-            setNumActiveFilters(numActiveFilters + 1);
         }
 
         setFilterSelection(selection);
+        addFilters({
+            id: numActiveFilters,
+            filterName: selection
+        });
+
+        setNumActiveFilters(numActiveFilters + 1);
     }
 
     const handleFigureClicked = (selection) => {
@@ -61,18 +66,20 @@ function FilterHealthCareSelection() {
         setIsFilterClicked(true);
         setShowFilterMenu(true);
         setFilterSelection("");
+        removeFilters(numActiveFilters);
+        setNumActiveFilters(numActiveFilters - 1);
     }
     
     return(
         <>
             <div id="filterHealthCareSection">
-                <ApplyFilterToProviders isFiltered={isFiltered} filterSelection={filterSelection}/>
+                <ApplyFilterToProviders isFiltered={isFiltered} insuranceName={insuranceName} insuranceType={insuranceType} healthCareCategory={healthCareCategory} collectedFilters={collectedFilters}/>
                 <MenuFigure handleOnClick={handleFigureClicked} filterSelection={filterSelection} handleOnUndo={handleUndoClicked}/> : <></>
                 <div id="menuSelect">
                     {isFilterClicked ? showFilterMenu && <FilterMenu filterType={filterType} onFilterSubmit={handleFilterSubmit}/> : <></>}
                 </div>
                 <div>
-                    {isFiltered ? <FilterHealthCareSelection/> : <></>}
+                    {isFiltered ? <FilterHealthCareSelection insuranceType={insuranceType} insuranceName={insuranceName} healthCareCategory={healthCareCategory} addFilters={addFilters} collectedFilters={collectedFilters} removeFilters={removeFilters}/> : <></>}
                 </div>
             </div>
         </>

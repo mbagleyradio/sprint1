@@ -69,12 +69,10 @@ function MenuFigure( { handleOnClick, filterSelection, handleOnUndo } ) {
     }
 
     const handleUndoButtonOnClick = () => {
-        console.log("\nUndo button clicked\n");
         filterSelection = "";
         handleOnUndo();
     }
 
-    // now build the UNDO, right now it undos the overlay but it 
     return (
         <div id="filterMenuRow">
             <div className="filterMenuColumn">
