@@ -88,13 +88,13 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                     case "Keyword: Arthritis":
                     break;
 
-                    case "Physical Therapy":
+                    case "Keyword: Physical Therapy":
                     break;
 
-                    case "Women's Care":
+                    case "Keyword: Women's Care":
                     break;
 
-                    case "Diagnostic":
+                    case "Keyword: Diagnostic":
                     break;
                     
                     default:
