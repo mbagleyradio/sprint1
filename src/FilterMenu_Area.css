@@ -24,6 +24,16 @@
     padding-left: 1%;
 }
 
+#mapBtnSelectedMsg {
+    font-size: 1.25rem;
+    padding-left: 1%;
+    color: red;
+    bottom: -3%;
+    left: 33%;
+    position: absolute;
+
+}
+
 #areaBtnNone {
     left: 1%;
     top: 15%;
@@ -89,6 +99,6 @@
 
 #areaSelect {
     position: absolute;
-    left: 84%;
+    left: 83%;
     bottom: 1%;
 }

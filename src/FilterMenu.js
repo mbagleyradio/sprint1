@@ -25,8 +25,12 @@ const areaButtonTrimNone = {
     border: "1px solid #000"
 }
 
-const mapButtonsTrim = {
+const mapButtonsTrimNone = {
     border: "none"
+}
+
+const mapButtonsTrim = {
+    backgroundColor: "red"
 }
 
 function FilterMenu( { filterType, onFilterSubmit } ) {
@@ -36,10 +40,10 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
     const [ areaBtnMarathonStyle, setAreaBtnMarathonStyle ] = useState(areaButtonTrimMarathon);
     const [ areaBtnTavernierStyle, setAreaBtnTavernierStyle ] = useState(areaButtonTrimTavernier);
     const [ areaBtnKeyLargoStyle, setAreaBtnKeyLargoStyle ] = useState(areaButtonTrimTavernier);
-    const [ mapBtnLowerKeysStyle, setMapBtnLowerKeysStyle ] = useState(mapButtonsTrim);
-    const [ mapBtnMiddleKeysStyle, setMapBtnMiddleKeysStyle ] = useState(mapButtonsTrim);
-    const [ mapBtnUpperKeysStyle, setMapBtnUpperKeysStyle ] = useState(mapButtonsTrim);
-    
+    const [ mapBtnLowerKeysStyle, setMapBtnLowerKeysStyle ] = useState(mapButtonsTrimNone);
+    const [ mapBtnMiddleKeysStyle, setMapBtnMiddleKeysStyle ] = useState(mapButtonsTrimNone);
+    const [ mapBtnUpperKeysStyle, setMapBtnUpperKeysStyle ] = useState(mapButtonsTrimNone);
+    const [ mapBtnSelectMsg, setMapBtnSelectMsg ] = useState(null);
     const sendSelectionToMainMenu = () => {
         onFilterSubmit(userSelection);
     }
@@ -53,9 +57,10 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                 setAreaBtnMarathonStyle(areaButtonTrimMarathon);
                 setAreaBtnTavernierStyle(areaButtonTrimTavernier);
                 setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
-                setMapBtnLowerKeysStyle(mapButtonsTrim);
-                setMapBtnMiddleKeysStyle(mapButtonsTrim);
-                setMapBtnUpperKeysStyle(mapButtonsTrim);
+                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
+                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
+                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
+                setMapBtnSelectMsg(null);
             break;
 
             case "Area: Key West":
@@ -65,9 +70,10 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                 setAreaBtnMarathonStyle(areaButtonTrimMarathon);
                 setAreaBtnTavernierStyle(areaButtonTrimTavernier);
                 setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
-                setMapBtnLowerKeysStyle(mapButtonsTrim);
-                setMapBtnMiddleKeysStyle(mapButtonsTrim);
-                setMapBtnUpperKeysStyle(mapButtonsTrim);
+                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
+                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
+                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
+                setMapBtnSelectMsg(null);
             break;
 
             case "Area: Marathon":
@@ -77,9 +83,10 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                 setAreaBtnMarathonStyle(areaButtonTrimOnClick);
                 setAreaBtnTavernierStyle(areaButtonTrimTavernier);
                 setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
-                setMapBtnLowerKeysStyle(mapButtonsTrim);
-                setMapBtnMiddleKeysStyle(mapButtonsTrim);
-                setMapBtnUpperKeysStyle(mapButtonsTrim);
+                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
+                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
+                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
+                setMapBtnSelectMsg(null);
             break;
 
             case "Area: Tavernier":
@@ -89,9 +96,10 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                 setAreaBtnMarathonStyle(areaButtonTrimMarathon);
                 setAreaBtnTavernierStyle(areaButtonTrimOnClick);
                 setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
-                setMapBtnLowerKeysStyle(mapButtonsTrim);
-                setMapBtnMiddleKeysStyle(mapButtonsTrim);
-                setMapBtnUpperKeysStyle(mapButtonsTrim);
+                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
+                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
+                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
+                setMapBtnSelectMsg(null);
             break;
 
             case "Area: Key Largo":
@@ -101,9 +109,10 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                 setAreaBtnMarathonStyle(areaButtonTrimMarathon);
                 setAreaBtnTavernierStyle(areaButtonTrimTavernier);
                 setAreaBtnKeyLargoStyle(areaButtonTrimOnClick);
-                setMapBtnLowerKeysStyle(mapButtonsTrim);
-                setMapBtnMiddleKeysStyle(mapButtonsTrim);
-                setMapBtnUpperKeysStyle(mapButtonsTrim);
+                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
+                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
+                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
+                setMapBtnSelectMsg(null);
             break;
 
             case "Area: Lower Keys":
@@ -113,9 +122,11 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                 setAreaBtnMarathonStyle(areaButtonTrimMarathon);
                 setAreaBtnTavernierStyle(areaButtonTrimTavernier);
                 setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
-                setMapBtnLowerKeysStyle(areaButtonTrimOnClick);
-                setMapBtnMiddleKeysStyle(mapButtonsTrim);
-                setMapBtnUpperKeysStyle(mapButtonsTrim);
+                setMapBtnLowerKeysStyle(mapButtonsTrim);
+                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
+                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
+                setMapBtnSelectMsg("Lower keys selected");
+                console.log("Lower keys clicked and style changed")
             break;
 
             case "Area: Middle Keys":
@@ -125,9 +136,10 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                 setAreaBtnMarathonStyle(areaButtonTrimMarathon);
                 setAreaBtnTavernierStyle(areaButtonTrimTavernier);
                 setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
-                setMapBtnLowerKeysStyle(mapButtonsTrim);
-                setMapBtnMiddleKeysStyle(areaButtonTrimOnClick);
-                setMapBtnUpperKeysStyle(mapButtonsTrim);
+                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
+                setMapBtnMiddleKeysStyle(mapButtonsTrim);
+                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
+                setMapBtnSelectMsg("Middle keys selected");
             break;
 
             case "Area: Upper Keys":
@@ -137,9 +149,10 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                 setAreaBtnMarathonStyle(areaButtonTrimMarathon);
                 setAreaBtnTavernierStyle(areaButtonTrimTavernier);
                 setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
-                setMapBtnLowerKeysStyle(mapButtonsTrim);
-                setMapBtnMiddleKeysStyle(mapButtonsTrim);
-                setMapBtnUpperKeysStyle(areaButtonTrimOnClick);
+                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
+                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
+                setMapBtnUpperKeysStyle(mapButtonsTrim);
+                setMapBtnSelectMsg("Upper keys selected");
             break;
 
             default:
@@ -220,9 +233,10 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                     <button className="areaBtn" id="areaBtnMarathon" style={areaBtnMarathonStyle} value="Area: Marathon" onClick={(e) => handleAreaButtons(e.target.value)}>Marathon</button>
                     <button className="areaBtn" id="areaBtnTavernier" style={areaBtnTavernierStyle} value="Area: Tavernier" onClick={(e) => handleAreaButtons(e.target.value)}>Tavernier</button>
                     <button className="areaBtn" id="areaBtnKeyLargo" style={areaBtnKeyLargoStyle} value="Area: Key Largo" onClick={(e) => handleAreaButtons(e.target.value)}>Key Largo</button>
-                    <img id="areaBtnLowerKeys" className="areaBtnImg" src={buttonLowerKeys} alt="lower keys" style={mapBtnLowerKeysStyle} value="Area: Lower Keys" onClick={(e) => handleAreaButtons(e.target.value)}/>
-                    <img id="areaBtnMiddleKeys" className="areaBtnImg" src={buttonMiddleKeys} alt="middle keys" style={mapBtnMiddleKeysStyle} value="Area: Middle Keys" onClick={(e) => handleAreaButtons(e.target.value)}/>
-                    <img id="areaBtnUpperKeys" className="areaBtnImg" src={buttonUpperKeys} alt="upper keys" style={mapBtnUpperKeysStyle} value="Area: Upper Keys" onClick={(e) => handleAreaButtons(e.target.value)}/>
+                    <img id="areaBtnLowerKeys" className="areaBtnImg" src={buttonLowerKeys} alt="lower keys" onClick={(e) => handleAreaButtons("Area: Lower Keys")}/>
+                    <img id="areaBtnMiddleKeys" className="areaBtnImg" src={buttonMiddleKeys} alt="middle keys" onClick={(e) => handleAreaButtons("Area: Middle Keys")}/>
+                    <img id="areaBtnUpperKeys" className="areaBtnImg" src={buttonUpperKeys} alt="upper keys" onClick={(e) => handleAreaButtons("Area: Upper Keys")}/>
+                    <p id="mapBtnSelectedMsg">{mapBtnSelectMsg}</p>
                     <button id="areaSelect" className="filterSelectBtn" onClick={sendSelectionToMainMenu}>SELECT</button>
                 </div>
             );
@@ -276,16 +290,48 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                 <div id="filterSpecialtyWindow">
                     <p className="filterSpecialtyText">Select One</p>
                     <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordBtn1" name="filterKeywordInput" value="Keyword: #1" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordBtn1">Keyword #1</label>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordSportsMed" name="filterKeywordInput" value="Keyword: Sports Medicine" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordSportsMed">Sports Medicine</label>
                     </div>
                     <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordBtn2" name="filterKeywordInput" value="Keyword: #2" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordBtn2">Keyword #2</label>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordPediatrics" name="filterKeywordInput" value="Keyword: Pediatrics" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordPediatrics">Pediatrics</label>
                     </div>
                     <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordBtn3" name="filterKeywordInput" value="Keyword: #3" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordBtn3">Keyword #3</label>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordSeniors" name="filterKeywordInput" value="Keyword: Senior Adults" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordSeniors">Senior Adults</label>
+                    </div>
+                    <div>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordKneeHip" name="filterKeywordInput" value="Keyword: Knee & Hip" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordKneeHip">Knee & Hip</label>
+                    </div>
+                    <div>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordNeckShoulder" name="filterKeywordInput" value="Keyword: Neck & Shoulder" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordNeckShoulder">Neck & Shoulder</label>
+                    </div>
+                    <div>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordHandsWristsElbows" name="filterKeywordInput" value="Keyword: Hands Wrists & Elbows" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordHandsWristsElbows">Hands, Wrists & Elbows</label>
+                    </div>
+                    <div>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordFootAnkle" name="filterKeywordInput" value="Keyword: Foot & Ankle" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordFootAnkle">Foot & Ankle</label>
+                    </div>
+                    <div>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordArthritis" name="filterKeywordInput" value="Keyword: Arthritis" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordArthritis">Arthritis</label>
+                    </div>
+                    <div>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordPhysical" name="filterKeywordInput" value="Keyword: Physical Therapy" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordPhysical">Physical Therapy</label>
+                    </div>
+                    <div>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordWomen" name="filterKeywordInput" value="Keyword: Women's Care" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordWomen">Women's Care</label>
+                    </div>
+                    <div>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordDiagnostic" name="filterKeywordInput" value="Keyword: Diagnostic" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordDiagnostic">Diagnostic</label>
                     </div>
                     <div className="filterSelectButtonContainer">
                         <button className="filterSelectBtn" onClick={sendSelectionToMainMenu}>SELECT</button>
