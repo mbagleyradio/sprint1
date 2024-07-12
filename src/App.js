@@ -7,6 +7,7 @@ import PopupI from './PopupI.js';
 import ModalOnSubmit from './ModalOnSubmit.js';
 import HealthcareCategories from './HealthcareCategories.js';
 import ReviewSelection from './ReviewSelection.js';
+import DisplayList from './DisplayList.js';
 import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom';
 
 
@@ -20,6 +21,7 @@ function App() {
       <Route path="submitted" element={ <ModalOnSubmit/> }></Route>
       <Route path="healthcare-categories" element={ <HealthcareCategories/> }></Route>
       <Route path="review-listing" element={ <ReviewSelection/> }></Route>
+      <Route path="display-list" element={ <DisplayList/> }></Route>
     </>
     )
   );
