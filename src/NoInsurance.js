@@ -12,6 +12,7 @@ function NoInsurance() {
 	const [isCareCredit, setIsCareCredit] = useState(false);
 	const [isSelfPay, setIsSelfPay] = useState(false);
 	const [isNotListed, setIsNotListed] = useState(false);
+
 	const navigate = useNavigate();
 
 	const handleCheck = (checkboxNum) => {
@@ -56,15 +57,52 @@ function NoInsurance() {
 			default:
 			break;
 		}
-	} 
+	}
+
+	const processUninsuredInfoString = () => {
+		let uninsuredInfo = "Uninsured: ";
+	
+		if (isNoCost) {
+			uninsuredInfo += "No cost for eligible uninsured, ";
+		}
+		if (isSliding) {
+			uninsuredInfo += "Uninsured sliding fee, ";
+		}
+		if (isDiscount) {
+			uninsuredInfo += "Uninsured discount, ";
+		}
+		if (isPayment) {
+			uninsuredInfo += "Payment plans, ";
+		}
+		if (isFAP) {
+			uninsuredInfo += "F.A.P discount (financial assistance program), ";
+		}
+		if (isCatastrophic) {
+			uninsuredInfo += "Catastrophic care discount, ";
+		}
+		if (isCareCredit) {
+			uninsuredInfo += "Care credit card, ";
+		} 
+		if (isSelfPay) {
+			uninsuredInfo += "Self-pay, ";
+		}
+	
+		// cleanup - remove trailing comma at the end
+		let length = uninsuredInfo.length - 2;
+		uninsuredInfo = uninsuredInfo.slice(0, length);
+	
+		return uninsuredInfo;
+	}
 
 	// send checkbox info to external function for server-request, then route to contact form
 	const handleClick = () => {
 		// Prepare data - an array of booleans
 		const cbData = [false, isNoCost, isSliding, isDiscount, isPayment, isFAP, isCatastrophic, isCareCredit, isSelfPay, isNotListed];
 
+		// if they did not click "my insurance is not listed", send them to the Healthcare Categories page 
 		if (isNotListed === false) {
-			navigate("../sprint2", {state: cbData});
+			let uninsuredInfo = processUninsuredInfoString();
+			navigate("../healthcare-categories", {state: uninsuredInfo});
 		}
 		else {
 		/*const response = await fetch("http://localhost:3000/storeCheckbox", {
