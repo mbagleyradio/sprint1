@@ -124,12 +124,16 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                             queryString += `Specialty_Areas LIKE '%SPhysical Therapy%'`;
                         break;
     
-                        case "Keyword: Women's Care":
-                            queryString += `Specialty_Areas LIKE '%Women's Care%'`;
+                        case "Keyword: Surgery":
+                            queryString += `Specialty_Areas LIKE '%Surgery%'`;
                         break;
     
                         case "Keyword: Diagnostic":
-                        queryString += `Specialty_Areas LIKE '%Diagnostic%'`;
+                            queryString += `Specialty_Areas LIKE '%Diagnostic%'`;
+                        break;
+
+                        case "Keyword: Joint Replacement":
+                            queryString += `Specialty_Areas LIKE '%Joint Replacement%'`;
                         break;
                         
                         default:
@@ -201,19 +205,17 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                 } else {
                     // add query for default?
                 }
-                console.log(`\nQuery string after each iteration of the loop: ${queryString}`);
             }
         }
         
 
         queryString += ';';
-        console.log(`\nQuery string before fetchFilterResults, after processing the conditionals: ${queryString}`);
         return queryString;
     }
     
     const fetchFilterResults = () => {
         const queryString = generateQueryFromFilters();
-        console.log(`\nQuery string during fetchFilterResults, before fetch: ${queryString}`);
+
         fetch("https://uvcsandbox.com/php/FilterHealthCareSelection.php", {
             method: "POST",
             mode: "cors",
@@ -227,7 +229,6 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
         }).then(response => {
             return response.json()
         }).then(data => {
-            console.log(data);
             setStoredProviders([...storedProviders, ...data])
         }).catch(error => {
             console.log(error)

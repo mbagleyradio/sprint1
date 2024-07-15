@@ -19,7 +19,12 @@ function ReviewSelection() {
     }
 
     const handleFilterRemoval = (id) => {
-        setSubmittedFilters(submittedFilters.filter(remainingFiltersAfterUndo => remainingFiltersAfterUndo.id !== id));
+        // THIS FUNCTION DOES NOT WORK!
+        //setSubmittedFilters(submittedFilters.filter(remainingFiltersAfterUndo => remainingFiltersAfterUndo.id !== id));
+        setSubmittedFilters([...submittedFilters.slice(0, id), ...submittedFilters.slice(id + 1)]);
+        for (let i = 0; i < submittedFilters.length; i++) {
+            console.log(`Submitted filters after undo: ${submittedFilters[i].filterName}\n`);
+        }
     }
 
     const handleReviewListClick = () => {

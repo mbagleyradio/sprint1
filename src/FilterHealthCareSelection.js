@@ -18,13 +18,15 @@ function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCa
             setShowFilterMenu(false);
         }
 
+        console.log(`Filter number after submit, before adding to array: ${numActiveFilters}\n`);
         setFilterSelection(selection);
         addFilters({
             id: numActiveFilters,
             filterName: selection
         });
 
-        setNumActiveFilters(numActiveFilters + 1);
+        setNumActiveFilters(numActiveFilters + 1);  
+        console.log(`Filter number after incrementing number of filters: ${numActiveFilters}\n`);      
     }
 
     const handleFigureClicked = (selection) => {
@@ -62,12 +64,15 @@ function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCa
     }
 
     const handleUndoClicked = () => {
+        console.log(`Number of filters at start of undo: ${numActiveFilters}\n`);
+        let idToRemove = numActiveFilters;
         setIsFiltered(false);
         setIsFilterClicked(true);
         setShowFilterMenu(true);
         setFilterSelection("");
-        removeFilters(numActiveFilters);
         setNumActiveFilters(numActiveFilters - 1);
+        removeFilters(idToRemove);
+        
     }
     
     return(

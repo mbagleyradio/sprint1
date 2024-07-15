@@ -326,8 +326,12 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
                         <label className="filterSpecialtyText" for="keywordPhysical">Physical Therapy</label>
                     </div>
                     <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordWomen" name="filterKeywordInput" value="Keyword: Women's Care" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordWomen">Women's Care</label>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordSurgery" name="filterKeywordInput" value="Keyword: Surgery" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordSurgery">Surgery</label>
+                    </div>
+                    <div>
+                        <input className="filterSpecialtyBtn" type="radio" id="keywordJointReplacement" name="filterKeywordInput" value="Keyword: Joint Replacement" onClick={(e) => setUserSelection(e.target.value)}/>
+                        <label className="filterSpecialtyText" for="keywordJointReplacement">Joint Replacement</label>
                     </div>
                     <div>
                         <input className="filterSpecialtyBtn" type="radio" id="keywordDiagnostic" name="filterKeywordInput" value="Keyword: Diagnostic" onClick={(e) => setUserSelection(e.target.value)}/>
