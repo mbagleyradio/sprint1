@@ -6,7 +6,7 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     
     const generateQueryFromFilters = () => {
         //let queryString = `SELECT * FROM Providers WHERE insuranceName = '${insuranceName}' AND insuranceType = '${insuranceType}' AND healthCareCategory = '${healthCareCategory}' `;
-        
+
         let queryString = "";
         if (collectedFilters.length === 0) {
             queryString = "SELECT * FROM providers";

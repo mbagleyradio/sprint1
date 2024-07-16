@@ -69,8 +69,8 @@ function MenuFigure( { handleOnClick, filterSelection, handleOnUndo } ) {
     }
 
     const handleUndoButtonOnClick = () => {
+        handleOnUndo(filterSelection);
         filterSelection = "";
-        handleOnUndo();
     }
 
     return (

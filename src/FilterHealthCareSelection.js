@@ -10,7 +10,6 @@ function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCa
     const [ isFilterClicked, setIsFilterClicked ] = useState(false);
     const [ showFilterMenu, setShowFilterMenu ] = useState(true);
     const [ filterSelection, setFilterSelection ] = useState("");
-    const [ numActiveFilters, setNumActiveFilters ] = useState(0);
 
     const handleFilterSubmit = (selection) => {
         if (!isFiltered && isFilterClicked) {
@@ -18,15 +17,12 @@ function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCa
             setShowFilterMenu(false);
         }
 
-        console.log(`Filter number after submit, before adding to array: ${numActiveFilters}\n`);
         setFilterSelection(selection);
         addFilters({
-            id: numActiveFilters,
+            id: null,
             filterName: selection
         });
-
-        setNumActiveFilters(numActiveFilters + 1);  
-        console.log(`Filter number after incrementing number of filters: ${numActiveFilters}\n`);      
+        
     }
 
     const handleFigureClicked = (selection) => {
@@ -63,16 +59,12 @@ function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCa
         }
     }
 
-    const handleUndoClicked = () => {
-        console.log(`Number of filters at start of undo: ${numActiveFilters}\n`);
-        let idToRemove = numActiveFilters;
+    const handleUndoClicked = (selection) => {
         setIsFiltered(false);
         setIsFilterClicked(true);
         setShowFilterMenu(true);
         setFilterSelection("");
-        setNumActiveFilters(numActiveFilters - 1);
-        removeFilters(idToRemove);
-        
+        removeFilters(selection);
     }
     
     return(
