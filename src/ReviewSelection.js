@@ -1,12 +1,11 @@
 import './ReviewSelection.css';
 import FilterHealthCareSelection from './FilterHealthCareSelection.js';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import A2CLogo from './A2CLogo_150x150.png';
 
 function ReviewSelection() {
     const submittedFilters = useRef([]); 
-    //const [ submittedFilters, setSubmittedFilters ] = useState([]);
     let uniqueFilterID = useRef(0);
 
     // acquiring data from previous page (insurance type & insurance name), and sanitizing that data for display on this page
@@ -14,13 +13,7 @@ function ReviewSelection() {
     const listingToReview = location.state;
     const navigate = useNavigate();
 
-    // setter is not working right ... could you count ID with the .length function? ID would equal .length - 1. For removal, you would just need to splice based on 3 conditional lengths (first, middle, end)
     const handleFilterSubmission = (submission) => {
-        /*setSubmittedFilters([...submittedFilters, {
-            id: uniqueFilterID,
-            filterName: submission.filterName 
-        }]); */
-
         submittedFilters.current.push({
             id: uniqueFilterID,
             filterName: submission.filterName
@@ -30,17 +23,17 @@ function ReviewSelection() {
     }
 
     const handleFilterRemoval = (selection) => {        
-        if (selection === submittedFilters.current[0].filterName) {
-            submittedFilters.current = submittedFilters.current.filter(elementOfFiltersArray => elementOfFiltersArray.filterName === "");
-        } else {
-            submittedFilters.current = submittedFilters.current.filter(elementOfFiltersArray => elementOfFiltersArray.filterName !== selection);
-        }
         
-        uniqueFilterID.current = uniqueFilterID.current - 1;
-       
-        console.log(submittedFilters.current);
-
-        // you need to handle what will happen if the FIRST element in the array gets undone, because right now the UI nukes all of that but the queries remain
+        if (selection === submittedFilters.current[0].filterName) {
+            // if the first menu selection gets undone, wipe the whole query
+            submittedFilters.current = submittedFilters.current.filter(elementOfFiltersArray => elementOfFiltersArray.filterName === "");
+            uniqueFilterID.current = 0;
+        } else {
+            // if any subsequent menu selections get undone, wipe that query and THE REST OF THE QUERY AFTER IT
+            let sliceIndex = submittedFilters.current.findIndex(elementOfFiltersArray => elementOfFiltersArray.filterName === selection);
+            submittedFilters.current = submittedFilters.current.slice(0, sliceIndex);
+            uniqueFilterID.current = sliceIndex;
+        }
     }
 
     const handleReviewListClick = () => {
