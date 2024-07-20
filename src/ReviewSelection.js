@@ -7,6 +7,7 @@ import A2CLogo from './A2CLogo_150x150.png';
 function ReviewSelection() {
     const submittedFilters = useRef([]); 
     let uniqueFilterID = useRef(0);
+    let providers = [];
 
     // acquiring data from previous page (insurance type & insurance name), and sanitizing that data for display on this page
     const location = useLocation(); 
@@ -37,16 +38,26 @@ function ReviewSelection() {
     }
 
     const handleReviewListClick = () => {
+        console.log(submittedFilters.current);
         const paramsForList = {
             insuranceType: listingToReview.insuranceType,
             insuranceName: listingToReview.insuranceName,
             healthCareCategory: listingToReview.healthCareCategory,
-            submittedFilters: submittedFilters
+            filters: submittedFilters.current,
+            numFilters: uniqueFilterID.current,
+            providers: [...providers]
+            
         }
 
         navigate("../display-list", {
             state: paramsForList
         })
+    }
+
+    const onProvidersArrayRetrieved = (data) => {
+        console.log(`Data payload recieved by onProvidersArrayRetrieved function below\n`);
+        console.log(data);
+        providers = [...data];
     }
 
     return (
@@ -58,7 +69,7 @@ function ReviewSelection() {
                 <p className="reviewSelectionText">CATEGORY: {listingToReview.healthCareCategory}</p>
             </div>
             <div id="filterHealthCareScreen">
-                <FilterHealthCareSelection insuranceType={listingToReview.insuranceType} insuranceName={listingToReview.insuranceName} healthCareCategory={listingToReview.healthCareCategory} addFilters={handleFilterSubmission} collectedFilters={submittedFilters.current} removeFilters={handleFilterRemoval}/>
+                <FilterHealthCareSelection insuranceType={listingToReview.insuranceType} insuranceName={listingToReview.insuranceName} healthCareCategory={listingToReview.healthCareCategory} addFilters={handleFilterSubmission} collectedFilters={submittedFilters.current} removeFilters={handleFilterRemoval} onProvidersArrayRetrieved={onProvidersArrayRetrieved}/>
             </div>
             <div id="reviewListBtn">
                 <button type="button" id="reviewSelectionBtn" onClick={handleReviewListClick}>REVIEW LIST</button>

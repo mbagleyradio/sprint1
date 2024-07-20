@@ -1,7 +1,7 @@
 import './ApplyFilterToProviders.css';
 import { useState, useEffect } from 'react';
 
-function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, healthCareCategory, collectedFilters } ) {
+function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, healthCareCategory, collectedFilters, onProvidersArrayRetrieved } ) {
     const [ storedProviders, setStoredProviders ] = useState([]);
     
     const generateQueryFromFilters = () => {
@@ -229,6 +229,7 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
         }).then(response => {
             return response.json()
         }).then(data => {
+            onProvidersArrayRetrieved(data)
             setStoredProviders([...storedProviders, ...data])
         }).catch(error => {
             console.log(error)
