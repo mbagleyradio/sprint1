@@ -458,6 +458,13 @@ export default function HealthcareCategories() {
         console.log(submissionFromModal);
     }
     
+    // this function handles clicking OUT of the modal to exit the modal
+    const handleModalStepOut = () => {
+        console.log(`Stepping out of the modal\n`);
+        if (modalOpen === true) {
+            setModalOpen(false);
+        }
+    }
     // this is the function component's HTML code
     return (
     <div id="wholePage">
@@ -469,7 +476,7 @@ export default function HealthcareCategories() {
             </div>
         </div>
         <h3 id="welcomeMSG">What category of healthcare services are you looking for? (pick one)</h3>
-        <div id="landingPage">
+        <div id="landingPage" onClick={handleModalStepOut}>
             <div class="buttonColumn" id="firstCol">
                 <figure class="figButton" style={addictionMedicineBorder} onClick={() => handleFigureClick(selectionNames.ADDICTION_MEDICINE)}>
                     <img class="figImg" src={AddictionMedicine} alt="Addiction Medicine"/>
