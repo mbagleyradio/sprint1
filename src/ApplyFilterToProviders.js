@@ -7,7 +7,7 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     const generateQueryFromFilters = () => {
         let queryString = "";
         if (collectedFilters.length === 0) {
-            queryString = "SELECT * FROM providers";
+            queryString = "SELECT * FROM providers WHERE Practice_Name IS NOT NULL;";
         }
         else {
             for (let filterElement = 0; filterElement < collectedFilters.length; filterElement++) {
@@ -210,10 +210,10 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                     // add query for default?
                 }
             }
-        }
         
-
-        queryString += ';';
+            queryString += ` AND Practice_Name IS NOT NULL;`
+        }
+        console.log(queryString);
         return queryString;
     }
     

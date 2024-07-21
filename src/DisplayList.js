@@ -38,6 +38,7 @@ function DisplayList() {
     
     console.log(numFilters);
     console.log(filters);
+    console.log(providers);
     
     for (let count = 0; count < numFilters; count++) {
         if (filters[count].filterName.startsWith("Appointment: ")) {
@@ -77,93 +78,114 @@ function DisplayList() {
     let displayLee = false;   
     for (let count = 0; count < providers.length; count++) {
         // 1 - Grace Brown
+        // DOESNT WORK
         if (providers[count]["Florida_Medical_License_Number"] === "CH45678") {
+            console.log(`We're in Grace Brown\n`);
             displayOrthoPartnersKeyWest = true;
         }
 
         // 2 - Brad Franklin
         else if (providers[count]["Florida_Medical_License_Number"] === "DO99553") {
+            console.log(`We're in Brad Franklin\n`);
             displayFranklin= true;
         }
 
         // 3 - Magnus Jefferson
+        // DOESNT WORK
         else if (providers[count]["Florida_Medical_License_Number"] === "ME10024") {
+            console.log(`We're in Magnus Jefferson\n`);
             displaySawgrassMarathon = true;
         }
 
         // 4 - Frank Blythe
+        // DOESNT WORK
         else if (providers[count]["Florida_Medical_License_Number"] === "ME12345") {
+            console.log(`We're in Conch Republic\n`);
             displayConchRepublic = true;
         }
 
         // 5 - Andrew Lee
         else if (providers[count]["Florida_Medical_License_Number"] === "ME13672") {
+            console.log(`We're in Andrew Lee\n`);
             displayLee = true;
         }
 
-
         // 6 - William Smith
+        // DOESNT WORK
         else if (providers[count]["Florida_Medical_License_Number"] === "ME21237") {
+            console.log(`We're in William Smith\n`);
             displayConchRepublic = true;
         }
 
         // 7 - Antonio Alvarez
         else if (providers[count]["Florida_Medical_License_Number"] === "ME23456") {
+            console.log(`We're in Antonio Alvarez\n`);
             displayAlvarez = true;
         }
 
         // 8 - Benjamin Case Martin
         else if (providers[count]["Florida_Medical_License_Number"] === "ME65432") {
+            console.log(`We're in Benjamin Case Martin\n`);
             displayCaseMartin = true;
         }
 
         // 9 - Morris Green
         else if (providers[count]["Florida_Medical_License_Number"] === "ME75321") {
+            console.log(`We're in Morris Green\n`);
             displaySawgrassBPK = true;
         }
 
         // 10 - Odette James
         else if (providers[count]["Florida_Medical_License_Number"] === "OS16284") {
+            console.log(`We're in Odette James\n`);
             displayJames = true;
         }
 
         // 11 - Elaine Christensen
         else if (providers[count]["Florida_Medical_License_Number"] === "OS25476") {
+            console.log(`We're in Sawgrass Key Largo\n`);
             displaySawgrassKeyLargo = true;
         }
 
         // 12 - Angela Cerna
         else if (providers[count]["Florida_Medical_License_Number"] === "OS79856") {
+            console.log(`We're in Angela Cerna\n`);
             displaySawgrassKeyLargo = true;
         }
 
         // 13 - Conch Republic Sports Medicine
         else if (providers[count]["Clinic_Identifiers"] === "CRSM") {
+            console.log(`We're in CR SM\n`);
             displayConchRepublic = true;
         }
 
         // 14 - Orthopedic Partners Key West
-        else if (providers[count]["Clinic_Identifiers" === "OP-KW"]) {
+        else if (providers[count]["Clinic_Identifiers"] === "OP-KW") {
+            console.log(`We're in OP KW\n`);
             displayOrthoPartnersKeyWest = true;
         }
 
         // 15 - Orthopedic Partners Marathon
-        else if (providers[count]["Clinic_Identifiers" === "OP-M"]) {
+        else if (providers[count]["Clinic_Identifiers"] === "OP-M") {
             displayOrthoPartnersMarathon = true;
+            console.log(`We're in! ${displayOrthoPartnersMarathon}\n`);
         }
 
         // 16 - Sawgrass Big Pine Key
-        else if (providers[count]["Clinic_Identifiers" === "SMC/BPK"]) {
+        else if (providers[count]["Clinic_Identifiers"] === "SMC/BPK") {
+            console.log(`We're in Sawgrass Big Pine Key\n`);
             displaySawgrassBPK = true;
         }
 
         // 17 - Sawgrass Key Largo
-        else if (providers[count]["Clinic_Identifiers" === "SMC/KL"]) {
+        else if (providers[count]["Clinic_Identifiers"] === "SMC/KL") {
+            console.log(`We're in Sawgrass Key Largo\n`);
             displaySawgrassKeyLargo = true;
         }
 
         // 18 - Sawgrass Marathon
-        else if (providers[count]["Clinic_Identifiers" === "SMC/M"]) {
+        else if (providers[count]["Clinic_Identifiers"] === "SMC/M") {
+            console.log(`We're in Sawgrass Marathon\n`);
             displaySawgrassMarathon = true;
         }
     }
