@@ -5,16 +5,12 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     const [ storedProviders, setStoredProviders ] = useState([]);
     
     const generateQueryFromFilters = () => {
-        //let queryString = `SELECT * FROM Providers WHERE insuranceName = '${insuranceName}' AND insuranceType = '${insuranceType}' AND healthCareCategory = '${healthCareCategory}' `;
-
         let queryString = "";
         if (collectedFilters.length === 0) {
             queryString = "SELECT * FROM providers";
         }
         else {
             for (let filterElement = 0; filterElement < collectedFilters.length; filterElement++) {
-                // during the loop's first iteration, the queryString needs to use a WHERE clause
-                // during subsequent iterations, the queryString does not need a second WHERE clause, it needs an AND clause to bind clauses
                 if (filterElement === 0) {
                     queryString = `SELECT * FROM providers WHERE `;
                 } else {
@@ -22,7 +18,6 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                 }
     
                 if (collectedFilters[filterElement].filterName.startsWith("Appointment")) {
-                    // add query for Appointment
                     switch (collectedFilters[filterElement].filterName) {
                         case "Appointment: Scheduled Appt.":
                             queryString += `Appointment_Scheduled = true`;
@@ -48,7 +43,6 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                     }
     
                 } else if (collectedFilters[filterElement].filterName.startsWith("Area")) {
-                    // add query for Area
                     switch (collectedFilters[filterElement].filterName) {
                         case "Area: None":
                         break;
@@ -86,7 +80,6 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                     }
     
                 } else if (collectedFilters[filterElement].filterName.startsWith("Keyword")) {
-                    // add query for Keyword
                     switch (collectedFilters[filterElement].filterName) {
                         case "Keyword: Sports Medicine":
                             queryString += `Specialty_Areas LIKE '%Sports Medicine%'`;
@@ -141,21 +134,33 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                     }
     
                 } else if (collectedFilters[filterElement].filterName.startsWith("Specialty")) {
-                    // add query for Specialty
                     switch (collectedFilters[filterElement].filterName) {
+                        case "Specialty: Joint Replacement":
+                            queryString += `Specialty_Areas LIKE '%Joint Replacement%'`;
+                        break;
+    
+                        case "Specialty: Foot & Ankle":
+                            queryString += `Specialty_Areas LIKE '%Foot & Ankle%'`;
+                        break;
+    
+                        case "Specialty: Women's Care":
+                            queryString += `Specialty_Areas LIKE '%Womens Care%'`;
+                        break;
+    
                         case "Specialty: Pediatrics":
-                            queryString += `Specialty_Areas LIKE '%Pediatrics%'`;
+                            queryString += `Specialty_Areas LIKE '%Pediatrics%'`
                         break;
-    
-                        case "Specialty: Geriatrics":
-                            queryString += `Specialty_Areas LIKE '%Senior Adults%'`;
+
+                        case "Specialty: Neck & Shoulder":
+                            queryString += `Specialty_Areas LIKE '%Neck & Shoulder%'`;
                         break;
-    
-                        case "Specialty: Internal Medicine":
-    
+
+                        case "Specialty: Sports Medicine":
+                            queryString += `Specialty_Areas LIKE '%Sports Medicine%'`;
                         break;
-    
-                        case "Specialty: Fractures":
+
+                        case "Specialty: Arthritis":
+                            queryString += `Specialty_Areas LIKE '%Arthritis%'`;
                         break;
     
                         case "Specialty: None (exit)":
@@ -166,7 +171,6 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                     }
     
                 } else if (collectedFilters[filterElement].filterName.startsWith("Time")) {
-                    // add query for Time
                     switch (collectedFilters[filterElement].filterName) {
                         case "Time: Early Morning":
                             queryString += `Time_Early_Morning = true`;

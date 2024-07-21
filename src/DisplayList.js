@@ -171,16 +171,16 @@ function DisplayList() {
     return (
         <div id="displayListingScreen">
             <div id="topOfListing">
-                <img id="reviewSelectionLogo" src={A2CLogo} alt="Access 2 Care"/>
-                <div id="reviewSelectionWhiteBanner">
-                    <p className="reviewSelectionText">TYPE: {insuranceType}</p>
-                    <p className="reviewSelectionText">NAME: {insuranceName}</p>
-                    <p className="reviewSelectionText">CATEGORY: {healthCareCategory}</p>
-                    {displayAppointment ? <p className="reviewSelectionText">APPOINTMENT TYPE: {appointmentString}</p> : <></>}
-                    {displayArea ? <p className="reviewSelectionText">AREA: {areaString}</p> : <></>}
-                    {displayTime ? <p className="reviewSelectionText">TIME: {timeString}</p> : <></>}
-                    {displaySpecialty ? <p className="reviewSelectionText">SPECIALTY: {specialtyString}</p> : <></>}
-                    {displayKeyword ? <p className="reviewSelectionText">KEYWORD: {keywordString}</p> : <></>}
+                <img id="displaySelectionLogo" src={A2CLogo} alt="Access 2 Care"/>
+                <div id="displaySelectionWhiteBanner">
+                    <p className="displaySelectionText">TYPE: {insuranceType}</p>
+                    <p className="displaySelectionText">NAME: {insuranceName}</p>
+                    <p className="displaySelectionText">CATEGORY: {healthCareCategory}</p>
+                    {displayAppointment ? <p className="displaySelectionText">APPOINTMENT TYPE: {appointmentString}</p> : <></>}
+                    {displayArea ? <p className="displaySelectionText">AREA: {areaString}</p> : <></>}
+                    {displayTime ? <p className="displaySelectionText">TIME: {timeString}</p> : <></>}
+                    {displaySpecialty ? <p className="displaySelectionText">SPECIALTY: {specialtyString}</p> : <></>}
+                    {displayKeyword ? <p className="displaySelectionText">KEYWORD: {keywordString}</p> : <></>}
                 </div>
             </div>
             <div id="listings">

@@ -5,19 +5,23 @@
     justify-content: center;
 }
 
-#reviewSelectionLogo {
+#displaySelectionLogo {
+    position: absolute;
+    top: 0;
+    left: 0;
     max-width: 150px;
     max-height: 150px;
 }
 
-#reviewSelectionWhiteBanner {
-    width: 63.5%;
+#displaySelectionWhiteBanner {
+    width: 75%;
     background-color: white;
     color: black;
     display: flex;
     flex-direction: column;
     text-align: left;
     justify-content: center;
+    justify-self: center;
 }
 
 #topOfListing {
@@ -26,7 +30,7 @@
     justify-content: center;
 }
 
-.reviewSelectionText {
+.displaySelectionText {
     font-size: 1.5rem;
 }
 
@@ -38,7 +42,7 @@
 }
 
 .listingDisplay {
-    max-height: 75%;
-    max-width: 75%;
+    max-height: 40%;
+    max-width: 40%;
     margin: 1%;
 }

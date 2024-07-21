@@ -62,11 +62,13 @@ function ReviewSelection() {
 
     return (
         <div id="reviewSelectionScreen">
-            <img id="reviewSelectionLogo" src={A2CLogo} alt="Access 2 Care"/>
-            <div id="reviewSelectionWhiteBanner">
-                <p className="reviewSelectionText">TYPE: {listingToReview.insuranceType}</p>
-                <p className="reviewSelectionText">NAME: {listingToReview.insuranceName}</p>
-                <p className="reviewSelectionText">CATEGORY: {listingToReview.healthCareCategory}</p>
+            <div id="reviewSelectionBanner">
+                <img id="reviewSelectionLogo" src={A2CLogo} alt="Access 2 Care"/>
+                <div id="reviewSelectionWhiteBanner">
+                    <p className="reviewSelectionText">TYPE: {listingToReview.insuranceType}</p>
+                    <p className="reviewSelectionText">NAME: {listingToReview.insuranceName}</p>
+                    <p className="reviewSelectionText">CATEGORY: {listingToReview.healthCareCategory}</p>
+                </div>
             </div>
             <div id="filterHealthCareScreen">
                 <FilterHealthCareSelection insuranceType={listingToReview.insuranceType} insuranceName={listingToReview.insuranceName} healthCareCategory={listingToReview.healthCareCategory} addFilters={handleFilterSubmission} collectedFilters={submittedFilters.current} removeFilters={handleFilterRemoval} onProvidersArrayRetrieved={onProvidersArrayRetrieved}/>
