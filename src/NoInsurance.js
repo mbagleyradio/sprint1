@@ -148,12 +148,17 @@ function NoInsurance() {
 			<input type="checkbox" id="cb8" onChange={() => handleCheck(8)}/>
 			<label for="cb8">Self-pay</label>
 		</div>
-		<div class="checkbox-container">
-			<input type="checkbox" id="cb9" onChange={() => handleCheck(9)}/>
-			<label for="cb9">My insurance is not listed</label>
-		</div>
     </div>
     );
 }
 
 export default NoInsurance;
+
+/*  "My insurance is not listed"
+
+<div class="checkbox-container">
+			<input type="checkbox" id="cb9" onChange={() => handleCheck(9)}/>
+			<label for="cb9">My insurance is not listed</label>
+		</div>
+
+*/
