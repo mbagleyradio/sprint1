@@ -5,26 +5,6 @@ import buttonLowerKeys from './sprint3/img/button_lower-keys.png';
 import buttonMiddleKeys from './sprint3/img/button_middle-keys.png';
 import buttonUpperKeys from './sprint3/img/button_upper-keys.png';
 
-const areaButtonTrimOnClick = {
-    border: "3px solid red"
-}
-
-const areaButtonTrimKeyWest = {
-    border: "1px solid #c10606"
-}
-
-const areaButtonTrimMarathon = {
-    border: "1px solid #004600"
-}
-
-const areaButtonTrimTavernier = {
-    border: "1px solid #283e68"
-}
-
-const areaButtonTrimNone = {
-    border: "1px solid #000"
-}
-
 const mapButtonsTrimNone = {
     border: "none"
 }
@@ -35,11 +15,6 @@ const mapButtonsTrim = {
 
 function FilterMenu( { filterType, onFilterSubmit } ) {
     const [ userSelection, setUserSelection ] = useState("default - no filters selected");
-    const [ areaBtnNoneStyle, setAreaBtnNoneStyle ] = useState(areaButtonTrimNone);
-    const [ areaBtnKeyWestStyle, setAreaBtnKeyWestStyle ] = useState(areaButtonTrimKeyWest);
-    const [ areaBtnMarathonStyle, setAreaBtnMarathonStyle ] = useState(areaButtonTrimMarathon);
-    const [ areaBtnTavernierStyle, setAreaBtnTavernierStyle ] = useState(areaButtonTrimTavernier);
-    const [ areaBtnKeyLargoStyle, setAreaBtnKeyLargoStyle ] = useState(areaButtonTrimTavernier);
     const [ mapBtnLowerKeysStyle, setMapBtnLowerKeysStyle ] = useState(mapButtonsTrimNone);
     const [ mapBtnMiddleKeysStyle, setMapBtnMiddleKeysStyle ] = useState(mapButtonsTrimNone);
     const [ mapBtnUpperKeysStyle, setMapBtnUpperKeysStyle ] = useState(mapButtonsTrimNone);
@@ -52,76 +27,31 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
         switch (areaBtnSelection) {
             case "Area: None":
                 setUserSelection(areaBtnSelection);
-                setAreaBtnNoneStyle(areaButtonTrimOnClick);
-                setAreaBtnKeyWestStyle(areaButtonTrimKeyWest);
-                setAreaBtnMarathonStyle(areaButtonTrimMarathon);
-                setAreaBtnTavernierStyle(areaButtonTrimTavernier);
-                setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
-                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
-                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
-                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
                 setMapBtnSelectMsg(null);
             break;
 
             case "Area: Key West":
                 setUserSelection(areaBtnSelection);
-                setAreaBtnNoneStyle(areaButtonTrimNone);
-                setAreaBtnKeyWestStyle(areaButtonTrimOnClick);
-                setAreaBtnMarathonStyle(areaButtonTrimMarathon);
-                setAreaBtnTavernierStyle(areaButtonTrimTavernier);
-                setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
-                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
-                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
-                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
                 setMapBtnSelectMsg(null);
             break;
 
             case "Area: Marathon":
                 setUserSelection(areaBtnSelection);
-                setAreaBtnNoneStyle(areaButtonTrimNone);
-                setAreaBtnKeyWestStyle(areaButtonTrimKeyWest);
-                setAreaBtnMarathonStyle(areaButtonTrimOnClick);
-                setAreaBtnTavernierStyle(areaButtonTrimTavernier);
-                setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
-                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
-                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
-                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
                 setMapBtnSelectMsg(null);
             break;
 
             case "Area: Tavernier":
                 setUserSelection(areaBtnSelection);
-                setAreaBtnNoneStyle(areaButtonTrimNone);
-                setAreaBtnKeyWestStyle(areaButtonTrimKeyWest);
-                setAreaBtnMarathonStyle(areaButtonTrimMarathon);
-                setAreaBtnTavernierStyle(areaButtonTrimOnClick);
-                setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
-                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
-                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
-                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
                 setMapBtnSelectMsg(null);
             break;
 
             case "Area: Key Largo":
                 setUserSelection(areaBtnSelection);
-                setAreaBtnNoneStyle(areaButtonTrimNone);
-                setAreaBtnKeyWestStyle(areaButtonTrimKeyWest);
-                setAreaBtnMarathonStyle(areaButtonTrimMarathon);
-                setAreaBtnTavernierStyle(areaButtonTrimTavernier);
-                setAreaBtnKeyLargoStyle(areaButtonTrimOnClick);
-                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
-                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
-                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
                 setMapBtnSelectMsg(null);
             break;
 
             case "Area: Lower Keys":
                 setUserSelection(areaBtnSelection);
-                setAreaBtnNoneStyle(areaButtonTrimNone);
-                setAreaBtnKeyWestStyle(areaButtonTrimKeyWest);
-                setAreaBtnMarathonStyle(areaButtonTrimMarathon);
-                setAreaBtnTavernierStyle(areaButtonTrimTavernier);
-                setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
                 setMapBtnLowerKeysStyle(mapButtonsTrim);
                 setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
                 setMapBtnUpperKeysStyle(mapButtonsTrimNone);
@@ -131,11 +61,6 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
 
             case "Area: Middle Keys":
                 setUserSelection(areaBtnSelection);
-                setAreaBtnNoneStyle(areaButtonTrimNone);
-                setAreaBtnKeyWestStyle(areaButtonTrimKeyWest);
-                setAreaBtnMarathonStyle(areaButtonTrimMarathon);
-                setAreaBtnTavernierStyle(areaButtonTrimTavernier);
-                setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
                 setMapBtnLowerKeysStyle(mapButtonsTrimNone);
                 setMapBtnMiddleKeysStyle(mapButtonsTrim);
                 setMapBtnUpperKeysStyle(mapButtonsTrimNone);
@@ -144,11 +69,6 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
 
             case "Area: Upper Keys":
                 setUserSelection(areaBtnSelection);
-                setAreaBtnNoneStyle(areaButtonTrimNone);
-                setAreaBtnKeyWestStyle(areaButtonTrimKeyWest);
-                setAreaBtnMarathonStyle(areaButtonTrimMarathon);
-                setAreaBtnTavernierStyle(areaButtonTrimTavernier);
-                setAreaBtnKeyLargoStyle(areaButtonTrimTavernier);
                 setMapBtnLowerKeysStyle(mapButtonsTrimNone);
                 setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
                 setMapBtnUpperKeysStyle(mapButtonsTrim);
@@ -240,11 +160,11 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
             return (
                 <div id="filterAreaWindow">
                     <p id="filterAreaText" className="filterSpecialtyText">Select One</p>
-                    <button className="areaBtn" id="areaBtnNone" style={areaBtnNoneStyle} value="Area: None" onClick={(e) => handleAreaButtons(e.target.value)}>None (exit)</button>
-                    <button className="areaBtn" id="areaBtnKeyWest" style={areaBtnKeyWestStyle} value="Area: Key West" onClick={(e) => handleAreaButtons(e.target.value)}>Key West</button>
-                    <button className="areaBtn" id="areaBtnMarathon" style={areaBtnMarathonStyle} value="Area: Marathon" onClick={(e) => handleAreaButtons(e.target.value)}>Marathon</button>
-                    <button className="areaBtn" id="areaBtnTavernier" style={areaBtnTavernierStyle} value="Area: Tavernier" onClick={(e) => handleAreaButtons(e.target.value)}>Tavernier</button>
-                    <button className="areaBtn" id="areaBtnKeyLargo" style={areaBtnKeyLargoStyle} value="Area: Key Largo" onClick={(e) => handleAreaButtons(e.target.value)}>Key Largo</button>
+                    <button className="areaBtn" id="areaBtnNone" value="Area: None" onClick={(e) => handleAreaButtons(e.target.value)}>None (exit)</button>
+                    <button className="areaBtn" id="areaBtnKeyWest" value="Area: Key West" onClick={(e) => handleAreaButtons(e.target.value)}>Key West</button>
+                    <button className="areaBtn" id="areaBtnMarathon" value="Area: Marathon" onClick={(e) => handleAreaButtons(e.target.value)}>Marathon</button>
+                    <button className="areaBtn" id="areaBtnTavernier" value="Area: Tavernier" onClick={(e) => handleAreaButtons(e.target.value)}>Tavernier</button>
+                    <button className="areaBtn" id="areaBtnKeyLargo" value="Area: Key Largo" onClick={(e) => handleAreaButtons(e.target.value)}>Key Largo</button>
                     <img id="areaBtnLowerKeys" className="areaBtnImg" src={buttonLowerKeys} alt="lower keys" onClick={(e) => handleAreaButtons("Area: Lower Keys")}/>
                     <img id="areaBtnMiddleKeys" className="areaBtnImg" src={buttonMiddleKeys} alt="middle keys" onClick={(e) => handleAreaButtons("Area: Middle Keys")}/>
                     <img id="areaBtnUpperKeys" className="areaBtnImg" src={buttonUpperKeys} alt="upper keys" onClick={(e) => handleAreaButtons("Area: Upper Keys")}/>

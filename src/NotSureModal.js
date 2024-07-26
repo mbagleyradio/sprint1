@@ -2,10 +2,11 @@ import './NotSureModal.css';
 import ATC_Assistant from './sprint2/img/ATC Assistant 2.png';
 import textBubble from './sprint2/img/textBubble.png';
 import mic from './sprint2/img/mic.png';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
-function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
+function NotSureModal({ modalOpen, onAsk, onClose, onRecord, onStopRecord }) {
+    
     // state hook that will toggle the "stop" button when the recording button (the mic) is clicked
     const [ isRecording, setIsRecording ] = useState(false);
 
@@ -33,7 +34,10 @@ function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
 
     // url endpoint for ChatGPT
     const url = "https://api.openai.com/v1/chat/completions";
-    
+
+    // ref hook for determining if event.target is the modal, for the "modal closes on click outside" feature Scott wanted
+    const modalRef = useRef();
+
     // handler that is called when the microphone "recording" button is clicked on
     const handleRecording = () => {
         onRecord("Record button clicked in modal");
@@ -58,7 +62,7 @@ function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
             SpeechRecognition.stopListening();
             setIsRecording(false);
         }
-        onClose("Close button clicked in modal");
+        onClose();
     }
 
     const initiateUserSubmission = () => {
@@ -120,10 +124,23 @@ function NotSureModal({ onAsk, onClose, onRecord, onStopRecord }) {
         }
     }
 
+    // function for checking if the modal ref does not contain the event target ... ergo, the user has clicked outside the modal
+    const checkClickOutside = (event) => {
+        if (modalOpen && modalRef.current && !modalRef.current.contains(event.target)) {
+            handleCloseModal();
+        }
+    }
+
+    // effect hook called on modalOpen state changes, that will add/remove an event listener for mouseclicks. This event listener is passed the checkClickOutside callback
+    useEffect(() => {
+        document.addEventListener('mousedown', checkClickOutside);
+        return () => document.removeEventListener('mousedown', checkClickOutside);
+    }, [modalOpen]);
+
     // JSX for the modal component
     return (
         <div id="backgroundWithModalOpen">
-            <div id="modalWindow">
+            <div id="modalWindow" ref={modalRef}>
                 <div id="modalCloseButton">
                     <button id="closeBtn" onClick={handleCloseModal}>Close</button>
                 </div>

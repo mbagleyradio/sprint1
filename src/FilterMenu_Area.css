@@ -44,12 +44,17 @@
 
 }
 
+
 #areaBtnKeyWest {
     left: 1%;
     top: 50%;
     background-color: #ecafa4;
     color: #c10606;
     
+}
+
+.areaBtn:focus {
+    border: 3px solid red;
 }
 
 #areaBtnMarathon {
