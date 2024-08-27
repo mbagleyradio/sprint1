@@ -1,3 +1,14 @@
+/*
+* MAP each element of the providers array as a <Listing/> component
+* <Listing/> contains all of the providers' information from the database, displayed neatly
+* it also contains buttons:
+* red button discards (discard the listing)
+* green button keeps
+* brown button expands the listing info and turns into the yellow "share" button when clicked
+* yellow button "shares" the listing
+*
+*/
+
 import Alvarez from './sprint4/img/Alvarez.jpg';
 import CaseMartin from './sprint4/img/Case-Martin.jpg';
 import ConchRepublic from './sprint4/img/Conch Republic Sports Medicine.jpg';

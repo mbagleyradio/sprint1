@@ -213,7 +213,7 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
         
             queryString += ` AND Practice_Name IS NOT NULL;`
         }
-        console.log(queryString);
+    
         return queryString;
     }
     

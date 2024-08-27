@@ -38,7 +38,6 @@ function ReviewSelection() {
     }
 
     const handleReviewListClick = () => {
-        console.log(submittedFilters.current);
         const paramsForList = {
             insuranceType: listingToReview.insuranceType,
             insuranceName: listingToReview.insuranceName,
@@ -55,8 +54,6 @@ function ReviewSelection() {
     }
 
     const onProvidersArrayRetrieved = (data) => {
-        console.log(`Data payload recieved by onProvidersArrayRetrieved function below\n`);
-        console.log(data);
         providers = [...data];
     }
 
