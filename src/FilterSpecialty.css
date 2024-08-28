@@ -10,7 +10,7 @@
 
 .filterSpecialtyText {
     color: #000;
-    font-size: 1em;
+    font-size: 1rem;
     text-align: left;
 }
 
@@ -50,4 +50,10 @@
     text-align: center;
 }
 
-
+@media only screen and (max-width: 999px) and (max-width: 700px) {
+    .filterSpecialtyText {
+        color: #000;
+        font-size: 1rem;
+        text-align: left;
+    }
+}

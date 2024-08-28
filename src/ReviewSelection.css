@@ -50,3 +50,36 @@
     border: none;
     color: white;
 }
+
+@media only screen and (max-width: 699px) and (min-width: 500px) {
+    .reviewSelectionText {
+        font-size: .75rem;
+    }
+
+    #reviewSelectionLogo {
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
+
+@media only screen and (max-width: 499px) and (min-width: 300px) {
+    .reviewSelectionText {
+        font-size: .75rem;
+    }
+
+    #reviewSelectionLogo {
+        max-width: 75px;
+        max-height: 75px;
+    }
+}
+
+@media only screen and (max-width: 299px) and (min-width: 200px) {
+    .reviewSelectionText {
+        font-size: .75rem;
+    }
+
+    #reviewSelectionLogo {
+        max-width: 50px;
+        max-height: 50px;
+    }
+}

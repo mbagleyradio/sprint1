@@ -1,7 +1,9 @@
 #filterMenuRow {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    flex-direction: row;
+    overflow: visible;
 }
 
 .filterMenuColumn {
@@ -44,3 +46,77 @@
     text-align: center;
 }
 
+
+.filterMenuButtonCaption {
+    font-size: .75rem;
+}
+
+@media only screen and (max-width: 999px) and (min-width: 700px) {
+    .filterMenuColumn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 20%;
+        margin: none;
+        padding: none;
+    }
+
+    .filterMenuButtonImg {
+        height: 75%;
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 699px) and (min-width: 500px) {
+    .filterMenuColumn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 20%;
+        margin: none;
+        padding: none;
+    }
+
+    .filterMenuButtonImg {
+        height: 75%;
+        width: 75%;
+    }
+}
+
+
+@media only screen and (max-width: 499px) and (min-width: 300px) {
+    .filterMenuColumn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 20%;
+        margin: none;
+        padding: none;
+    }
+
+    .filterMenuButtonImg {
+        height: 75%;
+        width: 75%;
+    }
+}
+
+
+@media only screen and (max-width: 299px) and (min-width: 199px) {
+    .filterMenuColumn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 20%;
+        margin: none;
+        padding: none;
+    }
+
+    .filterMenuButtonImg {
+        height: 75%;
+        width: 75%;
+    }
+}

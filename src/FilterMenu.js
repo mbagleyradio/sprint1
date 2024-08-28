@@ -5,19 +5,8 @@ import buttonLowerKeys from './sprint3/img/button_lower-keys.png';
 import buttonMiddleKeys from './sprint3/img/button_middle-keys.png';
 import buttonUpperKeys from './sprint3/img/button_upper-keys.png';
 
-const mapButtonsTrimNone = {
-    border: "none"
-}
-
-const mapButtonsTrim = {
-    backgroundColor: "red"
-}
-
 function FilterMenu( { filterType, onFilterSubmit } ) {
     const [ userSelection, setUserSelection ] = useState("default - no filters selected");
-    const [ mapBtnLowerKeysStyle, setMapBtnLowerKeysStyle ] = useState(mapButtonsTrimNone);
-    const [ mapBtnMiddleKeysStyle, setMapBtnMiddleKeysStyle ] = useState(mapButtonsTrimNone);
-    const [ mapBtnUpperKeysStyle, setMapBtnUpperKeysStyle ] = useState(mapButtonsTrimNone);
     const [ mapBtnSelectMsg, setMapBtnSelectMsg ] = useState(null);
     const sendSelectionToMainMenu = () => {
         onFilterSubmit(userSelection);
@@ -52,26 +41,17 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
 
             case "Area: Lower Keys":
                 setUserSelection(areaBtnSelection);
-                setMapBtnLowerKeysStyle(mapButtonsTrim);
-                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
-                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
                 setMapBtnSelectMsg("Lower keys selected");
                 console.log("Lower keys clicked and style changed")
             break;
 
             case "Area: Middle Keys":
                 setUserSelection(areaBtnSelection);
-                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
-                setMapBtnMiddleKeysStyle(mapButtonsTrim);
-                setMapBtnUpperKeysStyle(mapButtonsTrimNone);
                 setMapBtnSelectMsg("Middle keys selected");
             break;
 
             case "Area: Upper Keys":
                 setUserSelection(areaBtnSelection);
-                setMapBtnLowerKeysStyle(mapButtonsTrimNone);
-                setMapBtnMiddleKeysStyle(mapButtonsTrimNone);
-                setMapBtnUpperKeysStyle(mapButtonsTrim);
                 setMapBtnSelectMsg("Upper keys selected");
             break;
 

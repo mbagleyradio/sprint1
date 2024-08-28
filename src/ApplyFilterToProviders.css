@@ -1,6 +1,13 @@
+#numberOfProviders {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 #numberOfProvidersText {
     background-color: blue;
-    width: 100%;
+    width: 90%;
     height: 50px;
     border-radius: 50px;
     text-align: center;
@@ -29,3 +36,138 @@
     text-align: center;
 }
 
+@media only screen and (max-width: 999px) and (min-width: 700px) {
+    #numberOfProvidersText {
+        background-color: blue;
+        width: 75%;
+        height: 40px;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 1rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        color: white;
+    }
+    
+    #filteredProvidersNumber {
+        margin-left: .5rem;
+        margin-right: .5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: .25rem;
+        padding-bottom: .25rem;
+        font-weight: bold;
+        background-color: white;
+        color: black;
+    }
+
+    #wouldYouLikeToReviewText {
+        color: black;
+        font-size: 1rem;
+        text-align: center;
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 699px) and (min-width: 500px) {
+    #numberOfProvidersText {
+        background-color: blue;
+        width: 50%;
+        height: 25px;
+        border-radius: 50px;
+        text-align: center;
+        font-size: .7rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        color: white;
+    }
+    
+    #filteredProvidersNumber {
+        margin-left: .5rem;
+        margin-right: .5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: .25rem;
+        padding-bottom: .25rem;
+        font-weight: bold;
+        background-color: white;
+        color: black;
+    }
+
+    #wouldYouLikeToReviewText {
+        color: black;
+        font-size: .75rem;
+        text-align: center;
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 499px) and (min-width: 300px) {
+    #numberOfProvidersText {
+        background-color: blue;
+        width: 80%;
+        height: 30px;
+        border-radius: 50px;
+        text-align: center;
+        font-size: .7rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        color: white;
+    }
+    
+    #filteredProvidersNumber {
+        margin-left: .5rem;
+        margin-right: .5rem;
+        padding-left: .5rem;
+        padding-right: .5rem;
+        padding-top: .25rem;
+        padding-bottom: .25rem;
+        font-weight: bold;
+        background-color: white;
+        color: black;
+    }
+
+    #wouldYouLikeToReviewText {
+        color: black;
+        font-size: .75rem;
+        text-align: center;
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 299px) and (min-width: 199px) {
+    #numberOfProvidersText {
+        background-color: blue;
+        width: 100%;
+        height: 25px;
+        border-radius: 50px;
+        text-align: center;
+        font-size: .5rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        color: white;
+    }
+    
+    #filteredProvidersNumber {
+        margin-left: .5rem;
+        margin-right: .5rem;
+        padding-left: .5rem;
+        padding-right: .5rem;
+        padding-top: .25rem;
+        padding-bottom: .25rem;
+        font-weight: bold;
+        background-color: white;
+        color: black;
+    }
+
+    #wouldYouLikeToReviewText {
+        color: black;
+        font-size: .75rem;
+        text-align: center;
+        width: 75%;
+    }
+}
