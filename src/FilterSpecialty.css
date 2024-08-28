@@ -6,6 +6,7 @@
     justify-content: center;
     padding-top: 1%;
     padding-bottom: 1%;
+    margin-bottom: 5%;
 }
 
 .filterSpecialtyText {
@@ -48,12 +49,4 @@
     margin-right: 1%;
     height: 25px;
     text-align: center;
-}
-
-@media only screen and (max-width: 999px) and (max-width: 700px) {
-    .filterSpecialtyText {
-        color: #000;
-        font-size: 1rem;
-        text-align: left;
-    }
 }

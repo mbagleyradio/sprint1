@@ -44,7 +44,6 @@
 
 }
 
-
 #areaBtnKeyWest {
     left: 1%;
     top: 50%;
@@ -106,4 +105,56 @@
     position: absolute;
     left: 83%;
     bottom: 1%;
+}
+
+@media only screen and (max-width: 999px) and (min-width: 300px) {
+    #filterAreaWindow {
+        border: 2px solid #000;
+        background-color: #fff2cc;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        position: relative;
+        width: 300px;
+        height: 400px;
+        justify-self: center;
+        align-self: center;
+        margin-bottom: 5%;
+    }
+
+    #mapBtnSelectedMsg {
+        font-size: .9rem;
+        padding-left: 1%;
+        color: red;
+        bottom: -3%;
+        left: 33%;
+        position: absolute;
+    
+    }
+
+    #areaSelect {
+        position: absolute;
+        left: 78%;
+        bottom: 1%;
+    }
+
+    #areaBtnUpperKeys {
+        left: 63%;
+        top: 35%;
+        transform: rotate(-51deg);
+    }
+
+    .areaBtn {
+        position: absolute;
+        border-radius: 50%;
+        word-wrap: normal;
+        width: 34%;
+        height: 15%;
+        font-size: 1.25rem;
+    }
+
+    .areaBtnImg {
+        max-height: 116px;
+        max-width: 209px;
+        position: absolute;
+    }
 }
