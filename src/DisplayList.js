@@ -9,7 +9,8 @@
 *
 */
 
-import ProviderListing from './ProviderListing';
+import ProviderListingIndividual from './ProviderListingIndividual';
+import ProviderListingGroup from './ProviderListingGroup';
 import A2CLogo from './A2CLogo_150x150.png';
 import { useLocation } from 'react-router-dom';
 import './DisplayList.css';
@@ -76,7 +77,7 @@ function DisplayList() {
             <div id="listings">
             {
                 providers.map((provider) => (
-                    <ProviderListing provider={provider} />
+                    (provider["First_Name"] !== null) ? <ProviderListingIndividual provider={provider} /> : <ProviderListingGroup provider={provider} />
                 ))
             }   
             </div>

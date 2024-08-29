@@ -1,0 +1,16 @@
+.providerListingIndividual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.individualListingHeader {
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: #85DFFF;
+    border: 1px solid black;
+}
