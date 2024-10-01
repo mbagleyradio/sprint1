@@ -10,12 +10,41 @@
 */
 
 import ProviderListingIndividual from './ProviderListingIndividual';
-import ProviderListingGroup from './ProviderListingGroup';
 import A2CLogo from './A2CLogo_150x150.png';
 import { useLocation } from 'react-router-dom';
 import './DisplayList.css';
 
 function DisplayList() {
+    const getPracticesFromProviders = (providers) => {
+        const practices = {};
+        providers.forEach(provider => {
+            const practiceGroupName = provider["Name_of_Practice_Group_Locations"];
+            const practiceName = provider["Practice_Name"];
+            
+            if (!practices[practiceGroupName] && !practices[practiceName]) {
+                // create a new key value pair for the practice group or practice name
+                if (practiceGroupName !== null) {
+                    // they have a practice group, so store them in an array that can be found with a key/value pair. The key is their practice group name.
+                    practices[practiceGroupName] = [];
+                    practices[practiceGroupName].push(provider);
+                } else {
+                    // they do not have a practice group, so store them in an array that can be found with a key/value pair. The key is their practice name.
+                    practices[practiceName] = [];
+                    practices[practiceName].push(provider);
+                } 
+            } else {
+                if (practiceGroupName !== null) {
+                    practices[practiceGroupName].push(provider);
+                } else {
+                    practices[practiceName].push(provider);
+                }
+            }
+        });
+
+        const groupedPractices = Object.values(practices);
+        return Object.values(groupedPractices);
+    }
+
     const location = useLocation();
     const providers = location.state.providers;
     const insuranceType = location.state.insuranceType;
@@ -35,7 +64,7 @@ function DisplayList() {
     let keywordString = "";
     let specialtyString = "";
     let timeString = "";
-    
+
     for (let count = 0; count < numFilters; count++) {
         if (filters[count].filterName.startsWith("Appointment: ")) {
             displayAppointment = true;
@@ -59,6 +88,8 @@ function DisplayList() {
         }
     }
 
+    const practices = getPracticesFromProviders(providers);
+
     return (
         <div id="displayListingScreen">
             <div id="topOfListing">
@@ -76,9 +107,10 @@ function DisplayList() {
             </div>
             <div id="listings">
             {
-                providers.map((provider) => (
-                    (provider["First_Name"] !== null) ? <ProviderListingIndividual provider={provider} /> : <ProviderListingGroup provider={provider} />
-                ))
+                practices.map((practice) => {
+                    return <ProviderListingIndividual provider={practice}/>
+                    //return (Object.keys(practice).length > 1) ? <ProviderListingGroup provider={practice}/> : <ProviderListingIndividual provider={practice}/>
+                })
             }   
             </div>
         </div>

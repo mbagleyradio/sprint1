@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 
 function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, healthCareCategory, collectedFilters, onProvidersArrayRetrieved } ) {
     const [ storedProviders, setStoredProviders ] = useState([]);
-    
+    const [ numPractices, setNumPractices ] = useState(0);
+
     const generateQueryFromFilters = () => {
         let queryString = "";
         if (collectedFilters.length === 0) {
-            queryString = "SELECT * FROM providers WHERE Practice_Name IS NOT NULL;";
+            queryString = "SELECT * FROM providers;";
         }
         else {
             for (let filterElement = 0; filterElement < collectedFilters.length; filterElement++) {
@@ -82,51 +83,51 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                 } else if (collectedFilters[filterElement].filterName.startsWith("Keyword")) {
                     switch (collectedFilters[filterElement].filterName) {
                         case "Keyword: Sports Medicine":
-                            queryString += `Specialty_Areas LIKE '%Sports Medicine%'`;
+                            queryString += `Keywords LIKE '%Sports Medicine%'`;
                         break;
     
                         case "Keyword: Pediatrics":
-                            queryString += `Specialty_Areas LIKE '%Pediatrics%'`;
+                            queryString += `Keywords LIKE '%Pediatrics%'`;
                         break;
     
                         case "Keyword: Senior Adults":
-                            queryString += `Specialty_Areas LIKE '%Senior Adults%'`;
+                            queryString += `Keywords LIKE '%Senior Adults%'`;
                         break;
     
                         case "Keyword: Knee & Hip":
-                            queryString += `Specialty_Areas LIKE '%Knee & Hip%'`;
+                            queryString += `Keywords LIKE '%Knee & Hip%'`;
                         break;
     
                         case "Keyword: Neck & Shoulder":
-                            queryString += `Specialty_Areas LIKE '%Neck & Shoulder%'`;
+                            queryString += `Keywords LIKE '%Neck & Shoulder%'`;
                         break;
     
                         case "Keyword: Hands Wrists & Elbows":
-                            queryString += `Specialty_Areas LIKE '%Hands Wrists & Elbows%'`;
+                            queryString += `Keywords LIKE '%Hands Wrists & Elbows%'`;
                         break;
     
                         case "Keyword: Foot & Ankle":
-                            queryString += `Specialty_Areas LIKE '%Foot & Ankle%'`;
+                            queryString += `Keywords LIKE '%Foot & Ankle%'`;
                         break;
     
                         case "Keyword: Arthritis":
-                            queryString += `Specialty_Areas LIKE '%Arthritis%'`;
+                            queryString += `Keywords LIKE '%Arthritis%'`;
                         break;
     
                         case "Keyword: Physical Therapy":
-                            queryString += `Specialty_Areas LIKE '%SPhysical Therapy%'`;
+                            queryString += `Keywords LIKE '%SPhysical Therapy%'`;
                         break;
     
                         case "Keyword: Surgery":
-                            queryString += `Specialty_Areas LIKE '%Surgery%'`;
+                            queryString += `Keywords LIKE '%Surgery%'`;
                         break;
     
                         case "Keyword: Diagnostic":
-                            queryString += `Specialty_Areas LIKE '%Diagnostic%'`;
+                            queryString += `Keywords LIKE '%Diagnostic%'`;
                         break;
 
                         case "Keyword: Joint Replacement":
-                            queryString += `Specialty_Areas LIKE '%Joint Replacement%'`;
+                            queryString += `Keywords LIKE '%Joint Replacement%'`;
                         break;
                         
                         default:
@@ -211,7 +212,7 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                 }
             }
         
-            queryString += ` AND Practice_Name IS NOT NULL;`
+            queryString += `;`
         }
     
         return queryString;
@@ -240,13 +241,28 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
         });
     }
 
+    const countPractices = () => {
+        let practices = 0;
+        for (let i = 0; i < storedProviders.length; i++) {
+            if (storedProviders[i]["Practice_Name"] !== null) {
+                practices += 1;
+            }
+        }
+
+        setNumPractices(practices);
+    }
+
     useEffect( () => {
         fetchFilterResults();
     }, []);
 
+    useEffect ( () => {
+        countPractices();
+    }, [storedProviders])
+
     return (
         <div id="numberOfProviders">
-            <p id="numberOfProvidersText">There are <span id="filteredProvidersNumber">{storedProviders.length}</span> possible health providers</p>
+            <p id="numberOfProvidersText">There are <span id="filteredProvidersNumber">{numPractices}</span> possible health providers</p>
             <p id="wouldYouLikeToReviewText">Would you like to review this listing or would you like to narrow the list by selecting one of the filters below.</p>
         </div>
     );

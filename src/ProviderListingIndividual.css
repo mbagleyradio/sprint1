@@ -4,6 +4,7 @@
     width: 75%;
     border: 1px solid black;
     flex-direction: column;
+    margin-bottom: 3%;
 }
 
 .individualListingHeader {
@@ -73,4 +74,97 @@
 
 .individualListingLanguages {
     margin-top: 5%;
+}
+
+.individualListingProviderInfo {
+    background-color: #FDF0AD;
+    border: 1px solid black;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#thumbnailLicenseAndPrimary {
+    display: flex;
+    flex-direction: column;
+}
+
+#thumbnailLicense {
+    display: flex;
+    flex-direction: row;
+}
+
+.individualListingProviderKeywords {
+    width: 100%;
+    text-align: left;
+    background-color: #FDE2D3;
+    border: 1px solid black;
+}
+
+#keywordText {
+    margin-left: .5%;
+    margin-top: .5%;
+    margin-bottom: .5%;
+}
+
+.individualListingProviderActions {
+    width: 100%;
+    background-color: #EAEAEA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border: 1px solid black;
+}
+
+#license {
+    margin-top: 2%;
+}
+
+.listingActionButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: none;
+    margin-bottom: none;
+    text-align: center;
+}
+
+#leftBtn {
+    margin-left: 1%;
+}
+
+#rightBtn {
+    margin-right: 1%;
+}
+
+.listingButtons {
+    max-width: 75px;
+    max-height: 75px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#primary {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1%;
+}
+
+#primaryLabels {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin-left: 1%;
+}
+
+#primaryFields {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
+    text-align: left;
+    
 }

@@ -1,36 +1,46 @@
 import './ProviderListingIndividual.css';
+import ProviderInfo from './ProviderInfo.js';
 import { useEffect, useState } from 'react';
-import Provider_Individual from '../src/sprint4/img/provider_individual.png';
-// provider[] elements like "Florida_Medical_License_Number" correspond to SQL columns
+import Provider_Group from '../src/sprint4/img/provider_group.png';
+import thumbs_up from '../src/sprint4/img/thumbs-up.png';
+import share from '../src/sprint4/img/share.png';
+import thumbs_down from '../src/sprint4/img/thumbs-down.png';
+
+/* 
+*   TO DO:
+*   rewrite the languages section ...
+*/
 
 function ProviderListingIndividual({provider}) {
     const [header, setHeader] = useState(null);
     const [hours, setHours] = useState(null);
-
+    const [name, setName] = useState(null);
+    
     let individual = {
-        address: provider["Address"],
-        city: provider["City"],
+        address: provider[0]["Address"],
+        city: provider[0]["City"],
         state: "FL",
-        zip: provider["ZIP"],
-        phone_number: provider["Phone_Number"],
+        zip: provider[0]["ZIP"],
+        phone_number: provider[0]["Phone_Number"],
         spanish: "Hablamos Español",
         dutch: "Wij spreken Nederlands",
         creole: "Nou pale kreyòl ayisyen",
-        license: provider["Florida_Medical_License_Number"],
-        primary: provider["Primary_Field"],
-        secondary: provider["Secondary_Field"],
-        specialty: provider["Specialty_Areas"],
-        keywords: provider["Specialty_Areas"]
+        license: provider[0]["Florida_Medical_License_Number"],
+        primary: provider[0]["Primary_Field"],
+        secondary: provider[0]["Secondary_Field"],
+        specialty: provider[0]["Specialty_Areas"],
+        keywords: provider[0]["Keywords"]
     }
 
     const generateHeaderStringForIndividual = () => {
-        if (provider["Practice_Name"] !== null) {
-            setHeader(provider["Practice_Name"]);
+        if (provider[0]["Practice_Name"] !== null) {
+            setHeader(provider[0]["Practice_Name"]);
         }
-        else if (provider["Middle_Initial"] !== null) {
-            setHeader(`${provider["First_Name"]} ${provider["Middle_Initial"]} ${provider["Last_Name"]}, ${provider["Title"]}`);
+        else if (provider[0]["Middle_Initial"] !== null) {
+            setHeader(`${provider[0]["First_Name"]} ${provider[0]["Middle_Initial"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`);
+            
         } else {
-            setHeader(`${provider["First_Name"]} ${provider["Last_Name"]}, ${provider["Title"]}`);
+            setHeader(`${provider[0]["First_Name"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`);
         }
     }
 
@@ -47,12 +57,23 @@ function ProviderListingIndividual({provider}) {
         }
     }
 
+    const generateNameForIndividual = () => {
+        if (provider[0]["Middle_Initial"] !== null) {
+            setName(`${provider[0]["First_Name"]} ${provider[0]["Middle_Initial"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`);
+        } else if (provider[0]["First_Name"] !== null && provider[0]["Last_Name"] !== null) {
+            setName(`${provider[0]["First_Name"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`);
+        } else {
+            setName(header);
+        }
+    }
+
     useEffect(() => {
         generateHeaderStringForIndividual();
-        setHours(`${convertTimeMilitaryToStandard(provider["Office_Open"])} -- ${convertTimeMilitaryToStandard(provider["Office_Close"])}`);
+        setHours(`${convertTimeMilitaryToStandard(provider[0]["Office_Open"])} -- ${convertTimeMilitaryToStandard(provider[0]["Office_Close"])}`);
+        generateNameForIndividual();
     }, []);
 
-
+    
     return (
     <div className="providerListingIndividual">
         <div className="individualListingHeader">
@@ -61,7 +82,7 @@ function ProviderListingIndividual({provider}) {
         <div className="individualListingLocationTime">
             <div className="individualListingLocation">
                 <div className="individualListingThumbnailA">
-                    <img src={Provider_Individual} alt="Individual Provider IMG"/>
+                    <img src={Provider_Group} alt="an Individual Provider's practice"/>
                 </div>
                 <div className="individualListingAddress">
                     <p className="individualListingBold">{header}</p>
@@ -69,10 +90,10 @@ function ProviderListingIndividual({provider}) {
                     <p className="individualListingText">{`${individual.city}, ${individual.state} ${individual.zip}`}</p>
                     <p className="individualListingText">{individual.phone_number}</p>
                     <div className="individualListingLanguages">
-                        {provider["Languages"].includes("Spanish") ? <p className="individualListingText">{`${individual.spanish}`}</p> : <></>}
-                        {provider["Languages"].includes("Dutch") ? <p className="individualListingText">{`${individual.dutch}`}</p> : <></>}
-                        {provider["Languages"].includes("Haitian Creole") ? <p className="individualListingText">{`${individual.creole}`}</p> : <></>}
-                </div>
+                        {provider[0]["Languages"] !== null && provider[0]["Languages"].includes("Spanish") ? <p className="individualListingText">{`${individual.spanish}`}</p> : <></>}
+                        {provider[0]["Languages"] !== null && provider[0]["Languages"].includes("Dutch") ? <p className="individualListingText">{`${individual.dutch}`}</p> : <></>}
+                        {provider[0]["Languages"] !== null && provider[0]["Languages"].includes("Haitian Creole") ? <p className="individualListingText">{`${individual.creole}`}</p> : <></>}
+                    </div>
                 </div>
             </div>
             <div className="individualListingTime">
@@ -87,14 +108,36 @@ function ProviderListingIndividual({provider}) {
                     <p className="individualListingText">Sunday</p>
                 </div>
                 <div className="individualListingHours">
-                    <p className="individualListingText">{provider["Office_Days"].includes("M") ? hours : "Closed"}</p>
-                    <p className="individualListingText">{provider["Office_Days"].includes("T") ? hours : "Closed"}</p>
-                    <p className="individualListingText">{provider["Office_Days"].includes("W") ? hours : "Closed"}</p>
-                    <p className="individualListingText">{provider["Office_Days"].includes("R") ? hours : "Closed"}</p>
-                    <p className="individualListingText">{provider["Office_Days"].includes("F") ? hours : "Closed"}</p>
-                    <p className="individualListingText">{provider["Office_Days"].includes("S") ? hours : "Closed"}</p>
-                    <p className="individualListingText">{provider["Office_Days"].includes("U") ? hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("M") ? hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("T") ? hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("W") ? hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("R") ? hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("F") ? hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("S") ? hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("U") ? hours : "Closed"}</p>
                 </div>
+            </div>
+        </div>
+        {
+            provider.map((practice) => {
+                return <ProviderInfo provider={practice}/>
+            })
+        }
+        <div className="individualListingProviderKeywords">
+            <p className="individualListingText" id="keywordText">{individual.keywords}</p>
+        </div>
+        <div className="individualListingProviderActions">
+            <div className="listingActionButtons" id="leftBtn">
+                <img className="listingButtons" src={thumbs_down} alt="clicking this button keeps a listing"/>
+                <p className="individualListingText">Discard</p>
+            </div>
+            <div className="listingActionButtons">
+                <img className="listingButtons" src={share} alt="clicking this button shares a listing"/>
+                <p className="individualListingText">Send</p>
+            </div>
+            <div className="listingActionButtons" id="rightBtn">
+                <img className="listingButtons" src={thumbs_up} alt="clicking this button keeps a listing"/>
+                <p className="individualListingText">Keep</p>
             </div>
         </div>
     </div>
