@@ -15,6 +15,10 @@ import { useLocation, useState } from 'react-router-dom';
 import './DisplayList.css';
 
 function DisplayList() {
+    const handlePrioritize = (sortParameter) => {
+        console.log(`Prioritizing based on ... ${sortParameter}`);
+    }
+
     const getPracticesFromProviders = (providers) => {
         const practices = {};
         providers.forEach(provider => {
@@ -108,7 +112,7 @@ function DisplayList() {
             <div id="listings">
             {
                 practices.map((practice) => {
-                    return <ProviderListingIndividual provider={practice}/>
+                    return <ProviderListingIndividual provider={practice} handlePrioritize={handlePrioritize}/>
                 })
             }   
             </div>

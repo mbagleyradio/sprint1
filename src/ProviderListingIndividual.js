@@ -7,7 +7,7 @@ import thumbs_up from '../src/sprint4/img/thumbs-up.png';
 import share from '../src/sprint4/img/share.png';
 import thumbs_down from '../src/sprint4/img/thumbs-down.png';
 
-function ProviderListingIndividual({provider}) {
+function ProviderListingIndividual({provider, handlePrioritize}) {
     const [minimize, setMinimize] = useState(false);
     const [header, setHeader] = useState(null);
     const [hours, setHours] = useState(null);
@@ -39,6 +39,10 @@ function ProviderListingIndividual({provider}) {
         if (minimize === true) {
             setMinimize(false);
         }
+    }
+
+    const onPrioritizeClick = () => {
+        handlePrioritize(provider[0]["Name_of_Practice_Group_Locations"]);
     }
 
     const generateHeaderStringForIndividual = () => {
@@ -145,7 +149,7 @@ function ProviderListingIndividual({provider}) {
                 <p className="individualListingText">Send</p>
             </div>
             <div className="listingActionButtons" id="rightBtn">
-                <img className="listingButtons" src={thumbs_up} alt="clicking this button keeps a listing"/>
+                <img className="listingButtons" src={thumbs_up} alt="clicking this button keeps a listing" onClick={onPrioritizeClick}/>
                 <p className="individualListingText">Keep</p>
             </div>
         </div>
