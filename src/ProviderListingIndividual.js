@@ -1,17 +1,14 @@
 import './ProviderListingIndividual.css';
 import ProviderInfo from './ProviderInfo.js';
+import MinimizedListing from './MinimizedListing.js';
 import { useEffect, useState } from 'react';
 import Provider_Group from '../src/sprint4/img/provider_group.png';
 import thumbs_up from '../src/sprint4/img/thumbs-up.png';
 import share from '../src/sprint4/img/share.png';
 import thumbs_down from '../src/sprint4/img/thumbs-down.png';
 
-/* 
-*   TO DO:
-*   rewrite the languages section ...
-*/
-
 function ProviderListingIndividual({provider}) {
+    const [minimize, setMinimize] = useState(false);
     const [header, setHeader] = useState(null);
     const [hours, setHours] = useState(null);
     const [name, setName] = useState(null);
@@ -30,6 +27,18 @@ function ProviderListingIndividual({provider}) {
         secondary: provider[0]["Secondary_Field"],
         specialty: provider[0]["Specialty_Areas"],
         keywords: provider[0]["Keywords"]
+    }
+
+    const handleMinimize = () => {
+        if (minimize === false) {
+            setMinimize(true);
+        }
+    }
+
+    const handleExpand = () => {
+        if (minimize === true) {
+            setMinimize(false);
+        }
     }
 
     const generateHeaderStringForIndividual = () => {
@@ -73,8 +82,8 @@ function ProviderListingIndividual({provider}) {
         generateNameForIndividual();
     }, []);
 
-    
     return (
+    minimize ? <MinimizedListing header={header} handleExpand={handleExpand}/> :
     <div className="providerListingIndividual">
         <div className="individualListingHeader">
             <p className="individualListingText">{header}</p>
@@ -128,7 +137,7 @@ function ProviderListingIndividual({provider}) {
         </div>
         <div className="individualListingProviderActions">
             <div className="listingActionButtons" id="leftBtn">
-                <img className="listingButtons" src={thumbs_down} alt="clicking this button keeps a listing"/>
+                <img className="listingButtons" src={thumbs_down} alt="clicking this button discards a listing" onClick={handleMinimize}/>
                 <p className="individualListingText">Discard</p>
             </div>
             <div className="listingActionButtons">

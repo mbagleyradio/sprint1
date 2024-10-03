@@ -11,7 +11,7 @@
 
 import ProviderListingIndividual from './ProviderListingIndividual';
 import A2CLogo from './A2CLogo_150x150.png';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useState } from 'react-router-dom';
 import './DisplayList.css';
 
 function DisplayList() {
@@ -109,7 +109,6 @@ function DisplayList() {
             {
                 practices.map((practice) => {
                     return <ProviderListingIndividual provider={practice}/>
-                    //return (Object.keys(practice).length > 1) ? <ProviderListingGroup provider={practice}/> : <ProviderListingIndividual provider={practice}/>
                 })
             }   
             </div>
