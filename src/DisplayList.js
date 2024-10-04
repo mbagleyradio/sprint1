@@ -11,10 +11,31 @@
 
 import ProviderListingIndividual from './ProviderListingIndividual';
 import A2CLogo from './A2CLogo_150x150.png';
-import { useLocation, useState } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import './DisplayList.css';
 
 function DisplayList() {
+    const location = useLocation();
+    const numFilters = location.state.numFilters;
+    const filters = location.state.filters;
+    const insuranceType = location.state.insuranceType;
+    const insuranceName = location.state.insuranceName;
+    const healthCareCategory = location.state.healthCareCategory;
+
+    const [sortedPractices, setSortedPractices] = useState(undefined);
+    const [filterFlags, setFilterFlags] = useState({appointment: false, area: false, keyword: false, specialty: false, time: false});
+    const [filterStrings, setFilterStrings] = useState({appointment: "", area: "", keyword: "", specialty: "", time: ""});
+    
+
+    useEffect(() => {
+        // run on component mount
+        generateBannerFromFilters();
+        const providers = location.state.providers;
+        const practices = getPracticesFromProviders(providers);
+        setSortedPractices(...practices);
+    }, []);
+
     const handlePrioritize = (sortParameter) => {
         console.log(`Prioritizing based on ... ${sortParameter}`);
     }
@@ -49,50 +70,44 @@ function DisplayList() {
         return Object.values(groupedPractices);
     }
 
-    const location = useLocation();
-    const providers = location.state.providers;
-    const insuranceType = location.state.insuranceType;
-    const insuranceName = location.state.insuranceName;
-    const healthCareCategory = location.state.healthCareCategory;
-    const filters = location.state.filters;
-    const numFilters = location.state.numFilters;
+    const generateBannerFromFilters = () => {
+        let appointmentString = filterStrings.appointment;
+        let areaString = filterStrings.area;
+        let timeString = filterStrings.time;
+        let keywordString = filterStrings.keyword;
+        let specialtyString = filterStrings.specialty;
+        let displayKeyword = false;
+        let displayTime = false;
+        let displayArea = false; 
+        let displaySpecialty = false; 
+        let displayAppointment = false;
 
-    // determine what filters are in the filters array, to display in the component
-    let displayAppointment = false;
-    let displayArea = false;
-    let displayKeyword = false;
-    let displaySpecialty = false;
-    let displayTime = false;
-    let appointmentString = "";
-    let areaString = "";
-    let keywordString = "";
-    let specialtyString = "";
-    let timeString = "";
+        for (let count = 0; count < numFilters; count++) {
+            if (filters[count].filterName.startsWith("Appointment: ")) {
+                displayAppointment = true;
+                appointmentString = filters[count].filterName.slice(12, filters[count].filterName.length);
+            }
+            else if (filters[count].filterName.startsWith("Area: ")) {
+                displayArea = true;
+                areaString = filters[count].filterName.slice(5, filters[count].filterName.length);
+            } 
+            else if (filters[count].filterName.startsWith("Time: ")) {
+                displayTime = true;
+                timeString = filters[count].filterName.slice(5, filters[count].filterName.length);
+            }
+            else if (filters[count].filterName.startsWith("Keyword: ")) {
+                displayKeyword = true;
+                keywordString = filters[count].filterName.slice(8, filters[count].filterName.length);
+            }
+            else if (filters[count].filterName.startsWith("Specialty: ")) {
+                displaySpecialty = true;
+                specialtyString = filters[count].filterName.slice(10, filters[count].filterName.length);
+            }
+        }
 
-    for (let count = 0; count < numFilters; count++) {
-        if (filters[count].filterName.startsWith("Appointment: ")) {
-            displayAppointment = true;
-            appointmentString = filters[count].filterName.slice(12, filters[count].filterName.length);
-        }
-        else if (filters[count].filterName.startsWith("Area: ")) {
-            displayArea = true;
-            areaString = filters[count].filterName.slice(5, filters[count].filterName.length);
-        } 
-        else if (filters[count].filterName.startsWith("Time: ")) {
-            displayTime = true;
-            timeString = filters[count].filterName.slice(5, filters[count].filterName.length);
-        }
-        else if (filters[count].filterName.startsWith("Keyword: ")) {
-            displayKeyword = true;
-            keywordString = filters[count].filterName.slice(8, filters[count].filterName.length);
-        }
-        else if (filters[count].filterName.startsWith("Specialty: ")) {
-            displaySpecialty = true;
-            specialtyString = filters[count].filterName.slice(10, filters[count].filterName.length);
-        }
+        setFilterFlags({appointment: displayAppointment, area: displayArea, keyword: displayKeyword, specialty: displaySpecialty, time: displayTime});
+        setFilterStrings({appointment: appointmentString, area: areaString, keyword: keywordString, specialty: specialtyString, time: timeString});
     }
-
-    const practices = getPracticesFromProviders(providers);
 
     return (
         <div id="displayListingScreen">
@@ -102,17 +117,17 @@ function DisplayList() {
                     <p className="displaySelectionText">TYPE: {insuranceType}</p>
                     <p className="displaySelectionText">NAME: {insuranceName}</p>
                     <p className="displaySelectionText">CATEGORY: {healthCareCategory}</p>
-                    {displayAppointment ? <p className="displaySelectionText">APPOINTMENT TYPE: {appointmentString}</p> : <></>}
-                    {displayArea ? <p className="displaySelectionText">AREA: {areaString}</p> : <></>}
-                    {displayTime ? <p className="displaySelectionText">TIME: {timeString}</p> : <></>}
-                    {displaySpecialty ? <p className="displaySelectionText">SPECIALTY: {specialtyString}</p> : <></>}
-                    {displayKeyword ? <p className="displaySelectionText">KEYWORD: {keywordString}</p> : <></>}
+                    {filterFlags.appointment ? <p className="displaySelectionText">APPOINTMENT TYPE: {filterStrings.appointment}</p> : <></>}
+                    {filterFlags.area ? <p className="displaySelectionText">AREA: {filterStrings.area}</p> : <></>}
+                    {filterFlags.time ? <p className="displaySelectionText">TIME: {filterStrings.time}</p> : <></>}
+                    {filterFlags.specialty ? <p className="displaySelectionText">SPECIALTY: {filterStrings.specialty}</p> : <></>}
+                    {filterFlags.keyword ? <p className="displaySelectionText">KEYWORD: {filterStrings.keyword}</p> : <></>}
                 </div>
             </div>
             <div id="listings">
             {
-                practices.map((practice) => {
-                    return <ProviderListingIndividual provider={practice} handlePrioritize={handlePrioritize}/>
+                sortedPractices.map((practice) => {
+                    return <ProviderListingIndividual provider={sortedPractices} handlePrioritize={handlePrioritize}/>
                 })
             }   
             </div>
