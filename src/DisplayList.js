@@ -31,9 +31,7 @@ function DisplayList() {
     useEffect(() => {
         // run on component mount
         generateBannerFromFilters();
-        const providers = location.state.providers;
-        const practices = getPracticesFromProviders(providers);
-        setSortedPractices(...practices);
+        setSortedPractices(getPracticesFromProviders(location.state.providers));
     }, []);
 
     const handlePrioritize = (sortParameter) => {
@@ -124,13 +122,13 @@ function DisplayList() {
                     {filterFlags.keyword ? <p className="displaySelectionText">KEYWORD: {filterStrings.keyword}</p> : <></>}
                 </div>
             </div>
-            <div id="listings">
+            {sortedPractices && <div id="listings">
             {
                 sortedPractices.map((practice) => {
-                    return <ProviderListingIndividual provider={sortedPractices} handlePrioritize={handlePrioritize}/>
+                    return <ProviderListingIndividual provider={practice} handlePrioritize={handlePrioritize}/>
                 })
             }   
-            </div>
+            </div>}
         </div>
         
     );
