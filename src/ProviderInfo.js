@@ -1,18 +1,18 @@
 import './ProviderListingIndividual.css';
 import Provider_Individual from '../src/sprint4/img/provider_individual.png';
-import { useState, useEffect } from 'react';
 
 export default function ProviderInfo({provider}) {
-    const [ name, setName ] = useState(null);
-    useEffect(() => {
+    const generateNameForProvider = () => {
         if (provider["Middle_Initial"] !== null) {
-            setName(`${provider["First_Name"]} ${provider["Middle_Initial"]} ${provider["Last_Name"]}, ${provider["Title"]}`);
+            return `${provider["First_Name"]} ${provider["Middle_Initial"]} ${provider["Last_Name"]}, ${provider["Title"]}`;
         } else if (provider["First_Name"] !== null && provider["Last_Name"] !== null) {
-            setName(`${provider["First_Name"]} ${provider["Last_Name"]}, ${provider["Title"]}`);
+            return `${provider["First_Name"]} ${provider["Last_Name"]}, ${provider["Title"]}`;
         } else {
-            setName(provider["Practice_Name"]);
+            return provider["Practice_Name"];
         }
-    }, []);
+    }
+
+    let name = generateNameForProvider();
 
     return (
     <div className="individualListingProviderInfo">

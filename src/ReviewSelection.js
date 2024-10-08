@@ -54,7 +54,29 @@ function ReviewSelection() {
     }
 
     const onProvidersArrayRetrieved = (data) => {
-        providers = [...data];
+        providers = [...data].sort((a, b) => {
+            let nameA = a["Name_of_Practice_Group_Locations"];
+            let nameB = b["Name_of_Practice_Group_Locations"];
+            
+            // condition - nameA and nameB are null
+            if (nameA === null && nameB === null) {
+                return 0;
+            } else if (nameA === null) {
+            // condition - only nameA is null, but nameB exists
+                return -1;
+            } else if (nameB === null) {
+            // condition - only nameB is null, but nameA exists
+                return 1;
+            } else if (nameA > nameB) {
+            // condition - nameA is later alphabetically than nameB
+                return 1;
+            } else if (nameA <  nameB) {
+            // condition - nameA is earlier alphabetically than nameB
+                return -1;
+            } else {
+                return 0;
+            }
+        }); 
     }
 
     return (

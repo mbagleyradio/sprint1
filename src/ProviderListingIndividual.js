@@ -1,59 +1,34 @@
 import './ProviderListingIndividual.css';
 import ProviderInfo from './ProviderInfo.js';
 import MinimizedListing from './MinimizedListing.js';
-import { useEffect, useState } from 'react';
 import Provider_Group from '../src/sprint4/img/provider_group.png';
 import thumbs_up from '../src/sprint4/img/thumbs-up.png';
 import share from '../src/sprint4/img/share.png';
 import thumbs_down from '../src/sprint4/img/thumbs-down.png';
+import { useState } from 'react';
 
 function ProviderListingIndividual({provider, handlePrioritize}) {
     const [minimize, setMinimize] = useState(false);
-    const [header, setHeader] = useState(null);
-    const [hours, setHours] = useState(null);
-    const [name, setName] = useState(null);
     
-    let individual = {
-        address: provider[0]["Address"],
-        city: provider[0]["City"],
-        state: "FL",
-        zip: provider[0]["ZIP"],
-        phone_number: provider[0]["Phone_Number"],
-        spanish: "Hablamos Español",
-        dutch: "Wij spreken Nederlands",
-        creole: "Nou pale kreyòl ayisyen",
-        license: provider[0]["Florida_Medical_License_Number"],
-        primary: provider[0]["Primary_Field"],
-        secondary: provider[0]["Secondary_Field"],
-        specialty: provider[0]["Specialty_Areas"],
-        keywords: provider[0]["Keywords"]
-    }
-
-    const handleMinimize = () => {
-        if (minimize === false) {
-            setMinimize(true);
-        }
-    }
-
-    const handleExpand = () => {
-        if (minimize === true) {
-            setMinimize(false);
-        }
-    }
-
-    const onPrioritizeClick = () => {
-        handlePrioritize(provider[0]["Name_of_Practice_Group_Locations"]);
-    }
-
     const generateHeaderStringForIndividual = () => {
         if (provider[0]["Practice_Name"] !== null) {
-            setHeader(provider[0]["Practice_Name"]);
+            return provider[0]["Practice_Name"];
         }
         else if (provider[0]["Middle_Initial"] !== null) {
-            setHeader(`${provider[0]["First_Name"]} ${provider[0]["Middle_Initial"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`);
+            return `${provider[0]["First_Name"]} ${provider[0]["Middle_Initial"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`;
             
         } else {
-            setHeader(`${provider[0]["First_Name"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`);
+            return `${provider[0]["First_Name"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`;
+        }
+    }
+
+    const generateNameForIndividual = () => {
+        if (provider[0]["Middle_Initial"] !== null) {
+            return `${provider[0]["First_Name"]} ${provider[0]["Middle_Initial"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`;
+        } else if (provider[0]["First_Name"] !== null && provider[0]["Last_Name"] !== null) {
+            return `${provider[0]["First_Name"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`;
+        } else {
+            return provider[0]["Practice_Name"];
         }
     }
 
@@ -70,27 +45,51 @@ function ProviderListingIndividual({provider, handlePrioritize}) {
         }
     }
 
-    const generateNameForIndividual = () => {
-        if (provider[0]["Middle_Initial"] !== null) {
-            setName(`${provider[0]["First_Name"]} ${provider[0]["Middle_Initial"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`);
-        } else if (provider[0]["First_Name"] !== null && provider[0]["Last_Name"] !== null) {
-            setName(`${provider[0]["First_Name"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`);
-        } else {
-            setName(header);
+    const handleMinimize = () => {
+        if (minimize === false) {
+            setMinimize(true);
         }
     }
 
-    useEffect(() => {
-        generateHeaderStringForIndividual();
-        setHours(`${convertTimeMilitaryToStandard(provider[0]["Office_Open"])} -- ${convertTimeMilitaryToStandard(provider[0]["Office_Close"])}`);
-        generateNameForIndividual();
-    }, []);
+    const handleExpand = () => {
+        if (minimize === true) {
+            setMinimize(false);
+        }
+    }
 
+    const onPrioritizeClick = () => {
+        if (provider[0]["Name_of_Practice_Group_Locations"] !== null) {
+            handlePrioritize(true, provider[0]["Name_of_Practice_Group_Locations"]);
+        } else {
+            handlePrioritize(false, provider[0]["Florida_Medical_License_Number"]);
+        }
+    }
+
+    let individual = {
+        // rewrite everything to generate in THIS object, not in a useEffect hook
+        header: generateHeaderStringForIndividual(),
+        name: generateNameForIndividual(),
+        hours: `${convertTimeMilitaryToStandard(provider[0]["Office_Open"])} -- ${convertTimeMilitaryToStandard(provider[0]["Office_Close"])}`,
+        ddress: provider[0]["Address"],
+        city: provider[0]["City"],
+        state: "FL",
+        zip: provider[0]["ZIP"],
+        phone_number: provider[0]["Phone_Number"],
+        spanish: "Hablamos Español",
+        dutch: "Wij spreken Nederlands",
+        creole: "Nou pale kreyòl ayisyen",
+        license: provider[0]["Florida_Medical_License_Number"],
+        primary: provider[0]["Primary_Field"],
+        secondary: provider[0]["Secondary_Field"],
+        specialty: provider[0]["Specialty_Areas"],
+        keywords: provider[0]["Keywords"]
+    }
+    
     return (
-    minimize ? <MinimizedListing header={header} handleExpand={handleExpand}/> :
+    minimize ? <MinimizedListing header={individual.header} handleExpand={handleExpand}/> :
     <div className="providerListingIndividual">
         <div className="individualListingHeader">
-            <p className="individualListingText">{header}</p>
+            <p className="individualListingText">{individual.header}</p>
         </div>
         <div className="individualListingLocationTime">
             <div className="individualListingLocation">
@@ -98,7 +97,7 @@ function ProviderListingIndividual({provider, handlePrioritize}) {
                     <img src={Provider_Group} alt="an Individual Provider's practice"/>
                 </div>
                 <div className="individualListingAddress">
-                    <p className="individualListingBold">{header}</p>
+                    <p className="individualListingBold">{individual.name}</p>
                     <p className="individualListingText">{individual.address}</p>
                     <p className="individualListingText">{`${individual.city}, ${individual.state} ${individual.zip}`}</p>
                     <p className="individualListingText">{individual.phone_number}</p>
@@ -121,13 +120,13 @@ function ProviderListingIndividual({provider, handlePrioritize}) {
                     <p className="individualListingText">Sunday</p>
                 </div>
                 <div className="individualListingHours">
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("M") ? hours : "Closed"}</p>
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("T") ? hours : "Closed"}</p>
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("W") ? hours : "Closed"}</p>
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("R") ? hours : "Closed"}</p>
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("F") ? hours : "Closed"}</p>
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("S") ? hours : "Closed"}</p>
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("U") ? hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("M") ? individual.hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("T") ? individual.hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("W") ? individual.hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("R") ? individual.hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("F") ? individual.hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("S") ? individual.hours : "Closed"}</p>
+                    <p className="individualListingText">{provider[0]["Office_Days"].includes("U") ? individual.hours : "Closed"}</p>
                 </div>
             </div>
         </div>
@@ -155,6 +154,7 @@ function ProviderListingIndividual({provider, handlePrioritize}) {
         </div>
     </div>
     );
+    
 }
 
 export default ProviderListingIndividual;

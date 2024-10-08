@@ -1,11 +1,10 @@
 /*
-* MAP each element of the providers array as a <Listing/> component
-* <Listing/> contains all of the providers' information from the database, displayed neatly
-* it also contains buttons:
-* red button discards (discard the listing)
-* green button keeps
-* brown button expands the listing info and turns into the yellow "share" button when clicked
-* yellow button "shares" the listing
+* BUGS TO FIX:
+*   the minimized listings are getting over-written when another listing is prioritized
+*   AND the new listing shows up as a minimized listing
+*
+* IDEAS:
+*   un-minimize the listing, then move it, then minimize the new listing
 *
 */
 
@@ -13,6 +12,7 @@ import ProviderListingIndividual from './ProviderListingIndividual';
 import A2CLogo from './A2CLogo_150x150.png';
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+
 import './DisplayList.css';
 
 function DisplayList() {
@@ -23,24 +23,33 @@ function DisplayList() {
     const insuranceName = location.state.insuranceName;
     const healthCareCategory = location.state.healthCareCategory;
 
-    const [sortedPractices, setSortedPractices] = useState(undefined);
+    const [sortedProviders, setSortedProviders] = useState([...location.state.providers]);
+    const [sortedPractices, setSortedPractices] = useState(null);
     const [filterFlags, setFilterFlags] = useState({appointment: false, area: false, keyword: false, specialty: false, time: false});
     const [filterStrings, setFilterStrings] = useState({appointment: "", area: "", keyword: "", specialty: "", time: ""});
-    
 
     useEffect(() => {
         // run on component mount
         generateBannerFromFilters();
-        setSortedPractices(getPracticesFromProviders(location.state.providers));
     }, []);
 
-    const handlePrioritize = (sortParameter) => {
-        console.log(`Prioritizing based on ... ${sortParameter}`);
+    useEffect(() => {
+        // run when handlePrioritize results in a re-render
+        getPracticesFromProviders();
+    }, [sortedProviders]);
+
+
+    const handlePrioritize = (flag, targetName) => {
+        if (flag === true) {
+            setSortedProviders([...sortedProviders.filter(a => a["Name_of_Practice_Group_Locations"] === targetName), ...sortedProviders.filter(a => a["Name_of_Practice_Group_Locations"] !== targetName)])
+        } else if (flag === false) {
+            setSortedProviders([...sortedProviders.filter(a => a["Florida_Medical_License_Number"] === targetName), ...sortedProviders.filter(a => a["Florida_Medical_License_Number"] !== targetName)])
+        }
     }
 
-    const getPracticesFromProviders = (providers) => {
+    const getPracticesFromProviders = () => {
         const practices = {};
-        providers.forEach(provider => {
+        sortedProviders.forEach(provider => {
             const practiceGroupName = provider["Name_of_Practice_Group_Locations"];
             const practiceName = provider["Practice_Name"];
             
@@ -64,8 +73,8 @@ function DisplayList() {
             }
         });
 
-        const groupedPractices = Object.values(practices);
-        return Object.values(groupedPractices);
+        let groupedPractices = Object.values(practices);
+        setSortedPractices(Object.values(groupedPractices));
     }
 
     const generateBannerFromFilters = () => {
@@ -122,7 +131,7 @@ function DisplayList() {
                     {filterFlags.keyword ? <p className="displaySelectionText">KEYWORD: {filterStrings.keyword}</p> : <></>}
                 </div>
             </div>
-            {sortedPractices && <div id="listings">
+            {sortedPractices !== null && <div id="listings">
             {
                 sortedPractices.map((practice) => {
                     return <ProviderListingIndividual provider={practice} handlePrioritize={handlePrioritize}/>
