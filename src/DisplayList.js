@@ -3,9 +3,15 @@
 *   the minimized listings are getting over-written when another listing is prioritized
 *   AND the new listing shows up as a minimized listing
 *
-* IDEAS:
-*   un-minimize the listing, then move it, then minimize the new listing
+* TRY THIS FIRST:
+*   pass this prop ...
+*   an object of key value pairs that contains the names of the keys used in getPractices,
+*   and values = true/false for whether they are minimized
 *
+* IDEAS IF THAT FAILS:
+*   un-minimize the listing, then move it, then minimize the new listing
+*   would a key be altered on every re-render?
+*  
 */
 
 import ProviderListingIndividual from './ProviderListingIndividual';
@@ -27,10 +33,12 @@ function DisplayList() {
     const [sortedPractices, setSortedPractices] = useState(null);
     const [filterFlags, setFilterFlags] = useState({appointment: false, area: false, keyword: false, specialty: false, time: false});
     const [filterStrings, setFilterStrings] = useState({appointment: "", area: "", keyword: "", specialty: "", time: ""});
+    const [minimizeController, setMinimizeController] = useState(null);
 
     useEffect(() => {
         // run on component mount
         generateBannerFromFilters();
+        initializeMinimizeStatus();
     }, []);
 
     useEffect(() => {
@@ -38,7 +46,36 @@ function DisplayList() {
         getPracticesFromProviders();
     }, [sortedProviders]);
 
+    const handleMinimizeInController = (targetName) => {
+        // find the key that matches the target, set it's value (passed as a prop minimizeController in the render) to true
+        setMinimizeController(prev => ({
+            ...prev,
+            [targetName]: true 
+        }));
+    }
 
+    const handleExpandInController = (targetName) => {
+        // find the key that matches the target, set it's value (passed as a prop minimizeController in the render) to false
+        setMinimizeController(prev => ({
+            ...prev,
+            [targetName]: false
+        }));
+    }
+
+    
+    const initializeMinimizeStatus = () => {
+        const practices = {};
+        sortedProviders.forEach(provider => {
+            const license_as_key = provider["Florida_Medical_License_Number"];
+            practices[license_as_key] = false;
+        });
+        
+        setMinimizeController(prev => ({
+            ...prev,
+            ...practices
+        }));
+    }
+    
     const handlePrioritize = (flag, targetName) => {
         if (flag === true) {
             setSortedProviders([...sortedProviders.filter(a => a["Name_of_Practice_Group_Locations"] === targetName), ...sortedProviders.filter(a => a["Name_of_Practice_Group_Locations"] !== targetName)])
@@ -134,7 +171,7 @@ function DisplayList() {
             {sortedPractices !== null && <div id="listings">
             {
                 sortedPractices.map((practice) => {
-                    return <ProviderListingIndividual provider={practice} handlePrioritize={handlePrioritize}/>
+                    return <ProviderListingIndividual provider={practice} handlePrioritize={handlePrioritize} minimizeController={minimizeController} handleMinimizeInController={handleMinimizeInController} handleExpandInController={handleExpandInController}/>
                 })
             }   
             </div>}

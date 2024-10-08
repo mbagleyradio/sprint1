@@ -5,10 +5,8 @@ import Provider_Group from '../src/sprint4/img/provider_group.png';
 import thumbs_up from '../src/sprint4/img/thumbs-up.png';
 import share from '../src/sprint4/img/share.png';
 import thumbs_down from '../src/sprint4/img/thumbs-down.png';
-import { useState } from 'react';
 
-function ProviderListingIndividual({provider, handlePrioritize}) {
-    const [minimize, setMinimize] = useState(false);
+function ProviderListingIndividual({provider, handlePrioritize, minimizeController, handleMinimizeInController, handleExpandInController}) {
     
     const generateHeaderStringForIndividual = () => {
         if (provider[0]["Practice_Name"] !== null) {
@@ -46,15 +44,11 @@ function ProviderListingIndividual({provider, handlePrioritize}) {
     }
 
     const handleMinimize = () => {
-        if (minimize === false) {
-            setMinimize(true);
-        }
+        handleMinimizeInController(provider[0]["Florida_Medical_License_Number"]);
     }
 
     const handleExpand = () => {
-        if (minimize === true) {
-            setMinimize(false);
-        }
+        handleExpandInController(provider[0]["Florida_Medical_License_Number"]);
     }
 
     const onPrioritizeClick = () => {
@@ -66,7 +60,6 @@ function ProviderListingIndividual({provider, handlePrioritize}) {
     }
 
     let individual = {
-        // rewrite everything to generate in THIS object, not in a useEffect hook
         header: generateHeaderStringForIndividual(),
         name: generateNameForIndividual(),
         hours: `${convertTimeMilitaryToStandard(provider[0]["Office_Open"])} -- ${convertTimeMilitaryToStandard(provider[0]["Office_Close"])}`,
@@ -84,9 +77,11 @@ function ProviderListingIndividual({provider, handlePrioritize}) {
         specialty: provider[0]["Specialty_Areas"],
         keywords: provider[0]["Keywords"]
     }
+
+    const key_as_license = provider[0]["Florida_Medical_License_Number"];
     
     return (
-    minimize ? <MinimizedListing header={individual.header} handleExpand={handleExpand}/> :
+    minimizeController[key_as_license] ? <MinimizedListing header={individual.header} handleExpand={handleExpand}/> :
     <div className="providerListingIndividual">
         <div className="individualListingHeader">
             <p className="individualListingText">{individual.header}</p>
