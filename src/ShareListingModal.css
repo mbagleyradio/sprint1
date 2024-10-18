@@ -1,0 +1,84 @@
+#windowWithModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+}
+
+
+#modal {
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+    padding: 2rem;
+    width: 30em;
+    height: 32em;
+    position: sticky;
+    left: 5%;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+#modalHeader {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(200, 200, 200);
+    width: 100%;
+}
+
+#modalHeaderText {
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    width: 75%;
+    margin-left: 25%;
+}
+
+#modalCancel{
+    color: blue;
+    font-size: 1.5rem;
+    font-weight: normal;
+    text-align: right;
+    background-color: transparent;
+    border: none;
+    width: 25%;
+    margin-right: 1%;
+}
+
+#modalTo {
+    display: flex;
+    background-color: #eee;
+    flex-direction: row;
+    margin-bottom: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+#modalToLabel {
+    padding-top: 1%;
+}
+
+#modalNumberInput {
+    background-color: transparent;
+    border: transparent;
+    height: 25px;
+}
+
+#unicodeBG { 
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+#unicodeText {
+    color: #fff;
+}
+
+.screenshotIMG {
+    max-width: 480px;
+    max-height: 480px;
+}

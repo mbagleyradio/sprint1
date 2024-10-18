@@ -1,4 +1,7 @@
+import { useState, createRef } from 'react';
+import { useScreenshot } from "use-react-screenshot";
 import './ProviderListingIndividual.css';
+import ShareListingModal from './ShareListingModal.js';
 import ProviderInfo from './ProviderInfo.js';
 import MinimizedListing from './MinimizedListing.js';
 import Provider_Group from '../src/sprint4/img/provider_group.png';
@@ -7,7 +10,9 @@ import share from '../src/sprint4/img/share.png';
 import thumbs_down from '../src/sprint4/img/thumbs-down.png';
 
 function ProviderListingIndividual({provider, handlePrioritize, minimizeController, handleMinimizeInController, handleExpandInController}) {
-    
+    const screenshotRef = createRef(null);
+    const [ shareModalOpen, setShareModalOpen ] = useState(false);
+    const [image, takeScreenShot] = useScreenshot();
     const generateHeaderStringForIndividual = () => {
         if (provider[0]["Practice_Name"] !== null) {
             return provider[0]["Practice_Name"];
@@ -59,6 +64,25 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
         }
     }
 
+    const handleShareModalOpen = () => {
+        if (shareModalOpen === false) {
+            // GENERATE THE SCREENSHOT HERE ...
+            takeScreenShot(screenshotRef.current);
+
+            setShareModalOpen(prev => {
+                return true
+            });
+        }
+    }
+    
+    const handleShareModalClose = () => {
+        if (shareModalOpen === true) {
+            setShareModalOpen(prev => {
+                return false
+            });
+        }
+    }
+
     let individual = {
         header: generateHeaderStringForIndividual(),
         name: generateNameForIndividual(),
@@ -82,7 +106,7 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
     
     return (
     minimizeController[key_as_license] ? <MinimizedListing header={individual.header} handleExpand={handleExpand}/> :
-    <div className="providerListingIndividual">
+    <div className="providerListingIndividual" ref={screenshotRef}>
         <div className="individualListingHeader">
             <p className="individualListingText">{individual.header}</p>
         </div>
@@ -139,7 +163,7 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
                 <p className="individualListingText">Discard</p>
             </div>
             <div className="listingActionButtons">
-                <img className="listingButtons" src={share} alt="clicking this button shares a listing"/>
+                <img className="listingButtons" src={share} alt="clicking this button shares a listing" onClick={handleShareModalOpen}/>
                 <p className="individualListingText">Send</p>
             </div>
             <div className="listingActionButtons" id="rightBtn">
@@ -147,6 +171,9 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
                 <p className="individualListingText">Keep</p>
             </div>
         </div>
+        {
+            shareModalOpen ? <ShareListingModal shareModalOpen={shareModalOpen} handleShareModalClose={handleShareModalClose} screenshot={image}/> : <></>
+        }
     </div>
     );
     

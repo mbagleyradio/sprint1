@@ -1,17 +1,5 @@
 /*
-* BUGS TO FIX:
-*   the minimized listings are getting over-written when another listing is prioritized
-*   AND the new listing shows up as a minimized listing
-*
-* TRY THIS FIRST:
-*   pass this prop ...
-*   an object of key value pairs that contains the names of the keys used in getPractices,
-*   and values = true/false for whether they are minimized
-*
-* IDEAS IF THAT FAILS:
-*   un-minimize the listing, then move it, then minimize the new listing
-*   would a key be altered on every re-render?
-*  
+* 
 */
 
 import ProviderListingIndividual from './ProviderListingIndividual';
