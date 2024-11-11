@@ -27,7 +27,7 @@ export default function RadioButtonGroup({insurances, isLoaded}) {
 					name="insGroup"
 					onChange={e => {setSelection(e.target.value)}}
 				/>
-				<label for={`button_${element.id_in_group}`}>
+				<label className="radioButtonText" for={`button_${element.id_in_group}`}>
 					{element.insurance_name}
 				</label>
 				<br />
@@ -40,7 +40,7 @@ export default function RadioButtonGroup({insurances, isLoaded}) {
 					value={`${insurances[0].insurance_type}: my insurance is not listed.`}
 					onChange={e => {setSelection(e.target.value)}}
 				/>
-				<label for="notListed">My insurance is not listed.</label>
+				<label className="radioButtonText" for="notListed">My insurance is not listed.</label>
 			</div>
 		</form>
     );

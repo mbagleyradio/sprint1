@@ -27,7 +27,6 @@
 
 @media only screen and (min-width: 800px) {
     .mobileResize {
-        font-size: 1.75em;
         align-items: center;
         justify-content: center;
     }

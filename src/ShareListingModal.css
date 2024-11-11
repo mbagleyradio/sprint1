@@ -63,6 +63,10 @@
     padding-top: 1%;
 }
 
+#modalConsent {
+    background-color: white;
+}
+
 #modalNumberInput {
     background-color: transparent;
     border: transparent;

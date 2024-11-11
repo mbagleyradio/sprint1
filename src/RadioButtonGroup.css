@@ -1,4 +1,9 @@
 #submitFromRadioBTN {
     width: 6vw;
     height: 6vh;
+    font-size: 1.25em;
+}
+
+.radioButtonText {
+    font-size: 1.25em;
 }

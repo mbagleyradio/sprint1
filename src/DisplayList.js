@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import './DisplayList.css';
+import './ReviewSelection.css';
 
 function DisplayList() {
     const location = useLocation();
@@ -143,12 +144,12 @@ function DisplayList() {
 
     return (
         <div id="displayListingScreen">
-            <div id="topOfListing">
-                <img id="displaySelectionLogo" src={A2CLogo} alt="Access 2 Care"/>
-                <div id="displaySelectionWhiteBanner">
-                    <p className="displaySelectionText">TYPE: {insuranceType}</p>
-                    <p className="displaySelectionText">NAME: {insuranceName}</p>
-                    <p className="displaySelectionText">CATEGORY: {healthCareCategory}</p>
+            <div className="reviewSelectionBanner">
+                <img className="reviewSelectionLogo" src={A2CLogo} alt="Access 2 Care"/>
+                <div className="reviewSelectionWhiteBanner">
+                    <p className="reviewSelectionText">TYPE: {insuranceType}</p>
+                    <p className="reviewSelectionText">NAME: {insuranceName}</p>
+                    <p className="reviewSelectionText">CATEGORY: {healthCareCategory}</p>
                     {filterFlags.appointment ? <p className="displaySelectionText">APPOINTMENT TYPE: {filterStrings.appointment}</p> : <></>}
                     {filterFlags.area ? <p className="displaySelectionText">AREA: {filterStrings.area}</p> : <></>}
                     {filterFlags.time ? <p className="displaySelectionText">TIME: {filterStrings.time}</p> : <></>}

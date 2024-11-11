@@ -1,5 +1,12 @@
+/*
+* TO DO:
+*   GET THE LISTING COMPONENTS IN DISPLAY-LIST JS TO NOT BREAK WHEN THE VIEWPORT IS NARROWED
+*   FIX THE VIEWPORT ISSUE SCOTT SHARED ... I THINK I HAVEN'T STYLED HOW TO HANDLE VIEWPORT EXPANSION?
+*/
+
 // Import the CSS styling
 import './HealthcareCategories.css';
+import './ReviewSelection.css';
 
 // Import React & React Router tools
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -234,11 +241,11 @@ export default function HealthcareCategories() {
     // this is the function component's HTML code
     return (
     <div id="wholePage">
-        <div id="topOfPage">
-            <img id="welcomeIMG" src={A2CLogo} alt="Welcome to Monroe County"/>
-            <div id="banner">
-                <h1>TYPE: {insuranceContext[0]}</h1>
-                <h1>NAME: {insuranceContext[1]}</h1>
+        <div className="reviewSelectionBanner">
+            <img className="reviewSelectionLogo" src={A2CLogo} alt="Welcome to Monroe County"/>
+            <div className="reviewSelectionWhiteBanner">
+                <p className="reviewSelectionText">TYPE: {insuranceContext[0]}</p>
+                <p className="reviewSelectionText">NAME: {insuranceContext[1]}</p>
             </div>
         </div>
         <h3 id="welcomeMSG">What category of healthcare services are you looking for? (pick one)</h3>
