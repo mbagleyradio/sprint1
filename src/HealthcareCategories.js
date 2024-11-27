@@ -1,6 +1,8 @@
 /*
 * TO DO:
 *   GET THE LISTING COMPONENTS IN DISPLAY-LIST JS TO NOT BREAK WHEN THE VIEWPORT IS NARROWED
+*       - Text size does not change ... try changing the text size as the viewport shrinks...
+*       
 *   FIX THE VIEWPORT ISSUE SCOTT SHARED ... I THINK I HAVEN'T STYLED HOW TO HANDLE VIEWPORT EXPANSION?
 */
 
