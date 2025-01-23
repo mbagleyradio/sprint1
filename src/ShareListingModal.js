@@ -1,6 +1,8 @@
 /* 
 * TO DO:
 *   Call the Twilio API from our PHP back-end
+*   
+*   This was done, just need to tweak the github
 */
 
 import { useState, useEffect, useRef } from 'react';
