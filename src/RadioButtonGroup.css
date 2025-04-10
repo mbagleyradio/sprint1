@@ -1,9 +1,15 @@
 #submitFromRadioBTN {
-    width: 6vw;
-    height: 6vh;
-    font-size: 1.25em;
+    font-size: 2em;
+    padding: 1%;
 }
 
 .radioButtonText {
-    font-size: 1.25em;
+    font-size: 1em;
+}
+
+#insuranceSelectForm {
+    overflow-y: scroll;
+    scrollbar-width: auto;
+    scrollbar-color: #000 #fff;
+    max-height: 400px;
 }

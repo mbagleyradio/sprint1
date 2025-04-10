@@ -131,8 +131,8 @@ function GetStarted() {
                     <button class="getStartedButtons" id="healthcareBtn" onClick={() => handleClick(11)}>Healthcare Exchange Plans</button>
             </div>
             <div id="gs-line-break">
-                <hr></hr>
                 <button class="getStartedButtons" id="yourBtn" style={style}>{buttonName}</button>
+                <h3>Scroll down in menu to see insurance options</h3>
             </div>
             <div id="gs-options-box">
                 <Options isInsured={insurance} insuranceType={userSelection}/>

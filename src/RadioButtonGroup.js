@@ -16,23 +16,25 @@ export default function RadioButtonGroup({insurances, isLoaded}) {
 	if (!isLoaded) {
 		return (<h5>Loading...</h5>);
 	} else return(
-        <form onSubmit={handleSubmit}>
+        <form id="insuranceSelectForm" onSubmit={handleSubmit}>
 			<button id="submitFromRadioBTN" type="submit">Submit</button><br/>
-			{insurances.map((element) => (
-				<div id={`radioDiv_${element.id_in_group}`}>
-				<input
-					type="radio"
-					value={`${element.insurance_type}: ${element.insurance_name}`}
-					id={`button_${element.id_in_group}`}
-					name="insGroup"
-					onChange={e => {setSelection(e.target.value)}}
-				/>
-				<label className="radioButtonText" for={`button_${element.id_in_group}`}>
-					{element.insurance_name}
-				</label>
-				<br />
-				</div>
-			))}
+			<div className="radioButtonMenu">
+				{insurances.map((element) => (
+					<div className=""id={`radioDiv_${element.id_in_group}`}>
+					<input
+						type="radio"
+						value={`${element.insurance_type}: ${element.insurance_name}`}
+						id={`button_${element.id_in_group}`}
+						name="insGroup"
+						onChange={e => {setSelection(e.target.value)}}
+					/>
+					<label className="radioButtonText" for={`button_${element.id_in_group}`}>
+						{element.insurance_name}
+					</label>
+					<br />
+					</div>
+				))}
+			</div>
 			<div>
 				<input type="radio" 
 					id="notListed" 

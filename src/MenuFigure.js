@@ -87,7 +87,7 @@ function MenuFigure( { handleOnClick, filterSelection, handleOnUndo } ) {
                 <figure className="filterMenuButton" onClick={handleAppointment} style={appointmentBorder}>
                     <img className="filterMenuButtonImg" src={filter_appointment} alt="Filter providers by their appointment type" />
                     {filterSelection.startsWith("Appointment")? <div className="filterMenuOverlay" onClick={handleUndoButtonOnClick}><p className="filterMenuOverlayText">Undo</p></div> : <></>}
-                    <figcaption className="filterMenuButtonCaption">Appointment</figcaption>
+                    <figcaption className="filterMenuButtonCaption" id="appointmentText">Appt.</figcaption>
                 </figure>
                 {filterSelection.startsWith("Appointment") ? <div className="filterMenuInfomatic"><p className="filterMenuInfomaticText">{filterSelection}</p></div> : <></>}
             </div>
