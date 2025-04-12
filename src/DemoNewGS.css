@@ -1,0 +1,32 @@
+#screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menuRow {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 1%;
+}
+
+.menuRowButton {
+    border: 1px solid black;
+    padding: 16px 32px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+}
