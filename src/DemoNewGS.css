@@ -28,5 +28,38 @@
     background-color: white;
     text-align: center;
     display: inline-block;
-    font-size: 16px;
+}
+
+#selectionDisplay {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 100%;
+}
+
+#healthcareExchangePrompt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#healthcareExchangeMenuButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.healthcareMenuButton {
+    border: 1px solid black;
+    padding: 16px 16px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    display: inline-block;
 }
