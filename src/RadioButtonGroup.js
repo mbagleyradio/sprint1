@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RadioButtonGroup.css';
-export default function RadioButtonGroup({insurances, isLoaded}) {
+export default function RadioButtonGroup({insurances}) {
 	const navigate = useNavigate();
 	const [ selection, setSelection ] = useState("");
 	
@@ -13,9 +13,7 @@ export default function RadioButtonGroup({insurances, isLoaded}) {
 			navigate("../healthcare-categories", {state: selection});
 		}
 	}
-	if (!isLoaded) {
-		return (<h5>Loading...</h5>);
-	} else return(
+	return(
         <form id="insuranceSelectForm" onSubmit={handleSubmit}>
 			<button id="submitFromRadioBTN" type="submit">Submit</button><br/>
 			<div className="radioButtonMenu">

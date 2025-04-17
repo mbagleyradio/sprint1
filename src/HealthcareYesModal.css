@@ -1,0 +1,36 @@
+#windowWithHealthcareModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+}
+
+#healthcareModal {
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+    padding: 2rem;
+    width: 30em;
+    height: 32em;
+    position: sticky;
+    left: 5%;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+#healthcareModalContents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+
+#healthcareModalInput {
+    display: flex;
+    flex-direction: row;
+}
