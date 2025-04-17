@@ -8,8 +8,8 @@ export default function GetStarted() {
     const [ insuranceSelection, setInsuranceSelection ] = useState(undefined);
     const [ insuranceBtnStyle, setInsuranceBtnStyle ] = useState(undefined);
     const [ healthcareModalOpen, setHealthcareModalOpen ] = useState(false);
+	const [ insuranceQuery, setInsuranceQuery ] = useState(undefined);
     const [ insuranceFetch, setInsuranceFetch ] = useState(undefined);
-
     const handleMenuSelection = (e) => {
         setInsuranceSelection(prev => {
             return e.target.value;
@@ -19,16 +19,47 @@ export default function GetStarted() {
             return e.target.id;
         })
 
+	switch (e.target.value) {
+		case default:
+		break;
+		case "noInsurance":
+		break;
+		case "medicare":
+		break;
+		case "medicareAdvantage":
+		break;
+		case "medicaid":
+		break;
+		case "medicaidManaged":
+		break;
+		case "healthcareExchange":
+		break;
+		case "commercial":
+		break;
+		case "military":
+		break;
+		case "workersComp":
+		break;
+		case "international":
+		break;
+		case "behavioral":
+		break;
+	}
+
         populateInsuranceSubMenu();
     }
 
     const populateInsuranceSubMenu = () => {
-        // need to make a POST with a query passed in
+        
+	// need to make a PHP file GetInsuranceSubMenu.php with a query passed in
         const headers = {};
-		fetch("http://uvcsandbox.com/php/Medicaid Managed.php", {
-			method: "GET",
+		fetch("http://uvcsandbox.com/php/GetInsuranceSubMenu.php", {
+			method: "POST",
 			mode: "cors",
 			headers: headers
+			body: JSON.stringify({
+                		query: insuranceQuery
+            		})
 		}).then(response => {
 			return response.json()
 		}).then(data => {
