@@ -9,6 +9,7 @@ export default function GetStarted() {
     const [ insuranceBtnStyle, setInsuranceBtnStyle ] = useState(undefined);
     const [ healthcareModalOpen, setHealthcareModalOpen ] = useState(false);
     const [ insuranceFetch, setInsuranceFetch ] = useState(undefined);
+	const [ insuranceBtnName, setInsuranceBtnName ] = useState(undefined);
     const handleMenuSelection = (e) => {
         setInsuranceSelection(prev => {
             return e.target.value;
@@ -19,29 +20,73 @@ export default function GetStarted() {
         })
 
 	switch (e.target.value) {
-		case default:
+		default:
 		break;
+			
 		case "noInsurance":
+			setInsuranceBtnName(prev => {
+            			return "No Insurance";
+        		});
 		break;
+			
 		case "medicare":
+			setInsuranceBtnName(prev => {
+            			return "Medicare";
+        		});
 		break;
+			
 		case "medicareAdvantage":
+			setInsuranceBtnName(prev => {
+            			return "Medicare Advantage, HMO, PPO";
+        		});
 		break;
+			
 		case "medicaid":
+			setInsuranceBtnName(prev => {
+            			return "Medicaid";
+        		});
 		break;
+			
 		case "medicaidManaged":
+			setInsuranceBtnName(prev => {
+            			return "Medicaid Managed Plans";
+        		});
 		break;
+			
 		case "healthcareExchange":
+			setInsuranceBtnName(prev => {
+            			return "Healthcare Exchange Plans (ACA)";
+        		});
 		break;
+			
 		case "commercial":
+			setInsuranceBtnName(prev => {
+            			return "Commercial Insurance";
+        		});
 		break;
+			
 		case "military":
+			setInsuranceBtnName(prev => {
+            			return "Military Insurance";
+        		});
 		break;
+			
 		case "workersComp":
+			setInsuranceBtnName(prev => {
+            			return "Workers Comp";
+        		});
 		break;
+			
 		case "international":
+			setInsuranceBtnName(prev => {
+            			return "International Insurance";
+        		});
 		break;
+			
 		case "behavioral":
+			setInsuranceBtnName(prev => {
+            			return "Behavioral Health Ins.";
+        		});
 		break;
 	}
 
@@ -114,7 +159,7 @@ export default function GetStarted() {
             <div id="arrow">
                 <p id="arrowText">You Selected</p>
             </div>
-            <button className="menuRowSelection" id={insuranceBtnStyle}>{insuranceSelection}</button>
+            <button className="menuRowSelection" id={insuranceBtnStyle}>{insuranceBtnName}</button>
             {insuranceSelection === "noInsurance" ? 
             <div id="healthcareExchangePrompt">
                 <p>Would you like to learn more about Healthcare Exchange Plan (ACA) Insurance? It may be more affordable than you might think.</p>
