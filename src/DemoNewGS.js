@@ -8,7 +8,6 @@ export default function GetStarted() {
     const [ insuranceSelection, setInsuranceSelection ] = useState(undefined);
     const [ insuranceBtnStyle, setInsuranceBtnStyle ] = useState(undefined);
     const [ healthcareModalOpen, setHealthcareModalOpen ] = useState(false);
-	const [ insuranceQuery, setInsuranceQuery ] = useState(undefined);
     const [ insuranceFetch, setInsuranceFetch ] = useState(undefined);
     const handleMenuSelection = (e) => {
         setInsuranceSelection(prev => {
@@ -58,7 +57,7 @@ export default function GetStarted() {
 			mode: "cors",
 			headers: headers
 			body: JSON.stringify({
-                		query: insuranceQuery
+                		insuranceSelection: insuranceSelection
             		})
 		}).then(response => {
 			return response.json()
