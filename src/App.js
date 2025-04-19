@@ -16,14 +16,13 @@ function App() {
   const router = createBrowserRouter(createRoutesFromElements(
     <>
       <Route path="/" element={ <HomePage/> }></Route>
-      <Route path="get-started" element={ <GetStarted/> }></Route>
+      <Route path="get-started" element={ <DemoNewGS/> }></Route>
       <Route path="contact-ins" element={ <PopupI/>} ></Route>
       <Route path="contact-no-ins" element={ <PopupNoI/> }></Route>
       <Route path="submitted" element={ <ModalOnSubmit/> }></Route>
       <Route path="healthcare-categories" element={ <HealthcareCategories/> }></Route>
       <Route path="review-listing" element={ <ReviewSelection/> }></Route>
       <Route path="display-list" element={ <DisplayList/> }></Route>
-      <Route path="demo-new-gs" element={<DemoNewGs/>}></Route>
     </>
     )
   );
