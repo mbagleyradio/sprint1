@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 import HomePage from './HomePage.js';
-import GetStarted from './GetStarted.js';
 import PopupNoI from './PopupNoI.js';
 import PopupI from './PopupI.js';
 import ModalOnSubmit from './ModalOnSubmit.js';

@@ -213,6 +213,12 @@
     margin-left: 1%;
 }
 
+#insuranceList {
+    width: 96%;
+    margin-left: 0;
+    margin-right: 0;
+
+}
 @media only screen and (max-width: 600px) {
     .menuRowButton {
         border: 1px solid black;
@@ -266,5 +272,12 @@
         overflow: hidden;
         justify-self: center;
         align-self: center;
+    }
+
+    #navheader {
+        font-size: 24px;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 5%;
     }
 }
