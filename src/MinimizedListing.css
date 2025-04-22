@@ -17,7 +17,7 @@
 
 .minimizedListingHeaderText {
     text-align: center;
-    font-size: 48px;
+    font-size: 4vw;
     margin-top: 0;
     margin-bottom: 0;
     font-weight: bold;
@@ -39,6 +39,6 @@
 }
 
 #maximizeBtn {
-    max-width: 75px;
-    max-height: 75px;
+    max-width: 50px;
+    max-height: 50px;
 }

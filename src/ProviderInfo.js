@@ -18,7 +18,7 @@ export default function ProviderInfo({provider}) {
     <div className="individualListingProviderInfo">
         <div id="thumbnailLicenseAndPrimary">
             <div id="thumbnailLicense">
-                <img src={Provider_Individual} alt="an Individual Provider"/>
+                <img className="providerGroupIMG" src={Provider_Individual} alt="an Individual Provider"/>
                 <div id="license">
                     {
                         provider["Florida_Medical_License_Number"].includes("none") ? <br/> : <p className="individualListingText">{name}</p>

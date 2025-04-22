@@ -110,43 +110,33 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
         <div className="individualListingHeader">
             <p className="individualListingText">{individual.header}</p>
         </div>
+        <div className="providerListingIMG_Name_Hours_Header">
+            <div className="providerListingHeaderDivs">
+                <img className="providerGroupIMG" src={Provider_Group} alt="an Individual Provider's practice"/>
+            </div>
+            <div className="providerListingHeaderDivs">
+                <p className="individualListingBold">{individual.name} - Hours</p>
+            </div>
+        </div>
         <div className="individualListingLocationTime">
-            <div className="individualListingLocation">
-                <div className="individualListingThumbnailA">
-                    <img src={Provider_Group} alt="an Individual Provider's practice"/>
-                </div>
-                <div className="individualListingAddress">
-                    <p className="individualListingBold">{individual.name}</p>
-                    <p className="individualListingText">{individual.address}</p>
-                    <p className="individualListingText">{`${individual.city}, ${individual.state} ${individual.zip}`}</p>
-                    <p className="individualListingText">{individual.phone_number}</p>
-                    <div className="individualListingLanguages">
-                        {provider[0]["Languages"] !== null && provider[0]["Languages"].includes("Spanish") ? <p className="individualListingText">{`${individual.spanish}`}</p> : <></>}
-                        {provider[0]["Languages"] !== null && provider[0]["Languages"].includes("Dutch") ? <p className="individualListingText">{`${individual.dutch}`}</p> : <></>}
-                        {provider[0]["Languages"] !== null && provider[0]["Languages"].includes("Haitian Creole") ? <p className="individualListingText">{`${individual.creole}`}</p> : <></>}
-                    </div>
+            <div className="individualListingAddress">
+                <p className="individualListingText">{individual.address}</p>
+                <p className="individualListingText">{`${individual.city}, ${individual.state} ${individual.zip}`}</p>
+                <p className="individualListingText">{individual.phone_number}</p>
+                <div className="individualListingLanguages">
+                    {provider[0]["Languages"] !== null && provider[0]["Languages"].includes("Spanish") ? <p className="individualListingText">{`${individual.spanish}`}</p> : <></>}
+                    {provider[0]["Languages"] !== null && provider[0]["Languages"].includes("Dutch") ? <p className="individualListingText">{`${individual.dutch}`}</p> : <></>}
+                    {provider[0]["Languages"] !== null && provider[0]["Languages"].includes("Haitian Creole") ? <p className="individualListingText">{`${individual.creole}`}</p> : <></>}
                 </div>
             </div>
-            <div className="individualListingTime">
-                <div className="individualListingDays">
-                    <p className="individualListingBold">Office Hours</p>
-                    <p className="individualListingText">Monday</p>
-                    <p className="individualListingText">Tuesday</p>
-                    <p className="individualListingText">Wednesday</p>
-                    <p className="individualListingText">Thursday</p>
-                    <p className="individualListingText">Friday</p>
-                    <p className="individualListingText">Saturday</p>
-                    <p className="individualListingText">Sunday</p>
-                </div>
-                <div className="individualListingHours">
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("M") ? individual.hours : "Closed"}</p>
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("T") ? individual.hours : "Closed"}</p>
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("W") ? individual.hours : "Closed"}</p>
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("R") ? individual.hours : "Closed"}</p>
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("F") ? individual.hours : "Closed"}</p>
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("S") ? individual.hours : "Closed"}</p>
-                    <p className="individualListingText">{provider[0]["Office_Days"].includes("U") ? individual.hours : "Closed"}</p>
-                </div>
+            <div className="individualListingDays">
+                    <p className="individualListingText">Mon. {provider[0]["Office_Days"].includes("M") ? individual.hours : "Closed"}</p>
+                    <p className="individualListingText">Tues. {provider[0]["Office_Days"].includes("T") ? individual.hours : "Closed"}</p>
+                    <p className="individualListingText">Wed. {provider[0]["Office_Days"].includes("W") ? individual.hours : "Closed"}</p>
+                    <p className="individualListingText">Thu. {provider[0]["Office_Days"].includes("R") ? individual.hours : "Closed"}</p>
+                    <p className="individualListingText">Fri. {provider[0]["Office_Days"].includes("F") ? individual.hours : "Closed"}</p>
+                    <p className="individualListingText">Sat. {provider[0]["Office_Days"].includes("S") ? individual.hours : "Closed"}</p>
+                    <p className="individualListingText">Sun. {provider[0]["Office_Days"].includes("U") ? individual.hours : "Closed"}</p>
             </div>
         </div>
         {
