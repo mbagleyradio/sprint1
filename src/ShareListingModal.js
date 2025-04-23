@@ -126,7 +126,7 @@ function ShareListingModal({ shareModalOpen, handleShareModalClose, screenshot }
                 }
             </div>
             <div id="modalConsent">
-                <label for="modalCheckboxInput">As part of our service, we offer the ability to message screenshots of a selected healthcare listing to your (US) cell phone. Message & data rates may apply. Please check this box if you would like to opt-in to this service.</label>
+                <label for="modalCheckboxInput" id="modalLabelText">As part of our service, we offer the ability to message screenshots of a selected healthcare listing to your (US) cell phone. Message & data rates may apply. Please check this box if you would like to opt-in to this service.</label>
                 <input id="modalCheckboxInput" type="checkbox" onChange={handleConsent}/>
             </div>
             {screenshot && <div id="listingScreenshotDisplay">
