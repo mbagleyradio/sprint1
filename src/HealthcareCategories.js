@@ -362,14 +362,16 @@ export default function HealthcareCategories() {
                     <p className="figText">Women's Health / OB/GYN</p>
                 </div>               
             </div>
-            <div className="buttonElement" id="notSure">
-                <button className="figButton"><img className="figImg" id="notSureIMG" src={NotSure} alt="I'm Not Sure" onClick={() => setModalOpen(true)}/> </button>
-                <p className="figText">I'm Not Sure</p>
+            <div id="notSureAndNext">
+                <div className="buttonElement" id="notSure">
+                    <button id="notSureButtonProperties"><img className="figImg" id="notSureIMG" src={NotSure} alt="I'm Not Sure" onClick={() => setModalOpen(true)}/> </button>
+                    <p className="figText">I'm Not Sure</p>
+                </div>
+                <button type="button" id="nextButton" style={nextBtnStyle} onClick={handleNextBtnClick}>NEXT</button>
             </div>
-            {
-                modalOpen && (<NotSureModal modalOpen={modalOpen} onAsk={handleModalAsk} onClose={handleModalClose} onRecord={handleModalRecord} onStopRecord={handleModalStopRecord}/>)
-            }
-            <button type="button" id="nextButton" style={nextBtnStyle} onClick={handleNextBtnClick}>NEXT</button>
+            <div>
+            { modalOpen && (<NotSureModal modalOpen={modalOpen} onAsk={handleModalAsk} onClose={handleModalClose} onRecord={handleModalRecord} onStopRecord={handleModalStopRecord}/>) }
+            </div>
         </div>
     </div>
     );

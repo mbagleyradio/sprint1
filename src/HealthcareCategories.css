@@ -8,6 +8,7 @@
 #wholePage {
     width: 100%;
     height: 100%;
+    max-width: 100%;
 }
 
 #topOfPage {
@@ -30,9 +31,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     max-width: 100%;
+
 }
 
 .buttonColumn {
@@ -69,8 +71,27 @@
     max-width: 200px;
 }
 
+#notSureButtonProperties {
+    border: none;
+    background-color: transparent;
+    max-height: 200px;
+    max-width: 200px;
+}
+
 .figButton:focus {
     border: 2px solid red;
+}
+
+#notSure {
+    margin-bottom: 0;
+}
+
+#notSureAndNext {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
 }
 
 @media only screen and (min-width: 1001px) {
@@ -113,12 +134,10 @@
 
     #nextButton {
         padding: 20px 20px 20px 20px;
-        width: 10%;
         clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
         justify-content: center;
         text-align: center;
         align-items: center;
-        align-self: flex-end;
         background-color: #008001;
         border: none;
         color: white;

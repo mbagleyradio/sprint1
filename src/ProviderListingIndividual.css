@@ -209,3 +209,21 @@
     }
 }
 
+@media only screen and (min-width: 1001px) {
+    .providerListingIndividual {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        /* WIDTH WAS 75% */
+        margin-left: 0;
+        margin-right: 0;
+        border: 1px solid black;
+        flex-direction: column;
+        margin-bottom: 3%;
+    }
+
+    .providerGroupIMG {
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
