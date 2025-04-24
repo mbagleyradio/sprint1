@@ -94,6 +94,46 @@
     align-items: center;
 }
 
+@media only screen and (min-width: 2501px) {
+    .buttonElement {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-left: 9%;
+        margin-right: 9%;
+        max-width: 200px;
+    }
+}
+
+@media only screen and (min-width: 1800px) and (max-width: 2500px) {
+    .buttonElement {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-left: 6%;
+        margin-right: 6%;
+        max-width: 200px;
+    }
+}
+
+@media only screen and (min-width: 1500px) and (max-width: 1799px) {
+    .buttonElement {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-left: 4%;
+        margin-right: 4%;
+        max-width: 200px;
+    }
+}
+
+
 @media only screen and (min-width: 1001px) {
     #banner {
         background-color: white;
