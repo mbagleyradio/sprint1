@@ -164,7 +164,7 @@ export default function GetStarted() {
                 <p id="arrowText">You Selected</p>
             </div>
             <button className="menuRowSelection" id={insuranceBtnStyle}>{insuranceBtnName}</button>
-            {insuranceSelection === "noInsurance" ? 
+            {insuranceSelection === "Uninsured / Self-Pay" ? 
             <div id="healthcareExchangePrompt">
                 <p>Would you like to learn more about Healthcare Exchange Plan (ACA) Insurance? It may be more affordable than you might think.</p>
                 <div id="healthcareExchangeMenuButtons">

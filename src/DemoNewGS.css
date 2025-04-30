@@ -73,6 +73,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    width: 40%;
 }
 
 #healthcareExchangeMenuButtons {
@@ -214,11 +215,118 @@
 }
 
 #insuranceList {
-    width: 96%;
+    width: 90%;
+    margin-top: 1%;
     margin-left: 0;
     margin-right: 0;
+    justify-content: center;
+    align-self: center;
+    align-content: flex-start;
 
 }
+
+@media only screen and (min-width: 1900px) {
+    #insuranceList {
+        width: 50%;
+        margin-top: 1%;
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: center;
+        align-self: center;
+        align-content: flex-start;
+    
+    }
+
+    .menuRowButton {
+        border: 1px solid black;
+        margin-right: 4%;
+        margin-left: 2%;
+        width: 200px;
+        height: 100px;
+        color: black;
+        background-color: white;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        display: inline-block;
+        overflow: hidden;
+    }
+
+    #selectionDisplay {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        width: 60%;
+    }
+} 
+
+@media only screen and (min-width: 1501px) and (max-width: 1899px) {
+    #insuranceList {
+        width: 60%;
+        margin-top: 1%;
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: center;
+        align-self: center;
+        align-content: flex-start;
+    
+    }
+
+    .menuRowButton {
+        border: 1px solid black;
+        margin-right: 4%;
+        margin-left: 2%;
+        width: 200px;
+        height: 100px;
+        color: black;
+        background-color: white;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        display: inline-block;
+        overflow: hidden;
+    }
+
+    #selectionDisplay {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        width: 60%;
+    }
+} 
+
+@media only screen and (min-width: 1200px) and (max-width: 1500px) {
+    #insuranceList {
+        width: 66%;
+        margin-top: 1%;
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: center;
+        align-self: center;
+        align-content: flex-start;
+    
+    }
+
+    .menuRowButton {
+        border: 1px solid black;
+        margin-right: 4%;
+        margin-left: 2%;
+        width: 200px;
+        height: 100px;
+        color: black;
+        background-color: white;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        display: inline-block;
+        overflow: hidden;
+    }
+} 
+
 @media only screen and (max-width: 600px) {
     .menuRowButton {
         border: 1px solid black;
@@ -279,5 +387,39 @@
         margin-left: 5%;
         margin-right: 5%;
         margin-top: 5%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .menuRowSelection {
+        border: 1px solid black;
+        margin-right: 2%;
+        margin-left: 1%;
+        width: 120px;
+        height: 60px;
+        color: black;
+        background-color: white;
+        text-align: center;
+        font-size: 12px;
+        font-weight: bold;
+        display: inline-block;
+        overflow: hidden;
+        justify-self: center;
+        align-self: center;
+    }
+
+    .menuRowButton {
+        border: 1px solid black;
+        margin-right: 2%;
+        margin-left: 1%;
+        width: 120px;
+        height: 60px;
+        color: black;
+        background-color: white;
+        text-align: center;
+        font-size: 12px;
+        font-weight: bold;
+        display: inline-block;
+        overflow: hidden;
     }
 }
