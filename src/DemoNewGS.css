@@ -327,7 +327,7 @@
     }
 } 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) and (min-width: 401px) {
     .menuRowButton {
         border: 1px solid black;
         margin-right: 2%;
@@ -359,6 +359,8 @@
         clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
         background-color: #000;
         color: white;
+        justify-self: center;
+        align-self: center;
     }
     
     #arrowText {
@@ -388,9 +390,43 @@
         margin-right: 5%;
         margin-top: 5%;
     }
+
+    #healthcareExchangePrompt {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        font-size: 12px;
+    }
+
+    #healthcareExchangeMenuButtons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        justify-self: center;
+        align-self: center;
+    }
 }
 
 @media only screen and (max-width: 400px) {
+    #arrowText {
+        margin-top: 16px;
+    }
+    
+    #arrow { 
+        text-align: center;
+        width: 75px;
+        height: 75px;
+        clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+        background-color: #000;
+        color: white;
+        justify-self: center;
+        align-self: center;
+    }
+    
     .menuRowSelection {
         border: 1px solid black;
         margin-right: 2%;
@@ -421,5 +457,24 @@
         font-weight: bold;
         display: inline-block;
         overflow: hidden;
+    }
+
+    #healthcareExchangePrompt {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        font-size: 12px;
+    }
+
+    #healthcareExchangeMenuButtons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        justify-self: center;
+        align-self: center;
     }
 }

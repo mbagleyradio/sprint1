@@ -92,8 +92,7 @@ export default function GetStarted() {
     }
 
     const populateInsuranceSubMenu = () => {
-        
-	// need to make a PHP file GetInsuranceSubMenu.php with a query passed in
+
         const headers = {};
 		fetch("http://uvcsandbox.com/php/GetInsuranceSubMenu.php", {
 			method: "POST",
