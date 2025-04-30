@@ -4,18 +4,47 @@ import './RadioButtonGroup.css';
 export default function RadioButtonGroup({insurances}) {
 	const navigate = useNavigate();
 	const [ selection, setSelection ] = useState("");
+	const [ checkBoxSelection, setCheckBoxSelection ] = useState([]);
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		if (selection.includes("not") && selection.includes("listed")) {
-			navigate("../contact-ins", {state: selection});
+		if (selection === "") {
+			// the radio buttons are not selected, now check if the checkbox is selected
+			if (checkBoxSelection.length === 0) {
+				// the radio buttons are not selected, and the checkbox is not selected. Don't do anything here!
+				alert("Please make a selection before submitting!");
+			} else {
+				// the checkbox is selected
+				let insuranceAlternatives = "";
+				checkBoxSelection.map((element) => {
+					insuranceAlternatives += `${element}, `;
+				});
+				navigate("../healthcare-categories", {state: `${insurances[0].insurance_type}: ${insuranceAlternatives.slice(0, -2)}`});
+			}
 		} else {
-			navigate("../healthcare-categories", {state: selection});
+			// the radio buttons are selected
+			if (selection.includes("not") && selection.includes("listed")) {
+				// "My insurance is not listed" was selected
+				navigate("../contact-ins", {state: selection});
+			} else {
+				// Literally any other option was selected, so pass to healthcare categories
+				navigate("../healthcare-categories", {state: selection});
+			}
 		}
 	}
 
-	function appendSelection(event) {
-		// not sure
+	function handleCheckboxChange(event) {
+		// if the checkbox is rendered, this event handler gets called
+		const checked = event.target.checked;
+		const value = event.target.value;
+
+		if (checked === true) {
+			// add to the array
+			setCheckBoxSelection([...checkBoxSelection, value]);
+		} else if (checked === false) {
+			// remove from the array
+			setCheckBoxSelection(checkBoxSelection.filter(element => element !== value))
+		}
 	}
 	
 	if (insurances[0].insurance_type !== "Uninsured / Self-Pay") { 
@@ -62,7 +91,7 @@ export default function RadioButtonGroup({insurances}) {
 						value={element.insurance_name}
 						id={`button_${element.id_in_group}`}
 						name="insGroup"
-						onChange={appendSelection} // need to fix
+						onChange={handleCheckboxChange} // need to fix
 					/>
 					<label className="radioButtonText" for={`button_${element.id_in_group}`}>
 						{element.insurance_name}
