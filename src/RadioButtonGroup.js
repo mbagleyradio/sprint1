@@ -50,7 +50,10 @@ export default function RadioButtonGroup({insurances}) {
 	if (insurances[0].insurance_type !== "Uninsured / Self-Pay") { 
 		return(
         <form id="insuranceSelectForm" onSubmit={handleSubmit}>
-			<button id="submitFromRadioBTN" type="submit">Submit</button><br/>
+			<div id="coverBTNBlue">
+				<button id="submitFromRadioBTN" type="submit">Submit</button>
+				<p className="submitBTNInstructions">From the list below, select your insurance provider. Then click on the Submit button.</p>
+			</div>
 			<div className="radioButtonMenu">
 				{insurances.map((element) => (
 					<div className=""id={`radioDiv_${element.id_in_group}`}>
@@ -82,7 +85,10 @@ export default function RadioButtonGroup({insurances}) {
 	} else {
 		return (
 		<form id="insuranceSelectForm" onSubmit={handleSubmit}>
-			<button id="submitFromRadioBTN" type="submit">Submit</button><br/>
+			<div id="coverBTNBlue">
+				<button id="submitFromRadioBTN" type="submit">Submit</button>
+				<p className="submitBTNInstructions">From the list below, select all that are applicable to you. Then click on the Submit button.</p>
+			</div>
 			<div className="radioButtonMenu">
 				{insurances.map((element) => (
 					<div className=""id={`radioDiv_${element.id_in_group}`}>
