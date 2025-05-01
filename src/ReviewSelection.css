@@ -35,6 +35,7 @@
 }
 
 #reviewListBtn {
+    justify-content: flex-end;
     align-self: flex-end;
 }
 

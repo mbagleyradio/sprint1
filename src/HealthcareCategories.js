@@ -139,7 +139,7 @@ export default function HealthcareCategories() {
                 break;
 
                 case selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE:
-                    setSubmission("Family Practice / Internal Medicine");
+                    setSubmission("Family Medicine / Internal Medicine");
                 break;
 
                 case selectionNames.GASTROENTEROLOGY:
@@ -250,7 +250,7 @@ export default function HealthcareCategories() {
                 <p className="reviewSelectionText">NAME: {insuranceContext[1]}</p>
             </div>
         </div>
-        <h3 id="welcomeMSG">What category of healthcare services are you looking for? (pick one)</h3>
+        <h3 id="welcomeMSG">What kind of healthcare services are you looking for? (pick one)</h3>
         <div id="landingPage">
             <div className="buttonColumn" id="firstCol">
                 <div className="buttonElement">
@@ -292,8 +292,8 @@ export default function HealthcareCategories() {
                     <p className="figText">Endocrinology</p>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={FamilyPracticeInternalMedicine} alt="Family Practice and Internal Medicine" onClick={() => handleFigureClick(selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE)}/></button>
-                    <p className="figText">Family Practice / Internal Medicine</p>
+                    <button className="figButton"><img className="figImg" src={FamilyPracticeInternalMedicine} alt="Family Medicine and Internal Medicine" onClick={() => handleFigureClick(selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE)}/></button>
+                    <p className="figText">Family Medicine / Internal Medicine</p>
                 </div>
             </div>
             <div className="buttonColumn" id="thirdCol">
