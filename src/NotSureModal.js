@@ -153,7 +153,14 @@ function NotSureModal({ modalOpen, onAsk, onClose, onRecord, onStopRecord }) {
                     </div>
                     <div id="assistantAndBubble">
                         <img id="atcAssistant" src={ATC_Assistant} alt="ATC Assistant"/>
-                        <img id="textBubble" src={textBubble} alt="Type in the box above or click in the microphone to speak. Describe what your health care need is and I'll see if I can help"/>
+                        <div className="speechBubbleArrow">
+
+                        </div>
+                        <div className="speechBubble">
+                            <p>Type in the box above or click on the microphone and speak.</p>
+                            <p>Describe your health care need or symptoms.</p>
+                            <p>Then click on the Ask button and I will see if I can help!</p>
+                        </div>
                     </div>
                     <button id="submitBtn" onClick={handleAsk}>Ask</button>
                 </div>
