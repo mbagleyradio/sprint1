@@ -94,7 +94,15 @@ export default function GetStarted() {
     const populateInsuranceSubMenu = () => {
 
         const headers = {};
-		fetch("http://uvcsandbox.com/php/GetInsuranceSubMenu.php", {
+	
+        /*
+        // NEW FETCH WHEN IT IS FIXED
+         fetch("https://www.access2care-mc.biz/info/insurances", {
+			method: "GET",
+			mode: "cors",
+			headers: headers,
+        */
+        fetch("http://uvcsandbox.com/php/GetInsuranceSubMenu.php", {
 			method: "POST",
 			mode: "cors",
 			headers: headers,
@@ -104,7 +112,7 @@ export default function GetStarted() {
 		}).then(response => {
 			return response.json()
 		}).then(data => {
-			setInsuranceFetch(data);
+            setInsuranceFetch(data);
 		}).catch(error => {
 			console.log(error);
 		});
