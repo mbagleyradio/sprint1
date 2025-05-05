@@ -1,3 +1,9 @@
+/*
+* FIXES NEEDED:
+*   When Mick fixes CORS issue, rewrite fetch, and console log it instead of setting the state hook
+*   The fetch will return all the insurances, and you need to sort through them to display the radio buttons you need
+*/
+
 import './DemoNewGS.css';
 import RadioButtonGroup from './RadioButtonGroup.js';
 import HealthcareYesModal from './HealthcareYesModal.js';
