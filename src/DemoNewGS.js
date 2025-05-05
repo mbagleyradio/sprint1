@@ -38,7 +38,7 @@ export default function GetStarted() {
         		});
 		break;
 			
-		case "Medicare Manage Care (Advantage, HMO, PPO)":
+		case "Medicare Advantage (Medicare Part C) Plans":
 			setInsuranceBtnName(prev => {
             		return "Medicare Advantage, HMO, PPO";
         		});
@@ -50,43 +50,43 @@ export default function GetStarted() {
         		});
 		break;
 			
-		case "Medicaid Managed Care - MCOs":
+		case "Medicaid Managed Care Plans":
 			setInsuranceBtnName(prev => {
             		return "Medicaid Managed Plans";
         		});
 		break;
 			
-		case "Healthcare Exchange Plans":
+		case "Health Care Exchange (ACA) Plans":
 			setInsuranceBtnName(prev => {
             		return "Healthcare Exchange Plans (ACA)";
         		});
 		break;
 			
-		case "Commercial Insuranc Plan (HMO, PPO, POS, EPO)":
+		case "Commercial Insurance":
 			setInsuranceBtnName(prev => {
             		return "Commercial Insurance";
         		});
 		break;
 			
-		case "Military Plans":
+		case "Military Insurance Plans":
 			setInsuranceBtnName(prev => {
             		return "Military Insurance";
         		});
 		break;
 			
-		case "Workers Compensation Plans":
+		case "Workers Comp Insurance":
 			setInsuranceBtnName(prev => {
             		return "Workers Comp";
         		});
 		break;
 			
-		case "International Plans":
+		case "International Insurance Plans":
 			setInsuranceBtnName(prev => {
             		return "International Insurance";
         		});
 		break;
 			
-		case "Behavioral Health Plans":
+		case "Behavioral Health Insurance Plans":
 			setInsuranceBtnName(prev => {
             		return "Behavioral Health Ins.";
         		});
@@ -154,21 +154,21 @@ export default function GetStarted() {
             <div className="menuRow">
                 <button className="menuRowButton" id="noInsuranceBtn" value="Uninsured / Self-Pay" onClick={handleMenuSelection}>No Insurance</button>
                 <button className="menuRowButton" id="mnedicareBtn" value="Medicare" onClick={handleMenuSelection}>Medicare</button>
-                <button className="menuRowButton" id="medAdvantageBtn" value="Medicare Manage Care (Advantage, HMO, PPO)" onClick={handleMenuSelection}>Medicare Advantage, HMO, PPO</button>
+                <button className="menuRowButton" id="medAdvantageBtn" value="Medicare Advantage (Medicare Part C) Plans" onClick={handleMenuSelection}>Medicare Advantage, HMO, PPO</button>
             </div>
             <div className="menuRow">
                 <button className="menuRowButton" id="medicaidBtn" value="Medicaid" onClick={handleMenuSelection}>Medicaid</button>
-                <button className="menuRowButton" id="medManagedBtn" value="Medicaid Managed Care - MCOs" onClick={handleMenuSelection}>Medicaid Managed Plans</button>
-                <button className="menuRowButton" id="healthcareExchangeBtn" value="Healthcare Exchange Plans" onClick={handleMenuSelection}>Healthcare Exchange Plans (ACA)</button>
+                <button className="menuRowButton" id="medManagedBtn" value="Medicaid Managed Care Plans" onClick={handleMenuSelection}>Medicaid Managed Plans</button>
+                <button className="menuRowButton" id="healthcareExchangeBtn" value="Health Care Exchange (ACA) Plans" onClick={handleMenuSelection}>Healthcare Exchange Plans (ACA)</button>
             </div>
             <div className="menuRow">
-                <button className="menuRowButton" id="comInsuranceBtn" value="Commercial Insuranc Plan (HMO, PPO, POS, EPO)" onClick={handleMenuSelection}>Commercial Insurance</button>
-                <button className="menuRowButton" id="milInsuranceBtn" value="Military Plans" onClick={handleMenuSelection}>Military Insurance</button>
-                <button className="menuRowButton" id="workCompBtn" value="Workers Compensation Plans" onClick={handleMenuSelection}>Workers Comp</button>
+                <button className="menuRowButton" id="comInsuranceBtn" value="Commercial Insurance" onClick={handleMenuSelection}>Commercial Insurance</button>
+                <button className="menuRowButton" id="milInsuranceBtn" value="Military Insurance Plans" onClick={handleMenuSelection}>Military Insurance</button>
+                <button className="menuRowButton" id="workCompBtn" value="Workers Comp Insurance" onClick={handleMenuSelection}>Workers Comp</button>
             </div>
             <div className="menuRow">
-                <button className="menuRowButton" id="intInsuranceBtn" value="International Plans" onClick={handleMenuSelection}>International Insurance</button>
-                <button className="menuRowButton" id="behavioralBtn" value="Behavioral Health Plans" onClick={handleMenuSelection}>Behavioral Health Ins.</button>
+                <button className="menuRowButton" id="intInsuranceBtn" value="International Insurance Plans" onClick={handleMenuSelection}>International Insurance</button>
+                <button className="menuRowButton" id="behavioralBtn" value="Behavioral Health Insurance Plans" onClick={handleMenuSelection}>Behavioral Health Ins.</button>
             </div>
         </div>
         {insuranceSelection !== undefined ? 
@@ -187,7 +187,7 @@ export default function GetStarted() {
             </div> : <></>}
         </div> : <></>}
         <div id="insuranceList">
-        {insuranceFetch && <RadioButtonGroup insurances={insuranceFetch}/>}
+        {insuranceFetch && <RadioButtonGroup insurances={insuranceFetch} insuranceType={insuranceSelection}/>}
         </div>
         {healthcareModalOpen && <HealthcareYesModal healthcareModalOpen={healthcareModalOpen} handleHealthcareModalClose={handleHealthcareModalClose}/>}
     </div>
