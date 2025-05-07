@@ -17,6 +17,7 @@ export default function GetStarted() {
     const [ insuranceFetch, setInsuranceFetch ] = useState(undefined);
 	const [ insuranceBtnName, setInsuranceBtnName ] = useState(undefined);
     const handleMenuSelection = (e) => {
+    
         setInsuranceSelection(prev => {
             return e.target.value;
         });
@@ -119,8 +120,7 @@ export default function GetStarted() {
 		}).then(response => {
 			return response.json()
 		}).then(data => {
-            console.log(data);
-            //setInsuranceFetch(data);
+            setInsuranceFetch(data);
 		}).catch(error => {
 			console.log(error);
 		});
@@ -141,10 +141,8 @@ export default function GetStarted() {
     }
 
     useEffect(() => {
-        if (insuranceSelection !== undefined) {
-            populateInsuranceSubMenu();
-        }
-    }, [insuranceSelection])
+        populateInsuranceSubMenu();
+    }, [])
 
     return (
     <div id="screen">
@@ -189,7 +187,7 @@ export default function GetStarted() {
             </div> : <></>}
         </div> : <></>}
         <div id="insuranceList">
-        {insuranceFetch && <RadioButtonGroup insurances={insuranceFetch} insuranceType={insuranceSelection}/>}
+        {insuranceFetch && (insuranceSelection !== undefined) && <RadioButtonGroup insurances={insuranceFetch} insuranceType={insuranceSelection}/>}
         </div>
         {healthcareModalOpen && <HealthcareYesModal healthcareModalOpen={healthcareModalOpen} handleHealthcareModalClose={handleHealthcareModalClose}/>}
     </div>

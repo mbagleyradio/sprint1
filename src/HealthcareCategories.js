@@ -93,8 +93,8 @@ export default function HealthcareCategories() {
 
     // acquiring data from previous page (insurance type & insurance name), and sanitizing that data for display on this page
     const location = useLocation(); 
-    const dummyDataUntilMickFixesFetch = `Medicare: Medicare`;
-    const sprint1Data = location.state ? location.state : dummyDataUntilMickFixesFetch;
+    const sprint1Data = location.state;
+    
     const insuranceContext = sprint1Data.split(": ");
 
     // This function will handle click events on figures (the images with captions on the menu)

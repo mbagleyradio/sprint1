@@ -57,13 +57,15 @@ export default function RadioButtonGroup({insurances, insuranceType}) {
 			setCheckBoxSelection([...checkBoxSelection, value]);
 		} else if (checked === false) {
 			// remove from the array
-			setCheckBoxSelection(checkBoxSelection.filter(element => element !== value))
+			setCheckBoxSelection(checkBoxSelection.filter(element => element !== value));
 		}
 	}
 	
 	useEffect(() => {
 		setFiltered(insurances.filter(element => element["primaryName"] === insuranceType));
-	}, []);
+		setCheckBoxSelection([]);
+		setSelection("");
+	}, [insuranceType]);
 
 	if (insuranceType !== "Uninsured / Self-Pay" && filtered.length > 0) { 
 		return(
@@ -112,7 +114,7 @@ export default function RadioButtonGroup({insurances, insuranceType}) {
 					<div className=""id={`radioDiv_${element["primaryName"]}_${element["subName"]}`}>
 					<input
 						type="checkbox"
-						value={`${element["primaryName"]}: ${element["subName"]}`}
+						value={`${element["subName"]}`}
 						id={`button_${element["primaryName"]}_${key}`}
 						name="insGroup"
 						onChange={handleCheckboxChange}
