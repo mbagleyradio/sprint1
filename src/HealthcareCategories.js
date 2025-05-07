@@ -1,9 +1,8 @@
 /*
 * TO DO:
-*   GET THE LISTING COMPONENTS IN DISPLAY-LIST JS TO NOT BREAK WHEN THE VIEWPORT IS NARROWED
-*       - Text size does not change ... try changing the text size as the viewport shrinks...
+*  Implement new pictures ... use the dummy data until Mick fixes the fetch earlier in the flow 
 *       
-*   FIX THE VIEWPORT ISSUE SCOTT SHARED ... I THINK I HAVEN'T STYLED HOW TO HANDLE VIEWPORT EXPANSION?
+*   
 */
 
 // Import the CSS styling
@@ -16,7 +15,7 @@ import { useState } from 'react';
 
 // Import images for the menu
 import A2CLogo from './A2CLogo_150x150.png';
-import AddictionMedicine from './sprint2/img/Addiction Medicine.png';
+import AddictionMedicine from './sprint2/img/revised_healthcare_icons_05-06-2025/Addicition Medicine.png';
 import AllergyAndImmune from './sprint2/img/Allergy & Immune System Medicine.png';
 import Anesthesiology from './sprint2/img/Anesthesiology.png';
 import BehavioralHealth from './sprint2/img/Behavioral Health.png';
@@ -94,7 +93,8 @@ export default function HealthcareCategories() {
 
     // acquiring data from previous page (insurance type & insurance name), and sanitizing that data for display on this page
     const location = useLocation(); 
-    const sprint1Data = location.state;
+    const dummyDataUntilMickFixesFetch = `Medicare: Medicare`;
+    const sprint1Data = location.state ? location.state : dummyDataUntilMickFixesFetch;
     const insuranceContext = sprint1Data.split(": ");
 
     // This function will handle click events on figures (the images with captions on the menu)

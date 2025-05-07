@@ -93,7 +93,7 @@ export default function RadioButtonGroup({insurances, insuranceType}) {
 				<input type="radio" 
 					id="notListed" 
 					name="insGroup"
-					value={`${element["primaryName"]}: my insurance is not listed.`}
+					value={`${insuranceType}: my insurance is not listed.`}
 					onChange={e => {setSelection(e.target.value)}}
 				/>
 				<label className="radioButtonText" for="notListed">My insurance is not listed.</label>
