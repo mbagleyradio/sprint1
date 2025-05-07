@@ -107,18 +107,20 @@ export default function GetStarted() {
 			method: "GET",
 			mode: "cors",
 			headers: headers,
+            OLD FETCH URL: http://uvcsandbox.com/php/GetInsuranceSubMenu.php
         */
-        fetch("http://uvcsandbox.com/php/GetInsuranceSubMenu.php", {
-			method: "POST",
-			mode: "cors",
-			headers: headers,
-			body: JSON.stringify({
-                		insuranceSelection: insuranceSelection
-            		})
+        fetch("https://www.access2care-mc.biz/info/insurances", {
+			method: "GET",
+			//mode: "no-cors",
+			headers: headers
+			//body: JSON.stringify({
+              //  		insuranceSelection: insuranceSelection
+            	//	})
 		}).then(response => {
 			return response.json()
 		}).then(data => {
-            setInsuranceFetch(data);
+            console.log(data);
+            //setInsuranceFetch(data);
 		}).catch(error => {
 			console.log(error);
 		});
