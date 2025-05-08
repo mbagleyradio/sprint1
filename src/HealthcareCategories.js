@@ -1,8 +1,9 @@
 /*
 * TO DO:
-*  Implement new pictures ... use the dummy data until Mick fixes the fetch earlier in the flow 
-*       
-*   
+*  Fix spacing on new pictures ... they're too spread out now
+*  Fix mobile resizing
+*  Fix big screen resizing     
+*  Fix click event ... why not do a light red overlay over the image?
 */
 
 // Import the CSS styling
@@ -16,31 +17,35 @@ import { useState } from 'react';
 // Import images for the menu
 import A2CLogo from './A2CLogo_150x150.png';
 import AddictionMedicine from './sprint2/img/revised_healthcare_icons_05-06-2025/Addicition Medicine.png';
-import AllergyAndImmune from './sprint2/img/Allergy & Immune System Medicine.png';
-import Anesthesiology from './sprint2/img/Anesthesiology.png';
-import BehavioralHealth from './sprint2/img/Behavioral Health.png';
-import Cardiology from './sprint2/img/Cardiology.png';
-import Dermatology from './sprint2/img/Dermatology.png';
-import EarNoseThroat from './sprint2/img/Ear, Nose & Throat.png';
-import EmergencyMedicine from './sprint2/img/Emergency Medicine.png';
-import Endocrinology from './sprint2/img/Endocinology.png';
-import FamilyPracticeInternalMedicine from './sprint2/img/Family Practice.png';
-import Gastroenterology from './sprint2/img/Gastroenterology.png';
-import Hematology from './sprint2/img/Hematology.png';
-import Neurology from './sprint2/img/Neurology.png';
-import Oncology from './sprint2/img/Oncology.png';
-import Opthamology from './sprint2/img/Ophthalmology.png';
-import Orthopedics from './sprint2/img/Orthopedics.png';
-import Pathology from './sprint2/img/Pathology.png';
-import Pediatrics from './sprint2/img/Pediatrics.png';
-import Podiatry from './sprint2/img/Podiatry.png';
-import Pulmonology from './sprint2/img/Pulmonology.png';
-import Radiology from './sprint2/img/Radiology.png';
-import Rheumatology from './sprint2/img/Rheumatology.png';
-import Surgery from './sprint2/img/Surgery.png';
-import Urology from './sprint2/img/Urology.png';
-import WomensHealth from './sprint2/img/Womens Health.png';
-import NotSure from './sprint2/img/Not Sure.png';
+import AllergyAndImmune from './sprint2/img/revised_healthcare_icons_05-06-2025/Allergy & Immune Systed.png';
+import Anesthesiology from './sprint2/img/revised_healthcare_icons_05-06-2025/Anesthesiology.png';
+import Audiology from './sprint2/img/revised_healthcare_icons_05-06-2025/Audiology.png';
+import BehavioralHealth from './sprint2/img/revised_healthcare_icons_05-06-2025/Behavioral Health & Psychiatry.png';
+import Cardiology from './sprint2/img/revised_healthcare_icons_05-06-2025/Cardiology.png';
+import Chiropractic from './sprint2/img/revised_healthcare_icons_05-06-2025/Chiropractic.png';
+import Dentistry from './sprint2/img/revised_healthcare_icons_05-06-2025/Dentistry.png';
+import Dermatology from './sprint2/img/revised_healthcare_icons_05-06-2025/Dermatology.png';
+import EarNoseThroat from './sprint2/img/revised_healthcare_icons_05-06-2025/ENT.png';
+import Endocrinology from './sprint2/img/revised_healthcare_icons_05-06-2025/Endocrynology.png';
+import FamilyPracticeInternalMedicine from './sprint2/img/revised_healthcare_icons_05-06-2025/Primary Care.png';
+import Gastroenterology from './sprint2/img/revised_healthcare_icons_05-06-2025/Gastroenterology.png';
+import Hematology from './sprint2/img/revised_healthcare_icons_05-06-2025/Hematology.png';
+import Neurology from './sprint2/img/revised_healthcare_icons_05-06-2025/Neurology.png';
+import Oncology from './sprint2/img/revised_healthcare_icons_05-06-2025/Oncology.png';
+import Opthamology from './sprint2/img/revised_healthcare_icons_05-06-2025/Eye Care.png';
+import Orthopedics from './sprint2/img/revised_healthcare_icons_05-06-2025/Orthopedics.png';
+import PhysicalTherapy from './sprint2/img/revised_healthcare_icons_05-06-2025/Physical Therapy.png';
+import Pathology from './sprint2/img/revised_healthcare_icons_05-06-2025/Pathology.png';
+import Pediatrics from './sprint2/img/revised_healthcare_icons_05-06-2025/Pediatrics.png';
+import Podiatry from './sprint2/img/revised_healthcare_icons_05-06-2025/Podiatry.png';
+import Pulmonology from './sprint2/img/revised_healthcare_icons_05-06-2025/Pulmonology.png';
+import Radiology from './sprint2/img/revised_healthcare_icons_05-06-2025/Radiology.png';
+import Rheumatology from './sprint2/img/revised_healthcare_icons_05-06-2025/Rheumatology.png';
+import Surgery from './sprint2/img/revised_healthcare_icons_05-06-2025/Surgery.png';
+import Urology from './sprint2/img/revised_healthcare_icons_05-06-2025/Urology.png';
+import WomensHealth from './sprint2/img/revised_healthcare_icons_05-06-2025/Womens Health.png';
+import UrgentCare from './sprint2/img/revised_healthcare_icons_05-06-2025/Urgent Care.png';
+import NotSure from './sprint2/img/revised_healthcare_icons_05-06-2025/Help.png';
 
 // Import child components
 import NotSureModal from './NotSureModal.js';
@@ -61,36 +66,6 @@ export default function HealthcareCategories() {
         opacity: btnOpacity
     };
 
-    // enum for the handleFigureClick case
-    const selectionNames = {
-        ADDICTION_MEDICINE: 1,
-        ALLERGY_IMMUNE_MEDICINE: 2,
-        ANESTHESIOLOGY: 3,
-        BEHAVIORAL_HEALTH: 4,
-        CARDIOLOGY: 5,
-        DERMATOLOGY: 6,
-        EAR_NOSE_THROAT: 7,
-        EMERGENCY_MEDICINE: 8,
-        ENDOCRINOLOGY: 9,
-        FAMILY_PRACTICE_INTERNAL_MEDICINE: 10,
-        GASTROENTEROLOGY: 11,
-        HEMATOLOGY: 12,
-        NEUROLOGY: 13,
-        ONCOLOGY: 14,
-        OPTHAMOLOGY_EYE_CARE: 15,
-        ORTHOPEDICS: 16,
-        PATHOLOGY: 17,
-        PEDIATRICS: 18,
-        PODIATRY: 19,
-        PULMONOLOGY: 20,
-        RADIOLOGY_NUC_MED: 21,
-        RHEUMATOLOGY: 22,
-        SURGERY: 23,
-        UROLOGY: 24,
-        WOMENS_HEALTH_OB_GYN: 25,
-        NOT_SURE: 26
-    }
-
     // acquiring data from previous page (insurance type & insurance name), and sanitizing that data for display on this page
     const location = useLocation(); 
     const sprint1Data = location.state;
@@ -98,119 +73,16 @@ export default function HealthcareCategories() {
     const insuranceContext = sprint1Data.split(": ");
 
     // This function will handle click events on figures (the images with captions on the menu)
-    const handleFigureClick = (figureClicked) => {
-        if (figureClicked !== selectionNames.NOT_SURE) {
+    const handleFigureClick = (e) => {
+        if (e.target.alt !== "I'm Not Sure") {
             setBtnOpacity(1);
-            switch(figureClicked) {
-                case selectionNames.ADDICTION_MEDICINE:
-                    setSubmission("Addiction Medicine");
-                break;
-
-                case selectionNames.ALLERGY_IMMUNE_MEDICINE:
-                    setSubmission("Allergy & Immune System Medicine");
-                break;
-
-                case selectionNames.ANESTHESIOLOGY:
-                    setSubmission("Anesthesiology");
-                break;
-
-                case selectionNames.BEHAVIORAL_HEALTH:
-                    setSubmission("Behavioral Health");
-                break;
-
-                case selectionNames.CARDIOLOGY:
-                    setSubmission("Cardiology");
-                break;
-
-                case selectionNames.DERMATOLOGY:
-                    setSubmission("Dermatology");
-                break;
-
-                case selectionNames.EAR_NOSE_THROAT:
-                    setSubmission("Ear, Nose, & Throat (Otolaryngology");
-                break;
-
-                case selectionNames.EMERGENCY_MEDICINE:
-                    setSubmission("Emergency Medicine");
-                break;
-
-                case selectionNames.ENDOCRINOLOGY:
-                    setSubmission("Endocrinology");
-                break;
-
-                case selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE:
-                    setSubmission("Family Medicine / Internal Medicine");
-                break;
-
-                case selectionNames.GASTROENTEROLOGY:
-                    setSubmission("Gastroenterology");
-                break;
-
-                case selectionNames.HEMATOLOGY:
-                    setSubmission("Hematology");
-                break;
-
-                case selectionNames.NEUROLOGY:
-                    setSubmission("Neurology");
-                break;
-
-                case selectionNames.ONCOLOGY:
-                    setSubmission("Oncology");
-                break;
-
-                case selectionNames.OPTHAMOLOGY_EYE_CARE:
-                    setSubmission("Opthamology / Eye Care Medicine");
-                break;
-
-                case selectionNames.ORTHOPEDICS:
-                    setSubmission("Orthopedics");
-                break;
-
-                case selectionNames.PATHOLOGY:
-                    setSubmission("Pathology");
-                break;
-
-                case selectionNames.PEDIATRICS:
-                    setSubmission("Pediatrics");
-                break;
-
-                case selectionNames.PODIATRY:
-                    setSubmission("Podiatry");
-                break;
-
-                case selectionNames.PULMONOLOGY:
-                    setSubmission("Pulmonology");
-                break;
-
-                case selectionNames.RADIOLOGY_NUC_MED:
-                    setSubmission("Radiology & Nuclear Medicine");
-                break;
-
-                case selectionNames.RHEUMATOLOGY:
-                    setSubmission("Rheumatology");
-                break;
-
-                case selectionNames.SURGERY:
-                    setSubmission("Surgery");
-                break;
-
-                case selectionNames.UROLOGY:
-                    setSubmission("Urology");
-                break;
-
-                case selectionNames.WOMENS_HEALTH_OB_GYN:
-                    setSubmission("Women's Health / OB GYN");
-                break;
-
-                default:
-                break;
-            }
+            setSubmission(e.target.alt);
         }
     }
 
     // this function handles "next" button click events
     const handleNextBtnClick = () => {
-        if (submission !== undefined) {   
+        if (submission !== undefined && submission !== "I'm Not Sure") {   
             navigate("../review-listing", { 
                 state: {
                     insuranceType: insuranceContext[0],
@@ -254,119 +126,107 @@ export default function HealthcareCategories() {
         <div id="landingPage">
             <div className="buttonColumn" id="firstCol">
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={AddictionMedicine} alt="Addiction Medicine" onClick={() => handleFigureClick(selectionNames.ADDICTION_MEDICINE)}/></button>
-                    <p className="figText">Addiction Medicine</p>
+                    <button className="figButton"><img className="figImg" src={FamilyPracticeInternalMedicine} alt="Primary Care, Family, and Internal Medicine" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={AllergyAndImmune} alt="Allergy and Immune System Medicine" onClick={() => handleFigureClick(selectionNames.ALLERGY_IMMUNE_MEDICINE)}/></button>
-                    <p className="figText">Allergy & Immune System Medicine</p>
+                    <button className="figButton"><img className="figImg" src={UrgentCare} alt="Urgent Care" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Anesthesiology} alt="Anesthesiology" onClick={() => handleFigureClick(selectionNames.ANESTHESIOLOGY)}/></button>
-                    <p className="figText">Anesthesiology</p>
+                    <button className="figButton"><img className="figImg" src={WomensHealth} alt="Women's Health, OB/GN" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={BehavioralHealth} alt="Behavioral Health" onClick={() => handleFigureClick(selectionNames.BEHAVIORAL_HEALTH)}/></button>
-                    <p className="figText">Behavioral Health</p>
+                    <button className="figButton"><img className="figImg" src={Pediatrics} alt="Pediatrics" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Cardiology} alt="Cardiology" onClick={() => handleFigureClick(selectionNames.CARDIOLOGY)}/></button>
-                    <p className="figText">Cardiology</p>
+                    <button className="figButton"><img className="figImg" src={Podiatry} alt="Podiatry" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
             </div>
             <div className="buttonColumn" id="secondCol">
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Dermatology} alt="Dermatology" onClick={() => handleFigureClick(selectionNames.DERMATOLOGY)}/></button>
-                    <p className="figText">Dermatology</p>
+                    <button className="figButton"><img className="figImg" src={Orthopedics} alt="Orthopedics" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={EarNoseThroat} alt="Ear, Nose, and Throat" onClick={() => handleFigureClick(selectionNames.EAR_NOSE_THROAT)}/></button>
-                    <p className="figText">Ear, Nose, & Throat (Otolaryngology)</p>
+                    <button className="figButton"><img className="figImg" src={PhysicalTherapy} alt="Physical Therapy and Rehabilitation" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={EmergencyMedicine} alt="Emergency Medicine" onClick={() => handleFigureClick(selectionNames.EMERGENCY_MEDICINE)}/></button>
-                    <p className="figText">Emergency Medicine</p>
+                    <button className="figButton"><img className="figImg" src={Chiropractic} alt="Chiropractic Medicine" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Endocrinology} alt="Endocrinology" onClick={() => handleFigureClick(selectionNames.ENDOCRINOLOGY)}/></button>
-                    <p className="figText">Endocrinology</p>
+                    <button className="figButton"><img className="figImg" src={Surgery} alt="Surgery" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={FamilyPracticeInternalMedicine} alt="Family Medicine and Internal Medicine" onClick={() => handleFigureClick(selectionNames.FAMILY_PRACTICE_INTERNAL_MEDICINE)}/></button>
-                    <p className="figText">Family Medicine / Internal Medicine</p>
+                    <button className="figButton"><img className="figImg" src={Cardiology} alt="Cardiology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
             </div>
             <div className="buttonColumn" id="thirdCol">
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Gastroenterology} alt="Gastroenterology" onClick={() => handleFigureClick(selectionNames.GASTROENTEROLOGY)}/></button>
-                    <p className="figText">Gastroenterology</p>
+                    <button className="figButton"><img className="figImg" src={Pulmonology} alt="Pulmonology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Hematology} alt="Hematology" onClick={() => handleFigureClick(selectionNames.HEMATOLOGY)}/></button>
-                    <p className="figText">Hematology</p>
+                    <button className="figButton"><img className="figImg" src={Urology} alt="Urology"onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Neurology} alt="Neurology" onClick={() => handleFigureClick(selectionNames.NEUROLOGY)}/></button>
-                    <p className="figText">Neurology</p>
+                    <button className="figButton"><img className="figImg" src={Gastroenterology} alt="Gastroenterology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Oncology} alt="Oncology" onClick={() => handleFigureClick(selectionNames.ONCOLOGY)}/></button>
-                    <p className="figText">Oncology</p>
+                    <button className="figButton"><img className="figImg" src={Endocrinology} alt="Endocrinology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Opthamology} alt="Opthamology" onClick={() => handleFigureClick(selectionNames.OPTHAMOLOGY)}/></button>
-                    <p className="figText">Opthamology</p>
+                    <button className="figButton"><img className="figImg" src={Rheumatology} alt="Rheumatology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
             </div>
             <div className="buttonColumn" id="fourthCol">
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Orthopedics} alt="Orthopedics" onClick={() => handleFigureClick(selectionNames.ORTHOPEDICS)}/></button>
-                    <p className="figText">Orthopedics</p>
+                    <button className="figButton"><img className="figImg" src={EarNoseThroat} alt="Ear, Nose, and Throat (ENT) Otolaryngology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Pathology} alt="Pathology" onClick={() => handleFigureClick(selectionNames.PATHOLOGY)}/></button>
-                    <p className="figText">Pathology</p>
+                    <button className="figButton"><img className="figImg" src={Dermatology} alt="Dermatology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Pediatrics} alt="Pediatrics" onClick={() => handleFigureClick(selectionNames.PEDIATRICS)}/></button>
-                    <p className="figText">Pediatrics</p>
+                    <button className="figButton"><img className="figImg" src={AllergyAndImmune} alt="Allergy & Immune System Medicine" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Podiatry} alt="Podiatry" onClick={() => handleFigureClick(selectionNames.PODIATRY)}/></button>
-                    <p className="figText">Podiatry</p>
+                    <button className="figButton"><img className="figImg" src={Opthamology} alt="Opthamology Eye Care" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Pulmonology} alt="Pulmonology" onClick={() => handleFigureClick(selectionNames.PULMONOLOGY)}/></button>
-                    <p className="figText">Pulmonology</p>
+                    <button className="figButton"><img className="figImg" src={Dentistry} alt="Dentistry" onClick={(e) => handleFigureClick(e)}/></button>
+                </div>
+            </div>
+            <div className="buttonColumn">
+                <div className="buttonElement">
+                    <button className="figButton"><img className="figImg" src={Audiology} alt="Audiology" onClick={(e) => handleFigureClick(e)}/></button>
+                </div>
+                <div className="buttonElement">
+                    <button className="figButton"><img className="figImg" src={Neurology} alt="Neurology" onClick={(e) => handleFigureClick(e)}/></button>
+                </div>
+                <div className="buttonElement">
+                    <button className="figButton"><img className="figImg" src={BehavioralHealth} alt="Behavioral Health & Psychiatry" onClick={(e) => handleFigureClick(e)}/></button>
+                </div>
+                <div className="buttonElement">
+                    <button className="figButton"><img className="figImg" src={AddictionMedicine} alt="Addiction Medicine" onClick={(e) => handleFigureClick(e)}/></button>
+                </div>
+                <div className="buttonElement">
+                    <button className="figButton"><img className="figImg" src={NotSure} alt="I'm Not Sure" onClick={() => setModalOpen(true)}/></button>
                 </div>
             </div>
             <div className="buttonColumn" id="fifthCol">   
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Radiology} alt="Radiology" onClick={() => handleFigureClick(selectionNames.RADIOLOGY_NUC_MED)}/></button>
-                    <p className="figText">Radiology & Nuclear Medicine</p>
+                    <button className="figButton"><img className="figImg" src={Anesthesiology} alt="Anesthesiology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Rheumatology} alt="Rheumatology" onClick={() => handleFigureClick(selectionNames.RHEUMATOLOGY)}/></button>
-                    <p className="figText">Rheumatology</p>
+                    <button className="figButton"><img className="figImg" src={Radiology} alt="Radiology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Surgery} alt="Surgery" onClick={() => handleFigureClick(selectionNames.SURGERY)}/></button>
-                    <p className="figText">Surgery</p>
+                    <button className="figButton"><img className="figImg" src={Oncology} alt="Oncology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Urology} alt="Urology" onClick={() => handleFigureClick(selectionNames.UROLOGY)}/></button>
-                    <p className="figText">Urology</p>
+                    <button className="figButton"><img className="figImg" src={Hematology} alt="Hematology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={WomensHealth} alt="Women's Health, OB/GN" onClick={() => handleFigureClick(selectionNames.WOMENS_HEALTH_OB_GYN)}/></button>
-                    <p className="figText">Women's Health / OB/GYN</p>
+                    <button className="figButton"><img className="figImg" src={Pathology} alt="Pathology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>               
             </div>
             <div id="notSureAndNext">
-                <div className="buttonElement" id="notSure">
-                    <button id="notSureButtonProperties"><img className="figImg" id="notSureIMG" src={NotSure} alt="I'm Not Sure" onClick={() => setModalOpen(true)}/> </button>
-                    <p className="figText">I'm Not Sure</p>
-                </div>
                 <button type="button" id="nextButton" style={nextBtnStyle} onClick={handleNextBtnClick}>NEXT</button>
             </div>
             <div>
