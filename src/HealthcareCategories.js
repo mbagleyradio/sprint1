@@ -126,19 +126,19 @@ export default function HealthcareCategories() {
         <div id="landingPage">
             <div className="buttonColumn" id="firstCol">
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={FamilyPracticeInternalMedicine} alt="Primary Care, Family, and Internal Medicine" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={FamilyPracticeInternalMedicine} alt="Primary Care - Family / Internal Medicine" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
                     <button className="figButton"><img className="figImg" src={UrgentCare} alt="Urgent Care" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={WomensHealth} alt="Women's Health, OB/GN" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={WomensHealth} alt="Women's Health & OB/GYN" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
                     <button className="figButton"><img className="figImg" src={Pediatrics} alt="Pediatrics" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Podiatry} alt="Podiatry" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Podiatry} alt="Podiatry / Foot & Ankle Care" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
             </div>
             <div className="buttonColumn" id="secondCol">
@@ -177,7 +177,7 @@ export default function HealthcareCategories() {
             </div>
             <div className="buttonColumn" id="fourthCol">
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={EarNoseThroat} alt="Ear, Nose, and Throat (ENT) Otolaryngology" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={EarNoseThroat} alt="Ear, Nose & Throat (ENT) / Otolaryngology" onClick={(e) => handleFigureClick(e)}/></button>
                 </div>
                 <div className="buttonElement">
                     <button className="figButton"><img className="figImg" src={Dermatology} alt="Dermatology" onClick={(e) => handleFigureClick(e)}/></button>
