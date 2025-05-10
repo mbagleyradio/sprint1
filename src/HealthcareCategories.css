@@ -1,6 +1,6 @@
 /* 
 * TO DO LIST:
-* generic filler comment    
+*     
 *
 *
 */
@@ -67,10 +67,11 @@
     background-color: transparent;
     max-height: 397px;
     max-width: 380px;
+    padding: 0 0 0 0;
 }
 
 .figButton:focus {
-    border: 2px solid red;
+    border-bottom: 4px solid red;
 }
 
 #notSureAndNext {
@@ -81,6 +82,38 @@
     align-items: center;
 }
 
+#firstCol {
+    margin-bottom: 1%;
+}
+
+#secondCol {
+    margin-bottom: 1%;
+}
+
+#thirdCol {
+    margin-bottom: 1%;
+}
+
+#fourthCol {
+    margin-bottom: 1%;
+}
+
+#fifthCol {
+    margin-bottom: 1%;
+}
+
+#sixthCol {
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 5px solid orange;
+    background-color: #FFD27F;
+    text-align: center;
+}
+
+#sixthColText {
+    margin-left: 20%;
+    margin-right: 20%;
+}
 @media only screen and (min-width: 2501px) {
     .buttonElement {
         display: inline-flex;
@@ -139,7 +172,7 @@
         height: 65%;
         width: 65%;
         margin: 0;
-        padding: 0;
+        padding: 0 0 0 0;
     }
 
     #nextButton {
@@ -242,6 +275,10 @@
         margin-bottom: 5%;
     }
 
+    #fifthCol {
+        margin-bottom: 5%;
+    }
+
     .figText {
         font-size: 2.1vw;
     }
@@ -301,6 +338,10 @@
     #fourthCol {
         margin-bottom: 5%;
     }
+
+    #fifthCol {
+        margin-bottom: 5%;
+    }
 }
 
 @media only screen and (max-width: 321px) and (min-width: 281px) {
@@ -354,6 +395,10 @@
     #fourthCol {
         margin-bottom: 5%;
     }
+
+    #fifthCol {
+        margin-bottom: 5%;
+    }
 }
 
 @media only screen and (max-width: 280px) {
@@ -405,6 +450,10 @@
     }
 
     #fourthCol {
+        margin-bottom: 5%;
+    }
+
+    #fifthCol {
         margin-bottom: 5%;
     }
 }
