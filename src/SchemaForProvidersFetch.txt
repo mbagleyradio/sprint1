@@ -1,0 +1,113 @@
+It is an array of JSON
+Here is element 0:
+{
+    name	:	Baptist Health Urology at 1st Professional Center
+		
+    address	:	3303 Overseas Hwy
+		
+    address2	:	Suite 100
+            
+    city	:	Marathon
+            
+    zip	:	33050
+            
+    phoneNumber	:	(786) 662-5610
+            
+    email	:	""
+            
+    speaks_crp	:		false
+            
+    speaks_es	:		false
+            
+    services		{1}
+            
+        other	:	""
+            
+    officeHours		{7}
+            
+        friday		[2]
+            
+            0	:	08:30
+                
+            1	:	17:00
+            
+        monday		[2]
+            
+            0	:	08:30
+                    
+            1	:	17:00
+            
+        sunday		[0]
+        (empty array)
+            
+        tuesday		[2]
+            
+            0	:	08:30
+                    
+            1	:	17:00
+            
+        saturday		[0]
+        (empty array)
+            
+        thursday		[2]
+            
+            0	:	08:30
+                    
+            1	:	17:00
+            
+        wednesday		[2]
+            
+            0	:	08:30
+                    
+            1	:	17:00
+            
+    keywords		[5]
+            
+        0	:	""
+                    
+        1	:	""
+                    
+        2	:	""
+                    
+        3	:	""
+                    
+        4	:	""
+            
+    appointmentTypes		{1}
+            
+        other	:	""
+            
+    acceptedInsurances		[0]
+        (empty array)
+            
+    physicians		[array of JSON]
+                     
+        specialtyAreas	:	""
+            
+        physician		{9}
+            
+            licenseNumber	:	ME59349
+            
+            firstName	:	William
+            
+            middleName	:	J
+            
+            suffix	:	""
+            
+            lastName	:	Tingle
+            
+            email	:	""
+            
+            phoneNumber	:	""
+                        
+            primaryFieldOfMedicine		{1}
+            
+                name	:	Urology
+            
+            secondaryFieldOfMedicine	:	null
+            
+        hospital		{1}
+            
+            name	:	Baptist Health
+}		
+
