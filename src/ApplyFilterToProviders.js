@@ -1,6 +1,26 @@
 /*
-* NEED TO WRITE PSEUDO FOR REFACTORED REVIEW SELECTION. FETCH THE NEW ENDPOINT AT MOUNT, THEN RE-FETCH EVERY TIME submittedFilters CHANGES.
+* NEED TO WRITE PSEUDO FOR REFACTORED REVIEW SELECTION. FETCH THE NEW ENDPOINT AT MOUNT, THEN RE-FETCH EVERY TIME collectedFilters CHANGES.
 * AFTER FETCHING, CALL A FUNCTION TO APPLY THE FILTERS AND DISPLAY THE NUMBER OF PROVIDERS
+* 
+* NEED TO REWRITE UI. MIGHT BE BETTER OFF REWRITING FROM SCRATCH, FUCK.
+* CODE TO FILTER 
+const filterPractices = (data) => {
+        let filtered = [];
+    
+        for (let i = 0; i < collectedFilters.length; i++) {
+            const pair = collectedFilters[i].split(": ");
+            const key = pair[0];
+            const value = pair[1];
+            filtered = [...filtered, data.filter(individualProvider => 
+                individualProvider[key] === value
+            )]
+        }
+
+        setStoredProviders([...filtered]);
+    }
+
+in ReviewSelection onProvidersArrayRetrieved,sort by ["name"]
+in ApplyFilterToProviders countPractices, count the ["name"] key
 */
 
 import './ApplyFilterToProviders.css';
