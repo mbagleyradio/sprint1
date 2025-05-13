@@ -8,7 +8,7 @@ const filterPractices = (data) => {
         let filtered = [];
     
         for (let i = 0; i < collectedFilters.length; i++) {
-            const pair = collectedFilters[i].split(": ");
+            const pair = collectedFilters[i].filterName.split(": ");
             const key = pair[0];
             const value = pair[1];
             filtered = [...filtered, data.filter(individualProvider => 
