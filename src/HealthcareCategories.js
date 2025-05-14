@@ -126,108 +126,108 @@ export default function HealthcareCategories() {
         <div id="landingPage">
             <div className="buttonColumn" id="firstCol">
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={FamilyPracticeInternalMedicine} alt="Primary Care - Family / Internal Medicine" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={FamilyPracticeInternalMedicine} alt="Primary Care - Family / Internal Medicine" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={UrgentCare} alt="Urgent Care" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={UrgentCare} alt="Urgent Care" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={WomensHealth} alt="Women's Health & OB/GYN" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={WomensHealth} alt="Women's Health & OB/GYN" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Pediatrics} alt="Pediatrics" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Pediatrics} alt="Pediatrics" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Podiatry} alt="Podiatry / Foot & Ankle Care" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Podiatry} alt="Podiatry / Foot & Ankle Care" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
             </div>
             <div className="buttonColumn" id="secondCol">
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Orthopedics} alt="Orthopedics" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Orthopedics} alt="Orthopedics" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={PhysicalTherapy} alt="Physical Therapy and Rehabilitation" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={PhysicalTherapy} alt="Physical Therapy and Rehabilitation" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Chiropractic} alt="Chiropractic Medicine" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Chiropractic} alt="Chiropractic Medicine" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Surgery} alt="Surgery" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Surgery} alt="Surgery" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Cardiology} alt="Cardiology" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Cardiology} alt="Cardiology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
             </div>
             <div className="buttonColumn" id="thirdCol">
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Pulmonology} alt="Pulmonology" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Pulmonology} alt="Pulmonology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Urology} alt="Urology"onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Urology} alt="Urology"onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Gastroenterology} alt="Gastroenterology" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Gastroenterology} alt="Gastroenterology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Endocrinology} alt="Endocrinology" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Endocrinology} alt="Endocrinology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Rheumatology} alt="Rheumatology" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Rheumatology} alt="Rheumatology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
             </div>
             <div className="buttonColumn" id="fourthCol">
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={EarNoseThroat} alt="Ear, Nose & Throat (ENT) / Otolaryngology" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={EarNoseThroat} alt="Ear, Nose & Throat (ENT) / Otolaryngology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Dermatology} alt="Dermatology" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Dermatology} alt="Dermatology" onClick={(e) => handleFigureClick(e)} tabindex="0" /></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={AllergyAndImmune} alt="Allergy & Immune System Medicine" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={AllergyAndImmune} alt="Allergy & Immune System Medicine" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Opthamology} alt="Opthamology Eye Care" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Opthamology} alt="Opthamology Eye Care" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Dentistry} alt="Dentistry" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Dentistry} alt="Dentistry" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
             </div>
             <div className="buttonColumn" id="fifthCol">
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Audiology} alt="Audiology" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Audiology} alt="Audiology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Neurology} alt="Neurology" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={Neurology} alt="Neurology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={BehavioralHealth} alt="Behavioral Health & Psychiatry" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={BehavioralHealth} alt="Behavioral Health & Psychiatry" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={AddictionMedicine} alt="Addiction Medicine" onClick={(e) => handleFigureClick(e)}/></button>
+                    <button className="figButton"><img className="figImg" src={AddictionMedicine} alt="Addiction Medicine" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={NotSure} alt="I'm Not Sure" onClick={() => setModalOpen(true)}/></button>
+                    <button className="figButton"><img className="figImg" src={NotSure} alt="I'm Not Sure" onClick={() => setModalOpen(true)} tabindex="0"/></button>
                 </div>
             </div>
             <div id="sixthCol">
                 <div id="sixthColText">
                     <p>A referral from a Primary Care Healthcare Provider is required before you can see the healthcare providers shown below. Primary Care Healthcare Providers are the first selection option at the top of the page.</p>
                 </div>
-                <div className="buttonColumn">   
+                <div className="buttonColumn" id="sixthColButtons">   
                     <div className="buttonElement">
-                        <button className="figButton"><img className="figImg" src={Anesthesiology} alt="Anesthesiology" onClick={(e) => handleFigureClick(e)}/></button>
+                        <button className="figButton"><img className="figImg" src={Anesthesiology} alt="Anesthesiology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                     </div>
                     <div className="buttonElement">
-                        <button className="figButton"><img className="figImg" src={Radiology} alt="Radiology" onClick={(e) => handleFigureClick(e)}/></button>
+                        <button className="figButton"><img className="figImg" src={Radiology} alt="Radiology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                     </div>
                     <div className="buttonElement">
-                        <button className="figButton"><img className="figImg" src={Oncology} alt="Oncology" onClick={(e) => handleFigureClick(e)}/></button>
+                        <button className="figButton"><img className="figImg" src={Oncology} alt="Oncology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                     </div>
                     <div className="buttonElement">
-                        <button className="figButton"><img className="figImg" src={Hematology} alt="Hematology" onClick={(e) => handleFigureClick(e)}/></button>
+                        <button className="figButton"><img className="figImg" src={Hematology} alt="Hematology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                     </div>
                     <div className="buttonElement">
-                        <button className="figButton"><img className="figImg" src={Pathology} alt="Pathology" onClick={(e) => handleFigureClick(e)}/></button>
+                        <button className="figButton"><img className="figImg" src={Pathology} alt="Pathology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                     </div>               
                 </div>
             </div>
