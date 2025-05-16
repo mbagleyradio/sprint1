@@ -116,9 +116,11 @@
 }
 
 #sixthColText {
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 1rem;
 }
+
 @media only screen and (min-width: 2501px) {
     .buttonElement {
         display: inline-flex;
@@ -174,8 +176,8 @@
     }
 
     .figImg {
-        height: 65%;
-        width: 65%;
+        height: 70%;
+        width: 70%;
         margin: 0;
         padding: 0 0 0 0;
     }
@@ -211,8 +213,8 @@
 
 
     .figImg {
-        height: 50%;
-        width: 50%;
+        height: 65%;
+        width: 65%;
     }
 
     #nextButton {
@@ -247,8 +249,8 @@
     }
 
     .figImg {
-        height: 50%;
-        width: 50%;
+        height: 60%;
+        width: 60%;
     }
 
     #nextButton {
@@ -287,6 +289,12 @@
     .figText {
         font-size: 2.1vw;
     }
+
+    #sixthColText {
+        margin-left: 10%;
+        margin-right: 10%;
+        font-size: .75rem;
+    }
 }
 
 @media only screen and (max-width: 450px) and (min-width: 322px) {
@@ -307,8 +315,8 @@
     }
 
     .figImg {
-        height: 50%;
-        width: 50%;
+        height: 60%;
+        width: 60%;
     }
 
     .figText {
@@ -347,6 +355,12 @@
     #fifthCol {
         margin-bottom: 5%;
     }
+
+    #sixthColText {
+        margin-left: 10%;
+        margin-right: 10%;
+        font-size: .75rem;
+    }
 }
 
 @media only screen and (max-width: 321px) and (min-width: 281px) {
@@ -367,8 +381,8 @@
     }
 
     .figImg {
-        height: 30%;
-        width: 30%;
+        height: 60%;
+        width: 60%;
     }
 
     #nextButton {
@@ -404,6 +418,12 @@
     #fifthCol {
         margin-bottom: 5%;
     }
+
+    #sixthColText {
+        margin-left: 10%;
+        margin-right: 10%;
+        font-size: .75rem;
+    }
 }
 
 @media only screen and (max-width: 280px) {
@@ -424,8 +444,8 @@
     }
 
     .figImg {
-        height: 35%;
-        width: 35%;
+        height: 65%;
+        width: 65%;
     }
 
     #nextButton {
@@ -460,6 +480,12 @@
 
     #fifthCol {
         margin-bottom: 5%;
+    }
+
+    #sixthColText {
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: .5rem;
     }
 }
 
