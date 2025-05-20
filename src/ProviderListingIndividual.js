@@ -115,7 +115,7 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
                 <img className="providerGroupIMG" src={Provider_Group} alt="an Individual Provider's practice"/>
             </div>
             <div className="providerListingHeaderDivs">
-                <p className="individualListingBold">{individual.name} - Hours</p>
+                <p className="individualListingBold">{individual.name} Office Hours</p>
             </div>
         </div>
         <div className="individualListingLocationTime">
