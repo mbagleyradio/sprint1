@@ -1,22 +1,6 @@
 /*
 * NEED TO WRITE PSEUDO FOR REFACTORED REVIEW SELECTION. FETCH THE NEW ENDPOINT AT MOUNT, THEN RE-FETCH EVERY TIME collectedFilters CHANGES.
 * AFTER FETCHING, CALL A FUNCTION TO APPLY THE FILTERS AND DISPLAY THE NUMBER OF PROVIDERS
-* 
-* NEED TO REWRITE UI. MIGHT BE BETTER OFF REWRITING FROM SCRATCH, FUCK.
-* CODE TO FILTER 
-const filterPractices = (data) => {
-        let filtered = [];
-    
-        for (let i = 0; i < collectedFilters.length; i++) {
-            const pair = collectedFilters[i].filterName.split(": ");
-            const key = pair[0];
-            const value = pair[1];
-            filtered = [...filtered, data.filter(individualProvider => 
-                individualProvider[key] === value
-            )]
-        }
-
-        setStoredProviders([...filtered]);
     }
 
 in ReviewSelection onProvidersArrayRetrieved,sort by ["name"]
@@ -246,21 +230,24 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     const fetchFilterResults = () => {
         const queryString = generateQueryFromFilters();
 
-        fetch("https://uvcsandbox.com/php/FilterHealthCareSelection.php", {
-            method: "POST",
-            mode: "cors",
+        fetch("https://www.access2care-mc.biz/info/healthcareProvidersPerLocation", {
+            method: "GET",
+            //mode: "cors",
             headers: {},
-            body: JSON.stringify({
+            /*body: JSON.stringify({
                 insuranceName,
                 insuranceType,
                 healthCareCategory,
                 queryString
-            })
+            })*/
         }).then(response => {
             return response.json()
         }).then(data => {
+            console.log(data);
+            console.log(data[0]["physicians"][0]["physician"]["primaryFieldOfMedicine"] === null ? "No primary field of medicine" : data[0]["physicians"][0]["physician"]["primaryFieldOfMedicine"]["name"]);
+            /*
             onProvidersArrayRetrieved(data)
-            setStoredProviders([...storedProviders, ...data])
+            setStoredProviders([...storedProviders, ...data])*/
         }).catch(error => {
             console.log(error)
         });
