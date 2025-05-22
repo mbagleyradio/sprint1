@@ -243,14 +243,65 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
         }).then(response => {
             return response.json()
         }).then(data => {
-            console.log(data);
-            console.log(data[0]["physicians"][0]["physician"]["primaryFieldOfMedicine"] === null ? "No primary field of medicine" : data[0]["physicians"][0]["physician"]["primaryFieldOfMedicine"]["name"]);
+            filterPracticesFromFetch(data);
+            
             /*
             onProvidersArrayRetrieved(data)
             setStoredProviders([...storedProviders, ...data])*/
         }).catch(error => {
             console.log(error)
         });
+    }
+
+    const filterPracticesFromFetch = (providers) => {
+        // primaryFields and secondary fields
+        // console.log(data[0]["physicians"][0]["physician"]["primaryFieldOfMedicine"] === null ? "No primary field of medicine" : data[0]["physicians"][0]["physician"]["primaryFieldOfMedicine"]["name"]);
+        // console.log(data[0]["physicians"][0]["physician"]["secondaryFieldOfMedicine"] === null ? "No secondary field of medicine" : data[0]["physicians"][0]["physician"]["secondaryFieldOfMedicine"]["name"]);
+    
+        // accepted insurances
+        // if data[0]["acceptedInsurances"].length === 0, then assume all insurances are accepted
+        // otherwise iterate through data[0]["acceptedInsurances"], if any have ["insurance"]["primaryName"] and ["insurance"]["subName"] matching the user's insurance selection, then continue to the actual filtering, otherwise move on to the next provider in the dataset
+
+        for (let i = 0; i < providers.length; i++) {
+            if (isInsuranceAccepted(providers[i]) === true && isPrimaryOrSecondaryFieldProvided(providers[i]) === true) {
+                // insurance is accepted and the provider's primary or secondary field matches what we are sending, then filter the other selections
+            }
+        }
+    }
+
+    const isInsuranceAccepted = (provider) => {
+        
+        if (provider["acceptedInsurances"].length === 0) {
+            return true;
+        } else {
+            for (let i = 0; i < provider["acceptedInsurances"].length; i++) {
+                if (provider["acceptedInsurances"][i]["insurance"]["primaryName"] === insuranceName && provider["acceptedInsurances"][i]["insurance"]["subName"] === insuranceType) {
+                    return true;
+                } 
+            }
+
+            // if you iterated through the whole loop and never found a matching primaryName or secondaryName, then return false.
+            return false;
+        }
+    }
+
+    const isPrimaryOrSecondaryFieldProvided = (provider) => {
+        // console.log(data[0]["physicians"][0]["physician"]["primaryFieldOfMedicine"] === null ? "No primary field of medicine" : data[0]["physicians"][0]["physician"]["primaryFieldOfMedicine"]["name"]);
+        // console.log(data[0]["physicians"][0]["physician"]["secondaryFieldOfMedicine"] === null ? "No secondary field of medicine" : data[0]["physicians"][0]["physician"]["secondaryFieldOfMedicine"]["name"]);
+    
+        for (let i = 0; i < provider["physicians"].length; i++) {
+        
+            if (provider["physicians"][i]["physician"]["primaryFieldOfMedicine"] !== null && provider["physicians"][i]["physician"]["primaryFieldOfMedicine"]["name"] === healthCareCategory) {
+                // check if the physician's primary field matches the healthcare selection.
+                return true;
+            } else if (provider["physicians"][i]["physician"]["secondaryFieldOfMedicine"] !== null && provider["physicians"][i]["physician"]["secondaryFieldOfMedicine"]["name"] === healthCareCategory) {
+                // check if the physician's secondary field matches the healthcare selection.
+                return true;
+            } 
+        }
+
+        // if you iterated through the physicians in a provider group, and could not find a matching healthcare selection, then return false
+        return false; 
     }
 
     const countPractices = () => {
