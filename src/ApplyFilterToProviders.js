@@ -15,8 +15,6 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     const [ numPractices, setNumPractices ] = useState(0);
 
     const fetchFilterResults = () => {
-        const queryString = generateQueryFromFilters();
-
         fetch("https://www.access2care-mc.biz/info/healthcareProvidersPerLocation", {
             method: "GET",
             //mode: "cors",
@@ -240,7 +238,16 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     }
 
     const isTimeAccepted = (provider, filter) => {
+        // right now you are getting back "Early Morning" from the UI
+        console.log(filter);
+        const open = convertStringToFloat(filter);
+        return false;
 
+    }
+
+    const convertStringToFloat = (str) => {
+        const timeStr = str.split(":");
+        
     }
             
     useEffect( () => {
