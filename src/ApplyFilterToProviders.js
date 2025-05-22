@@ -254,23 +254,51 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     }
 
     const filterPracticesFromFetch = (providers) => {
-        // primaryFields and secondary fields
-        // console.log(data[0]["physicians"][0]["physician"]["primaryFieldOfMedicine"] === null ? "No primary field of medicine" : data[0]["physicians"][0]["physician"]["primaryFieldOfMedicine"]["name"]);
-        // console.log(data[0]["physicians"][0]["physician"]["secondaryFieldOfMedicine"] === null ? "No secondary field of medicine" : data[0]["physicians"][0]["physician"]["secondaryFieldOfMedicine"]["name"]);
-    
-        // accepted insurances
-        // if data[0]["acceptedInsurances"].length === 0, then assume all insurances are accepted
-        // otherwise iterate through data[0]["acceptedInsurances"], if any have ["insurance"]["primaryName"] and ["insurance"]["subName"] matching the user's insurance selection, then continue to the actual filtering, otherwise move on to the next provider in the dataset
-
-        for (let i = 0; i < providers.length; i++) {
-            if (isInsuranceAccepted(providers[i]) === true && isPrimaryOrSecondaryFieldProvided(providers[i]) === true) {
+        let filteredProviders = [];
+        
+        for (let providerElement = 0; providerElement < providers.length; providerElement++) {
+            if (isInsuranceAccepted(providers[providerElement]) === true && isPrimaryOrSecondaryFieldAccepted(providers[providerElement]) === true) {
                 // insurance is accepted and the provider's primary or secondary field matches what we are sending, then filter the other selections
+                // go through each filter and see if the provider survives the filters
+                if (collectedFilters.length === 0) {
+                    // no filters applied, so push the provider into the filteredProviders array
+                    filteredProviders.push(providers[providerElement]);
+                } else {
+                    // filters applied, so check if each provider passes all the filters
+                    // get the filters
+                    for (let filterElement = 0; filterElement < collectedFilters.length; filterElement++) {
+                        let filter = collectedFilters[filterElement].filterName.split(": ");
+                        
+                        switch (filter[0]) {
+                            case "Area":
+                            break;
+
+                            case "Appointment":
+                                if (isAppointmentAccepted(providers[providerElement], filter[1]) === true) {
+                                    filteredProviders.push(providers[providerElement]);
+                                }
+                            break;
+
+                            case "Keyword":
+                            break;
+
+                            case "Specialty":
+                            break;
+
+                            case "Time":
+                            break;
+                        }
+                    }
+
+                }
             }
         }
+
+        console.log(filteredProviders);
+        setNumPractices(filteredProviders.length);
     }
 
     const isInsuranceAccepted = (provider) => {
-        
         if (provider["acceptedInsurances"].length === 0) {
             return true;
         } else {
@@ -285,12 +313,8 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
         }
     }
 
-    const isPrimaryOrSecondaryFieldProvided = (provider) => {
-        // console.log(data[0]["physicians"][0]["physician"]["primaryFieldOfMedicine"] === null ? "No primary field of medicine" : data[0]["physicians"][0]["physician"]["primaryFieldOfMedicine"]["name"]);
-        // console.log(data[0]["physicians"][0]["physician"]["secondaryFieldOfMedicine"] === null ? "No secondary field of medicine" : data[0]["physicians"][0]["physician"]["secondaryFieldOfMedicine"]["name"]);
-    
+    const isPrimaryOrSecondaryFieldAccepted = (provider) => {
         for (let i = 0; i < provider["physicians"].length; i++) {
-        
             if (provider["physicians"][i]["physician"]["primaryFieldOfMedicine"] !== null && provider["physicians"][i]["physician"]["primaryFieldOfMedicine"]["name"] === healthCareCategory) {
                 // check if the physician's primary field matches the healthcare selection.
                 return true;
@@ -304,24 +328,41 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
         return false; 
     }
 
-    const countPractices = () => {
-        let practices = 0;
-        for (let i = 0; i < storedProviders.length; i++) {
-            if (storedProviders[i]["Practice_Name"] !== null) {
-                practices += 1;
+    const isAppointmentAccepted = (provider, filter) => {
+         // First, check that the provider has any appointment types. 
+        if (Object.keys(provider["appointmentTypes"]).length === 1 && provider["appointmentTypes"]["other"] === "") {
+            // the provider did not select any appointment types, so assume all user selections are good
+            return true;
+        } else {
+            switch (filter) {
+                case "Scheduled Appt.":
+                    return provider["appointmentTypes"]["office"] !== undefined ? true : false;
+                break;
+
+                case "Walk-in":
+                    return provider["appointmentTypes"]["walkIns"] !== undefined ? true : false;
+                break;
+
+                case "Telemedicine":
+                    return provider["appointmentTypes"]["telemedicine"] !== undefined ? true : false;
+                break;
+
+                case "House Calls":
+                    return provider["appointmentTypes"]["houseCalls"] !== undefined ? true : false;
+                break;
+
+                case "None (exit)":
+                break;
+    
+                default:
+                break;
             }
         }
-
-        setNumPractices(practices);
     }
-
+            
     useEffect( () => {
         fetchFilterResults();
     }, []);
-
-    useEffect ( () => {
-        countPractices();
-    }, [storedProviders])
 
     return (
         <div id="numberOfProviders">
