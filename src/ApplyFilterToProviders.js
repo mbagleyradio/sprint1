@@ -14,219 +14,6 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     const [ storedProviders, setStoredProviders ] = useState([]);
     const [ numPractices, setNumPractices ] = useState(0);
 
-    const generateQueryFromFilters = () => {
-        let queryString = "";
-        if (collectedFilters.length === 0) {
-            queryString = "SELECT * FROM providers;";
-        }
-        else {
-            for (let filterElement = 0; filterElement < collectedFilters.length; filterElement++) {
-                if (filterElement === 0) {
-                    queryString = `SELECT * FROM providers WHERE `;
-                } else {
-                    queryString += ` AND `;
-                }
-    
-                if (collectedFilters[filterElement].filterName.startsWith("Appointment")) {
-                    switch (collectedFilters[filterElement].filterName) {
-                        case "Appointment: Scheduled Appt.":
-                            queryString += `Appointment_Scheduled = true`;
-                        break;
-    
-                        case "Appointment: Walk-in":
-                            queryString += `Appointment_Walk_In = true`;
-                        break;
-    
-                        case "Appointment: Telemedicine":
-                            queryString += `Appointment_Telemedicine = true`;
-                        break;
-    
-                        case "Appointment: House Calls":
-                            queryString += `Appointment_House_Calls = true`;
-                        break;
-    
-                        case "Appointment: None (exit)":
-                        break;
-    
-                        default:
-                        break;
-                    }
-    
-                } else if (collectedFilters[filterElement].filterName.startsWith("Area")) {
-                    switch (collectedFilters[filterElement].filterName) {
-                        case "Area: None":
-                        break;
-    
-                        case "Area: Key West":
-                            queryString += `ZIP IN ('33040', '33041')`;
-                        break;
-    
-                        case "Area: Marathon":
-                            queryString += `ZIP = '33050'`;
-                        break;
-    
-                        case "Area: Tavernier":
-                            queryString += `ZIP = '33070'`;
-                        break;
-    
-                        case "Area: Key Largo":
-                            queryString += `ZIP = '33037'`;
-                        break;
-    
-                        case "Area: Lower Keys":
-                            queryString += `ZIP = '33040'`;
-                        break;
-    
-                        case "Area: Middle Keys":
-                            queryString += `ZIP IN ('33001', '33041', '33042', '33043', '33050', '33051')`;
-                        break;
-    
-                        case "Area: Upper Keys":
-                            queryString += `ZIP IN ('33036', '33037', '33070')`;
-                        break;
-    
-                        default:
-                        break;
-                    }
-    
-                } else if (collectedFilters[filterElement].filterName.startsWith("Keyword")) {
-                    switch (collectedFilters[filterElement].filterName) {
-                        case "Keyword: Sports Medicine":
-                            queryString += `Keywords LIKE '%Sports Medicine%'`;
-                        break;
-    
-                        case "Keyword: Pediatrics":
-                            queryString += `Keywords LIKE '%Pediatrics%'`;
-                        break;
-    
-                        case "Keyword: Senior Adults":
-                            queryString += `Keywords LIKE '%Senior Adults%'`;
-                        break;
-    
-                        case "Keyword: Knee & Hip":
-                            queryString += `Keywords LIKE '%Knee & Hip%'`;
-                        break;
-    
-                        case "Keyword: Neck & Shoulder":
-                            queryString += `Keywords LIKE '%Neck & Shoulder%'`;
-                        break;
-    
-                        case "Keyword: Hands Wrists & Elbows":
-                            queryString += `Keywords LIKE '%Hands Wrists & Elbows%'`;
-                        break;
-    
-                        case "Keyword: Foot & Ankle":
-                            queryString += `Keywords LIKE '%Foot & Ankle%'`;
-                        break;
-    
-                        case "Keyword: Arthritis":
-                            queryString += `Keywords LIKE '%Arthritis%'`;
-                        break;
-    
-                        case "Keyword: Physical Therapy":
-                            queryString += `Keywords LIKE '%SPhysical Therapy%'`;
-                        break;
-    
-                        case "Keyword: Surgery":
-                            queryString += `Keywords LIKE '%Surgery%'`;
-                        break;
-    
-                        case "Keyword: Diagnostic":
-                            queryString += `Keywords LIKE '%Diagnostic%'`;
-                        break;
-
-                        case "Keyword: Joint Replacement":
-                            queryString += `Keywords LIKE '%Joint Replacement%'`;
-                        break;
-                        
-                        default:
-                        break;
-                    }
-    
-                } else if (collectedFilters[filterElement].filterName.startsWith("Specialty")) {
-                    switch (collectedFilters[filterElement].filterName) {
-                        case "Specialty: Joint Replacement":
-                            queryString += `Specialty_Areas LIKE '%Joint Replacement%'`;
-                        break;
-    
-                        case "Specialty: Foot & Ankle":
-                            queryString += `Specialty_Areas LIKE '%Foot & Ankle%'`;
-                        break;
-    
-                        case "Specialty: Women's Care":
-                            queryString += `Specialty_Areas LIKE '%Womens Care%'`;
-                        break;
-    
-                        case "Specialty: Pediatrics":
-                            queryString += `Specialty_Areas LIKE '%Pediatrics%'`
-                        break;
-
-                        case "Specialty: Neck & Shoulder":
-                            queryString += `Specialty_Areas LIKE '%Neck & Shoulder%'`;
-                        break;
-
-                        case "Specialty: Sports Medicine":
-                            queryString += `Specialty_Areas LIKE '%Sports Medicine%'`;
-                        break;
-
-                        case "Specialty: Arthritis":
-                            queryString += `Specialty_Areas LIKE '%Arthritis%'`;
-                        break;
-    
-                        case "Specialty: None (exit)":
-                        break;
-    
-                        default:
-                        break;
-                    }
-    
-                } else if (collectedFilters[filterElement].filterName.startsWith("Time")) {
-                    switch (collectedFilters[filterElement].filterName) {
-                        case "Time: Early Morning":
-                            queryString += `Time_Early_Morning = true`;
-                        break;
-    
-                        case "Time: Morning":
-                            queryString += `Time_Morning = true`;
-                        break;
-    
-                        case "Time: Mid Day":
-                            queryString += `Time_Mid_Day = true`;
-                        break;
-    
-                        case "Time: Afternoon":
-                            queryString += `Time_Afternoon = true`;
-                        break;
-    
-                        case "Time: Early Evening":
-                            queryString += `Time_Early_Evening = true`;
-                        break;
-                        
-                        case "Time: Evening":
-                            queryString += `Time_Evening = true`;
-                        break;
-    
-                        case "Time: Late Nite":
-                            queryString += `Time_Late_Nite = true`;
-                        break;
-    
-                        case "Time: None (exit)":
-                        break;
-                        
-                        default:
-                        break;
-                    }
-                } else {
-                    // add query for default?
-                }
-            }
-        
-            queryString += `;`
-        }
-    
-        return queryString;
-    }
-    
     const fetchFilterResults = () => {
         const queryString = generateQueryFromFilters();
 
@@ -271,6 +58,9 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                         
                         switch (filter[0]) {
                             case "Area":
+                                if (isAreaAccepted(providers[providerElement], filter[1]) === true) {
+                                    filteredProviders.push(providers[providerElement]);
+                                }
                             break;
 
                             case "Appointment":
@@ -280,12 +70,21 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                             break;
 
                             case "Keyword":
+                                if (isKeywordAccepted(providers[providerElement], filter[1]) === true) {
+                                    filteredProviders.push(providers[providerElement]);
+                                }
                             break;
 
                             case "Specialty":
+                                if (isSpecialtyAccepted(providers[providerElement], filter[1]) === true) {
+                                    filteredProviders.push(providers[providerElement]);
+                                }
                             break;
 
                             case "Time":
+                                if (isTimeAccepted(providers[providerElement], filter[1]) === true ) {
+                                    filteredProviders.push(providers[providerElement]);
+                                }
                             break;
                         }
                     }
@@ -358,6 +157,90 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                 break;
             }
         }
+    }
+
+    const isSpecialtyAccepted = (provider, filter) => {
+        for (let i = 0; i < provider["physicians"].length; i++) {
+            if (provider["physicians"][i]["specialtyAreas"].includes(filter) || provider["physicians"][i]["specialtyAreas"] === "") {
+                return true;
+            }
+        }
+
+        // if none of the specialty areas matched, return false
+        return false;
+    }
+
+    const isKeywordAccepted = (provider, filter) => {
+        for (let i = 0; i < provider["keywords"].length; i++) {
+            if (provider["keywords"][i].includes(filter) || provider["keywords"][i] === "") {
+                return true;
+            }
+        }
+
+        // if none of the keywords matched, return false
+        return false;
+    }
+
+    const isAreaAccepted = (provider, filter) => {
+        if (filter === provider["city"]) {
+            return true;
+        } else {
+            switch (filter) {
+                case "None":
+                break;
+    
+                case "Key West":
+                    if (provider["zip"] === "33040" || provider["zip"] === "33041") {
+                        return true;
+                    }
+                break;
+    
+                case "Marathon":
+                    if (provider["zip"] === "33050") {
+                        return true;
+                    }
+                break;           
+                
+                case "Tavernier":
+                    if (provider["zip"] === "33070") {
+                        return true;
+                    }
+                break;
+    
+                case "Key Largo":
+                    if (provider["zip"] === "33037") {
+                        return true;
+                    }
+                break;
+    
+                case "Lower Keys":
+                    if (provider["zip"] === "33040") {
+                        return true;
+                    }
+                break;
+
+                case "Middle Keys":
+                    if (provider["zip"] === "33001" || provider["zip"] === "33041" || provider["zip"] === "33042" || provider["zip"] === "33043" || provider["zip"] === "33050" || provider["zip"] === "33051") {
+                        return true;
+                    }
+                break;
+
+                case "Upper Keys":
+                    if (provider["zip"] === "33036" || provider["zip"] === "33037" || provider["zip"] === "33070") {
+                        return true;
+                    }
+                break;
+
+                default:
+                break;
+            }
+            return false;
+        }
+        
+    }
+
+    const isTimeAccepted = (provider, filter) => {
+
     }
             
     useEffect( () => {
