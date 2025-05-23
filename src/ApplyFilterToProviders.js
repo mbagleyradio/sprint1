@@ -238,16 +238,85 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     }
 
     const isTimeAccepted = (provider, filter) => {
-        // right now you are getting back "Early Morning" from the UI
-        console.log(filter);
-        const open = convertStringToFloat(filter);
-        return false;
+        // convert the user open/close times to numbers
+        const userTime = convertUITimeToDBTime(filter);
+        let providerTime = undefined;
+
+        // convert the provider times to numbers
+        if (provider["officeHours"]["monday"].length === 2) {
+            providerTime = convertStringToFloat(provider["officeHours"]["monday"]);
+        } else if (provider["officeHours"]["tuesday"].length === 2) {
+            providerTime = convertStringToFloat(provider["officeHours"]["tuesday"]);
+        } else if (provider["officeHours"]["wednesday"].length === 2) {
+            providerTime = convertStringToFloat(provider["officeHours"]["wednesday"]);
+        } else if (provider["officeHours"]["thursday"].length === 2) {
+            providerTime = convertStringToFloat(provider["officeHours"]["thursday"]);
+        } else if (provider["officeHours"]["friday"].length === 2) {
+            providerTime = convertStringToFloat(provider["officeHours"]["friday"]);
+        } else if (provider["officeHours"]["saturday"].length === 2) {
+            providerTime = convertStringToFloat(provider["officeHours"]["saturday"]);
+        } else if (provider["officeHours"]["sunday"].length === 2) {
+            providerTime = convertStringToFloat(provider["officeHours"]["sunday"]);
+        }
+
+        // if the user open is greater or equal than provider open, and the user close is greater or equal than the provider close, return true
+        if (userTime.open >= providerTime.open && userTime.closed <= providerTime.closed) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
-    const convertStringToFloat = (str) => {
-        const timeStr = str.split(":");
+    const convertStringToFloat = (arrayOfStrings) => {
+        const openStr = arrayOfStrings[0].split(":");
+        const closedStr = arrayOfStrings[1].split(":");
+        const openFinal = parsedFloat(openStr[0]) + (parsedFloat(openStr[1]) / 60);
+        const closedFinal = parsedFloat(closedStr[0]) + (parsedFloat(closedStr[1]) / 60);
         
+        return {
+            open: openFinal,
+            closed: closedFinal
+        }
+    }
+
+    const convertUITimeToDBTime = (str) => {
+        switch (str) {
+            case "Early Morning":
+                return {open: 5, closed: 8};
+            break;
+            
+            case "Morning":
+                return {open: 8, closed: 11};
+            break;
+
+            case "Mid Day":
+                return {open: 11, closed: 14};
+            break;
+
+            case "Afternoon":
+                return {open: 14, closed: 17};
+            break;
+
+            case "Early Evening":
+                return {open: 17, closed: 20};
+            break;
+
+            case "Evening":
+                return {open: 20, closed: 23};
+            break;
+
+            case "Late Nite":
+                return {open: 23, closed: 2};
+            break;
+
+            case "None (exit)":
+                return {open: 0, closed: 0};
+            break;
+
+            default:
+            break;
+        }
     }
             
     useEffect( () => {
