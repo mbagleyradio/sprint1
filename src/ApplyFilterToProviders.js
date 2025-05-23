@@ -5,6 +5,18 @@
 
 in ReviewSelection onProvidersArrayRetrieved,sort by ["name"]
 in ApplyFilterToProviders countPractices, count the ["name"] key
+*
+*
+*   PSEUDO FOR THE SPECIALTY AREAS MENU GENERATION
+*   for each provider that matches the healthcare selection (do this before checking collectedFilters), iterate through their physicians array, and collect all the specialty areas into a specialty areas array of strings
+*   right now the specialty areas are just a string, space delimited. I think comma delimited makes sense.
+*   when you finish iterating through the physicians array, pass it up (this is what onProvidersArrayRetrieved is doing)
+*   conditionally render the menu when the specialty areas array is not [] (it needs to be greater than 0)
+*   
+*   PSEUDO FOR THE KEYWORDS MENU GENERATION
+*   for each provider that matches the healthcare selection (do this before checking collectedFilters), iterate through their keywords array and collect all the keywords into a keywords array of strings
+*   when you finish iterating through the keywords array, pass it up (this is what onProvidersArrayRetrieved is doing)
+*   conditionally render the menu when the keywords array is not [] (it needs to be greater than 0)
 */
 
 import './ApplyFilterToProviders.css';
