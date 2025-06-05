@@ -22,7 +22,7 @@ in ApplyFilterToProviders countPractices, count the ["name"] key
 import './ApplyFilterToProviders.css';
 import { useState, useEffect } from 'react';
 
-function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, healthCareCategory, collectedFilters, onProvidersArrayRetrieved } ) {
+function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, healthCareCategory, collectedFilters, onProvidersArrayRetrieved, setSpecialtyAreas, setKeywords } ) {
     const [ storedProviders, setStoredProviders ] = useState([]);
     const [ numPractices, setNumPractices ] = useState(0);
 
@@ -40,6 +40,8 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
         }).then(response => {
             return response.json()
         }).then(data => {
+            collectSpecialtiesFromFetch(data);
+            collectKeywordsFromFetch(data);
             filterPracticesFromFetch(data);
             
             /*
@@ -48,6 +50,36 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
         }).catch(error => {
             console.log(error)
         });
+    }
+
+    const collectSpecialtiesFromFetch = (providers) => {
+        let matchingSpecialties = [];
+        for (let i = 0; i < providers.length; i++) {
+            for (let j = 0; j < providers[i]["physicians"].length; j++) {
+                if (providers[i]["physicians"][j]["physician"]["primaryFieldOfMedicine"] === healthCareCategory || providers[i]["physicians"][j]["physician"]["secondaryFieldOfMedicine"] === healthCareCategory) {
+                    const tokenizedArrayOfStrings = providers[i]["physicians"][j]["specialtyAreas"].split(",");
+                    const uniqueSetOfStrings = [...new Set(tokenizedArrayOfStrings)];
+                    matchingSpecialties.push(...uniqueSetOfStrings);
+                }
+             }
+        }
+
+
+        setSpecialtyAreas([...matchingSpecialties]);
+    }
+
+    const collectKeywordsFromFetch = (providers) => {
+        let matchingKeywords = new Set([]);
+        
+        for (let i = 0; i < providers.length; i++) {
+            for (let j = 0; j < providers[i]["physicians"].length; j++) {
+                if (providers[i]["physicians"][j]["physician"]["primaryFieldOfMedicine"] === healthCareCategory || providers[i]["physicians"][j]["physician"]["secondaryFieldOfMedicine"] === healthCareCategory) {
+                    matchingKeywords.add(providers[i]["keywords"][j]);
+                }
+            }
+        }
+
+        setKeywords([...matchingKeywords]);
     }
 
     const filterPracticesFromFetch = (providers) => {
@@ -103,7 +135,6 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
             }
         }
 
-        console.log(filteredProviders);
         setNumPractices(filteredProviders.length);
     }
 

@@ -16,6 +16,8 @@ function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCa
     const [ isFilterClicked, setIsFilterClicked ] = useState(false);
     const [ showFilterMenu, setShowFilterMenu ] = useState(true);
     const [ filterSelection, setFilterSelection ] = useState("");
+    const [ specialtyAreas, setSpecialtyAreas ] = useState([]);
+    const [ keywords, setKeywords ] = useState([]);
 
     const handleFilterSubmit = (selection) => {
         if (!isFiltered && isFilterClicked) {
@@ -76,10 +78,10 @@ function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCa
     return(
         <>
             <div id="filterHealthCareSection">
-                <ApplyFilterToProviders isFiltered={isFiltered} insuranceName={insuranceName} insuranceType={insuranceType} healthCareCategory={healthCareCategory} collectedFilters={collectedFilters} onProvidersArrayRetrieved={onProvidersArrayRetrieved}/>
+                <ApplyFilterToProviders isFiltered={isFiltered} insuranceName={insuranceName} insuranceType={insuranceType} healthCareCategory={healthCareCategory} collectedFilters={collectedFilters} onProvidersArrayRetrieved={onProvidersArrayRetrieved} setSpecialtyAreas={setSpecialtyAreas} setKeywords={setKeywords}/>
                 <MenuFigure handleOnClick={handleFigureClicked} filterSelection={filterSelection} handleOnUndo={handleUndoClicked}/>
                 <div id="menuSelect">
-                    {isFilterClicked ? showFilterMenu && <FilterMenu filterType={filterType} onFilterSubmit={handleFilterSubmit}/> : <></>}
+                    {isFilterClicked ? showFilterMenu && <FilterMenu filterType={filterType} onFilterSubmit={handleFilterSubmit} specialtyAreas={specialtyAreas} keywords={keywords}/> : <></>}
                 </div>
                 <div>
                     {isFiltered ? <FilterHealthCareSelection insuranceType={insuranceType} insuranceName={insuranceName} healthCareCategory={healthCareCategory} addFilters={addFilters} collectedFilters={collectedFilters} removeFilters={removeFilters} onProvidersArrayRetrieved={onProvidersArrayRetrieved}/> : <></>}

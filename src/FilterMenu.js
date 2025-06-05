@@ -10,7 +10,7 @@ import buttonLowerKeys from './sprint3/img/button_lower-keys.png';
 import buttonMiddleKeys from './sprint3/img/button_middle-keys.png';
 import buttonUpperKeys from './sprint3/img/button_upper-keys.png';
 
-function FilterMenu( { filterType, onFilterSubmit } ) {
+function FilterMenu( { filterType, onFilterSubmit, specialtyAreas, keywords } ) {
     const [ userSelection, setUserSelection ] = useState("default - no filters selected");
     const [ mapBtnSelectMsg, setMapBtnSelectMsg ] = useState(null);
     const sendSelectionToMainMenu = () => {
@@ -71,34 +71,15 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
             return (
                 <div id="filterSpecialtyWindow">
                     <p className="filterSpecialtyText">Select One</p>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="jointReplacementBtn" name="filterSpecialtyInput" value="Specialty: Joint Replacement" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="jointReplacementBtn">Joint Replacement</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="footAndAnkleBtn" name="filterSpecialtyInput" value="Specialty: Foot & Ankle" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="footAndAnkleBtn">Foot & Ankle</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="womensCareBtn" name="filterSpecialtyInput" value="Specialty: Women's Care" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="womensCareBtn">Women's Care</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="pediatricsBtn" name="filterSpecialtyInput" value="Specialty: Pediatrics" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="pediatricsBtn">Pediatrics</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="neckAndShoulderBtn" name="filterSpecialtyInput" value="Specialty: Neck & Shoulder" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="neckAndShoulderBtn">Neck & Shoulder</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="sportsMedicineBtn" name="filterSpecialtyInput" value="Specialty: Sports Medicine" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="sportsMedicineBtn">Sports Medicine</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="arthritisBtn" name="filterSpecialtyInput" value="Specialty: Arthritis" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="arthritisBtn">Arthritis</label>
-                    </div>
+                    {
+                        (specialtyAreas.length > 0) &&
+                        specialtyAreas.map((element, key) => {
+                            <div>
+                                <input className="filterSpecialtyBtn" type="radio" id={`specialtyBtn${key}`} value={`Specialty: ${element}`} onClick={(e) => setUserSelection(e.target.value)}/>
+                                <label className="filterSpecialtyText" for={`specialtyBtn${key}`}>{element}</label>
+                            </div>
+                        })
+                    }
                     <div>
                         <input className="filterSpecialtyBtn" type="radio" id="noneBtn" name="filterSpecialtyInput" value="Specialty: None (exit)" onClick={(e) => setUserSelection(e.target.value)}/>
                         <label className="filterSpecialtyText" for="noneBtn">None (exit)</label>
@@ -206,54 +187,15 @@ function FilterMenu( { filterType, onFilterSubmit } ) {
             return (
                 <div id="filterSpecialtyWindow">
                     <p className="filterSpecialtyText">Select One</p>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordSportsMed" name="filterKeywordInput" value="Keyword: Sports Medicine" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordSportsMed">Sports Medicine</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordPediatrics" name="filterKeywordInput" value="Keyword: Pediatrics" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordPediatrics">Pediatrics</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordSeniors" name="filterKeywordInput" value="Keyword: Senior Adults" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordSeniors">Senior Adults</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordKneeHip" name="filterKeywordInput" value="Keyword: Knee & Hip" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordKneeHip">Knee & Hip</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordNeckShoulder" name="filterKeywordInput" value="Keyword: Neck & Shoulder" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordNeckShoulder">Neck & Shoulder</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordHandsWristsElbows" name="filterKeywordInput" value="Keyword: Hands Wrists & Elbows" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordHandsWristsElbows">Hands, Wrists & Elbows</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordFootAnkle" name="filterKeywordInput" value="Keyword: Foot & Ankle" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordFootAnkle">Foot & Ankle</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordArthritis" name="filterKeywordInput" value="Keyword: Arthritis" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordArthritis">Arthritis</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordPhysical" name="filterKeywordInput" value="Keyword: Physical Therapy" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordPhysical">Physical Therapy</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordSurgery" name="filterKeywordInput" value="Keyword: Surgery" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordSurgery">Surgery</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordJointReplacement" name="filterKeywordInput" value="Keyword: Joint Replacement" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordJointReplacement">Joint Replacement</label>
-                    </div>
-                    <div>
-                        <input className="filterSpecialtyBtn" type="radio" id="keywordDiagnostic" name="filterKeywordInput" value="Keyword: Diagnostic" onClick={(e) => setUserSelection(e.target.value)}/>
-                        <label className="filterSpecialtyText" for="keywordDiagnostic">Diagnostic</label>
-                    </div>
+                    {
+                        (keywords.length > 0) &&
+                        keywords.map((element, key) => {
+                            <div>
+                                <input className="filterSpecialtyBtn" type="radio" id={`keyword${key}`} name="filterKeywordInput" value={`Keyword: ${element}`} onClick={(e) => setUserSelection(e.target.value)}/>
+                                <label className="filterSpecialtyText" for={`keyword${key}`}>{element}</label>
+                            </div>
+                        })
+                    }
                     <div className="filterSelectButtonContainer">
                         <button className="filterSelectBtn" onClick={sendSelectionToMainMenu}>SELECT</button>
                     </div>
