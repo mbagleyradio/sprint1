@@ -53,21 +53,27 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
         });
     }
 
-    const collectSpecialtiesFromFetch = (providers) => {
-        let matchingSpecialties = [];
+     const collectSpecialtiesFromFetch = (providers) => {
+        let matchingSpecialties = new Set([]);
         for (let i = 0; i < providers.length; i++) {
             for (let j = 0; j < providers[i]["physicians"].length; j++) {
-                if (providers[i]["physicians"][j]["physician"]["primaryFieldOfMedicine"] === healthCareCategory || providers[i]["physicians"][j]["physician"]["secondaryFieldOfMedicine"] === healthCareCategory) {
-                    const tokenizedArrayOfStrings = providers[i]["physicians"][j]["specialtyAreas"].split(",");
-                    const uniqueSetOfStrings = [...new Set(tokenizedArrayOfStrings)];
-                    matchingSpecialties.push(...uniqueSetOfStrings);
+                if (providers[i]["physicians"][j]["physician"]["primaryFieldOfMedicine"] !== null && providers[i]["physicians"][j]["physician"]["secondaryFieldOfMedicine"] !== null) {
+                    if (providers[i]["physicians"][j]["physician"]["primaryFieldOfMedicine"]["name"] === healthCareCategory || providers[i]["physicians"][j]["physician"]["secondaryFieldOfMedicine"]["name"] === healthCareCategory) {
+                        const tokenizedSpecialties = providers[i]["physicians"][j]["specialtyAreas"].split(", ");
+                        for (let k = 0; k < tokenizedSpecialties.length; k++) {
+                            if (tokenizedSpecialties[k] !== "") {
+                                matchingSpecialties.add(tokenizedSpecialties[k]);
+                            }
+                        }
+                    }
                 }
-             }
+
+            }
         }
 
-
+        console.log(matchingSpecialties);
         setSpecialtyAreas([...matchingSpecialties]);
-    }
+     }
 
     const collectKeywordsFromFetch = (providers) => {
         let matchingKeywords = new Set([]);
@@ -86,16 +92,10 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                         }
                     }
                 }
-                /*
-                if ((providers[i]["physicians"][j]["physician"]["primaryFieldOfMedicine"] !== null) && ((providers[i]["physicians"][j]["physician"]["primaryFieldOfMedicine"]["name"] === healthCareCategory) || (providers[i]["physicians"][j]["physician"]["secondaryFieldOfMedicine"] !== null && providers[i]["physicians"][j]["physician"]["secondaryFieldOfMedicine"]["name"] === healthCareCategory ))) {
-                    if (providers[i]["keywords"][j] !== undefined && providers[i]["keywords"][j] !== '') {
-                        matchingKeywords.add(providers[i]["keywords"][j]);
-                    }
-                }*/
+
             }
         }
 
-        console.log(matchingKeywords);
         setKeywords([...matchingKeywords]);
     }
 
