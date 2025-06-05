@@ -154,14 +154,19 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     }
 
     const isPrimaryOrSecondaryFieldAccepted = (provider) => {
+        //console.log(provider["physicians"][0]["physician"]["name"]);
         for (let i = 0; i < provider["physicians"].length; i++) {
             if (provider["physicians"][i]["physician"]["primaryFieldOfMedicine"] !== null && provider["physicians"][i]["physician"]["primaryFieldOfMedicine"]["name"] === healthCareCategory) {
                 // check if the physician's primary field matches the healthcare selection.
+                console.log(`Stepping into the first true condition of the primary/secondary fields: primary field matches the user's selection`);
                 return true;
             } else if (provider["physicians"][i]["physician"]["secondaryFieldOfMedicine"] !== null && provider["physicians"][i]["physician"]["secondaryFieldOfMedicine"]["name"] === healthCareCategory) {
                 // check if the physician's secondary field matches the healthcare selection.
+                console.log(`Stepping into the second true condition of the primary/secondary fields: secondary field matches the user's selection`);
                 return true;
-            } 
+            } else {
+                console.log(`Provider is not an OB/GN: ${provider["physicians"][i]["physician"]["primaryFieldOfMedicine"]["name"]}`);
+            }
         }
 
         // if you iterated through the physicians in a provider group, and could not find a matching healthcare selection, then return false
@@ -314,8 +319,8 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     const convertStringToFloat = (arrayOfStrings) => {
         const openStr = arrayOfStrings[0].split(":");
         const closedStr = arrayOfStrings[1].split(":");
-        const openFinal = parsedFloat(openStr[0]) + (parsedFloat(openStr[1]) / 60);
-        const closedFinal = parsedFloat(closedStr[0]) + (parsedFloat(closedStr[1]) / 60);
+        const openFinal = parseFloat(openStr[0]) + (parseFloat(openStr[1]) / 60);
+        const closedFinal = parseFloat(closedStr[0]) + (parseFloat(closedStr[1]) / 60);
         
         return {
             open: openFinal,
