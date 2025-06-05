@@ -74,7 +74,7 @@ function FilterMenu( { filterType, onFilterSubmit, specialtyAreas, keywords } ) 
                     {
                         (specialtyAreas.length > 0) &&
                         specialtyAreas.map((element, key) => {
-                            <div>
+                            return <div>
                                 <input className="filterSpecialtyBtn" type="radio" id={`specialtyBtn${key}`} value={`Specialty: ${element}`} onClick={(e) => setUserSelection(e.target.value)}/>
                                 <label className="filterSpecialtyText" for={`specialtyBtn${key}`}>{element}</label>
                             </div>
@@ -184,23 +184,32 @@ function FilterMenu( { filterType, onFilterSubmit, specialtyAreas, keywords } ) 
         break;
 
         case "Keyword":
-            return (
+            if (keywords.length > 0) {
+                return (
                 <div id="filterSpecialtyWindow">
                     <p className="filterSpecialtyText">Select One</p>
+                    <div>
                     {
-                        (keywords.length > 0) &&
                         keywords.map((element, key) => {
-                            <div>
+                            return <div>
                                 <input className="filterSpecialtyBtn" type="radio" id={`keyword${key}`} name="filterKeywordInput" value={`Keyword: ${element}`} onClick={(e) => setUserSelection(e.target.value)}/>
                                 <label className="filterSpecialtyText" for={`keyword${key}`}>{element}</label>
                             </div>
                         })
                     }
+                    </div>
                     <div className="filterSelectButtonContainer">
                         <button className="filterSelectBtn" onClick={sendSelectionToMainMenu}>SELECT</button>
                     </div>
                 </div>
-            );
+            ); 
+        } else {
+            return (
+                <div id="filterSpecialtyWindow">
+                    <p className="filterSpecialtyText">Loading...</p>
+                </div>
+            )
+        }
         break;
 
         default:

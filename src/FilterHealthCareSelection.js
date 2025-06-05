@@ -74,7 +74,7 @@ function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCa
         setFilterSelection("");
         removeFilters(selection);
     }
-    
+
     return(
         <>
             <div id="filterHealthCareSection">

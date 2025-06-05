@@ -21,6 +21,7 @@ in ApplyFilterToProviders countPractices, count the ["name"] key
 
 import './ApplyFilterToProviders.css';
 import { useState, useEffect } from 'react';
+import HealthcareCategories from './HealthcareCategories';
 
 function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, healthCareCategory, collectedFilters, onProvidersArrayRetrieved, setSpecialtyAreas, setKeywords } ) {
     const [ storedProviders, setStoredProviders ] = useState([]);
@@ -70,15 +71,31 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
 
     const collectKeywordsFromFetch = (providers) => {
         let matchingKeywords = new Set([]);
-        
+        // search the providers for a matching healthcare category, then take all the keywords
+        // put all the keywords in a set
+        // filter the set for "" and undefined
+
         for (let i = 0; i < providers.length; i++) {
             for (let j = 0; j < providers[i]["physicians"].length; j++) {
-                if (providers[i]["physicians"][j]["physician"]["primaryFieldOfMedicine"] === healthCareCategory || providers[i]["physicians"][j]["physician"]["secondaryFieldOfMedicine"] === healthCareCategory) {
-                    matchingKeywords.add(providers[i]["keywords"][j]);
+                if (providers[i]["physicians"][j]["physician"]["primaryFieldOfMedicine"] !== null && providers[i]["physicians"][j]["physician"]["secondaryFieldOfMedicine"] !== null) {
+                    if (providers[i]["physicians"][j]["physician"]["primaryFieldOfMedicine"]["name"] === healthCareCategory || providers[i]["physicians"][j]["physician"]["secondaryFieldOfMedicine"]["name"] === healthCareCategory) {
+                        for (let k = 0; k < providers[i]["keywords"].length; k++) {
+                            if (providers[i]["keywords"][k] !== '' && providers[i]["keywords"][k] !== undefined) {
+                                matchingKeywords.add(providers[i]["keywords"][k]);
+                            }
+                        }
+                    }
                 }
+                /*
+                if ((providers[i]["physicians"][j]["physician"]["primaryFieldOfMedicine"] !== null) && ((providers[i]["physicians"][j]["physician"]["primaryFieldOfMedicine"]["name"] === healthCareCategory) || (providers[i]["physicians"][j]["physician"]["secondaryFieldOfMedicine"] !== null && providers[i]["physicians"][j]["physician"]["secondaryFieldOfMedicine"]["name"] === healthCareCategory ))) {
+                    if (providers[i]["keywords"][j] !== undefined && providers[i]["keywords"][j] !== '') {
+                        matchingKeywords.add(providers[i]["keywords"][j]);
+                    }
+                }*/
             }
         }
 
+        console.log(matchingKeywords);
         setKeywords([...matchingKeywords]);
     }
 
