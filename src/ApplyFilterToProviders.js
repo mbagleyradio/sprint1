@@ -2,16 +2,7 @@
 * 
 * sorting: in ReviewSelection onProvidersArrayRetrieved,sort by ["name"]
 * counting: right now we are counting the groups, that's how Scott wanted it in the demo. In ApplyFilterToProviders countPractices, count the length of the storedProviders [].
-* 2nd, 3rd, 4th filtering: we are collecting them properly, but we need to apply them IN ORDER when we filter.
 * 
-* PSEUDO FOR ALL THE FILTERS:
-*   make an empty array called filteredProviders
-*   loop for each provider:
-*   set isValidProvider = true
-*       loop until filters.length AND isValidProvider is true
-*           does the provider pass the filter? if yes, set isValidProvider = true, else isValidProvider = false 
-*       if true after checking all the filters for the provider, then push provider onto filteredProviders []
-*       
 */
 
 import './ApplyFilterToProviders.css';
