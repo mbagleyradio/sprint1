@@ -1,12 +1,17 @@
 /*
-* NEED TO WRITE PSEUDO FOR REFACTORED REVIEW SELECTION. FETCH THE NEW ENDPOINT AT MOUNT, THEN RE-FETCH EVERY TIME collectedFilters CHANGES.
-* AFTER FETCHING, CALL A FUNCTION TO APPLY THE FILTERS AND DISPLAY THE NUMBER OF PROVIDERS
-    }
-
-* in ReviewSelection onProvidersArrayRetrieved,sort by ["name"]
-* in ApplyFilterToProviders countPractices, count the ["name"] key
-*
-*  
+* 
+* sorting: in ReviewSelection onProvidersArrayRetrieved,sort by ["name"]
+* counting: right now we are counting the groups, that's how Scott wanted it in the demo. In ApplyFilterToProviders countPractices, count the length of the storedProviders [].
+* 2nd, 3rd, 4th filtering: we are collecting them properly, but we need to apply them IN ORDER when we filter.
+* 
+* PSEUDO FOR ALL THE FILTERS:
+*   make an empty array called filteredProviders
+*   loop for each provider:
+*   set isValidProvider = true
+*       loop until filters.length AND isValidProvider is true
+*           does the provider pass the filter? if yes, set isValidProvider = true, else isValidProvider = false 
+*       if true after checking all the filters for the provider, then push provider onto filteredProviders []
+*       
 */
 
 import './ApplyFilterToProviders.css';
@@ -89,43 +94,43 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                 } else {
                     // filters applied, so check if each provider passes all the filters
                     // get the filters
-                    for (let filterElement = 0; filterElement < collectedFilters.length; filterElement++) {
+                    let isValidProvider = true;
+                    let filterElement = 0;
+
+                    while (filterElement < collectedFilters.length && isValidProvider === true) {
                         let filter = collectedFilters[filterElement].filterName.split(": ");
                         
                         switch (filter[0]) {
                             case "Area":
-                                if (isAreaAccepted(providers[providerElement], filter[1]) === true) {
-                                    filteredProviders.push(providers[providerElement]);
-                                }
+                                isValidProvider = isAreaAccepted(providers[providerElement], filter[1])
                             break;
 
                             case "Appointment":
-                                if (isAppointmentAccepted(providers[providerElement], filter[1]) === true) {
-                                    filteredProviders.push(providers[providerElement]);
-                                }
+                                isValidProvider = isAppointmentAccepted(providers[providerElement], filter[1])
                             break;
 
                             case "Keyword":
-                                if (isKeywordAccepted(providers[providerElement], filter[1]) === true) {
-                                    filteredProviders.push(providers[providerElement]);
-                                }
+                                isValidProvider = isKeywordAccepted(providers[providerElement], filter[1]) 
                             break;
 
                             case "Specialty":
-                                if (isSpecialtyAccepted(providers[providerElement], filter[1]) === true) {
-                                    filteredProviders.push(providers[providerElement]);
-                                }
+                                isValidProvider = isSpecialtyAccepted(providers[providerElement], filter[1])
                             break;
 
                             case "Time":
-                                if (isTimeAccepted(providers[providerElement], filter[1]) === true ) {
-                                    filteredProviders.push(providers[providerElement]);
-                                }
+                                isValidProvider = isTimeAccepted(providers[providerElement], filter[1])
                             break;
 
                             default:
                             break;
                         }
+
+                        filterElement++;
+                    }
+
+                    // if the provider passes all the applied filters, add it to filteredProviders []
+                    if (isValidProvider === true) {
+                        filteredProviders.push(providers[providerElement]);
                     }
 
                 }
@@ -211,7 +216,6 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     }
 
     const isKeywordAccepted = (provider, filter) => {
-        console.log(provider);
         for (let i = 0; i < provider["keywords"].length; i++) {
             if (provider["keywords"][i].includes(filter)) {
                 
@@ -368,6 +372,7 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     }, []);
 
     useEffect( () => {
+        console.log(`Console logs inside ApplyFiltersToProviders`);
         console.log(storedProviders);
         console.log(storedProviders.length);
         setNumPractices(storedProviders.length);
