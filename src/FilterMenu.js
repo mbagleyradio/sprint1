@@ -47,7 +47,6 @@ function FilterMenu( { filterType, onFilterSubmit, specialtyAreas, keywords } ) 
             case "Area: Lower Keys":
                 setUserSelection(areaBtnSelection);
                 setMapBtnSelectMsg("Lower keys selected");
-                console.log("Lower keys clicked and style changed")
             break;
 
             case "Area: Middle Keys":
