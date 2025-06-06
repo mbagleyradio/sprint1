@@ -56,14 +56,9 @@ function ReviewSelection() {
     }
 
     const onProvidersArrayRetrieved = (data) => {
-        console.log(`Data in onProvidersArrayRetrieved`);
-        console.log(data);
-        console.log(`Filters in onProvidersArrayRetrieved`);
-        console.log(submittedFilters);
-        /*
         providers = [...data].sort((a, b) => {
-            let nameA = a["Name_of_Practice_Group_Locations"];
-            let nameB = b["Name_of_Practice_Group_Locations"];
+            let nameA = a["name"];
+            let nameB = b["name"];
             
             // condition - nameA and nameB are null
             if (nameA === null && nameB === null) {
@@ -83,7 +78,7 @@ function ReviewSelection() {
             } else {
                 return 0;
             }
-        }); */
+        });
     }
 
     return (

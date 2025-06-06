@@ -1,6 +1,5 @@
 /*
 * 
-* sorting: in ReviewSelection onProvidersArrayRetrieved,sort by ["name"]
 * counting: right now we are counting the groups, that's how Scott wanted it in the demo. In ApplyFilterToProviders countPractices, count the length of the storedProviders [].
 * 
 */
@@ -363,9 +362,8 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     }, []);
 
     useEffect( () => {
-        console.log(`Console logs inside ApplyFiltersToProviders`);
-        console.log(storedProviders);
-        console.log(storedProviders.length);
+        collectSpecialtiesFromFetch(storedProviders);
+        collectKeywordsFromFetch(storedProviders);
         setNumPractices(storedProviders.length);
         onProvidersArrayRetrieved(storedProviders);
     }, [storedProviders]);
