@@ -201,7 +201,7 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
 
     const isSpecialtyAccepted = (provider, filter) => {
         for (let i = 0; i < provider["physicians"].length; i++) {
-            if (provider["physicians"][i]["specialtyAreas"].includes(filter) || provider["physicians"][i]["specialtyAreas"] === "") {
+            if (provider["physicians"][i]["specialtyAreas"].includes(filter)) {
                 return true;
             }
         }
@@ -211,8 +211,10 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     }
 
     const isKeywordAccepted = (provider, filter) => {
+        console.log(provider);
         for (let i = 0; i < provider["keywords"].length; i++) {
-            if (provider["keywords"][i].includes(filter) || provider["keywords"][i] === "") {
+            if (provider["keywords"][i].includes(filter)) {
+                
                 return true;
             }
         }
