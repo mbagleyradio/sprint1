@@ -13,17 +13,6 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
     const screenshotRef = createRef(null);
     const [ shareModalOpen, setShareModalOpen ] = useState(false);
     const [image, takeScreenShot] = useScreenshot();
-    const generateHeaderStringForIndividual = () => {
-        if (provider[0]["Practice_Name"] !== null) {
-            return provider[0]["Practice_Name"];
-        }
-        else if (provider[0]["Middle_Initial"] !== null) {
-            return `${provider[0]["First_Name"]} ${provider[0]["Middle_Initial"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`;
-            
-        } else {
-            return `${provider[0]["First_Name"]} ${provider[0]["Last_Name"]}, ${provider[0]["Title"]}`;
-        }
-    }
 
     const generateNameForIndividual = () => {
         if (provider[0]["Middle_Initial"] !== null) {
@@ -84,10 +73,10 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
     }
 
     let individual = {
-        header: generateHeaderStringForIndividual(),
+        header: provider["name"],
         name: generateNameForIndividual(),
         hours: `${convertTimeMilitaryToStandard(provider[0]["Office_Open"])} -- ${convertTimeMilitaryToStandard(provider[0]["Office_Close"])}`,
-        ddress: provider[0]["Address"],
+        address: provider[0]["Address"],
         city: provider[0]["City"],
         state: "FL",
         zip: provider[0]["ZIP"],
@@ -170,3 +159,5 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
 }
 
 export default ProviderListingIndividual;
+
+

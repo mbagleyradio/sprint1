@@ -29,12 +29,12 @@ function DisplayList() {
         generateBannerFromFilters();
         initializeMinimizeStatus();
     }, []);
-
+    
     useEffect(() => {
         // run when handlePrioritize results in a re-render
         getPracticesFromProviders();
     }, [sortedProviders]);
-
+    
     const handleMinimizeInController = (targetName) => {
         // find the key that matches the target, set it's value (passed as a prop minimizeController in the render) to true
         setMinimizeController(prev => ({
@@ -157,9 +157,9 @@ function DisplayList() {
                     {filterFlags.keyword ? <p className="displaySelectionText">KEYWORD: {filterStrings.keyword}</p> : <></>}
                 </div>
             </div>
-            {sortedPractices !== null && <div id="listings">
+            {location.state.providers !== null && <div id="listings">
             {
-                sortedPractices.map((practice) => {
+                location.state.providers.map((practice) => {
                     return <ProviderListingIndividual provider={practice} handlePrioritize={handlePrioritize} minimizeController={minimizeController} handleMinimizeInController={handleMinimizeInController} handleExpandInController={handleExpandInController}/>
                 })
             }   

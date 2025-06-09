@@ -1,10 +1,3 @@
-/*
-* TO DO:
-*  Fix spacing on new pictures ... they're too spread out now
-*  Fix mobile resizing
-*  Fix big screen resizing     
-*  Fix click event ... why not do a light red overlay over the image?
-*/
 
 // Import the CSS styling
 import './HealthcareCategories.css';

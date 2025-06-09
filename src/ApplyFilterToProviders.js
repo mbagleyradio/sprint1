@@ -359,6 +359,7 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
             
     useEffect( () => {
         fetchFilterResults();
+        onProvidersArrayRetrieved(storedProviders);
     }, []);
 
     useEffect( () => {
