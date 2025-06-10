@@ -15,11 +15,9 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
     const [image, takeScreenShot] = useScreenshot();
 
     const convertTimeMilitaryToStandard = (milTime) => {
-        console.log(milTime);
         let hourStandard = parseInt(milTime.slice(0, 2), 10);
-        console.log(hourStandard);
         let minuteStandard = milTime.slice(3, 5);
-        console.log(minuteStandard);
+
         if (hourStandard >= 1 && hourStandard < 12) {
             return `${hourStandard}:${minuteStandard} am`;
         } else if (hourStandard === 0 || hourStandard === 12) {
@@ -30,18 +28,18 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
     }
 
     const handleMinimize = () => {
-        handleMinimizeInController(provider[0]["Florida_Medical_License_Number"]);
+        handleMinimizeInController(provider["name"]);
     }
 
     const handleExpand = () => {
-        handleExpandInController(provider[0]["Florida_Medical_License_Number"]);
+        handleExpandInController(provider["name"]);
     }
 
     const onPrioritizeClick = () => {
-        if (provider[0]["Name_of_Practice_Group_Locations"] !== null) {
-            handlePrioritize(true, provider[0]["Name_of_Practice_Group_Locations"]);
+        if (provider["name"] !== null) {
+            handlePrioritize(true, provider["name"]);
         } else {
-            handlePrioritize(false, provider[0]["Florida_Medical_License_Number"]);
+            handlePrioritize(false, provider["name"]);
         }
     }
 
@@ -112,7 +110,6 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
         return `${convertTimeMilitaryToStandard(times[0])} - ${convertTimeMilitaryToStandard(times[1])}`;
     }
 
-
     let individual = {
         header: provider["name"],
         location_name: provider["name"],
@@ -130,9 +127,8 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
         accepted_insurances: [...provider["acceptedInsurances"]]
     }
 
-    const key_as_name = provider["name"];
-    
     return (
+    (minimizeController && individual.header && minimizeController[individual.header] !== false) ? <MinimizedListing header={individual.header} handleExpand={handleExpand}/> :
     <div className="providerListingIndividual" ref={screenshotRef}>
         <div className="individualListingHeader">
             <p className="individualListingText">{individual.location_name}</p>
@@ -192,70 +188,7 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
             shareModalOpen ? <ShareListingModal shareModalOpen={shareModalOpen} handleShareModalClose={handleShareModalClose} screenshot={image}/> : <></>
         }
     </div>
-    /*
-    minimizeController[key_as_name] ? <MinimizedListing header={individual.header} handleExpand={handleExpand}/> :
-    <div className="providerListingIndividual" ref={screenshotRef}>
-        <div className="individualListingHeader">
-            <p className="individualListingText">{individual.location_name}</p>
-        </div>
-        <div className="providerListingIMG_Name_Hours_Header">
-            <div className="providerListingHeaderDivs">
-                <img className="providerGroupIMG" src={Provider_Group} alt="an Individual Provider's practice"/>
-            </div>
-            <div className="providerListingHeaderDivs">
-                <p className="individualListingBold">{individual.location_name} Office Hours</p>
-            </div>
-        </div>
-        <div className="individualListingLocationTime">
-            <div className="individualListingAddress">
-                <p className="individualListingText">{individual.address}</p>
-                <p className="individualListingText">{`${individual.city}, ${individual.state} ${individual.zip}`}</p>
-                {individual.office_number !== "" ? <p className="individualListingText">{individual.office_number}</p> : <></>}
-                <div className="individualListingLanguages">
-                    {individual.languages_spoken.spanish !== undefined ? <p className="individualListingText">{`${individual.languages_spoken.spanish}`}</p> : <></>}
-                    {individual.languages_spoken.dutch !== undefined ? <p className="individualListingText">{`${individual.languages_spoken.dutch}`}</p> : <></>}
-                    {individual.languages_spoken.creole !== undefined ? <p className="individualListingText">{`${individual.languages_spoken.creole}`}</p> : <></>}
-                </div>
-            </div>
-            <div className="individualListingDays">
-                    <p className="individualListingText">Mon. {provider["officeHours"]["monday"].length > 0 ? `${displayOfficeHours(provider["officeHours"]["monday"])}` : "Closed"}</p>
-                    <p className="individualListingText">Tue. {provider["officeHours"]["tuesday"].length > 0 ? `${displayOfficeHours(provider["officeHours"]["tuesday"])}` : "Closed"}</p>
-                    <p className="individualListingText">Wed. {provider["officeHours"]["wednesday"].length > 0 ? `${displayOfficeHours(provider["officeHours"]["wednesday"])}` : "Closed"}</p>
-                    <p className="individualListingText">Thu. {provider["officeHours"]["thursday"].length > 0 ? `${displayOfficeHours(provider["officeHours"]["thursday"])}` : "Closed"}</p>
-                    <p className="individualListingText">Fri. {provider["officeHours"]["friday"].length > 0 ? `${displayOfficeHours(provider["officeHours"]["friday"])}` : "Closed"}</p>
-                    <p className="individualListingText">Sat. {provider["officeHours"]["saturday"].length > 0 ? `${displayOfficeHours(provider["officeHours"]["saturday"])}` : "Closed"}</p>
-                    <p className="individualListingText">Sun. {provider["officeHours"]["sunday"].length > 0 ? `${displayOfficeHours(provider["officeHours"]["sunday"])}` : "Closed"}</p>
-            </div>
-        </div>
-        {
-            provider.map((practice) => {
-                return <ProviderInfo provider={practice}/>
-            })
-        }
-        <div className="individualListingProviderKeywords">
-            <p className="individualListingText" id="keywordText">{individual.keywords}</p>
-        </div>
-        <div className="individualListingProviderActions">
-            <div className="listingActionButtons" id="leftBtn">
-                <img className="listingButtons" src={thumbs_down} alt="clicking this button discards a listing" onClick={handleMinimize}/>
-                <p className="individualListingText">Discard</p>
-            </div>
-            <div className="listingActionButtons">
-                <img className="listingButtons" src={share} alt="clicking this button shares a listing" onClick={handleShareModalOpen}/>
-                <p className="individualListingText">Send</p>
-            </div>
-            <div className="listingActionButtons" id="rightBtn">
-                <img className="listingButtons" src={thumbs_up} alt="clicking this button keeps a listing" onClick={onPrioritizeClick}/>
-                <p className="individualListingText">Keep</p>
-            </div>
-        </div>
-        {
-            shareModalOpen ? <ShareListingModal shareModalOpen={shareModalOpen} handleShareModalClose={handleShareModalClose} screenshot={image}/> : <></>
-        }
-    </div>
-    */
     );
-    
 }
 
 export default ProviderListingIndividual;

@@ -19,7 +19,6 @@ function DisplayList() {
     const healthCareCategory = location.state.healthCareCategory;
 
     const [sortedProviders, setSortedProviders] = useState([...location.state.providers]);
-    const [sortedPractices, setSortedPractices] = useState(null);
     const [filterFlags, setFilterFlags] = useState({appointment: false, area: false, keyword: false, specialty: false, time: false});
     const [filterStrings, setFilterStrings] = useState({appointment: "", area: "", keyword: "", specialty: "", time: ""});
     const [minimizeController, setMinimizeController] = useState(null);
@@ -29,11 +28,6 @@ function DisplayList() {
         generateBannerFromFilters();
         initializeMinimizeStatus();
     }, []);
-    
-    useEffect(() => {
-        // run when handlePrioritize results in a re-render
-        getPracticesFromProviders();
-    }, [sortedProviders]);
     
     const handleMinimizeInController = (targetName) => {
         // find the key that matches the target, set it's value (passed as a prop minimizeController in the render) to true
@@ -71,36 +65,6 @@ function DisplayList() {
         } else if (flag === false) {
             setSortedProviders([...sortedProviders.filter(a => a["name"] === targetName), ...sortedProviders.filter(a => a["name"] !== targetName)])
         }
-    }
-
-    const getPracticesFromProviders = () => {
-        const practices = {};
-        sortedProviders.forEach(provider => {
-            const practiceGroupName = provider["Name_of_Practice_Group_Locations"];
-            const practiceName = provider["Practice_Name"];
-            
-            if (!practices[practiceGroupName] && !practices[practiceName]) {
-                // create a new key value pair for the practice group or practice name
-                if (practiceGroupName !== null) {
-                    // they have a practice group, so store them in an array that can be found with a key/value pair. The key is their practice group name.
-                    practices[practiceGroupName] = [];
-                    practices[practiceGroupName].push(provider);
-                } else {
-                    // they do not have a practice group, so store them in an array that can be found with a key/value pair. The key is their practice name.
-                    practices[practiceName] = [];
-                    practices[practiceName].push(provider);
-                } 
-            } else {
-                if (practiceGroupName !== null) {
-                    practices[practiceGroupName].push(provider);
-                } else {
-                    practices[practiceName].push(provider);
-                }
-            }
-        });
-
-        let groupedPractices = Object.values(practices);
-        setSortedPractices(Object.values(groupedPractices));
     }
 
     const generateBannerFromFilters = () => {
@@ -157,9 +121,9 @@ function DisplayList() {
                     {filterFlags.keyword ? <p className="displaySelectionText">KEYWORD: {filterStrings.keyword}</p> : <></>}
                 </div>
             </div>
-            {location.state.providers !== null && <div id="listings">
+            {sortedProviders !== null && <div id="listings">
             {
-                location.state.providers.map((practice) => {
+                sortedProviders.map((practice) => {
                     return <ProviderListingIndividual provider={practice} handlePrioritize={handlePrioritize} minimizeController={minimizeController} handleMinimizeInController={handleMinimizeInController} handleExpandInController={handleExpandInController}/>
                 })
             }   
