@@ -1,6 +1,5 @@
 /*
 * 
-* counting: right now we are counting the groups, that's how Scott wanted it in the demo. In ApplyFilterToProviders countPractices, count the length of the storedProviders [].
 * 
 */
 

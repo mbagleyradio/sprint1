@@ -1,18 +1,29 @@
 import './ProviderListingIndividual.css';
 import Provider_Individual from '../src/sprint4/img/provider_individual.png';
 
-export default function ProviderInfo({provider}) {
+export default function ProviderInfo({physician}) {
     const generateNameForProvider = () => {
-        if (provider["Middle_Initial"] !== null) {
-            return `${provider["First_Name"]} ${provider["Middle_Initial"]} ${provider["Last_Name"]}, ${provider["Title"]}`;
-        } else if (provider["First_Name"] !== null && provider["Last_Name"] !== null) {
-            return `${provider["First_Name"]} ${provider["Last_Name"]}, ${provider["Title"]}`;
+        // start with first name
+        let name = physician["physician"]["firstName"];
+        
+        // check for middle name
+        if (physician["physician"]["middleName"] !== "") {
+            // provide middle name and last name
+            name += ` ${physician["physician"]["middleName"]} ${physician["physician"]["lastName"]}`;
         } else {
-            return provider["Practice_Name"];
+            name += ` ${physician["physician"]["lastName"]}`
         }
+
+        // check for suffix
+        if (physician["physician"]["suffix"] !== "") {
+            // provide suffix
+            name += `, ${physician["physician"]["suffix"]}`;
+        }
+
+        return name; 
     }
 
-    let name = generateNameForProvider();
+    const physician_name = generateNameForProvider();
 
     return (
     <div className="individualListingProviderInfo">
@@ -20,10 +31,8 @@ export default function ProviderInfo({provider}) {
             <div id="thumbnailLicense">
                 <img className="providerGroupIMG" src={Provider_Individual} alt="an Individual Provider"/>
                 <div id="license">
-                    {
-                        provider["Florida_Medical_License_Number"].includes("none") ? <br/> : <p className="individualListingText">{name}</p>
-                    }
-                    <p className="individualListingText">{provider["Florida_Medical_License_Number"]}</p>
+                    <p className="individualListingText">{physician_name}</p>
+                    <p className="individualListingText">{physician["physician"]["licenseNumber"]}</p>
                 </div>
             </div>
             <div id="primary">
@@ -33,9 +42,9 @@ export default function ProviderInfo({provider}) {
                     <p className="individualListingText">Specialty Area(s):</p>
                 </div>
                 <div id="primaryFields">
-                    <p className="individualListingText">{provider["Primary_Field"]}</p>
-                    <p className="individualListingText">{provider["Secondary_Field"]}</p>
-                    <p className="individualListingText">{provider["Specialty_Areas"]}</p>
+                    {physician["physician"]["primaryFieldOfMedicine"] !== null ? <p className="individualListingText">{physician["physician"]["primaryFieldOfMedicine"]["name"]}</p> : <></>}
+                    {physician["physician"]["secondaryFieldOfMedicine"] !== null ? <p className="individualListingText">{physician["physician"]["secondaryFieldOfMedicine"]["name"]}</p> : <></>}
+                    <p className="individualListingText">{physician["physician"]["specialtyAreas"]}</p>
                 </div>
             </div>
         </div>

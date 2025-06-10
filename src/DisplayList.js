@@ -55,8 +55,8 @@ function DisplayList() {
     const initializeMinimizeStatus = () => {
         const practices = {};
         sortedProviders.forEach(provider => {
-            const license_as_key = provider["Florida_Medical_License_Number"];
-            practices[license_as_key] = false;
+            const name_as_key = provider["name"];
+            practices[name_as_key] = false;
         });
         
         setMinimizeController(prev => ({
@@ -67,9 +67,9 @@ function DisplayList() {
     
     const handlePrioritize = (flag, targetName) => {
         if (flag === true) {
-            setSortedProviders([...sortedProviders.filter(a => a["Name_of_Practice_Group_Locations"] === targetName), ...sortedProviders.filter(a => a["Name_of_Practice_Group_Locations"] !== targetName)])
+            setSortedProviders([...sortedProviders.filter(a => a["name"] === targetName), ...sortedProviders.filter(a => a["name"] !== targetName)])
         } else if (flag === false) {
-            setSortedProviders([...sortedProviders.filter(a => a["Florida_Medical_License_Number"] === targetName), ...sortedProviders.filter(a => a["Florida_Medical_License_Number"] !== targetName)])
+            setSortedProviders([...sortedProviders.filter(a => a["name"] === targetName), ...sortedProviders.filter(a => a["name"] !== targetName)])
         }
     }
 
