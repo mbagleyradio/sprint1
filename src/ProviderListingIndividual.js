@@ -15,9 +15,11 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
     const [image, takeScreenShot] = useScreenshot();
 
     const convertTimeMilitaryToStandard = (milTime) => {
+        console.log(milTime);
         let hourStandard = parseInt(milTime.slice(0, 2), 10);
-        let minuteStandard = milTime.slice(2, 4);
-
+        console.log(hourStandard);
+        let minuteStandard = milTime.slice(3, 5);
+        console.log(minuteStandard);
         if (hourStandard >= 1 && hourStandard < 12) {
             return `${hourStandard}:${minuteStandard} am`;
         } else if (hourStandard === 0 || hourStandard === 12) {

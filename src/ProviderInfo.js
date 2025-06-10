@@ -37,14 +37,9 @@ export default function ProviderInfo({physician}) {
             </div>
             <div id="primary">
                 <div id="primaryLabels">
-                    <p className="individualListingText">Primary Field:</p>
-                    <p className="individualListingText">Secondary Field:</p>
-                    <p className="individualListingText">Specialty Area(s):</p>
-                </div>
-                <div id="primaryFields">
-                    {physician["physician"]["primaryFieldOfMedicine"] !== null ? <p className="individualListingText">{physician["physician"]["primaryFieldOfMedicine"]["name"]}</p> : <></>}
-                    {physician["physician"]["secondaryFieldOfMedicine"] !== null ? <p className="individualListingText">{physician["physician"]["secondaryFieldOfMedicine"]["name"]}</p> : <></>}
-                    <p className="individualListingText">{physician["physician"]["specialtyAreas"]}</p>
+                    <p className="individualListingText">Primary Field: {physician["physician"]["primaryFieldOfMedicine"] !== null ? physician["physician"]["primaryFieldOfMedicine"]["name"] : ""}</p>
+                    <p className="individualListingText">Secondary Field: {physician["physician"]["secondaryFieldOfMedicine"] !== null ? physician["physician"]["secondaryFieldOfMedicine"]["name"] : ""}</p>
+                    <p className="individualListingText">Specialty Area(s): {physician["physician"]["specialtyAreas"]}</p>
                 </div>
             </div>
         </div>
