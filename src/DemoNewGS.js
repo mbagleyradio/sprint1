@@ -93,6 +93,18 @@ export default function GetStarted() {
         		});
 		break;
 
+        case "Dental Insurance Plans":
+            setInsuranceBtnName(prev => {
+                return "Dental Insurance";
+            });
+        break;
+
+        case "Vision Insurance Plans":
+            setInsuranceBtnName(prev => {
+                return "Vision Insurance";
+            });
+        break;
+
         default:
 		break;
 	    }
@@ -169,6 +181,10 @@ export default function GetStarted() {
             <div className="menuRow">
                 <button className="menuRowButton" id="intInsuranceBtn" value="International Insurance Plans" onClick={handleMenuSelection}>International Insurance</button>
                 <button className="menuRowButton" id="behavioralBtn" value="Behavioral Health Insurance Plans" onClick={handleMenuSelection}>Behavioral Health Ins.</button>
+                <button className="menuRowButton" id="dentalInsuranceBtn" value="Dental Insurance Plans" onClick={handleMenuSelection}>Dental Insurance</button>
+            </div>
+            <div className="menuRow">
+                <button className="menuRowButton" id="visionInsuranceBtn" value="Vision Insurance Plans" onClick={handleMenuSelection}>Vision Insurance</button>
             </div>
         </div>
         {insuranceSelection !== undefined ? 

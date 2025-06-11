@@ -110,10 +110,18 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
         return `${convertTimeMilitaryToStandard(times[0])} - ${convertTimeMilitaryToStandard(times[1])}`;
     }
 
+    const generateAddressForIndividual = () => {
+        if (provider["address2"] !== "") {
+            return `${provider["address"]}, ${provider["address2"]}`;
+        } else {
+            return provider["address"];
+        }
+    }
+
     let individual = {
         header: provider["name"],
         location_name: provider["name"],
-        address: provider["address"],
+        address: generateAddressForIndividual(),
         city: `${provider["city"]}`,
         state: "FL",
         zip: provider["zip"],
@@ -145,7 +153,7 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
             <div className="individualListingAddress">
                 <p className="individualListingText">{individual.address}</p>
                 <p className="individualListingText">{`${individual.city}, ${individual.state} ${individual.zip}`}</p>
-                {individual.office_number !== "" ? <p className="individualListingText">{individual.office_number}</p> : <></>}
+                {individual.phone_number !== "" ? <p className="individualListingText">{individual.phone_number}</p> : <></>}
                 <div className="individualListingLanguages">
                     {individual.languages_spoken.spanish !== undefined ? <p className="individualListingText">{`${individual.languages_spoken.spanish}`}</p> : <></>}
                     {individual.languages_spoken.dutch !== undefined ? <p className="individualListingText">{`${individual.languages_spoken.dutch}`}</p> : <></>}
@@ -162,14 +170,14 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
                 <p className="individualListingText">Sun. {provider["officeHours"]["sunday"].length > 0 ? `${displayOfficeHours(provider["officeHours"]["sunday"])}` : "Closed"}</p>
             </div>
         </div>
+        <div className="individualListingProviderKeywords">
+            <p className="individualListingText" id="keywordText">{individual.keywords}</p>
+        </div>
         {
             provider["physicians"].map((physician) => {
                 return <ProviderInfo physician={physician}/>
             })
         }
-        <div className="individualListingProviderKeywords">
-            <p className="individualListingText" id="keywordText">{individual.keywords}</p>
-        </div>
         <div className="individualListingProviderActions">
             <div className="listingActionButtons" id="leftBtn">
                 <img className="listingButtons" src={thumbs_down} alt="clicking this button discards a listing" onClick={handleMinimize}/>

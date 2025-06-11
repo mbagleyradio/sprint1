@@ -190,6 +190,18 @@
     border: 1px solid #475715;
 }
 
+#dentalInsuranceBtn {
+    background-color: #fbe3d6;
+    color: #000;
+    border: 1px solid #000;
+}
+
+#visionInsuranceBtn {
+    background-color: #f6c6ad;
+    color: #000;
+    border: 1px solid #000;
+}
+
 #healthcareExchangeMenuButtons {
     display: flex;
     justify-content: center;

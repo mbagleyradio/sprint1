@@ -16,12 +16,12 @@
     width: 100%;
     font-weight: bold;
     font-size: 24px;
-    background-color: #85DFFF;
+    background-color: rgb(91, 255, 255);
     border: 1px solid black;
 }
 
 .individualListingLocationTime {
-    background-color: #E8F2CA;
+    background-color: rgb(232, 242, 202);
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
@@ -87,7 +87,7 @@
 }
 
 .individualListingProviderInfo {
-    background-color: #FDF0AD;
+    background-color: rgb(254, 249, 222);
     border: 1px solid black;
     width: 100%;
     display: flex;
@@ -107,7 +107,7 @@
 .individualListingProviderKeywords {
     width: 100%;
     text-align: left;
-    background-color: #FDE2D3;
+    background-color: rgb(91, 255, 255);
     border: 1px solid black;
 }
 
@@ -119,7 +119,7 @@
 
 .individualListingProviderActions {
     width: 100%;
-    background-color: #EAEAEA;
+    background-color: rgb(251, 230, 195);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -184,7 +184,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: #E8F2CA;
+    background-color: rgb(232, 242, 202);
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-top: 1px solid black;
