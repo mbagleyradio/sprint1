@@ -1,7 +1,6 @@
 /*
 * FIXES NEEDED:
-*   When Mick fixes CORS issue, rewrite fetch, and console log it instead of setting the state hook
-*   The fetch will return all the insurances, and you need to sort through them to display the radio buttons you need
+*  
 */
 
 import './DemoNewGS.css';
@@ -183,7 +182,7 @@ export default function GetStarted() {
                 <button className="menuRowButton" id="behavioralBtn" value="Behavioral Health Insurance Plans" onClick={handleMenuSelection}>Behavioral Health Ins.</button>
                 <button className="menuRowButton" id="dentalInsuranceBtn" value="Dental Insurance Plans" onClick={handleMenuSelection}>Dental Insurance</button>
             </div>
-            <div className="menuRow">
+            <div className="menuRow" id="lastRow">
                 <button className="menuRowButton" id="visionInsuranceBtn" value="Vision Insurance Plans" onClick={handleMenuSelection}>Vision Insurance</button>
             </div>
         </div>

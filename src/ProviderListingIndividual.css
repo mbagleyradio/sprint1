@@ -33,6 +33,26 @@
     width: 100%;
 }
 
+
+.individualListingAppointmentServices {
+    background-color: rgb(232, 242, 202);
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: none;
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+}
+
+.listsOfAppointmentsAndServices {
+    display: flex;
+    flex-direction: column;
+    
+}
+
 .individualListingLocation {
     display: flex;
     flex-direction: row;

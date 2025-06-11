@@ -125,13 +125,13 @@ export default function HealthcareCategories() {
                     <button className="figButton"><img className="figImg" src={UrgentCare} alt="Urgent Care" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Pediatrics} alt="Pediatrics" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
+                    <button className="figButton"><img className="figImg" src={Pediatrics} alt="Pediatrics / Child / Youth Medicine" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
                     <button className="figButton"><img className="figImg" src={WomensHealth} alt="OB/GYN - Women's Health" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                  <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={BehavioralHealth} alt="Behavioral Health & Psychiatry" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
+                    <button className="figButton"><img className="figImg" src={BehavioralHealth} alt="Behavioral Health / Psychiatry / Counseling" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
             </div>
             <div className="buttonColumn" id="secondCol">
@@ -139,7 +139,7 @@ export default function HealthcareCategories() {
                     <button className="figButton"><img className="figImg" src={AllergyAndImmune} alt="Allergy & Immune System Medicine" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={Audiology} alt="Audiology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
+                    <button className="figButton"><img className="figImg" src={Audiology} alt="Audiology / Hearing" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
                 <div className="buttonElement">
                     <button className="figButton"><img className="figImg" src={Cardiology} alt="Cardiology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
@@ -202,31 +202,32 @@ export default function HealthcareCategories() {
                     <button className="figButton"><img className="figImg" src={Urology} alt="Urology"onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
                 </div>
             </div>
-            <div className="buttonColumn" id="notSureBtn">
-                <div className="buttonElement">
-                    <button className="figButton"><img className="figImg" src={NotSure} alt="I'm Not Sure" onClick={() => setModalOpen(true)} tabindex="0"/></button>
+            <div id="notSureAndSixthCol">
+                <div className="buttonColumn" id="notSureBtn">
+                    <div className="buttonElement">
+                        <button className="figButton"><img className="figImg" src={NotSure} alt="I'm Not Sure" onClick={() => setModalOpen(true)} tabindex="0"/></button>
+                    </div>
+                </div>
+                <div id="sixthCol">
+                    <div id="sixthColText">
+                        <p>A referral from a Primary Care Healthcare Provider is required before you can see the healthcare providers shown below. Primary Care Healthcare Providers are the first selection option at the top of the page.</p>
+                    </div>
+                    <div className="buttonColumn" id="sixthColButtons">   
+                        <div className="buttonElement">
+                            <button className="figButton"><img className="figImg" src={Anesthesiology} alt="Anesthesiology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
+                        </div>
+                        <div className="buttonElement">
+                            <button className="figButton"><img className="figImg" src={Hematology} alt="Hematology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
+                        </div>
+                        <div className="buttonElement">
+                            <button className="figButton"><img className="figImg" src={Radiology} alt="Medical Imaging / MRI / X-ray / Ultrasound …" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
+                        </div>
+                        <div className="buttonElement">
+                            <button className="figButton"><img className="figImg" src={Pathology} alt="Pathology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
+                        </div>               
+                    </div>
                 </div>
             </div>
-            <div id="sixthCol">
-                <div id="sixthColText">
-                    <p>A referral from a Primary Care Healthcare Provider is required before you can see the healthcare providers shown below. Primary Care Healthcare Providers are the first selection option at the top of the page.</p>
-                </div>
-                <div className="buttonColumn" id="sixthColButtons">   
-                    <div className="buttonElement">
-                        <button className="figButton"><img className="figImg" src={Anesthesiology} alt="Anesthesiology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
-                    </div>
-                    <div className="buttonElement">
-                        <button className="figButton"><img className="figImg" src={Hematology} alt="Hematology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
-                    </div>
-                    <div className="buttonElement">
-                        <button className="figButton"><img className="figImg" src={Radiology} alt="Radiology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
-                    </div>
-                    <div className="buttonElement">
-                        <button className="figButton"><img className="figImg" src={Pathology} alt="Pathology" onClick={(e) => handleFigureClick(e)} tabindex="0"/></button>
-                    </div>               
-                </div>
-            </div>
-            
             <div id="notSureAndNext">
                 <button type="button" id="nextButton" style={nextBtnStyle} onClick={handleNextBtnClick}>NEXT</button>
             </div>

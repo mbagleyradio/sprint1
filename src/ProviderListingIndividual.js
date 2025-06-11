@@ -118,6 +118,49 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
         }
     }
 
+    const generateServicesForIndividual = () => {
+        if (provider["services"]["other"] !== "") {
+            return provider["services"]["other"].split(", ");
+        } else {
+            return [];
+        }
+    }
+
+    const generateAppointmentsForIndividual = () => {
+        let appointments = [];
+        // check for "other"
+        if (provider["appointmentTypes"]["other"] && provider["appointmentTypes"]["other"] !== "") {
+            appointments.push(provider["appointmentTypes"]["other"]);
+        }
+        // check for "office"
+        if (provider["appointmentTypes"]["office"] && provider["appointmentTypes"]["office"] === "on") {
+            appointments.push("Office");
+        }
+        // check for "walkIns"
+        if (provider["appointmentTypes"]["walkIns"] && provider["appointmentTypes"]["walkIns"] === "on") {
+            appointments.push("Walk-ins");
+        }
+        // check for "telemedicine"
+        if (provider["appointmentTypes"]["telemedicine"] && provider["appointmentTypes"]["telemedicine"] === "on") {
+            appointments.push("Telemedicine");
+        }
+        // check for "otherEnabled"
+        if (provider["appointmentTypes"]["otherEnabled"] && provider["appointmentTypes"]["otherEnabled"] === "on") {
+            appointments.push("Other Enabled");
+        }
+        // check for "consultations"
+        if (provider["appointmentTypes"]["consultations"] && provider["appointmentTypes"]["consultations"] === "on") {
+            appointments.push("Consultations");
+        }
+        // check for "houseCalls"
+        if (provider["appointmentTypes"]["houseCalls"] && provider["appointmentTypes"]["houseCalls"] === "on") {
+            appointments.push("House Calls");
+        }
+
+        return appointments;
+
+    }
+
     let individual = {
         header: provider["name"],
         location_name: provider["name"],
@@ -130,7 +173,8 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
         office_number: provider["address2"],
         languages_spoken: generateLanguagesForIndividual(),
         keywords: generateKeywordsForIndividual(),
-        services: provider["services"]["other"],
+        services: generateServicesForIndividual(),
+        appointment_types: generateAppointmentsForIndividual(),
         hospital: provider["hospital"]["name"],
         accepted_insurances: [...provider["acceptedInsurances"]]
     }
@@ -168,6 +212,27 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
                 <p className="individualListingText">Fri. {provider["officeHours"]["friday"].length > 0 ? `${displayOfficeHours(provider["officeHours"]["friday"])}` : "Closed"}</p>
                 <p className="individualListingText">Sat. {provider["officeHours"]["saturday"].length > 0 ? `${displayOfficeHours(provider["officeHours"]["saturday"])}` : "Closed"}</p>
                 <p className="individualListingText">Sun. {provider["officeHours"]["sunday"].length > 0 ? `${displayOfficeHours(provider["officeHours"]["sunday"])}` : "Closed"}</p>
+                <p className="individualListingText">{provider["officeHoursNotes"] !== "" ? provider["officeHoursNotes"] : ""}</p>
+            </div>
+        </div>
+        <div className="individualListingAppointmentServices">
+            <div className="listsOfAppointmentsAndServices">
+                <p className="individualListingText">Appointment Types Available</p>
+                {
+                    (individual.appointment_types !== undefined && individual.appointment_types.length > 0) &&
+                    individual.appointment_types.map((appointment) => {
+                        return <p className="individualListingText">{appointment}</p>
+                    })
+                }
+            </div>
+            <div className="listsOfAppointmentsAndServices">
+                <p className="individualListingText">In-Clinic Services</p>
+                {
+                    (individual.services !== undefined && individual.services.length > 0) &&
+                    individual.services.map((service) => {
+                        return <p className="individualListingText">{service}</p>
+                    })
+                }
             </div>
         </div>
         <div className="individualListingProviderKeywords">
@@ -180,16 +245,16 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
         }
         <div className="individualListingProviderActions">
             <div className="listingActionButtons" id="leftBtn">
-                <img className="listingButtons" src={thumbs_down} alt="clicking this button discards a listing" onClick={handleMinimize}/>
-                <p className="individualListingText">Discard</p>
+                <img className="listingButtons" src={thumbs_up} alt="clicking this button keeps a listing" onClick={onPrioritizeClick}/>
+                <p className="individualListingText">Keep</p>
             </div>
             <div className="listingActionButtons">
                 <img className="listingButtons" src={share} alt="clicking this button shares a listing" onClick={handleShareModalOpen}/>
                 <p className="individualListingText">Send</p>
             </div>
             <div className="listingActionButtons" id="rightBtn">
-                <img className="listingButtons" src={thumbs_up} alt="clicking this button keeps a listing" onClick={onPrioritizeClick}/>
-                <p className="individualListingText">Keep</p>
+                <img className="listingButtons" src={thumbs_down} alt="clicking this button discards a listing" onClick={handleMinimize}/>
+                <p className="individualListingText">Discard</p>
             </div>
         </div>
         {
