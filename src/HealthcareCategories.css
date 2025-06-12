@@ -70,6 +70,11 @@
     padding: 0 0 0 0;
 }
 
+.figImg {
+    max-height: 80%;
+    max-width: 80%;
+}
+
 .figImg:focus {
     background-color: rgba(255, 50, 50, 0.5);
     z-index: 2;
@@ -162,6 +167,11 @@
         margin-left: 4%;
         margin-right: 4%;
     }
+
+    .figImg {
+    max-height: 80%;
+    max-width: 80%;
+}
 }
 
 
@@ -305,7 +315,7 @@
     }
 }
 
-@media only screen and (max-width: 450px) and (min-width: 376px) {
+@media only screen and (max-width: 450px) and (min-width: 377px) {
     #banner {
         background-color: white;
         align-self: center;
@@ -377,7 +387,7 @@
     }
 }
 
-@media only screen and (max-width: 375px) and (min-width: 322px) {
+@media only screen and (max-width: 376px) and (min-width: 322px) {
     #banner {
         background-color: white;
         align-self: center;
