@@ -69,6 +69,7 @@
 }
 
 #selectionDisplay {
+    margin-top: 0.5%;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     display: flex;
@@ -349,17 +350,85 @@
     }
 } 
 
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+    .menuGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+        margin-bottom: 3.5%;
+        column-gap: 3%;
+        row-gap: 1.5%;
+    }
+}
+
+@media only screen and (min-width: 725px) and (max-width: 899px) {
+    .menuGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+        margin-bottom: 4%;
+        column-gap: 3%;
+        row-gap: 1.5%;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 724px) {
+    .menuGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+        margin-bottom: 5%;
+        column-gap: 3%;
+        row-gap: 1.5%;
+    }
+
+    .menuRowButton {
+        border: 1px solid black;
+        margin-right: 2%;
+        margin-left: 1%;
+        width: 100px;
+        height: 50px;
+        color: black;
+        background-color: white;
+        text-align: center;
+        font-size: 12px;
+        font-weight: bold;
+        display: inline-block;
+        overflow: hidden;
+    }
+
+     .menuRowSelection {
+        border: 1px solid black;
+        margin-right: 2%;
+        margin-left: 1%;
+        width: 100px;
+        height: 50px;
+        color: black;
+        background-color: white;
+        text-align: center;
+        font-size: 12px;
+        font-weight: bold;
+        display: inline-block;
+        overflow: hidden;
+        justify-self: center;
+        align-self: center;
+    }
+
+    #A2CLogo {
+        max-width: 75px;
+        max-height: 75px;
+    }
+}
+
+
 @media only screen and (max-width: 600px) and (min-width: 401px) {
     .menuRowButton {
         border: 1px solid black;
         margin-right: 2%;
         margin-left: 1%;
-        width: 120px;
-        height: 60px;
+        width: 90px;
+        height: 45px;
         color: black;
         background-color: white;
         text-align: center;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: bold;
         display: inline-block;
         overflow: hidden;
@@ -393,12 +462,12 @@
         border: 1px solid black;
         margin-right: 2%;
         margin-left: 1%;
-        width: 120px;
-        height: 60px;
+        width: 90px;
+        height: 45px;
         color: black;
         background-color: white;
         text-align: center;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: bold;
         display: inline-block;
         overflow: hidden;
@@ -431,9 +500,14 @@
         justify-self: center;
         align-self: center;
     }
+
+    #A2CLogo {
+        max-width: 75px;
+        max-height: 75px;
+    }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (min-width: 336px) and (max-width: 400px) {
     #arrowText {
         margin-top: 16px;
     }
@@ -448,17 +522,25 @@
         justify-self: center;
         align-self: center;
     }
+
+    .menuGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+        margin-bottom: 3%;
+        column-gap: 3%;
+        row-gap: 1.5%;
+    }
     
     .menuRowSelection {
         border: 1px solid black;
         margin-right: 2%;
         margin-left: 1%;
-        width: 120px;
-        height: 60px;
+        width: 80px;
+        height: 40px;
         color: black;
         background-color: white;
         text-align: center;
-        font-size: 12px;
+        font-size: 11px;
         font-weight: bold;
         display: inline-block;
         overflow: hidden;
@@ -470,12 +552,100 @@
         border: 1px solid black;
         margin-right: 2%;
         margin-left: 1%;
-        width: 120px;
-        height: 60px;
+        width: 80px;
+        height: 40px;
         color: black;
         background-color: white;
         text-align: center;
+        font-size: 11px;
+        font-weight: bold;
+        display: inline-block;
+        overflow: hidden;
+    }
+
+    #healthcareExchangePrompt {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
         font-size: 12px;
+    }
+
+    #healthcareExchangeMenuButtons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        justify-self: center;
+        align-self: center;
+    }
+
+    #navheader {
+        font-size: 18px;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    #A2CLogo {
+        max-width: 75px;
+        max-height: 75px;
+    }
+}
+
+
+@media only screen and (max-width: 335px) {
+    #arrowText {
+        margin-top: 16px;
+    }
+    
+    #arrow { 
+        text-align: center;
+        width: 75px;
+        height: 75px;
+        clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+        background-color: #000;
+        color: white;
+        justify-self: center;
+        align-self: center;
+    }
+
+    .menuGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+        margin-bottom: 5%;
+        column-gap: 3%;
+        row-gap: 1.5%;
+    }
+    
+    .menuRowSelection {
+        border: 1px solid black;
+        margin-right: 2%;
+        margin-left: 1%;
+        width: 80px;
+        height: 40px;
+        color: black;
+        background-color: white;
+        text-align: center;
+        font-size: 11px;
+        font-weight: bold;
+        display: inline-block;
+        overflow: hidden;
+        justify-self: center;
+        align-self: center;
+    }
+
+    .menuRowButton {
+        border: 1px solid black;
+        margin-right: 2%;
+        margin-left: 1%;
+        width: 80px;
+        height: 40px;
+        color: black;
+        background-color: white;
+        text-align: center;
+        font-size: 11px;
         font-weight: bold;
         display: inline-block;
         overflow: hidden;
