@@ -33,11 +33,20 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
+    margin-top: 0;
 }
 
-.menuRow {
+.menuGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    margin-bottom: 2.5%;
+    column-gap: 3%;
+    row-gap: 1.5%;
+}
+
+#lastRow {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
     margin-bottom: 1%;
@@ -356,9 +365,9 @@
         overflow: hidden;
     }
 
-    .menuRow {
+    #lastRow {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         flex-direction: row;
         margin-bottom: 3%;

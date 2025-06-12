@@ -4,10 +4,10 @@ import './ProviderListingIndividual.css';
 import ShareListingModal from './ShareListingModal.js';
 import ProviderInfo from './ProviderInfo.js';
 import MinimizedListing from './MinimizedListing.js';
-import Provider_Group from '../src/sprint4/img/provider_group.png';
-import thumbs_up from '../src/sprint4/img/thumbs-up.png';
-import share from '../src/sprint4/img/share.png';
-import thumbs_down from '../src/sprint4/img/thumbs-down.png';
+import Provider_Group from '../src/sprint4/img/Location.png';
+import thumbs_up from '../src/sprint4/img/Keep.png';
+import share from '../src/sprint4/img/Send.png';
+import thumbs_down from '../src/sprint4/img/Discard.png';
 
 function ProviderListingIndividual({provider, handlePrioritize, minimizeController, handleMinimizeInController, handleExpandInController}) {
     const screenshotRef = createRef(null);
@@ -218,21 +218,25 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
         <div className="individualListingAppointmentServices">
             <div className="listsOfAppointmentsAndServices">
                 <p className="individualListingText">Appointment Types Available</p>
+                <ul>
                 {
                     (individual.appointment_types !== undefined && individual.appointment_types.length > 0) &&
                     individual.appointment_types.map((appointment) => {
-                        return <p className="individualListingText">{appointment}</p>
+                        return <li className="individualListingText">{appointment}</li>
                     })
                 }
+                </ul>
             </div>
             <div className="listsOfAppointmentsAndServices">
                 <p className="individualListingText">In-Clinic Services</p>
+                <ul>
                 {
                     (individual.services !== undefined && individual.services.length > 0) &&
                     individual.services.map((service) => {
-                        return <p className="individualListingText">{service}</p>
+                        return <li className="individualListingText">{service}</li>
                     })
                 }
+                </ul>
             </div>
         </div>
         <div className="individualListingProviderKeywords">
@@ -246,15 +250,12 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
         <div className="individualListingProviderActions">
             <div className="listingActionButtons" id="leftBtn">
                 <img className="listingButtons" src={thumbs_up} alt="clicking this button keeps a listing" onClick={onPrioritizeClick}/>
-                <p className="individualListingText">Keep</p>
             </div>
             <div className="listingActionButtons">
                 <img className="listingButtons" src={share} alt="clicking this button shares a listing" onClick={handleShareModalOpen}/>
-                <p className="individualListingText">Send</p>
             </div>
             <div className="listingActionButtons" id="rightBtn">
                 <img className="listingButtons" src={thumbs_down} alt="clicking this button discards a listing" onClick={handleMinimize}/>
-                <p className="individualListingText">Discard</p>
             </div>
         </div>
         {

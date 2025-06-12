@@ -162,27 +162,19 @@ export default function GetStarted() {
             <h1 id="navheader">What type of primary insurance do you have? (pick one)</h1>
         </div>
         <div id="menu">
-            <div className="menuRow">
+            <div className="menuGrid">
                 <button className="menuRowButton" id="noInsuranceBtn" value="Uninsured / Self-Pay" onClick={handleMenuSelection}>No Insurance</button>
                 <button className="menuRowButton" id="mnedicareBtn" value="Medicare" onClick={handleMenuSelection}>Medicare</button>
                 <button className="menuRowButton" id="medAdvantageBtn" value="Medicare Advantage (Medicare Part C) Plans" onClick={handleMenuSelection}>Medicare Advantage, HMO, PPO</button>
-            </div>
-            <div className="menuRow">
                 <button className="menuRowButton" id="medicaidBtn" value="Medicaid" onClick={handleMenuSelection}>Medicaid</button>
                 <button className="menuRowButton" id="medManagedBtn" value="Medicaid Managed Care Plans" onClick={handleMenuSelection}>Medicaid Managed Plans</button>
                 <button className="menuRowButton" id="healthcareExchangeBtn" value="Health Care Exchange (ACA) Plans" onClick={handleMenuSelection}>Healthcare Exchange Plans (ACA)</button>
-            </div>
-            <div className="menuRow">
                 <button className="menuRowButton" id="comInsuranceBtn" value="Commercial Insurance" onClick={handleMenuSelection}>Commercial Insurance</button>
                 <button className="menuRowButton" id="milInsuranceBtn" value="Military Insurance Plans" onClick={handleMenuSelection}>Military Insurance</button>
                 <button className="menuRowButton" id="workCompBtn" value="Workers Comp Insurance" onClick={handleMenuSelection}>Workers Comp</button>
-            </div>
-            <div className="menuRow">
                 <button className="menuRowButton" id="intInsuranceBtn" value="International Insurance Plans" onClick={handleMenuSelection}>International Insurance</button>
                 <button className="menuRowButton" id="behavioralBtn" value="Behavioral Health Insurance Plans" onClick={handleMenuSelection}>Behavioral Health Ins.</button>
                 <button className="menuRowButton" id="dentalInsuranceBtn" value="Dental Insurance Plans" onClick={handleMenuSelection}>Dental Insurance</button>
-            </div>
-            <div className="menuRow" id="lastRow">
                 <button className="menuRowButton" id="visionInsuranceBtn" value="Vision Insurance Plans" onClick={handleMenuSelection}>Vision Insurance</button>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import './ProviderListingIndividual.css';
-import Provider_Individual from '../src/sprint4/img/provider_individual.png';
+import Provider_Individual from '../src/sprint4/img/Provider.png';
 
 export default function ProviderInfo({physician}) {
     const generateNameForProvider = () => {
@@ -24,7 +24,7 @@ export default function ProviderInfo({physician}) {
     }
 
     const physician_name = generateNameForProvider();
-
+    console.log(physician)
     return (
     <div className="individualListingProviderInfo">
         <div id="thumbnailLicenseAndPrimary">
@@ -39,7 +39,7 @@ export default function ProviderInfo({physician}) {
                 <div id="primaryLabels">
                     <p className="individualListingText">Primary Field: {physician["physician"]["primaryFieldOfMedicine"] !== null ? physician["physician"]["primaryFieldOfMedicine"]["name"] : ""}</p>
                     <p className="individualListingText">Secondary Field: {physician["physician"]["secondaryFieldOfMedicine"] !== null ? physician["physician"]["secondaryFieldOfMedicine"]["name"] : ""}</p>
-                    <p className="individualListingText">Specialties: {physician["physician"]["specialtyAreas"]}</p>
+                    <p className="individualListingText">Specialties: {physician["specialtyAreas"]}</p>
                 </div>
             </div>
         </div>
