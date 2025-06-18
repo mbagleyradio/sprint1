@@ -355,16 +355,21 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
             break;
         }
     }
+
+    const countProvidersFromFilteredProviders = () => {
+        
+    }
             
     useEffect( () => {
         fetchFilterResults();
         onProvidersArrayRetrieved(storedProviders);
+        countProvidersFromFilteredProviders();
     }, []);
 
     useEffect( () => {
         collectSpecialtiesFromFetch(storedProviders);
         collectKeywordsFromFetch(storedProviders);
-        setNumPractices(storedProviders.length);
+        countProvidersFromFilteredProviders();
         onProvidersArrayRetrieved(storedProviders);
     }, [storedProviders]);
 
