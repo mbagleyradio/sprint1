@@ -252,7 +252,7 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
             </div>
         </div>
         <div className="individualListingAppointmentServices">
-            <div className="listsOfAppointmentsAndServices">
+            <div id="appointmentTypesAvailableText" className="listsOfAppointmentsAndServices">
                 <p className="individualListingText">Appointment Types Available</p>
                 <ul>
                 {
@@ -263,7 +263,7 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
                 }
                 </ul>
             </div>
-            <div className="listsOfAppointmentsAndServices">
+            <div id="servicesAvailableText" className="listsOfAppointmentsAndServices">
                 <p className="individualListingText">In-Clinic Services</p>
                 <ul>
                 {
