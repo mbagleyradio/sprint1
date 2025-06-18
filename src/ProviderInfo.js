@@ -24,7 +24,6 @@ export default function ProviderInfo({physician}) {
     }
 
     const physician_name = generateNameForProvider();
-    console.log(physician)
     return (
     <div className="individualListingProviderInfo">
         <div id="thumbnailLicenseAndPrimary">

@@ -119,19 +119,54 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
     }
 
     const generateServicesForIndividual = () => {
-        if (provider["services"]["other"] !== "") {
-            return provider["services"]["other"].split(", ");
+        const keysArray = Object.keys(provider["services"]);
+        if (keysArray.length > 1) {
+            // filter "other" out
+            const filteredArray = keysArray.filter((item => item !== "other" && item !== "otherEnabled"));
+            return sanitizeServicesArray(filteredArray);    
         } else {
             return [];
         }
     }
 
+    const sanitizeServicesArray = (services) => {
+        let sanitizedServices = [];
+        for (let i = 0; i < services.length; i++) {
+            // is it an all upper-case string like "MRI"?
+            if (services[i] === services[i].toUpperCase()) {
+                sanitizedServices.push(services[i]);
+            } else if (services[i] === services[i].toLowerCase()) {
+              // is it all lower-case string like "pharmacy" or "colonoscopies"?  
+                sanitizedServices.push(services[i]);
+            } else {
+                // split on upper cases
+                // lowercase everything 
+                // add space between all elements of the split string
+                const splitStringOnUppercase = services[i].split(/(?=[A-Z])/);
+                let lowerCaseAllParts = [];
+                let finalString = "";
+                for (let j = 0; j < splitStringOnUppercase.length; j++) {
+                    lowerCaseAllParts.push(splitStringOnUppercase[j].toLowerCase());
+                    if (j === 0) {
+                        finalString = lowerCaseAllParts[j];
+                    } else {
+                        finalString += ` ${lowerCaseAllParts[j]}`;
+                    }
+                }
+                sanitizedServices.push(finalString);
+            }
+        }
+
+        return sanitizedServices;
+    }
+
     const generateAppointmentsForIndividual = () => {
         let appointments = [];
         // check for "other"
+        /*
         if (provider["appointmentTypes"]["other"] && provider["appointmentTypes"]["other"] !== "") {
             appointments.push(provider["appointmentTypes"]["other"]);
-        }
+        }*/
         // check for "office"
         if (provider["appointmentTypes"]["office"] && provider["appointmentTypes"]["office"] === "on") {
             appointments.push("Office");
@@ -145,9 +180,10 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
             appointments.push("Telemedicine");
         }
         // check for "otherEnabled"
+        /*
         if (provider["appointmentTypes"]["otherEnabled"] && provider["appointmentTypes"]["otherEnabled"] === "on") {
             appointments.push("Other Enabled");
-        }
+        }*/
         // check for "consultations"
         if (provider["appointmentTypes"]["consultations"] && provider["appointmentTypes"]["consultations"] === "on") {
             appointments.push("Consultations");
