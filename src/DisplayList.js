@@ -124,7 +124,7 @@ function DisplayList() {
             {sortedProviders !== null && <div id="listings">
             {
                 sortedProviders.map((practice) => {
-                    return <ProviderListingIndividual provider={practice} handlePrioritize={handlePrioritize} minimizeController={minimizeController} handleMinimizeInController={handleMinimizeInController} handleExpandInController={handleExpandInController}/>
+                    return <ProviderListingIndividual provider={practice} handlePrioritize={handlePrioritize} minimizeController={minimizeController} handleMinimizeInController={handleMinimizeInController} handleExpandInController={handleExpandInController} healthCareCategory={healthCareCategory}/>
                 })
             }   
             </div>}

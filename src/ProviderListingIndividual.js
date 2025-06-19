@@ -9,7 +9,7 @@ import thumbs_up from '../src/sprint4/img/Keep.png';
 import share from '../src/sprint4/img/Send.png';
 import thumbs_down from '../src/sprint4/img/Discard.png';
 
-function ProviderListingIndividual({provider, handlePrioritize, minimizeController, handleMinimizeInController, handleExpandInController}) {
+function ProviderListingIndividual({provider, handlePrioritize, minimizeController, handleMinimizeInController, handleExpandInController, healthCareCategory}) {
     const screenshotRef = createRef(null);
     const [ shareModalOpen, setShareModalOpen ] = useState(false);
     const [image, takeScreenShot] = useScreenshot();
@@ -280,7 +280,7 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
         </div>
         {
             provider["physicians"].map((physician) => {
-                return <ProviderInfo physician={physician}/>
+                return <ProviderInfo physician={physician} healthCareCategory={healthCareCategory}/>
             })
         }
         <div className="individualListingProviderActions">
