@@ -146,14 +146,10 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
 
     const isPrimaryOrSecondaryFieldAccepted = (provider) => {
         for (let i = 0; i < provider["physicians"].length; i++) {
-            if (provider["physicians"][i]["physician"]["primaryFieldOfMedicine"] !== null && provider["physicians"][i]["physician"]["primaryFieldOfMedicine"]["name"] === healthCareCategory) {
-                // check if the physician's primary field matches the healthcare selection.
-                return true;
-            } else if (provider["physicians"][i]["physician"]["secondaryFieldOfMedicine"] !== null && provider["physicians"][i]["physician"]["secondaryFieldOfMedicine"]["name"] === healthCareCategory) {
-                // check if the physician's secondary field matches the healthcare selection.
+            if (comparePrimaryAndSecondaryToSelectedCategory(provider["physicians"][i]["physician"])) {
                 return true;
             } else {
-
+                return false;
             }
         }
 
@@ -357,7 +353,38 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     }
 
     const countProvidersFromFilteredProviders = () => {
+        let finalCount = 0;
+        // First, search each location
+        for (let i = 0; i < storedProviders.length; i++) {
+            // Then, search each provider
+            for (let j = 0; j < storedProviders[i]["physicians"].length; j++) {
+                if (comparePrimaryAndSecondaryToSelectedCategory(storedProviders[i]["physicians"][j]["physician"])) {
+                    finalCount += 1;
+                }
+            }
+        }
+
+        setNumPractices((prev) => finalCount);
+    }
+
+    const comparePrimaryAndSecondaryToSelectedCategory = (physician) => {    
+        // check primary field
+        if (physician["primaryFieldOfMedicine"] !== null) {
+            if (physician["primaryFieldOfMedicine"]["name"] === healthCareCategory) {
+                // primary field matches healthcare category
+                return true;
+            }
+        }
+        // check secondary field
+        if (physician["secondaryFieldOfMedicine"] !== null) {
+            if (physician["secondaryFieldOfMedicine"]["name"] === healthCareCategory) {
+                // secondary field matches healthcare category
+                return true;
+            }
+        }
         
+        // if (primary and secondary are both null) OR (neither primary or secondary matched healthcare category) then this code is reached
+        return false;
     }
             
     useEffect( () => {
