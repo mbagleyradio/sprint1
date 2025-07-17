@@ -15,22 +15,16 @@ function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCa
 
     const handleFilterSubmit = (selection) => {
         // rewrite ... it currently nukes the filter selection IF you select none
-        if (selection.includes("None") === true) {
-            setIsFiltered(false);
+        if (!isFiltered && isFilterClicked) {
+            setIsFiltered(true);
             setShowFilterMenu(false);
         }
-        else {
-            if (!isFiltered && isFilterClicked) {
-                setIsFiltered(true);
-                setShowFilterMenu(false);
-            }
 
-            setFilterSelection(selection);
-            addFilters({
-                id: null,
-                filterName: selection
-            });
-        }
+        setFilterSelection(selection);
+        addFilters({
+            id: null,
+            filterName: selection
+        });
     }
 
     const handleFigureClicked = (selection) => {
