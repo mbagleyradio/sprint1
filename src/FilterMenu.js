@@ -16,27 +16,27 @@ function FilterMenu( { filterType, onFilterSubmit, specialtyAreas, keywords } ) 
         switch (areaBtnSelection) {
             case "Area: None":
                 setUserSelection(areaBtnSelection);
-                setMapBtnSelectMsg(null);
+                setMapBtnSelectMsg("None selected");
             break;
 
             case "Area: Key West":
                 setUserSelection(areaBtnSelection);
-                setMapBtnSelectMsg(null);
+                setMapBtnSelectMsg("Key West selected");
             break;
 
             case "Area: Marathon":
                 setUserSelection(areaBtnSelection);
-                setMapBtnSelectMsg(null);
+                setMapBtnSelectMsg("Marathon selected");
             break;
 
             case "Area: Tavernier":
                 setUserSelection(areaBtnSelection);
-                setMapBtnSelectMsg(null);
+                setMapBtnSelectMsg("Tavernier selected");
             break;
 
             case "Area: Key Largo":
                 setUserSelection(areaBtnSelection);
-                setMapBtnSelectMsg(null);
+                setMapBtnSelectMsg("Key Largo selected");
             break;
 
             case "Area: Lower Keys":
@@ -62,7 +62,8 @@ function FilterMenu( { filterType, onFilterSubmit, specialtyAreas, keywords } ) 
 
     switch (filterType) {
         case "Specialty":
-            return (
+            if (specialtyAreas.length > 0) {
+                return (
                 <div id="filterSpecialtyWindow">
                     <p className="filterSpecialtyText">Select One</p>
                     {
@@ -83,6 +84,12 @@ function FilterMenu( { filterType, onFilterSubmit, specialtyAreas, keywords } ) 
                     </div>
                 </div>
             );
+            } else {
+                return (
+                <div id="filterSpecialtyWindow">
+                    <p className="filterSpecialtyText">There are no specialty areas available for this healthcare category</p>
+                </div> )
+            }
         break;
 
         case "Appointment":
@@ -200,14 +207,14 @@ function FilterMenu( { filterType, onFilterSubmit, specialtyAreas, keywords } ) 
         } else {
             return (
                 <div id="filterSpecialtyWindow">
-                    <p className="filterSpecialtyText">Loading...</p>
+                    <p className="filterSpecialtyText">There are no keywords available for this healthcare category</p>
                 </div>
             )
         }
         break;
 
         default:
-            return (<>Default</>);
+            return (<></>);
         break;
     }
 }
