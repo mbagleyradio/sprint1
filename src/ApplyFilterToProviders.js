@@ -1,6 +1,8 @@
 /*
-* 
-* 
+* NEEDS TO FIX:
+*  filters and num of providers filtered does not reset on undo button
+*  In GetStarted, the arrow cuts off the words on You Selected and the spacing on No Insurance is off. 
+*  In DisplayList, When I select a Specialty and go to "Review List", the text size is oversized.
 */
 
 import './ApplyFilterToProviders.css';
@@ -273,7 +275,7 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     const isTimeAccepted = (provider, filter) => {
         // convert the user open/close times to numbers
         const userTime = convertUITimeToDBTime(filter);
-        let providerTime = undefined;
+        let providerTime = null;
 
         // convert the provider times to numbers
         if (provider["officeHours"]["monday"].length === 2) {
@@ -290,15 +292,16 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
             providerTime = convertStringToFloat(provider["officeHours"]["saturday"]);
         } else if (provider["officeHours"]["sunday"].length === 2) {
             providerTime = convertStringToFloat(provider["officeHours"]["sunday"]);
-        }
-
-        // if the user open is greater or equal than provider open, and the user close is greater or equal than the provider close, return true
-        if (userTime.open >= providerTime.open && userTime.closed <= providerTime.closed) {
-            return true;
         } else {
             return false;
         }
 
+        if (userTime.open >= providerTime.open && userTime.closed <= providerTime.closed) {
+            console.log(`userTime: ${userTime.closed} is earlier than providerTime: ${providerTime.closed}`);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     const convertStringToFloat = (arrayOfStrings) => {
