@@ -1,6 +1,7 @@
 /*
 * NEEDS TO FIX:
-*  filters and num of providers filtered does not reset on undo button
+*  filters and num of providers filtered does not reset on undo button ... it is adding filters fine, but not removing them
+*       collectedFilters changes aren't reaching this component
 *  In GetStarted, the arrow cuts off the words on You Selected and the spacing on No Insurance is off. 
 *  In DisplayList, When I select a Specialty and go to "Review List", the text size is oversized.
 */
@@ -74,7 +75,6 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
 
     const filterPracticesFromFetch = (providers) => {
         let filteredProviders = [];
-        
         for (let providerElement = 0; providerElement < providers.length; providerElement++) {
             if (isInsuranceAccepted(providers[providerElement]) === true && isPrimaryOrSecondaryFieldAccepted(providers[providerElement]) === true) {
                 // insurance is accepted and the provider's primary or secondary field matches what we are sending, then filter the other selections
@@ -297,7 +297,6 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
         }
 
         if (userTime.open >= providerTime.open && userTime.closed <= providerTime.closed) {
-            console.log(`userTime: ${userTime.closed} is earlier than providerTime: ${providerTime.closed}`);
             return true;
         } else {
             return false;

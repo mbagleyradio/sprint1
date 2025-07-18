@@ -26,7 +26,7 @@ function ReviewSelection() {
     }
 
     const handleFilterRemoval = (selection) => {        
-        
+
         if (selection === submittedFilters.current[0].filterName) {
             // if the first menu selection gets undone, wipe the whole query
             submittedFilters.current = submittedFilters.current.filter(elementOfFiltersArray => elementOfFiltersArray.filterName === "");
@@ -81,7 +81,7 @@ function ReviewSelection() {
         });
     }
 
-    
+    console.log(submittedFilters.current);
 
     return (
         <div id="reviewSelectionScreen">
