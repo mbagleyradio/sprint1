@@ -1,11 +1,3 @@
-/*
-* PSEUDO FOR WHEN NONE IS SELECTED
-*   after I click "None" and then click the green "SELECT" button, I want:
-*   no filter type (Area, Keyword, Time, etc) to appear selected
-*   no filtering of the number of providers
-*   no additional display of the filter health care selection compomnent (don't re-render it to stack another menu) 
-*/
-
 import { useState } from 'react';
 import ApplyFilterToProviders from './ApplyFilterToProviders.js';
 import FilterMenu from './FilterMenu.js';
@@ -21,18 +13,23 @@ function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCa
     const [ specialtyAreas, setSpecialtyAreas ] = useState([]);
     const [ keywords, setKeywords ] = useState([]);
 
-    const handleFilterSubmit = (selection) => {
-        // rewrite ... it currently nukes the filter selection IF you select none
-        if (!isFiltered && isFilterClicked) {
-            setIsFiltered(true);
-            setShowFilterMenu(false);
-        }
+    const handleFilterSubmit = (selection) => {    
+        if (selection.includes("None") !== true) {
+            if (!isFiltered && isFilterClicked) {
+                setIsFiltered(true);
+                setShowFilterMenu(false);
+            }
 
-        setFilterSelection(selection);
-        addFilters({
+            setFilterSelection(selection);
+            addFilters({
             id: null,
             filterName: selection
-        });
+            });
+        } else {
+            if (!isFiltered && isFilterClicked) {
+                setIsFilterClicked(false);
+            }
+        }
     }
 
     const handleFigureClicked = (selection) => {
