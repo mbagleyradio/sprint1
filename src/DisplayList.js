@@ -114,11 +114,11 @@ function DisplayList() {
                     <p className="reviewSelectionText">TYPE: {insuranceType}</p>
                     <p className="reviewSelectionText">NAME: {insuranceName}</p>
                     <p className="reviewSelectionText">CATEGORY: {healthCareCategory}</p>
-                    {filterFlags.appointment ? <p className="displaySelectionText">APPOINTMENT TYPE: {filterStrings.appointment}</p> : <></>}
-                    {filterFlags.area ? <p className="displaySelectionText">AREA: {filterStrings.area}</p> : <></>}
-                    {filterFlags.time ? <p className="displaySelectionText">TIME: {filterStrings.time}</p> : <></>}
-                    {filterFlags.specialty ? <p className="displaySelectionText">SPECIALTY: {filterStrings.specialty}</p> : <></>}
-                    {filterFlags.keyword ? <p className="displaySelectionText">KEYWORD: {filterStrings.keyword}</p> : <></>}
+                    {filterFlags.appointment ? <p className="reviewSelectionText">APPOINTMENT TYPE: {filterStrings.appointment}</p> : <></>}
+                    {filterFlags.area ? <p className="reviewSelectionText">AREA: {filterStrings.area}</p> : <></>}
+                    {filterFlags.time ? <p className="reviewSelectionText">TIME: {filterStrings.time}</p> : <></>}
+                    {filterFlags.specialty ? <p className="reviewSelectionText">SPECIALTY: {filterStrings.specialty}</p> : <></>}
+                    {filterFlags.keyword ? <p className="reviewSelectionText">KEYWORD: {filterStrings.keyword}</p> : <></>}
                 </div>
             </div>
             {sortedProviders !== null && <div id="listings">

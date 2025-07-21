@@ -3,7 +3,7 @@
 import './ReviewSelection.css';
 import FilterHealthCareSelection from './FilterHealthCareSelection.js';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import A2CLogo from './A2CLogo_150x150.png';
 
 function ReviewSelection() {
@@ -80,8 +80,6 @@ function ReviewSelection() {
             }
         });
     }
-
-    console.log(submittedFilters.current);
 
     return (
         <div id="reviewSelectionScreen">

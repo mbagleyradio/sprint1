@@ -358,6 +358,22 @@
         column-gap: 3%;
         row-gap: 1.5%;
     }
+
+    #arrow { 
+        text-align: center;
+        width: 100px;
+        height: 100px;
+        clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+        background-color: #000;
+        color: white;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #arrowText {
+        margin-top: 40px;
+        font-size: 14px;
+    }
 }
 
 @media only screen and (min-width: 725px) and (max-width: 899px) {
@@ -368,9 +384,25 @@
         column-gap: 3%;
         row-gap: 1.5%;
     }
+
+    #arrow { 
+        text-align: center;
+        width: 100px;
+        height: 100px;
+        clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+        background-color: #000;
+        color: white;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #arrowText {
+        margin-top: 40px;
+        font-size: 14px;
+    }
 }
 
-@media only screen and (min-width: 601px) and (max-width: 724px) {
+@media only screen and (min-width: 603px) and (max-width: 724px) {
     .menuGrid {
         display: grid;
         grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
@@ -415,10 +447,26 @@
         max-width: 75px;
         max-height: 75px;
     }
+
+    #arrow { 
+        text-align: center;
+        width: 75px;
+        height: 75px;
+        clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+        background-color: #000;
+        color: white;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #arrowText {
+        margin-top: 16px;
+        font-size: 14px;
+    }
 }
 
 
-@media only screen and (max-width: 600px) and (min-width: 401px) {
+@media only screen and (max-width: 602px) and (min-width: 401px) {
     .menuRowButton {
         border: 1px solid black;
         margin-right: 2%;
@@ -456,6 +504,7 @@
     
     #arrowText {
         margin-top: 16px;
+        font-size: 14px;
     }
 
     .menuRowSelection {
@@ -508,10 +557,6 @@
 }
 
 @media only screen and (min-width: 336px) and (max-width: 400px) {
-    #arrowText {
-        margin-top: 16px;
-    }
-    
     #arrow { 
         text-align: center;
         width: 75px;
@@ -521,6 +566,11 @@
         color: white;
         justify-self: center;
         align-self: center;
+    }
+    
+    #arrowText {
+        margin-top: 16px;
+        font-size: 14px;
     }
 
     .menuGrid {
@@ -598,6 +648,7 @@
 @media only screen and (max-width: 335px) {
     #arrowText {
         margin-top: 16px;
+        font-size: 14px;
     }
     
     #arrow { 
