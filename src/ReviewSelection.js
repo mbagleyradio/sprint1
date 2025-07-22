@@ -7,6 +7,7 @@ import { useRef, useEffect } from 'react';
 import A2CLogo from './A2CLogo_150x150.png';
 
 function ReviewSelection() {
+    // rewrite this with state hooks
     const submittedFilters = useRef([]); 
     let uniqueFilterID = useRef(0);
     let providers = [];
@@ -17,6 +18,7 @@ function ReviewSelection() {
     const navigate = useNavigate();
 
     const handleFilterSubmission = (submission) => {
+        // rewrite this with state hooks
         submittedFilters.current.push({
             id: uniqueFilterID,
             filterName: submission.filterName
@@ -26,7 +28,7 @@ function ReviewSelection() {
     }
 
     const handleFilterRemoval = (selection) => {        
-
+        // rewrite this with setState
         if (selection === submittedFilters.current[0].filterName) {
             // if the first menu selection gets undone, wipe the whole query
             submittedFilters.current = submittedFilters.current.filter(elementOfFiltersArray => elementOfFiltersArray.filterName === "");
@@ -40,6 +42,7 @@ function ReviewSelection() {
     }
 
     const handleReviewListClick = () => {
+        // rewrite this with state hooks
         const paramsForList = {
             insuranceType: listingToReview.insuranceType,
             insuranceName: listingToReview.insuranceName,
@@ -81,6 +84,7 @@ function ReviewSelection() {
         });
     }
 
+    // there is a .current in the props of FilterHealthCareSelection here
     return (
         <div id="reviewSelectionScreen">
             <div className="reviewSelectionBanner">

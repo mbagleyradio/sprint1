@@ -2,7 +2,6 @@
 * NEEDS TO FIX:
 *  filters and num of providers filtered does not reset on undo button ... it is adding filters fine, but not removing them
 *       collectedFilters is changing in its main component reviewSelection, but those changes aren't reaching this component
-*  In GetStarted, the arrow cuts off the words on You Selected and the spacing on No Insurance is off. 
 */
 
 import './ApplyFilterToProviders.css';
