@@ -23,7 +23,7 @@ function App() {
       <Route path="review-listing" element={ <ReviewSelection/> }></Route>
       <Route path="display-list" element={ <DisplayList/> }></Route>
     </>
-    )
+    ), {basename: "/progress"}
   );
   
   return (
