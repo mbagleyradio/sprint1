@@ -7,6 +7,7 @@ import ModalOnSubmit from './ModalOnSubmit.js';
 import HealthcareCategories from './HealthcareCategories.js';
 import ReviewSelection from './ReviewSelection.js';
 import DisplayList from './DisplayList.js';
+import DisplayListAll from './DisplayListAll.js';
 import DemoNewGS from './DemoNewGS.js';
 import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ function App() {
       <Route path="healthcare-categories" element={ <HealthcareCategories/> }></Route>
       <Route path="review-listing" element={ <ReviewSelection/> }></Route>
       <Route path="display-list" element={ <DisplayList/> }></Route>
+      <Route path="display-list-all" element={ <DisplayListAll/> }></Route>
     </>
     ), {basename: "/progress"}
   );

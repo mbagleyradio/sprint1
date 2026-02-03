@@ -1,0 +1,49 @@
+#displayListingScreen {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#displaySelectionLogo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 150px;
+    max-height: 150px;
+}
+
+#displaySelectionWhiteBanner {
+    width: 75%;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    justify-self: center;
+}
+
+#topOfListing {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.displaySelectionText {
+    font-size: 1.5rem;
+}
+
+#listings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2%;
+}
+
+.listingDisplay {
+    max-height: 40%;
+    max-width: 40%;
+    margin: 1%;
+}

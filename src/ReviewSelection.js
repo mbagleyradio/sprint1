@@ -3,14 +3,15 @@
 import './ReviewSelection.css';
 import FilterHealthCareSelection from './FilterHealthCareSelection.js';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import A2CLogo from './A2CLogo_150x150.png';
 
 function ReviewSelection() {
     // rewrite this with state hooks
-    const submittedFilters = useRef([]); 
-    let uniqueFilterID = useRef(0);
-    let providers = [];
+    const submittedFilters = useRef([]);
+    const uniqueFilterID = useRef(0);
+    // persist providers across renders so UI toggles don't clear the fetched list
+    const providersRef = useRef([]);
 
     // acquiring data from previous page (insurance type & insurance name), and sanitizing that data for display on this page
     const location = useLocation(); 
@@ -49,8 +50,48 @@ function ReviewSelection() {
             healthCareCategory: listingToReview.healthCareCategory,
             filters: submittedFilters.current,
             numFilters: uniqueFilterID.current,
-            providers: [...providers]
+            providers: [...providersRef.current]
             
+        }
+
+        navigate("../display-list-all", {
+            state: paramsForList
+        })
+    }
+
+    // info popups state
+    const [showReviewInfo, setShowReviewInfo] = useState(false);
+    const [showShowAllInfo, setShowShowAllInfo] = useState(false);
+
+    const toggleReviewInfo = () => setShowReviewInfo(prev => !prev);
+    const toggleShowAllInfo = () => setShowShowAllInfo(prev => !prev);
+
+    // refs for the popup/button wrappers so clicks outside can close the popups
+    const reviewWrapRef = useRef(null);
+    const showAllWrapRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (showReviewInfo && reviewWrapRef.current && !reviewWrapRef.current.contains(e.target)) {
+                setShowReviewInfo(false);
+            }
+            if (showShowAllInfo && showAllWrapRef.current && !showAllWrapRef.current.contains(e.target)) {
+                setShowShowAllInfo(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [showReviewInfo, showShowAllInfo]);
+
+    const handleShowAllProviders = () => {
+        const paramsForList = {
+            insuranceType: listingToReview.insuranceType,
+            insuranceName: listingToReview.insuranceName,
+            healthCareCategory: listingToReview.healthCareCategory,
+            filters: [],
+            numFilters: 0,
+            providers: [...providersRef.current]
         }
 
         navigate("../display-list", {
@@ -59,7 +100,7 @@ function ReviewSelection() {
     }
 
     const onProvidersArrayRetrieved = (data) => {
-        providers = [...data].sort((a, b) => {
+        const sorted = [...data].sort((a, b) => {
             let nameA = a["name"];
             let nameB = b["name"];
             
@@ -82,6 +123,7 @@ function ReviewSelection() {
                 return 0;
             }
         });
+        providersRef.current = sorted;
     }
 
     // there is a .current in the props of FilterHealthCareSelection here
@@ -99,7 +141,21 @@ function ReviewSelection() {
                 <FilterHealthCareSelection insuranceType={listingToReview.insuranceType} insuranceName={listingToReview.insuranceName} healthCareCategory={listingToReview.healthCareCategory} addFilters={handleFilterSubmission} collectedFilters={submittedFilters.current} removeFilters={handleFilterRemoval} onProvidersArrayRetrieved={onProvidersArrayRetrieved}/>
             </div>
             <div id="reviewListBtn">
-                <button type="button" id="reviewSelectionBtn" onClick={handleReviewListClick}>REVIEW LIST</button>
+                <div className="btnWrap" ref={reviewWrapRef}>
+                    <div className="btnRow">
+                        <button type="button" id="reviewSelectionInfoBtn" className="infoBtn" onClick={toggleReviewInfo}>?</button>
+                        <button type="button" id="reviewSelectionBtn" onClick={handleReviewListClick}>REVIEW LIST</button>
+                    </div>
+                    {showReviewInfo && <div id="reviewSelectionInfoPopup" className="infoPopup">Shows a detailed list of providers based on your selection.</div>}
+                </div>
+
+                <div className="btnWrap" ref={showAllWrapRef}>
+                    <div className="btnRow">
+                        <button type="button" id="showAllProvidersInfoBtn" className="infoBtn" onClick={toggleShowAllInfo}>?</button>
+                        <button type="button" id="showAllProvidersBtn" onClick={handleShowAllProviders}>Show All Providers</button>
+                    </div>
+                    {showShowAllInfo && <div id="showAllProvidersInfoPopup" className="infoPopup">Shows all providers regardless of insurance.</div>}
+                </div>
             </div>
         </div>
         
