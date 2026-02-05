@@ -134,7 +134,7 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
             return true;
         } else {
             for (let i = 0; i < provider["acceptedInsurances"].length; i++) {
-                if (provider["acceptedInsurances"][i]["insurance"]["primaryName"] === insuranceName && provider["acceptedInsurances"][i]["insurance"]["subName"] === insuranceType) {
+                if (provider["acceptedInsurances"][i]["insurance"]["primaryName"] === insuranceType && provider["acceptedInsurances"][i]["insurance"]["subName"] === insuranceName) {
                     return true;
                 } 
             }
@@ -382,7 +382,6 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
                 return true;
             }
         }
-        
         // if (primary and secondary are both null) OR (neither primary or secondary matched healthcare category) then this code is reached
         return false;
     }
