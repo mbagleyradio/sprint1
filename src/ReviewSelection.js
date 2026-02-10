@@ -12,6 +12,8 @@ function ReviewSelection() {
     const uniqueFilterID = useRef(0);
     // persist providers across renders so UI toggles don't clear the fetched list
     const providersRef = useRef([]);
+    // persist providers with empty insurance for "Show All" option
+    const providersShowAllRef = useRef([]);
 
     // acquiring data from previous page (insurance type & insurance name), and sanitizing that data for display on this page
     const location = useLocation(); 
@@ -91,7 +93,7 @@ function ReviewSelection() {
             healthCareCategory: listingToReview.healthCareCategory,
             filters: [],
             numFilters: 0,
-            providers: [...providersRef.current]
+            providers: [...providersShowAllRef.current]
         }
 
         navigate("../display-list", {
@@ -126,6 +128,33 @@ function ReviewSelection() {
         providersRef.current = sorted;
     }
 
+    const onProvidersArrayRetrievedForShowAll = (data) => {
+        const sorted = [...data].sort((a, b) => {
+            let nameA = a["name"];
+            let nameB = b["name"];
+            
+            // condition - nameA and nameB are null
+            if (nameA === null && nameB === null) {
+                return 0;
+            } else if (nameA === null) {
+            // condition - only nameA is null, but nameB exists
+                return -1;
+            } else if (nameB === null) {
+            // condition - only nameB is null, but nameA exists
+                return 1;
+            } else if (nameA > nameB) {
+            // condition - nameA is later alphabetically than nameB
+                return 1;
+            } else if (nameA <  nameB) {
+            // condition - nameA is earlier alphabetically than nameB
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+        providersShowAllRef.current = sorted;
+    }
+
     // there is a .current in the props of FilterHealthCareSelection here
     return (
         <div id="reviewSelectionScreen">
@@ -138,15 +167,15 @@ function ReviewSelection() {
                 </div>
             </div>
             <div id="filterHealthCareScreen">
-                <FilterHealthCareSelection insuranceType={listingToReview.insuranceType} insuranceName={listingToReview.insuranceName} healthCareCategory={listingToReview.healthCareCategory} addFilters={handleFilterSubmission} collectedFilters={submittedFilters.current} removeFilters={handleFilterRemoval} onProvidersArrayRetrieved={onProvidersArrayRetrieved}/>
+                <FilterHealthCareSelection insuranceType={listingToReview.insuranceType} insuranceName={listingToReview.insuranceName} healthCareCategory={listingToReview.healthCareCategory} addFilters={handleFilterSubmission} collectedFilters={submittedFilters.current} removeFilters={handleFilterRemoval} onProvidersArrayRetrieved={onProvidersArrayRetrieved} onProvidersArrayRetrievedForShowAll={onProvidersArrayRetrievedForShowAll}/>
             </div>
             <div id="reviewListBtn">
                 <div className="btnWrap" ref={reviewWrapRef}>
                     <div className="btnRow">
                         <button type="button" id="reviewSelectionInfoBtn" className="infoBtn" onClick={toggleReviewInfo}>?</button>
-                        <button type="button" id="reviewSelectionBtn" onClick={handleReviewListClick}>REVIEW LIST</button>
+                        <button type="button" id="reviewSelectionBtn" onClick={handleReviewListClick}>Review List</button>
                     </div>
-                    {showReviewInfo && <div id="reviewSelectionInfoPopup" className="infoPopup">Shows a detailed list of providers based on your selection.</div>}
+                    {showReviewInfo && <div id="reviewSelectionInfoPopup" className="infoPopup">Shows a detailed list of providers that accept your insurance.</div>}
                 </div>
 
                 <div className="btnWrap" ref={showAllWrapRef}>
@@ -154,7 +183,7 @@ function ReviewSelection() {
                         <button type="button" id="showAllProvidersInfoBtn" className="infoBtn" onClick={toggleShowAllInfo}>?</button>
                         <button type="button" id="showAllProvidersBtn" onClick={handleShowAllProviders}>Show All Providers</button>
                     </div>
-                    {showShowAllInfo && <div id="showAllProvidersInfoPopup" className="infoPopup">Shows all providers regardless of insurance.</div>}
+                    {showShowAllInfo && <div id="showAllProvidersInfoPopup" className="infoPopup">Shows all providers that may accept your insurance.</div>}
                 </div>
             </div>
         </div>

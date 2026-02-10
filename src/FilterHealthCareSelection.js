@@ -4,7 +4,7 @@ import FilterMenu from './FilterMenu.js';
 import MenuFigure from './MenuFigure.js';
 import './FilterHealthCareSelection.css';
 
-function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCategory, addFilters, collectedFilters, removeFilters, onProvidersArrayRetrieved } ) {
+function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCategory, addFilters, collectedFilters, removeFilters, onProvidersArrayRetrieved, onProvidersArrayRetrievedForShowAll } ) {
     const [ isFiltered, setIsFiltered ] = useState(false);
     const [ filterType, setFilterType ] = useState(undefined);
     const [ isFilterClicked, setIsFilterClicked ] = useState(false);
@@ -77,13 +77,13 @@ function FilterHealthCareSelection( { insuranceType, insuranceName, healthCareCa
     return(
         <>
             <div id="filterHealthCareSection">
-                <ApplyFilterToProviders isFiltered={isFiltered} insuranceName={insuranceName} insuranceType={insuranceType} healthCareCategory={healthCareCategory} collectedFilters={collectedFilters} onProvidersArrayRetrieved={onProvidersArrayRetrieved} setSpecialtyAreas={setSpecialtyAreas} setKeywords={setKeywords}/>
+                <ApplyFilterToProviders isFiltered={isFiltered} insuranceName={insuranceName} insuranceType={insuranceType} healthCareCategory={healthCareCategory} collectedFilters={collectedFilters} onProvidersArrayRetrieved={onProvidersArrayRetrieved} onProvidersArrayRetrievedForShowAll={onProvidersArrayRetrievedForShowAll} setSpecialtyAreas={setSpecialtyAreas} setKeywords={setKeywords}/>
                 <MenuFigure handleOnClick={handleFigureClicked} filterSelection={filterSelection} handleOnUndo={handleUndoClicked}/>
                 <div id="menuSelect">
                     {isFilterClicked ? showFilterMenu && <FilterMenu filterType={filterType} onFilterSubmit={handleFilterSubmit} specialtyAreas={specialtyAreas} keywords={keywords}/> : <></>}
                 </div>
                 <div>
-                    {isFiltered ? <FilterHealthCareSelection insuranceType={insuranceType} insuranceName={insuranceName} healthCareCategory={healthCareCategory} addFilters={addFilters} collectedFilters={collectedFilters} removeFilters={removeFilters} onProvidersArrayRetrieved={onProvidersArrayRetrieved}/> : <></>}
+                    {isFiltered ? <FilterHealthCareSelection insuranceType={insuranceType} insuranceName={insuranceName} healthCareCategory={healthCareCategory} addFilters={addFilters} collectedFilters={collectedFilters} removeFilters={removeFilters} onProvidersArrayRetrieved={onProvidersArrayRetrieved} onProvidersArrayRetrievedForShowAll={onProvidersArrayRetrievedForShowAll}/> : <></>}
                 </div>
             </div>
         </>

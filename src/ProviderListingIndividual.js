@@ -9,7 +9,7 @@ import thumbs_up from '../src/sprint4/img/Keep.png';
 import share from '../src/sprint4/img/Send.png';
 import thumbs_down from '../src/sprint4/img/Discard.png';
 
-function ProviderListingIndividual({provider, handlePrioritize, minimizeController, handleMinimizeInController, handleExpandInController, healthCareCategory}) {
+function ProviderListingIndividual({provider, handlePrioritize, minimizeController, handleMinimizeInController, handleExpandInController, healthCareCategory, isShowAll, searchedInsuranceType, searchedInsuranceName}) {
     const screenshotRef = createRef(null);
     const [ shareModalOpen, setShareModalOpen ] = useState(false);
     const [image, takeScreenShot] = useScreenshot();
@@ -197,6 +197,123 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
 
     }
 
+    const getInsuranceVerificationPhoneNumber = () => {
+        // Only show for "Show All Providers" view
+        if (!isShowAll) {
+            return null;
+        }
+
+        // Check if acceptedInsurances exists and is an array
+        if (!provider["acceptedInsurances"] || !Array.isArray(provider["acceptedInsurances"]) || provider["acceptedInsurances"].length === 0) {
+            return null;
+        }
+
+        // Only show verification if the searched insurance type matches a "We generally accept" entry
+        for (let i = 0; i < provider["acceptedInsurances"].length; i++) {
+            const insurance = provider["acceptedInsurances"][i];
+            
+            // Check insurance object exists
+            if (!insurance || !insurance["insurance"]) {
+                continue;
+            }
+            
+            const primaryName = insurance["insurance"]["primaryName"];
+            const subName = insurance["insurance"]["subName"];
+            
+            // Check if this entry matches the searched insurance type AND has a "We generally accept" subName
+            if (primaryName === searchedInsuranceType && subName && typeof subName === "string" && subName.startsWith("We generally accept")) {
+                // Return the insuranceVerification phone number from the provider level if it exists
+                const phoneNumber = provider["insuranceVerification"];
+                if (phoneNumber && phoneNumber !== "") {
+                    return phoneNumber;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    const getEmptyInsuranceVerificationPhoneNumber = () => {
+        // Only show for "Show All Providers" view
+        if (!isShowAll) {
+            return null;
+        }
+
+        // Check if acceptedInsurances is empty
+        if (!provider["acceptedInsurances"] || !Array.isArray(provider["acceptedInsurances"]) || provider["acceptedInsurances"].length !== 0) {
+            return null;
+        }
+
+        // Provider has empty acceptedInsurances, so use insuranceVerification or fallback to phoneNumber
+        const insuranceVerification = provider["insuranceVerification"];
+        const phoneNumber = provider["phoneNumber"];
+        
+        // If insuranceVerification exists and is not null/empty, use it
+        if (insuranceVerification && insuranceVerification !== "" && insuranceVerification !== "null") {
+            return insuranceVerification;
+        }
+        
+        // Otherwise fallback to phoneNumber if it exists and is not empty
+        if (phoneNumber && phoneNumber !== "") {
+            return phoneNumber;
+        }
+
+        return null;
+    }
+
+    const hasExactInsuranceMatch = () => {
+        // Show for both "Show All Providers" and "Review List" views
+        if (!isShowAll) {
+            // For REVIEW LIST, show verified text
+            if (!provider["acceptedInsurances"] || !Array.isArray(provider["acceptedInsurances"]) || provider["acceptedInsurances"].length === 0) {
+                return false;
+            }
+
+            // Look for exact match (both primaryName AND subName match exactly)
+            for (let i = 0; i < provider["acceptedInsurances"].length; i++) {
+                const insurance = provider["acceptedInsurances"][i];
+                
+                if (!insurance || !insurance["insurance"]) {
+                    continue;
+                }
+                
+                const primaryName = insurance["insurance"]["primaryName"];
+                const subName = insurance["insurance"]["subName"];
+                
+                // Check if both primaryName and subName match exactly
+                if (primaryName === searchedInsuranceType && subName === searchedInsuranceName) {
+                    return true;
+                }
+            }
+
+            return false;
+        } else {
+            // For SHOW ALL, also show verified text for exact matches
+            if (!provider["acceptedInsurances"] || !Array.isArray(provider["acceptedInsurances"]) || provider["acceptedInsurances"].length === 0) {
+                return false;
+            }
+
+            // Look for exact match (both primaryName AND subName match exactly)
+            for (let i = 0; i < provider["acceptedInsurances"].length; i++) {
+                const insurance = provider["acceptedInsurances"][i];
+                
+                if (!insurance || !insurance["insurance"]) {
+                    continue;
+                }
+                
+                const primaryName = insurance["insurance"]["primaryName"];
+                const subName = insurance["insurance"]["subName"];
+                
+                // Check if both primaryName and subName match exactly (and NOT a "We generally accept" entry)
+                if (primaryName === searchedInsuranceType && subName === searchedInsuranceName) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
+
     let individual = {
         header: provider["name"],
         location_name: provider["name"],
@@ -220,6 +337,9 @@ function ProviderListingIndividual({provider, handlePrioritize, minimizeControll
     <div className="providerListingIndividual" ref={screenshotRef}>
         <div className="individualListingHeader">
             <p className="individualListingText">{individual.location_name}</p>
+            {hasExactInsuranceMatch() ? <p className="individualListingText">Insurance Acceptance Verified!</p> : <></>}
+            {getInsuranceVerificationPhoneNumber() !== null ? <p className="individualListingText">{`Call ${getInsuranceVerificationPhoneNumber()} to Verify Insurance`}</p> : <></>}
+            {getEmptyInsuranceVerificationPhoneNumber() !== null ? <p className="individualListingText">{`Call ${getEmptyInsuranceVerificationPhoneNumber()} to Verify Insurance`}</p> : <></>}
         </div>
         <div className="providerListingIMG_Name_Hours_Header">
             <div className="providerListingHeaderDivs">

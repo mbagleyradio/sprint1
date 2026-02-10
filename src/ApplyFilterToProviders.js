@@ -7,8 +7,9 @@
 import './ApplyFilterToProviders.css';
 import { useState, useEffect } from 'react';
 
-function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, healthCareCategory, collectedFilters, onProvidersArrayRetrieved, setSpecialtyAreas, setKeywords } ) {
+function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, healthCareCategory, collectedFilters, onProvidersArrayRetrieved, onProvidersArrayRetrievedForShowAll, setSpecialtyAreas, setKeywords } ) {
     const [ storedProviders, setStoredProviders ] = useState([]);
+    const [ storedProvidersShowAll, setStoredProvidersShowAll ] = useState([]);
     const [ numPractices, setNumPractices ] = useState(0);
 
     const fetchFilterResults = () => {
@@ -73,7 +74,10 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
 
     const filterPracticesFromFetch = (providers) => {
         let filteredProviders = [];
+        let filteredProvidersShowAll = [];
+        
         for (let providerElement = 0; providerElement < providers.length; providerElement++) {
+            // Check for REVIEW LIST (excludes empty acceptedInsurances)
             if (isInsuranceAccepted(providers[providerElement]) === true && isPrimaryOrSecondaryFieldAccepted(providers[providerElement]) === true) {
                 // insurance is accepted and the provider's primary or secondary field matches what we are sending, then filter the other selections
                 // go through each filter and see if the provider survives the filters
@@ -124,14 +128,60 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
 
                 }
             }
+
+            // Check for SHOW ALL (includes empty acceptedInsurances)
+            if (isInsuranceAcceptedForShowAll(providers[providerElement]) === true && isPrimaryOrSecondaryFieldAccepted(providers[providerElement]) === true) {
+                if (collectedFilters.length === 0) {
+                    filteredProvidersShowAll.push(providers[providerElement]);
+                } else {
+                    let isValidProvider = true;
+                    let filterElement = 0;
+
+                    while (filterElement < collectedFilters.length && isValidProvider === true) {
+                        let filter = collectedFilters[filterElement].filterName.split(": ");
+                        
+                        switch (filter[0]) {
+                            case "Area":
+                                isValidProvider = isAreaAccepted(providers[providerElement], filter[1])
+                            break;
+
+                            case "Appointment":
+                                isValidProvider = isAppointmentAccepted(providers[providerElement], filter[1])
+                            break;
+
+                            case "Keyword":
+                                isValidProvider = isKeywordAccepted(providers[providerElement], filter[1]) 
+                            break;
+
+                            case "Specialty":
+                                isValidProvider = isSpecialtyAccepted(providers[providerElement], filter[1])
+                            break;
+
+                            case "Time":
+                                isValidProvider = isTimeAccepted(providers[providerElement], filter[1])
+                            break;
+
+                            default:
+                            break;
+                        }
+
+                        filterElement++;
+                    }
+
+                    if (isValidProvider === true) {
+                        filteredProvidersShowAll.push(providers[providerElement]);
+                    }
+                }
+            }
         }
 
         setStoredProviders([...filteredProviders]);
+        setStoredProvidersShowAll([...filteredProvidersShowAll]);
     }
 
     const isInsuranceAccepted = (provider) => {
         if (provider["acceptedInsurances"].length === 0) {
-            return true;
+            return false;
         } else {
             for (let i = 0; i < provider["acceptedInsurances"].length; i++) {
                 if (provider["acceptedInsurances"][i]["insurance"]["primaryName"] === insuranceType && provider["acceptedInsurances"][i]["insurance"]["subName"] === insuranceName) {
@@ -140,6 +190,26 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
             }
 
             // if you iterated through the whole loop and never found a matching primaryName or secondaryName, then return false.
+            return false;
+        }
+    }
+
+    const isInsuranceAcceptedForShowAll = (provider) => {
+        if (provider["acceptedInsurances"].length === 0) {
+            return true;
+        } else {
+            for (let i = 0; i < provider["acceptedInsurances"].length; i++) {
+                // Check for exact match (REVIEW LIST condition)
+                if (provider["acceptedInsurances"][i]["insurance"]["primaryName"] === insuranceType && provider["acceptedInsurances"][i]["insurance"]["subName"] === insuranceName) {
+                    return true;
+                }
+                // Check for "We generally accept" match (SHOW ALL condition)
+                if (provider["acceptedInsurances"][i]["insurance"]["primaryName"] === insuranceType && provider["acceptedInsurances"][i]["insurance"]["subName"].startsWith("We generally accept")) {
+                    return true;
+                }
+            }
+
+            // if you iterated through the whole loop and never found a matching condition, then return false.
             return false;
         }
     }
@@ -389,6 +459,9 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     useEffect( () => {
         fetchFilterResults();
         onProvidersArrayRetrieved(storedProviders);
+        if (onProvidersArrayRetrievedForShowAll) {
+            onProvidersArrayRetrievedForShowAll(storedProvidersShowAll);
+        }
         countProvidersFromFilteredProviders();
     }, []);
 
@@ -397,7 +470,10 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
         collectKeywordsFromFetch(storedProviders);
         countProvidersFromFilteredProviders();
         onProvidersArrayRetrieved(storedProviders);
-    }, [storedProviders]);
+        if (onProvidersArrayRetrievedForShowAll) {
+            onProvidersArrayRetrievedForShowAll(storedProvidersShowAll);
+        }
+    }, [storedProviders, storedProvidersShowAll]);
 
     return (
         <div id="numberOfProviders">

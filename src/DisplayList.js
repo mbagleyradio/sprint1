@@ -123,8 +123,8 @@ function DisplayList() {
             </div>
             {sortedProviders !== null && <div id="listings">
             {
-                sortedProviders.map((practice) => {
-                    return <ProviderListingIndividual provider={practice} handlePrioritize={handlePrioritize} minimizeController={minimizeController} handleMinimizeInController={handleMinimizeInController} handleExpandInController={handleExpandInController} healthCareCategory={healthCareCategory}/>
+                sortedProviders.map((practice, index) => {
+                    return <ProviderListingIndividual key={practice.id || index} provider={practice} handlePrioritize={handlePrioritize} minimizeController={minimizeController} handleMinimizeInController={handleMinimizeInController} handleExpandInController={handleExpandInController} healthCareCategory={healthCareCategory} isShowAll={true} searchedInsuranceType={insuranceType} searchedInsuranceName={insuranceName}/>
                 })
             }   
             </div>}
