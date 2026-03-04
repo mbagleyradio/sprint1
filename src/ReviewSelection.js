@@ -103,6 +103,17 @@ function ReviewSelection() {
 
     const onProvidersArrayRetrieved = (data) => {
         const sorted = [...data].sort((a, b) => {
+            // First, sort by insurance match type: exact matches come before general matches
+            const aMatchType = a._insuranceMatchType || "general";
+            const bMatchType = b._insuranceMatchType || "general";
+            
+            if (aMatchType === "exact" && bMatchType !== "exact") {
+                return -1;
+            } else if (aMatchType !== "exact" && bMatchType === "exact") {
+                return 1;
+            }
+            
+            // Then, sort alphabetically by name
             let nameA = a["name"];
             let nameB = b["name"];
             
@@ -175,7 +186,7 @@ function ReviewSelection() {
                         <button type="button" id="reviewSelectionInfoBtn" className="infoBtn" onClick={toggleReviewInfo}>?</button>
                         <button type="button" id="reviewSelectionBtn" onClick={handleReviewListClick}>Review List</button>
                     </div>
-                    {showReviewInfo && <div id="reviewSelectionInfoPopup" className="infoPopup">Shows a detailed list of providers that accept your insurance.</div>}
+                    {showReviewInfo && <div id="reviewSelectionInfoPopup" className="infoPopup">Shows a detailed list of providers that accept your insurance or payment option. It also includes providers that may accept your insurance or payment option, but you must call the number listed to verify.</div>}
                 </div>
 
                 <div className="btnWrap" ref={showAllWrapRef}>
@@ -183,7 +194,7 @@ function ReviewSelection() {
                         <button type="button" id="showAllProvidersInfoBtn" className="infoBtn" onClick={toggleShowAllInfo}>?</button>
                         <button type="button" id="showAllProvidersBtn" onClick={handleShowAllProviders}>Show All Providers</button>
                     </div>
-                    {showShowAllInfo && <div id="showAllProvidersInfoPopup" className="infoPopup">Shows all providers that may accept your insurance.</div>}
+                    {showShowAllInfo && <div id="showAllProvidersInfoPopup" className="infoPopup">Shows a list of all providers of medical care in the category (medical field) that you selected, regardless of whether they accept your insurance or payment option.</div>}
                 </div>
             </div>
         </div>

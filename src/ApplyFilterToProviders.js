@@ -73,23 +73,22 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
     }
 
     const filterPracticesFromFetch = (providers) => {
+        let filteredProvidersExactMatch = [];
+        let filteredProvidersGeneralMatch = [];
         let filteredProviders = [];
         let filteredProvidersShowAll = [];
         
         for (let providerElement = 0; providerElement < providers.length; providerElement++) {
-            // Check for REVIEW LIST (excludes empty acceptedInsurances)
-            if (isInsuranceAccepted(providers[providerElement]) === true && isPrimaryOrSecondaryFieldAccepted(providers[providerElement]) === true) {
+            // Check for REVIEW LIST (includes both exact matches and "We generally accept" matches)
+            if (isInsuranceAcceptedForReviewList(providers[providerElement]) === true && isPrimaryOrSecondaryFieldAccepted(providers[providerElement]) === true) {
                 // insurance is accepted and the provider's primary or secondary field matches what we are sending, then filter the other selections
                 // go through each filter and see if the provider survives the filters
-                if (collectedFilters.length === 0) {
-                    // no filters applied, so push the provider into the filteredProviders array
-                    filteredProviders.push(providers[providerElement]);
-                } else {
-                    // filters applied, so check if each provider passes all the filters
-                    // get the filters
-                    let isValidProvider = true;
-                    let filterElement = 0;
+                
+                let isValidProvider = true;
+                let filterElement = 0;
 
+                if (collectedFilters.length > 0) {
+                    // filters applied, so check if each provider passes all the filters
                     while (filterElement < collectedFilters.length && isValidProvider === true) {
                         let filter = collectedFilters[filterElement].filterName.split(": ");
                         
@@ -120,12 +119,18 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
 
                         filterElement++;
                     }
+                }
 
-                    // if the provider passes all the applied filters, add it to filteredProviders []
-                    if (isValidProvider === true) {
-                        filteredProviders.push(providers[providerElement]);
+                // if the provider passes all the applied filters (or no filters), add it to the appropriate array
+                if (isValidProvider === true) {
+                    // Check if this provider has an exact match or just a general match
+                    if (hasExactInsuranceMatch(providers[providerElement])) {
+                        providers[providerElement]._insuranceMatchType = "exact";
+                        filteredProvidersExactMatch.push(providers[providerElement]);
+                    } else {
+                        providers[providerElement]._insuranceMatchType = "general";
+                        filteredProvidersGeneralMatch.push(providers[providerElement]);
                     }
-
                 }
             }
 
@@ -175,8 +180,24 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
             }
         }
 
+        // Concatenate exact matches first, then general matches for the Review List
+        filteredProviders = [...filteredProvidersExactMatch, ...filteredProvidersGeneralMatch];
+
         setStoredProviders([...filteredProviders]);
         setStoredProvidersShowAll([...filteredProvidersShowAll]);
+    }
+
+    const hasExactInsuranceMatch = (provider) => {
+        if (provider["acceptedInsurances"].length === 0) {
+            return false;
+        } else {
+            for (let i = 0; i < provider["acceptedInsurances"].length; i++) {
+                if (provider["acceptedInsurances"][i]["insurance"]["primaryName"] === insuranceType && provider["acceptedInsurances"][i]["insurance"]["subName"] === insuranceName) {
+                    return true;
+                } 
+            }
+            return false;
+        }
     }
 
     const isInsuranceAccepted = (provider) => {
@@ -190,6 +211,26 @@ function ApplyFilterToProviders( {isFiltered, insuranceName, insuranceType, heal
             }
 
             // if you iterated through the whole loop and never found a matching primaryName or secondaryName, then return false.
+            return false;
+        }
+    }
+
+    const isInsuranceAcceptedForReviewList = (provider) => {
+        // For Review List: show providers with exact match OR "We generally accept" match
+        if (provider["acceptedInsurances"].length === 0) {
+            return false;
+        } else {
+            for (let i = 0; i < provider["acceptedInsurances"].length; i++) {
+                // Check for exact match
+                if (provider["acceptedInsurances"][i]["insurance"]["primaryName"] === insuranceType && provider["acceptedInsurances"][i]["insurance"]["subName"] === insuranceName) {
+                    return true;
+                }
+                // Check for "We generally accept" match
+                if (provider["acceptedInsurances"][i]["insurance"]["primaryName"] === insuranceType && provider["acceptedInsurances"][i]["insurance"]["subName"] && typeof provider["acceptedInsurances"][i]["insurance"]["subName"] === "string" && provider["acceptedInsurances"][i]["insurance"]["subName"].startsWith("We generally accept")) {
+                    return true;
+                }
+            }
+
             return false;
         }
     }
